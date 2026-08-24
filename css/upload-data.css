@@ -1,0 +1,817 @@
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    min-height:100%;
+}
+
+body{
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:#f8fafc;
+
+    color:#0f172a;
+
+    padding-bottom:90px;
+
+}
+
+/* =========================================
+   HEADER — STICKY
+========================================= */
+
+.page-header{
+
+    position:sticky;
+    top:0;
+
+    z-index:999;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0f172a,
+            #1e3a8a
+        );
+
+    color:#fff;
+
+    padding:18px 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(15,23,42,.20);
+
+}
+
+.back-button{
+
+    width:40px;
+    height:40px;
+
+    border-radius:12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.20);
+
+    background:
+        rgba(255,255,255,.10);
+
+    color:#fff;
+
+    font-size:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+    flex-shrink:0;
+
+}
+
+.back-button:active{
+
+    transform:scale(.96);
+
+}
+
+.header-logo{
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    background:
+        rgba(255,255,255,.15);
+
+    flex-shrink:0;
+
+}
+
+.header-logo img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+.header-text{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.header-title{
+
+    font-size:16px;
+
+    font-weight:800;
+
+}
+
+.header-subtitle{
+
+    font-size:10px;
+
+    opacity:.75;
+
+    margin-top:3px;
+
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container{
+
+    width:
+        min(
+            100%,
+            650px
+        );
+
+    margin:20px auto;
+
+    padding:0 14px;
+
+}
+
+
+/* =========================================
+   INFO CARD
+========================================= */
+
+.info-card{
+
+    background:#fff;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(15,23,42,.07);
+
+    margin-bottom:16px;
+
+}
+
+.info-title{
+
+    font-size:14px;
+
+    font-weight:800;
+
+    color:#1e3a8a;
+
+    margin-bottom:6px;
+
+}
+
+.info-text{
+
+    font-size:11px;
+
+    line-height:1.6;
+
+    color:#64748b;
+
+}
+
+
+/* =========================================
+   DROP AREA
+========================================= */
+
+.upload-area{
+
+    display:block;
+
+    width:100%;
+
+    background:#fff;
+
+    border:
+        2px dashed
+        #cbd5e1;
+
+    border-radius:20px;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:
+        border-color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+
+    overflow:hidden;
+
+}
+
+.upload-area:hover{
+
+    border-color:#2563eb;
+
+    background:#f8fbff;
+
+}
+
+.upload-area.dragging{
+
+    border-color:#2563eb;
+
+    background:#eff6ff;
+
+    transform:scale(1.01);
+
+}
+
+
+/* =========================================
+   UPLOAD ICON
+========================================= */
+
+.upload-icon{
+
+    width:64px;
+    height:64px;
+
+    margin:
+        0 auto 14px;
+
+    border-radius:18px;
+
+    background:#dce6f7;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    flex-shrink:0;
+
+}
+
+
+/* =========================================
+   UPLOAD TEXT
+========================================= */
+
+.upload-title{
+
+    font-size:15px;
+
+    font-weight:800;
+
+    color:#1e3a8a;
+
+}
+
+.upload-desc{
+
+    font-size:11px;
+
+    color:#64748b;
+
+    margin-top:5px;
+
+}
+
+.file-name{
+
+    display:none;
+
+    width:100%;
+
+    margin-top:14px;
+
+    padding:10px 12px;
+
+    border-radius:10px;
+
+    background:#f1f5f9;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    color:#334155;
+
+    word-break:break-word;
+
+    overflow-wrap:anywhere;
+
+    text-align:left;
+
+}
+
+
+/* =========================================
+   FILE INPUT
+========================================= */
+
+#excelFile{
+
+    display:none;
+
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.upload-button{
+
+    width:100%;
+
+    margin-top:16px;
+
+    padding:14px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1e40af
+        );
+
+    color:#fff;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 7px 16px
+        rgba(37,99,235,.22);
+
+    transition:
+        transform .2s ease,
+        opacity .2s ease,
+        box-shadow .2s ease;
+
+}
+
+.upload-button:hover:not(:disabled){
+
+    box-shadow:
+        0 9px 20px
+        rgba(37,99,235,.28);
+
+}
+
+.upload-button:active:not(:disabled){
+
+    transform:scale(.98);
+
+}
+
+.upload-button:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    box-shadow:none;
+
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress-wrapper{
+
+    display:none;
+
+    margin-top:18px;
+
+}
+
+.progress-label{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:10px;
+
+    color:#64748b;
+
+    margin-bottom:6px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:8px;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    background:#e2e8f0;
+
+}
+
+.progress-value{
+
+    width:0%;
+
+    height:100%;
+
+    background:#2563eb;
+
+    transition:
+        width .2s ease;
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-card{
+
+    display:none;
+
+    margin-top:16px;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    font-size:11px;
+
+    line-height:1.6;
+
+}
+
+.status-card.success{
+
+    display:block;
+
+    background:#ecfdf5;
+
+    border:
+        1px solid
+        #a7f3d0;
+
+    color:#065f46;
+
+}
+
+.status-card.error{
+
+    display:block;
+
+    background:#fef2f2;
+
+    border:
+        1px solid
+        #fecaca;
+
+    color:#991b1b;
+
+}
+
+.status-title{
+
+    font-size:13px;
+
+    font-weight:800;
+
+    margin-bottom:5px;
+
+}
+
+
+/* =========================================
+   SHEET RESULT
+========================================= */
+
+.sheet-list{
+
+    margin-top:12px;
+
+    display:grid;
+
+    gap:7px;
+
+}
+
+.sheet-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:9px 10px;
+
+    background:
+        rgba(255,255,255,.7);
+
+    border-radius:9px;
+
+    border:
+        1px solid
+        rgba(6,95,70,.10);
+
+}
+
+.sheet-name{
+
+    font-weight:700;
+
+    word-break:break-word;
+
+}
+
+.sheet-count{
+
+    font-size:10px;
+
+    opacity:.75;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================
+   MASTER INFO
+========================================= */
+
+.master-info{
+
+    margin-top:16px;
+
+    background:#fff;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:18px;
+
+    padding:16px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(15,23,42,.05);
+
+}
+
+.master-title{
+
+    font-size:12px;
+
+    font-weight:800;
+
+    color:#1e3a8a;
+
+    margin-bottom:12px;
+
+}
+
+.master-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    padding:7px 0;
+
+    border-bottom:
+        1px solid
+        #f1f5f9;
+
+    font-size:10px;
+
+}
+
+.master-row:last-child{
+
+    border-bottom:0;
+
+}
+
+.master-label{
+
+    color:#64748b;
+
+    flex-shrink:0;
+
+}
+
+.master-value{
+
+    font-weight:700;
+
+    text-align:right;
+
+    word-break:break-word;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:380px){
+
+    .container{
+
+        padding:0 10px;
+
+    }
+
+    .upload-area{
+
+        padding:25px 15px;
+
+    }
+
+    .header-title{
+
+        font-size:15px;
+
+    }
+
+}
+
+/* =========================================
+   BOTTOM NAVIGATION
+========================================= */
+.bottom-nav{
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:65px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #ffffff 25%,
+        #f7faff 42%,
+        #edf4ff 62%,
+        #dce9ff 100%
+    );
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    z-index:1000;
+
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+
+    box-shadow:
+    0 -4px 12px rgba(15,23,42,.10);
+}
+
+/* ITEM */
+.bottom-item{
+    flex:1;
+
+    height:100%;
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: 5px;
+    text-decoration:none;
+    
+    color:#475569;
+    letter-spacing:.5px;
+    font-size:10px;
+    font-weight:700;
+    /* GESER ICON + TEXT BERSAMA */
+    
+    transition:.2s;
+}
+
+/* ICON + TEXT TURUN BERSAMA */
+.bottom-item > div,
+.bottom-item > span{
+    transform:translateY(4px);
+}
+
+/* ICON */
+.bottom-item div{
+    font-size:18px;
+    filter: drop-shadow(
+        0 2px 3px rgba(15,23,42,.25)
+    );
+
+}
+
+/* ACTIVE INDICATOR */
+.bottom-item.active {
+    color: #475569;
+    position: relative;
+}
+
+.bottom-item.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:28%;
+
+    right:28%;
+
+    height:3.5px;
+
+    border-radius:
+        0 0 5px 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1e3a8a,
+            #2563eb,
+            #60a5fa
+        );
+
+}
+
+/* TAP EFFECT */
+.bottom-item:active{
+    opacity:.6;
+
+    transform:scale(.96);
+}
+  

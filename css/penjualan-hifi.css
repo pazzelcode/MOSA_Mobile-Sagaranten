@@ -1,0 +1,2535 @@
+/* =========================================================
+   PENJUALAN HIFI AIR
+   MC SAGARANTEN UI
+   TABLE EXCEL STYLE
+========================================================= */
+
+:root{
+
+    --header-blue:#1e3a8a;
+    --header-dark:#0f172a;
+
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+
+    --bg:#f1f5f9;
+    --surface:#ffffff;
+
+    --text:#0f172a;
+    --text-main:#334155;
+    --text-muted:#64748b;
+
+    --border:#e2e8f0;
+    --border-dark:#cbd5e1;
+
+    --blue:#0284c7;
+    --indigo:#3b82f6;
+    --green:#16a34a;
+    --amber:#d97706;
+    --red:#e11d48;
+    --purple:#8b5cf6;
+
+    --radius:14px;
+
+    --shadow-sm:
+        0 2px 6px rgba(15,23,42,.05);
+
+    --shadow:
+        0 8px 20px rgba(15,23,42,.07);
+
+    --shadow-lg:
+        0 14px 32px rgba(15,23,42,.10);
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+
+    box-sizing:border-box;
+
+    margin:0;
+
+    padding:0;
+
+    font-family:
+        'Inter',
+        'Segoe UI',
+        sans-serif;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text-main);
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding-bottom:82px;
+
+    margin:0;
+
+    overflow-x:hidden;
+
+}
+
+
+/* =========================================================
+   STICKY HEADER
+========================================================= 
+
+.sticky-container{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    width:100%;
+
+    background:#fff;
+
+    box-shadow:
+        0 2px 8px rgba(15,23,42,.08);
+
+}
+
+
+.header-wrapper{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a 0%,
+            #172554 55%,
+            #0f172a 100%
+        );
+
+    border-bottom:
+        3px solid #eab308;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+    padding:0 20px;
+
+}
+
+
+.header-wrapper::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    right:-70px;
+
+    top:-110px;
+
+    background:
+        rgba(59,130,246,.20);
+
+    border-radius:50%;
+
+}
+
+
+.header-wrapper::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+
+    height:130px;
+
+    left:-70px;
+
+    bottom:-90px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+}
+
+
+=========================================================
+   HEADER TEXT
+========================================================= 
+
+.app-header{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    color:#fff;
+
+}
+
+
+.header-title-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+}
+
+
+.header-icon{
+
+    width:36px;
+
+    height:36px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.14);
+
+    border:
+        1px solid rgba(255,255,255,.18);
+
+    font-size:18px;
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.15);
+
+}
+
+
+.app-header h1{
+
+    font-size:16px;
+
+    line-height:1.2;
+
+    font-weight:800;
+
+    letter-spacing:.6px;
+
+    margin:0;
+
+}
+
+
+.app-header p{
+
+    font-size:10px;
+
+    line-height:1.3;
+
+    opacity:.75;
+
+    margin-top:3px;
+
+}
+
+
+=========================================================
+   BACK BUTTON
+========================================================= 
+
+.back-container{
+
+    position:absolute;
+
+    left:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    padding:10px;
+
+    cursor:pointer;
+
+    z-index:5;
+
+}
+
+
+.back-button{
+
+    width:14px;
+
+    height:14px;
+
+    border-left:
+        3px solid white;
+
+    border-bottom:
+        3px solid white;
+
+    border-radius:2px;
+
+    transform:rotate(45deg);
+
+    transition:.2s;
+
+}
+
+
+.back-container:active
+.back-button{
+
+    opacity:.6;
+
+    transform:
+        rotate(45deg)
+        scale(.9);
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard-container{
+
+    width:100%;
+
+    max-width:1180px;
+
+    margin:0 auto;
+
+    padding:
+        0 16px 30px;
+
+}
+
+
+/* =========================================================
+   PAGE INTRO
+========================================================= */
+
+.page-intro{
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f8fafc
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    padding:18px;
+
+    margin-bottom:14px;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+
+.page-eyebrow{
+
+    font-size:9px;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+    letter-spacing:1px;
+
+    margin-bottom:4px;
+
+}
+
+
+.page-intro h2{
+
+    font-size:20px;
+
+    color:var(--text);
+
+    font-weight:800;
+
+    margin-bottom:4px;
+
+}
+
+
+.page-intro p{
+
+    color:var(--text-muted);
+
+    font-size:11px;
+
+    line-height:1.5;
+
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+========================================================= */
+
+.summary-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:12px;
+
+    margin-bottom:16px;
+
+}
+
+
+.summary-card-box{
+
+    position:relative;
+
+    min-width:0;
+
+    background:
+        rgba(255,255,255,.96);
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        13px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    box-shadow:var(--shadow-sm);
+
+    overflow:hidden;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.summary-card-box:hover{
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:var(--shadow);
+
+}
+
+
+.summary-card-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:55px;
+
+    height:55px;
+
+    right:-25px;
+
+    bottom:-25px;
+
+    border-radius:50%;
+
+    background:currentColor;
+
+    opacity:.045;
+
+}
+
+
+.summary-icon{
+
+    width:36px;
+
+    height:36px;
+
+    flex:0 0 36px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    background:#f8fafc;
+
+}
+
+
+.summary-content{
+
+    min-width:0;
+
+}
+
+
+.summary-card-box .title{
+
+    font-size:9px;
+
+    color:var(--text-muted);
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.45px;
+
+    white-space:nowrap;
+
+}
+
+
+.summary-card-box .value{
+
+    font-size:17px;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    margin-top:4px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+/* =========================================================
+   SUMMARY COLORS
+========================================================= */
+
+.summary-blue{
+
+    color:var(--blue);
+
+    border-left:
+        4px solid var(--blue);
+
+}
+
+
+.summary-indigo{
+
+    color:var(--indigo);
+
+    border-left:
+        4px solid var(--indigo);
+
+}
+
+
+.summary-green{
+
+    color:var(--green);
+
+    border-left:
+        4px solid var(--green);
+
+}
+
+
+.summary-amber{
+
+    color:var(--amber);
+
+    border-left:
+        4px solid var(--amber);
+
+}
+
+
+.summary-red{
+
+    color:var(--red);
+
+    border-left:
+        4px solid var(--red);
+
+}
+
+
+.summary-purple{
+
+    color:var(--purple);
+
+    border-left:
+        4px solid var(--purple);
+
+}
+
+
+.summary-blue .summary-icon{
+    background:#e0f2fe;
+}
+
+
+.summary-indigo .summary-icon{
+    background:#eff6ff;
+}
+
+
+.summary-green .summary-icon{
+    background:#dcfce7;
+}
+
+
+.summary-amber .summary-icon{
+    background:#fef3c7;
+}
+
+
+.summary-red .summary-icon{
+    background:#ffe4e6;
+}
+
+
+.summary-purple .summary-icon{
+    background:#f3e8ff;
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.filter-card{
+
+    background:#fff;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:var(--shadow-sm);
+
+    padding:14px 16px;
+
+    margin-bottom:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+
+.filter-heading{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+
+.filter-icon{
+
+    width:36px;
+
+    height:36px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+
+    font-size:16px;
+
+}
+
+
+.filter-title{
+
+    color:var(--text);
+
+    font-size:12px;
+
+    font-weight:800;
+
+}
+
+
+.filter-description{
+
+    color:var(--text-muted);
+
+    font-size:10px;
+
+    margin-top:2px;
+
+}
+
+
+.filter-control{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+.filter-label{
+
+    font-size:10px;
+
+    font-weight:700;
+
+    color:var(--text-muted);
+
+    white-space:nowrap;
+
+}
+
+
+.filter-select{
+
+    width:300px;
+
+    padding:
+        10px 12px;
+
+    font-size:12px;
+
+    color:var(--text);
+
+    background:#f8fafc;
+
+    border:
+        1px solid var(--border-dark);
+
+    border-radius:9px;
+
+    outline:none;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+
+.filter-select:focus{
+
+    border-color:var(--primary);
+
+    background:#fff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37,99,235,.10);
+
+}
+
+
+/* =========================================================
+   SECTION CARD
+========================================================= */
+
+.section-card{
+
+    background:#fff;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:20px;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header{
+
+    min-height:68px;
+
+    padding:
+        12px 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a 0%,
+            #172554 100%
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+.section-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:160px;
+
+    height:160px;
+
+    right:-70px;
+
+    top:-100px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.06);
+
+}
+
+
+.section-heading{
+
+    position:relative;
+
+    z-index:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0;
+
+}
+
+
+.section-icon{
+
+    width:38px;
+
+    height:38px;
+
+    flex:0 0 38px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    font-size:17px;
+
+}
+
+
+.section-title{
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:.4px;
+
+    line-height:1.3;
+
+}
+
+
+.section-subtitle{
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size:9px;
+
+    margin-top:3px;
+
+}
+
+
+.section-actions{
+
+    position:relative;
+
+    z-index:2;
+
+    flex:0 0 auto;
+
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+.download-table-btn{
+
+    border:
+        1px solid rgba(255,255,255,.22);
+
+    background:
+        rgba(255,255,255,.12);
+
+    color:#fff;
+
+    border-radius:9px;
+
+    min-height:38px;
+
+    padding:
+        0 12px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    cursor:pointer;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+
+    backdrop-filter:blur(8px);
+
+}
+
+
+.download-table-btn:hover{
+
+    background:
+        rgba(255,255,255,.20);
+
+    box-shadow:
+        0 6px 16px
+        rgba(0,0,0,.12);
+
+}
+
+
+.download-table-btn:active{
+
+    transform:scale(.96);
+
+}
+
+
+.download-table-btn:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+}
+
+
+.download-icon{
+
+    font-size:14px;
+
+    line-height:1;
+
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+   EXCEL STYLE
+========================================================= */
+
+.table-responsive{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+
+.table-scroll-area{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    overflow-y:hidden;
+
+    -webkit-overflow-scrolling:touch;
+
+}
+
+
+/* =========================================================
+   MAIN TABLE
+========================================================= */
+
+#hifiTable{
+
+    width:max-content;
+
+    min-width:1100px;
+
+    border-collapse:separate;
+
+    border-spacing:0;
+
+    background:#fff;
+
+    white-space:nowrap;
+
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+#hifiTable thead th{
+
+    padding:
+        10px 9px;
+
+    background:#f8fafc;
+
+    color:#475569;
+
+    border-right:
+        1px solid #e2e8f0;
+
+    border-bottom:
+        2px solid #cbd5e1;
+
+    font-size:9px;
+
+    line-height:1.2;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+
+    text-align:center;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:5;
+
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+#hifiTable tbody td{
+
+    padding:
+        9px 9px;
+
+    border-right:
+        1px solid #f1f5f9;
+
+    border-bottom:
+        1px solid #e2e8f0;
+
+    color:#334155;
+
+    font-size:10px;
+
+    line-height:1.25;
+
+    font-weight:500;
+
+    white-space:nowrap;
+
+    vertical-align:middle;
+
+}
+
+
+/* =========================================================
+   ZEBRA ROW
+========================================================= */
+
+#hifiTable tbody tr.row-item:nth-child(even){
+
+    background:#fbfdff;
+
+}
+
+
+#hifiTable tbody tr.row-item:hover td{
+
+    background:#eff6ff;
+
+}
+
+
+/* =========================================================
+   NOMOR
+========================================================= */
+
+#hifiTable th:first-child,
+#hifiTable td:first-child{
+
+    position:sticky;
+
+    left:0;
+
+    min-width:50px;
+
+    width:50px;
+
+    text-align:center;
+
+    z-index:6;
+
+}
+
+
+/* HEADER KOLOM PERTAMA */
+
+#hifiTable thead th:first-child{
+
+    background:#f8fafc;
+
+    z-index:10;
+
+}
+
+
+/* BODY KOLOM PERTAMA */
+
+#hifiTable tbody td:first-child{
+
+    background:#fff;
+
+}
+
+
+/* ZEBRA STICKY */
+
+#hifiTable tbody tr.row-item:nth-child(even)
+td:first-child{
+
+    background:#fbfdff;
+
+}
+
+
+/* HOVER STICKY */
+
+#hifiTable tbody tr.row-item:hover
+td:first-child{
+
+    background:#eff6ff;
+
+}
+
+
+/* =========================================================
+   TOTAL ROW
+========================================================= */
+
+#hifiTable tbody tr.total-row td{
+
+    background:#fef08a !important;
+
+    color:#713f12 !important;
+
+    font-weight:800;
+
+    border-top:
+        2px solid #ca8a04;
+
+    border-bottom:
+        2px solid #ca8a04;
+
+}
+
+
+#hifiTable tbody tr.total-row td:first-child{
+
+    z-index:7;
+
+    background:#fef08a !important;
+
+}
+
+
+/* =========================================================
+   COLUMN ALIGNMENT
+========================================================= */
+
+#hifiTable td.qty-col{
+
+    text-align:center;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    font-weight:700;
+
+}
+
+
+#hifiTable td.currency-col{
+
+    text-align:right;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    font-weight:700;
+
+}
+
+
+#hifiTable td.mono-col{
+
+    font-family:monospace;
+
+    font-size:9px;
+
+    font-weight:600;
+
+    color:#334155;
+
+}
+
+
+#hifiTable td.text-left{
+
+    text-align:left;
+
+}
+
+
+#hifiTable td.text-center{
+
+    text-align:center;
+
+}
+
+
+#hifiTable td.text-right{
+
+    text-align:right;
+
+}
+
+
+#hifiTable .empty-cell{
+
+    color:#cbd5e1;
+
+    font-style:italic;
+
+}
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+.badge-status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+        4px 7px;
+
+    border-radius:6px;
+
+    font-size:8px;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.25px;
+
+}
+
+
+.badge-segel{
+
+    background:#fef3c7;
+
+    color:#b45309;
+
+    border:
+        1px solid #fde68a;
+
+}
+
+
+.badge-sold{
+
+    background:#e0f2fe;
+
+    color:#0369a1;
+
+    border:
+        1px solid #bae6fd;
+
+}
+
+
+.badge-terjual-sukses{
+
+    background:#dcfce7;
+
+    color:#15803d;
+
+    border:
+        1px solid #bbf7d0;
+
+}
+
+
+.badge-status-danger{
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+    border:
+        1px solid #fecaca;
+
+}
+
+
+.badge-onhand{
+
+    background:#dbeafe;
+
+    color:#1d4ed8;
+
+    border:
+        1px solid #93c5fd;
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-text{
+
+    padding:45px 20px;
+
+    text-align:center;
+
+    font-weight:600;
+
+    color:#64748b;
+
+    font-size:12px;
+
+}
+
+
+.loading-spinner{
+
+    width:28px;
+
+    height:28px;
+
+    margin:0 auto 12px;
+
+    border:
+        3px solid #dbeafe;
+
+    border-top-color:
+        #2563eb;
+
+    border-radius:50%;
+
+    animation:
+        hifiSpin .8s linear infinite;
+
+}
+
+
+@keyframes hifiSpin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   GUDANG SINGLE VIEW
+========================================================= */
+
+#gudangSingleView{
+
+    background:#fff;
+
+}
+
+
+.gudang-single-layout{
+
+    padding:18px;
+
+    background:#fff;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+.gudang-form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+}
+
+
+.gudang-form-group label{
+
+    font-size:10px;
+
+    font-weight:800;
+
+    color:#64748b;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+
+.gudang-display-box{
+
+    padding:12px;
+
+    background:#f8fafc;
+
+    border:
+        1px solid #cbd5e1;
+
+    border-radius:8px;
+
+    font-family:monospace;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#0f172a;
+
+    min-height:43px;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+.gudang-total-box{
+
+    background:#fef08a;
+
+    border:
+        1px solid #ca8a04;
+
+    padding:14px;
+
+    border-radius:8px;
+
+    color:#713f12;
+
+    font-weight:800;
+
+    font-size:12px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:5px;
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media(max-width:1000px){
+
+    .summary-grid{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   TETAP TABLE EXCEL
+   TIDAK ADA CARD MODE
+========================================================= */
+
+@media(max-width:639px){
+
+    .dashboard-container{
+
+        padding:
+            0 8px 20px;
+
+    }
+
+
+    .header-wrapper{
+
+        min-height:64px;
+
+    }
+
+
+    .header-icon{
+
+        width:32px;
+
+        height:32px;
+
+        font-size:15px;
+
+    }
+
+
+    .app-header h1{
+
+        font-size:13px;
+
+    }
+
+
+    .app-header p{
+
+        font-size:8px;
+
+    }
+
+
+    .back-container{
+
+        left:7px;
+
+    }
+
+
+    /* INTRO */
+
+    .page-intro{
+
+        padding:13px;
+
+        border-radius:11px;
+
+    }
+
+
+    .page-intro h2{
+
+        font-size:16px;
+
+    }
+
+
+    .page-intro p{
+
+        font-size:9px;
+
+    }
+
+
+    /* SUMMARY */
+
+    .summary-grid{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:7px;
+
+    }
+
+
+    .summary-card-box{
+
+        padding:10px;
+
+        gap:7px;
+
+        border-radius:10px;
+
+    }
+
+
+    .summary-icon{
+
+        width:29px;
+
+        height:29px;
+
+        flex-basis:29px;
+
+        font-size:13px;
+
+    }
+
+
+    .summary-card-box .title{
+
+        font-size:7px;
+
+    }
+
+
+    .summary-card-box .value{
+
+        font-size:13px;
+
+    }
+
+
+    /* FILTER */
+
+    .filter-card{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:10px;
+
+        padding:11px;
+
+        border-radius:11px;
+
+    }
+
+
+    .filter-heading{
+
+        gap:8px;
+
+    }
+
+
+    .filter-icon{
+
+        width:31px;
+
+        height:31px;
+
+        font-size:14px;
+
+    }
+
+
+    .filter-title{
+
+        font-size:11px;
+
+    }
+
+
+    .filter-description{
+
+        font-size:9px;
+
+    }
+
+
+    .filter-control{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:5px;
+
+    }
+
+
+    .filter-label{
+
+        font-size:9px;
+
+    }
+
+
+    .filter-select{
+
+        width:100%;
+
+        height:40px;
+
+        padding:
+            8px 10px;
+
+        font-size:11px;
+
+    }
+
+
+    /* SECTION */
+
+    .section-card{
+
+        border-radius:11px;
+
+    }
+
+
+    .section-header{
+
+        min-height:57px;
+
+        padding:9px 10px;
+
+        gap:8px;
+
+    }
+
+
+    .section-heading{
+
+        gap:7px;
+
+    }
+
+
+    .section-icon{
+
+        width:31px;
+
+        height:31px;
+
+        flex-basis:31px;
+
+        font-size:13px;
+
+    }
+
+
+    .section-title{
+
+        font-size:8.5px;
+
+    }
+
+
+    .section-subtitle{
+
+        font-size:7px;
+
+    }
+
+
+    /* =========================================================
+   TOMBOL DOWNLOAD GAMBAR
+========================================================= */
+
+.download-table-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-height:40px;
+    padding:10px 16px;
+
+    border:1px solid rgba(37,99,235,.18);
+    border-radius:10px;
+
+    background:#2563EB;
+    color:#FFFFFF;
+
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:700;
+
+    line-height:1;
+    white-space:nowrap;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 4px 12px rgba(37,99,235,.18);
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+/* HOVER */
+
+.download-table-btn:hover{
+
+    background:#1D4ED8;
+
+    box-shadow:
+        0 6px 16px rgba(37,99,235,.24);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* ACTIVE */
+
+.download-table-btn:active{
+
+    transform:
+        translateY(0);
+
+    box-shadow:
+        0 3px 8px rgba(37,99,235,.18);
+
+}
+
+
+/* DISABLED */
+
+.download-table-btn:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    .download-table-btn{
+
+        width:100%;
+
+        min-height:42px;
+
+        padding:
+            11px 14px;
+
+        font-size:13px;
+
+        border-radius:10px;
+
+    }
+
+}
+
+
+    /* =====================================================
+       EXCEL TABLE MOBILE
+    ===================================================== */
+
+    .table-responsive{
+
+        width:100%;
+
+        overflow-x:auto;
+
+        overflow-y:hidden;
+
+        border-top:
+            1px solid #e2e8f0;
+
+    }
+
+
+    .table-scroll-area{
+
+        width:max-content;
+
+        min-width:100%;
+
+        overflow:visible;
+
+    }
+
+
+    #hifiTable{
+
+        display:table !important;
+
+        width:max-content !important;
+
+        min-width:1100px !important;
+
+        max-width:none !important;
+
+        table-layout:auto;
+
+        border-collapse:separate;
+
+        border-spacing:0;
+
+    }
+
+
+    #hifiTable thead{
+
+        display:table-header-group !important;
+
+    }
+
+
+    #hifiTable tbody{
+
+        display:table-row-group !important;
+
+    }
+
+
+    #hifiTable tr{
+
+        display:table-row !important;
+
+        width:auto !important;
+
+        border:none;
+
+        margin:0;
+
+        padding:0;
+
+        box-shadow:none;
+
+    }
+
+
+    #hifiTable th{
+
+        display:table-cell !important;
+
+        position:sticky;
+
+        top:0;
+
+        z-index:5;
+
+        padding:
+            9px 8px;
+
+        font-size:8px;
+
+        min-height:0;
+
+        white-space:nowrap;
+
+    }
+
+
+    #hifiTable td{
+
+        display:table-cell !important;
+
+        padding:
+            8px 8px;
+
+        font-size:9px;
+
+        min-height:0;
+
+        white-space:nowrap;
+
+        text-align:center;
+
+    }
+
+
+    #hifiTable tbody tr.row-item{
+
+        background:#fff;
+
+    }
+
+
+    #hifiTable tbody tr.row-item:nth-child(even){
+
+        background:#fbfdff;
+
+    }
+
+
+    #hifiTable tbody tr.row-item:hover{
+
+        background:#eff6ff;
+
+    }
+
+
+    #hifiTable tbody tr.row-item td{
+
+        border-bottom:
+            1px solid #e2e8f0;
+
+    }
+
+
+    /* =====================================================
+       FREEZE KOLOM NO
+    ===================================================== */
+
+    #hifiTable th:first-child,
+    #hifiTable td:first-child{
+
+        position:sticky;
+
+        left:0;
+
+        z-index:8;
+
+        min-width:42px;
+
+        width:42px;
+
+        background:#f8fafc;
+
+        box-shadow:
+            2px 0 4px
+            rgba(15,23,42,.06);
+
+    }
+
+
+    #hifiTable tbody tr.row-item td:first-child{
+
+        background:#fff;
+
+    }
+
+
+    #hifiTable tbody tr.row-item:nth-child(even)
+    td:first-child{
+
+        background:#fbfdff;
+
+    }
+
+
+    #hifiTable tbody tr.row-item:hover
+    td:first-child{
+
+        background:#eff6ff;
+
+    }
+
+
+    #hifiTable tbody tr.total-row td:first-child{
+
+        background:#fef08a !important;
+
+    }
+
+
+    /* TOTAL */
+
+    #hifiTable tbody tr.total-row{
+
+        display:table-row !important;
+
+        margin:0;
+
+        padding:0;
+
+        border:none;
+
+    }
+
+
+    #hifiTable tbody tr.total-row td{
+
+        display:table-cell !important;
+
+        padding:
+            9px 8px !important;
+
+        border-top:
+            2px solid #ca8a04;
+
+        border-bottom:
+            2px solid #ca8a04;
+
+        font-size:9px;
+
+        text-align:center !important;
+
+        white-space:nowrap;
+
+    }
+
+
+    /* STATUS */
+
+    .badge-status{
+
+        font-size:7px;
+
+        padding:
+            3px 6px;
+
+    }
+
+
+    /* =====================================================
+       SCROLLBAR TABLE
+    ===================================================== */
+
+    .table-responsive::-webkit-scrollbar{
+
+        height:7px;
+
+    }
+
+
+    .table-responsive::-webkit-scrollbar-track{
+
+        background:#f1f5f9;
+
+    }
+
+
+    .table-responsive::-webkit-scrollbar-thumb{
+
+        background:#94a3b8;
+
+        border-radius:10px;
+
+    }
+
+
+    .table-responsive::-webkit-scrollbar-thumb:hover{
+
+        background:#64748b;
+
+    }
+
+
+    
+    }
+
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media(max-width:380px){
+
+    .summary-grid{
+
+        gap:6px;
+
+    }
+
+
+    .summary-card-box{
+
+        padding:8px;
+
+    }
+
+
+    .summary-icon{
+
+        width:27px;
+
+        height:27px;
+
+        flex-basis:27px;
+
+        font-size:12px;
+
+    }
+
+
+    .summary-card-box .value{
+
+        font-size:12px;
+
+    }
+
+
+    #hifiTable{
+
+        min-width:1050px !important;
+
+    }
+
+
+    #hifiTable th{
+
+        padding:
+            8px 7px;
+
+        font-size:7.5px;
+
+    }
+
+
+    #hifiTable td{
+
+        padding:
+            7px;
+
+        font-size:8.5px;
+
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media screen and
+(max-width:639px)
+and (orientation:landscape){
+
+    .dashboard-container{
+
+        padding:
+            0 10px 25px;
+
+    }
+
+
+    .header-wrapper{
+
+        min-height:60px;
+
+    }
+
+
+    #hifiTable{
+
+        min-width:1100px !important;
+
+    }
+
+
+    #hifiTable th{
+
+        font-size:8px;
+
+    }
+
+
+    #hifiTable td{
+
+        font-size:9px;
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:768px){
+
+    .dashboard-container{
+
+        padding:
+            0 15px 30px;
+
+    }
+
+
+    #hifiTable th{
+
+        padding:
+            11px 10px;
+
+        font-size:9px;
+
+    }
+
+
+    #hifiTable td{
+
+        padding:
+            10px;
+
+        font-size:10px;
+
+    }
+
+}
+
+
+/* =========================================================
+   DOWNLOAD CLONE
+========================================================= */
+
+.hifi-download-clone{
+
+    position:fixed;
+
+    left:-100000px;
+
+    top:0;
+
+    z-index:-1;
+
+    width:1400px;
+
+    background:#fff;
+
+    padding:30px;
+
+}
+
+
+.hifi-download-clone table{
+
+    width:100%;
+
+    min-width:0;
+
+    border-collapse:collapse;
+
+}
+
+
+.hifi-download-clone th{
+
+    position:static;
+
+    background:#1e3a8a !important;
+
+    color:#fff !important;
+
+    padding:12px;
+
+    border:1px solid #cbd5e1;
+
+}
+
+
+.hifi-download-clone td{
+
+    padding:11px;
+
+    border:1px solid #e2e8f0;
+
+}
+
+
+.hifi-download-title{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    color:#1e3a8a;
+
+    margin-bottom:5px;
+
+}
+
+
+.hifi-download-subtitle{
+
+    font-size:12px;
+
+    color:#64748b;
+
+    margin-bottom:20px;
+
+}
+
+
+.hifi-download-footer{
+
+    margin-top:15px;
+
+    font-size:10px;
+
+    color:#64748b;
+
+}
+
+/* =========================================================
+   FILTER HIFI - HIDDEN ROW
+========================================================= */
+
+#tableBody tr.filter-hidden {
+    display: none !important;
+}

@@ -1,0 +1,814 @@
+/* =========================================================
+   CONTAINER UTAMA — TRANSPARAN
+========================================================= */
+
+.dashboard-container{
+    width:100%;
+    max-width:900px;
+
+    margin:0 auto 110px;
+
+    padding:0 10px;
+
+    background:transparent !important;
+    border:none !important;
+    outline:none !important;
+    box-shadow:none !important;
+    border-radius:0 !important;
+
+    overflow:visible;
+}
+/* =========================================================
+   STOCK CARD
+========================================================= */
+
+.stock-section{
+    width:100%;
+    margin-bottom:16px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-sm);
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.stock-card-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:12px;
+
+    padding:13px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--bg) 0%,
+            var(--surface) 100%
+        );
+
+    border-bottom:1px solid var(--border);
+}
+
+
+.stock-card-title-left{
+    min-width:0;
+}
+
+
+.stock-card-title h2{
+    margin:0;
+
+    font-size:15px;
+
+    line-height:1.2;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    letter-spacing:.3px;
+}
+
+
+.stock-card-title p{
+    margin:3px 0 0;
+
+    font-size:9px;
+
+    line-height:1.2;
+
+    color:var(--text-muted);
+
+    font-weight:500;
+}
+
+
+/* =========================================================
+   MINI TOTAL
+========================================================= */
+
+.stock-mini-total{
+    min-width:75px;
+
+    padding:6px 9px;
+
+    text-align:right;
+
+    background:var(--blue-soft);
+
+    border:1px solid var(--blue-light);
+
+    border-radius:9px;
+}
+
+
+.stock-mini-total span{
+    display:block;
+
+    margin-bottom:2px;
+
+    font-size:7px;
+
+    line-height:1;
+
+    color:var(--text-muted);
+
+    text-transform:uppercase;
+
+    letter-spacing:.4px;
+
+    font-weight:700;
+}
+
+
+.stock-mini-total strong{
+    display:block;
+
+    font-size:16px;
+
+    line-height:1.1;
+
+    color:var(--blue);
+
+    font-weight:800;
+
+    font-variant-numeric:tabular-nums;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.stock-table-wrapper{
+    width:100%;
+
+    overflow-x:auto;
+
+    -webkit-overflow-scrolling:touch;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.stock-table{
+    width:100%;
+
+    min-width:420px;
+
+    border-collapse:collapse;
+
+    background:var(--surface);
+
+    border:none;
+
+    box-shadow:none;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.stock-table th{
+    padding:9px 9px;
+
+    background:var(--bg);
+
+    color:var(--text-muted);
+
+    border-bottom:1px solid var(--border);
+
+    font-size:9px;
+
+    line-height:1.2;
+
+    font-weight:800;
+
+    text-transform:uppercase;
+
+    letter-spacing:.35px;
+
+    white-space:nowrap;
+
+    text-align:right;
+}
+
+
+.stock-table th.item-name-col{
+    text-align:left;
+}
+
+
+/* =========================================================
+   TABLE BODY
+========================================================= */
+
+.stock-table td{
+    padding:10px 9px;
+
+    border-bottom:1px solid var(--border-soft);
+
+    color:var(--text-main);
+
+    font-size:11px;
+
+    line-height:1.25;
+
+    font-weight:500;
+
+    white-space:nowrap;
+
+    text-align:right;
+
+    font-variant-numeric:tabular-nums;
+}
+
+
+/* =========================================================
+   NAMA BARANG
+========================================================= */
+
+.stock-table td.item-name-col{
+    width:45%;
+
+    text-align:left;
+
+    color:var(--text-main);
+
+    font-weight:650;
+
+    white-space:normal;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.stock-table tbody tr{
+    transition:
+        background .15s ease;
+}
+
+
+.stock-table tbody tr:hover{
+    background:var(--bg);
+}
+
+
+/* =========================================================
+   TOTAL ROW
+========================================================= */
+
+.stock-table tfoot td{
+    padding:10px 9px;
+
+    background:var(--amber-soft);
+
+    color:var(--amber-dark);
+
+    border-top:2px solid var(--amber-light);
+
+    border-bottom:none;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    text-align:right;
+
+    font-variant-numeric:tabular-nums;
+}
+
+
+.stock-table tfoot td.item-name-col{
+    text-align:left;
+
+    color:var(--amber-dark);
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.stock-table .loading-text{
+    padding:30px 10px;
+
+    text-align:center;
+
+    color:var(--text-muted);
+
+    font-size:11px;
+
+    font-weight:500;
+
+    border-bottom:none;
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.stock-table .empty-text{
+    padding:25px 10px;
+
+    text-align:center;
+
+    color:var(--text-light);
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+========================================================= */
+
+.stock-summary-card{
+    width:100%;
+
+    margin-top:4px;
+
+    margin-bottom:20px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-sm);
+}
+
+
+/* =========================================================
+   SUMMARY HEADER
+========================================================= */
+
+.stock-summary-header{
+    padding:13px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--blue-soft),
+            var(--surface)
+        );
+
+    border-bottom:1px solid var(--border);
+}
+
+
+.stock-summary-header h2{
+    margin:0;
+
+    font-size:15px;
+
+    color:var(--text);
+
+    font-weight:800;
+}
+
+
+.stock-summary-header p{
+    margin:3px 0 0;
+
+    font-size:9px;
+
+    color:var(--text-muted);
+
+    font-weight:500;
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+========================================================= */
+
+.stock-summary-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:1px;
+
+    background:var(--border);
+}
+
+
+/* =========================================================
+   SUMMARY ITEM
+========================================================= */
+
+.stock-summary-item{
+    min-width:0;
+
+    padding:13px 8px;
+
+    text-align:center;
+
+    background:var(--surface);
+}
+
+
+.stock-summary-item span{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:8px;
+
+    line-height:1;
+
+    color:var(--text-muted);
+
+    text-transform:uppercase;
+
+    letter-spacing:.4px;
+
+    font-weight:700;
+}
+
+
+.stock-summary-item strong{
+    display:block;
+
+    font-size:17px;
+
+    line-height:1.2;
+
+    color:var(--text);
+
+    font-weight:800;
+
+    font-variant-numeric:tabular-nums;
+}
+
+
+/* =========================================================
+   SUMMARY TOTAL
+========================================================= */
+
+.stock-summary-item.grand-total{
+    background:var(--blue-soft);
+}
+
+
+.stock-summary-item.grand-total strong{
+    color:var(--blue);
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width:768px){
+
+    .dashboard-container{
+        padding:0 15px;
+
+        margin-top:20px;
+    }
+
+    .stock-section,
+    .stock-summary-card{
+        border-radius:18px;
+    }
+
+    .stock-card-title{
+        padding:14px 18px;
+    }
+
+    .stock-card-title h2{
+        font-size:16px;
+    }
+
+    .stock-card-title p{
+        font-size:10px;
+    }
+
+    .stock-mini-total{
+        min-width:90px;
+
+        padding:7px 11px;
+    }
+
+    .stock-mini-total strong{
+        font-size:18px;
+    }
+
+    .stock-table th{
+        padding:10px 12px;
+
+        font-size:10px;
+    }
+
+    .stock-table td{
+        padding:11px 12px;
+
+        font-size:12px;
+    }
+
+    .stock-summary-header{
+        padding:14px 18px;
+    }
+
+    .stock-summary-header h2{
+        font-size:16px;
+    }
+
+    .stock-summary-item{
+        padding:15px 12px;
+    }
+
+    .stock-summary-item strong{
+        font-size:19px;
+    }
+
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.stock-table .loading-text{
+    padding:30px 10px;
+
+    text-align:center;
+
+    color:var(--text-muted);
+
+    font-size:11px;
+
+    font-weight:500;
+
+    border-bottom:none;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.stock-table .empty-text{
+    padding:25px 10px;
+
+    text-align:center;
+
+    color:var(--text-light);
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   TABLE NUMBER ALIGNMENT
+========================================================= */
+
+.stock-table th:nth-child(2),
+.stock-table th:nth-child(3),
+.stock-table th:nth-child(4),
+.stock-table td:nth-child(2),
+.stock-table td:nth-child(3),
+.stock-table td:nth-child(4){
+    text-align:right;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width:768px){
+
+    .dashboard-container{
+        padding:0 15px;
+
+        margin-top:20px;
+    }
+
+    .stock-section{
+        border-radius:18px;
+
+        margin-bottom:22px;
+    }
+
+    .stock-section-header{
+        padding:16px 18px;
+    }
+
+    .stock-section-header h2{
+        font-size:17px;
+    }
+
+    .stock-section-header p{
+        font-size:11px;
+    }
+
+    .stock-total-main{
+        min-width:110px;
+
+        padding:8px 12px;
+    }
+
+    .stock-total-main strong{
+        font-size:20px;
+    }
+
+    .stock-summary{
+        gap:1px;
+    }
+
+    .summary-item{
+        padding:12px;
+    }
+
+    .summary-item strong{
+        font-size:15px;
+    }
+
+    .stock-table th{
+        padding:11px 12px;
+
+        font-size:10px;
+    }
+
+    .stock-table td{
+        padding:11px 12px;
+
+        font-size:12px;
+    }
+
+}
+
+/* =========================================================
+   SUMMARY GROUP
+========================================================= */
+
+.stock-summary-group{
+    border-bottom:1px solid var(--border);
+}
+
+
+.stock-summary-group-title{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:9px 15px;
+
+    background:var(--bg);
+}
+
+
+.stock-summary-group-title span{
+    font-size:11px;
+
+    font-weight:800;
+
+    color:var(--text);
+}
+
+
+.stock-summary-group-title small{
+    font-size:8px;
+
+    color:var(--text-muted);
+
+    font-weight:500;
+}
+
+
+/* =========================================================
+   SUMMARY GRAND
+========================================================= */
+
+.stock-summary-grand{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:1px;
+
+    background:var(--border);
+}
+
+
+.stock-summary-grand-item{
+    min-width:0;
+
+    padding:13px 8px;
+
+    text-align:center;
+
+    background:var(--surface);
+}
+
+
+.stock-summary-grand-item span{
+    display:block;
+
+    margin-bottom:5px;
+
+    font-size:8px;
+
+    line-height:1;
+
+    color:var(--text-muted);
+
+    text-transform:uppercase;
+
+    letter-spacing:.35px;
+
+    font-weight:700;
+}
+
+
+.stock-summary-grand-item strong{
+    display:block;
+
+    font-size:17px;
+
+    line-height:1.2;
+
+    color:var(--text);
+
+    font-weight:800;
+
+    font-variant-numeric:tabular-nums;
+}
+
+
+.stock-summary-grand-item.grand-total{
+    background:var(--blue-soft);
+}
+
+
+.stock-summary-grand-item.grand-total strong{
+    color:var(--blue);
+}   
+
+.stock-summary-grand{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--border);
+}
+
+.stock-summary-group:last-child{
+    border-bottom:none;
+}
+
+.stock-summary-grand-item{
+    background:var(--surface);
+    padding:14px 10px;
+    text-align:center;
+}
+
+.stock-summary-grand-item.grand-total{
+    background:linear-gradient(
+        135deg,
+        var(--blue-soft),
+        #eef5ff
+    );
+}
+
+.stock-summary-grand-item span{
+    display:block;
+    font-size:8px;
+    color:var(--text-muted);
+    text-transform:uppercase;
+    margin-bottom:6px;
+}
+
+.stock-summary-grand-item strong{
+    font-size:18px;
+    font-weight:800;
+    color:var(--text);
+}
+   

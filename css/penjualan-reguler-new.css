@@ -1,0 +1,1459 @@
+/* =========================================================
+   PENJUALAN FISIK — MODERN DASHBOARD
+========================================================= */
+
+:root{
+    --primary:#1e3a8a;
+    --primary-light:#2563eb;
+    --blue-soft:#eff6ff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --surface:#ffffff;
+    --soft:#f8fafc;
+    --success:#16a34a;
+    --warning:#ca8a04;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.dashboard-container{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:0px 10px 100px;
+    box-sizing:border-box;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.sales-hero{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a 0%,
+            #2563eb 65%,
+            #3b82f6 100%
+        );
+    border-radius:22px;
+    padding:18px;
+    color:#fff;
+    box-shadow:
+        0 14px 30px rgba(30,58,138,.22);
+    margin-bottom:14px;
+}
+
+.sales-hero::before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    right:-45px;
+    top:-50px;
+}
+
+.sales-hero::after{
+    content:"";
+    position:absolute;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:rgba(255,255,255,.06);
+    left:-35px;
+    bottom:-45px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-label{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:10px;
+    font-weight:700;
+    opacity:.85;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+.hero-label-icon{
+    width:26px;
+    height:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:9px;
+    background:rgba(255,255,255,.15);
+    font-size:14px;
+}
+
+.hero-title{
+    margin:10px 0 3px;
+    font-size:22px;
+    line-height:1.2;
+    font-weight:800;
+}
+
+.hero-subtitle{
+    margin:0;
+    font-size:11px;
+    opacity:.8;
+}
+
+.hero-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:16px;
+}
+
+.hero-stat{
+    padding:11px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.10);
+    border-radius:14px;
+    backdrop-filter:blur(6px);
+}
+
+.hero-stat-label{
+    font-size:9px;
+    opacity:.75;
+    margin-bottom:4px;
+}
+
+.hero-stat-value{
+    font-size:17px;
+    font-weight:800;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:16px 2px 9px;
+}
+
+.section-title h2{
+    margin:0;
+    color:var(--text);
+    font-size:13px;
+    font-weight:800;
+}
+
+.section-title span{
+    color:var(--muted);
+    font-size:9px;
+    font-weight:600;
+}
+
+/* =========================================================
+   USER SUMMARY
+========================================================= */
+
+.user-summary{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+}
+
+.user-card{
+    position:relative;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:12px;
+    box-shadow:0 7px 18px rgba(15,23,42,.06);
+    overflow:hidden;
+}
+
+.user-card::after{
+    content:"";
+    position:absolute;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    right:-17px;
+    top:-17px;
+    background:var(--blue-soft);
+}
+
+.user-top{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    position:relative;
+    z-index:1;
+}
+
+.user-avatar{
+    width:30px;
+    height:30px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eff6ff;
+    color:var(--primary-light);
+    font-size:12px;
+    font-weight:800;
+}
+
+.user-name{
+    font-size:11px;
+    font-weight:800;
+    color:var(--text);
+}
+
+.user-role{
+    font-size:8px;
+    color:var(--muted);
+    margin-top:1px;
+}
+
+.user-value{
+    margin-top:11px;
+    font-size:17px;
+    line-height:1;
+    font-weight:800;
+    color:var(--primary);
+}
+
+.user-unit{
+    margin-top:4px;
+    color:var(--muted);
+    font-size:8px;
+    font-weight:600;
+}
+
+/* =========================================================
+   TAB
+========================================================= */
+
+.tabs-container{
+    display:flex;
+    gap:5px;
+    padding:4px;
+    margin-bottom:12px;
+    background:#f1f5f9;
+    border:1px solid var(--border);
+    border-radius:14px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.tabs-container::-webkit-scrollbar{
+    display:none;
+}
+
+.tab-btn{
+    flex:1 0 auto;
+    min-height:36px;
+    padding:8px 13px;
+    border:0;
+    border-radius:10px;
+    background:transparent;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:.2s ease;
+}
+
+.tab-btn.active{
+    color:#fff;
+    background:var(--primary);
+    box-shadow:0 4px 10px rgba(30,58,138,.18);
+}
+
+/* =========================================================
+   TABLE CARD
+========================================================= */
+
+.table-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 22px rgba(15,23,42,.06);
+}
+
+.table-card-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:13px 14px;
+    border-bottom:1px solid var(--border);
+}
+
+.table-card-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.table-card-icon{
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--blue-soft);
+    border-radius:9px;
+    color:var(--primary-light);
+}
+
+.table-card-title strong{
+    display:block;
+    font-size:11px;
+    color:var(--text);
+}
+
+.table-card-title span{
+    display:block;
+    font-size:8px;
+    color:var(--muted);
+    margin-top:2px;
+}
+
+.table-wrapper{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+table{
+    width:100%;
+    min-width:720px;
+    table-layout:fixed;
+    border-collapse:separate;
+    border-spacing:0;
+    background:#fff;
+}
+
+th,
+td{
+    box-sizing:border-box;
+    padding:8px 7px;
+    font-size:10px;
+    border-bottom:1px solid var(--border);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+thead th{
+    background:#1e3a8a;
+    color:#fff;
+    font-weight:700;
+    text-align:center;
+}
+
+td,
+th{
+    text-align:right;
+}
+
+td:first-child,
+th:first-child{
+    text-align:left;
+}
+
+#tableDaily th:first-child,
+#tableTotal th:first-child{
+    width:150px;
+}
+
+#tableDaily td:first-child,
+#tableTotal td:first-child{
+    font-weight:700;
+    color:var(--text);
+}
+
+tbody tr:hover td{
+    background:#f8fafc;
+}
+
+/* =========================================================
+   SECTION ROW
+========================================================= */
+
+.section-row td{
+    background:#eaf2ff !important;
+    color:#1e3a8a !important;
+    border-bottom:1px solid #dbeafe;
+    font-size:10px;
+    font-weight:800;
+    text-align:left !important;
+    padding:9px 8px;
+}
+
+/* =========================================================
+   TOTAL ROW
+========================================================= */
+
+.total-row td{
+    background:#fffbeb !important;
+    color:#713f12 !important;
+    font-weight:800;
+}
+
+.total-row td:first-child::before{
+    content:"Σ ";
+    color:#ca8a04;
+}
+
+/* =========================================================
+   ZERO
+========================================================= */
+
+.zero-val{
+    color:#cbd5e1;
+}
+
+/* =========================================================
+   WEEKLY
+========================================================= */
+
+#tableWeekly{
+    min-width:1250px;
+}
+
+#tableWeekly .col-product{
+    width:150px;
+}
+
+#tableWeekly .col-num{
+    width:60px;
+}
+
+#tableWeekly .col-total{
+    width:70px;
+}
+
+#tableWeekly .col-grand{
+    width:85px;
+}
+
+#tableWeekly th{
+    padding:7px 5px;
+    font-size:9px;
+    text-align:center;
+}
+
+#tableWeekly td{
+    padding:7px 5px;
+    font-size:9px;
+}
+
+#tableWeekly td:first-child{
+    font-weight:700;
+}
+
+.weekly-total-cell{
+    background:#f1f5f9;
+    font-weight:700;
+}
+
+.weekly-grand-total{
+    color:#1e3a8a;
+    font-weight:800;
+    background:#eff6ff;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty-row td{
+    height:9px;
+    padding:0;
+    border:0;
+    background:#fff !important;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-text{
+    text-align:center !important;
+    padding:35px !important;
+    color:var(--muted);
+    font-weight:600;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(min-width:768px){
+
+    .dashboard-container{
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+    .hero-stats{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .user-summary{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    th,
+    td{
+        font-size:11px;
+        padding:10px 9px;
+    }
+
+    #tableWeekly{
+        min-width:1300px;
+    }
+}
+/* =========================================================
+   RINCIAN PRODUK DSE
+========================================================= */
+
+.user-products{
+    margin-top:10px;
+    padding-top:8px;
+    border-top:1px solid #e2e8f0;
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.product-sale-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:6px;
+    font-size:9px;
+}
+
+.product-sale-name{
+    color:#64748b;
+    font-weight:600;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.product-sale-value{
+    color:#1e3a8a;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.product-sale-total{
+    display:flex;
+    justify-content:space-between;
+    margin-top:3px;
+    padding-top:5px;
+    border-top:1px dashed #e2e8f0;
+    font-size:9px;
+    font-weight:800;
+    color:#0f172a;
+}
+
+/* =========================================================
+   DSE SUMMARY SIMPLE
+========================================================= */
+
+.dse-summary-lines{
+    margin-top:14px;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+
+.dse-summary-line{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+
+    font-size:13px;
+}
+
+
+.dse-summary-line span{
+    color:#64748b;
+    font-weight:600;
+}
+
+
+.dse-summary-line strong{
+    color:#0f172a;
+    font-size:14px;
+    font-weight:800;
+}
+
+
+.dse-summary-rp{
+    margin-top:14px;
+    padding-top:12px;
+
+    border-top:1px solid #e2e8f0;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+
+.dse-summary-rp span{
+    color:#64748b;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.4px;
+}
+
+
+.dse-summary-rp strong{
+    color:#2563eb;
+    font-size:15px;
+    font-weight:900;
+}
+
+/* =========================================================
+   TAB + DOWNLOAD ROW
+========================================================= */
+
+.tab-download-row{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:100%;
+
+    margin-bottom:18px;
+
+}
+
+
+/* =========================================================
+   TAB CONTAINER
+========================================================= */
+
+.tab-download-row .tabs-container{
+
+    display:flex;
+
+    align-items:center;
+
+    width:100%;
+
+    gap:5px;
+
+    padding:4px;
+
+    margin:0;
+
+    background:#f1f5f9;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    overflow-x:auto;
+
+    scrollbar-width:none;
+
+}
+
+
+.tab-download-row .tabs-container::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* =========================================================
+   TAB MAIN
+========================================================= */
+
+.tabs-main{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    width:100%;
+
+    min-width:0;
+
+}
+
+
+.tab-btn{
+
+    flex:1;
+
+    min-width:0;
+
+    min-height:36px;
+
+    padding:8px 13px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+.tab-btn.active{
+
+    color:#fff;
+
+    background:var(--primary);
+
+    box-shadow:
+        0 4px 10px
+        rgba(30,58,138,.18);
+
+}
+
+
+/* =========================================================
+   DOWNLOAD SECTION
+========================================================= */
+
+.download-section{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    margin:0;
+
+}
+
+
+/* =========================================================
+   DOWNLOAD BUTTON
+========================================================= */
+
+.download-btn{
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    min-height:44px;
+
+    padding:0 16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+    box-shadow:
+        0 6px 16px
+        rgba(37,99,235,.20);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+
+}
+
+
+.download-btn:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(37,99,235,.28);
+
+}
+
+
+.download-btn:active{
+
+    transform:scale(.97);
+
+}
+
+
+.download-btn:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.65;
+
+    transform:none;
+
+}
+
+
+.download-icon{
+
+    font-size:17px;
+
+    line-height:1;
+
+    font-weight:800;
+
+}
+
+
+/* =========================================================
+   MOBILE — TAB + DOWNLOAD
+========================================================= */
+
+@media(max-width:520px){
+
+    .tab-download-row{
+
+        grid-template-columns:
+            minmax(0,1fr)
+            auto;
+
+        gap:6px;
+
+    }
+
+
+    /* ===============================
+       TAB
+    =============================== */
+
+    .tab-download-row .tabs-container{
+
+        padding:3px;
+
+        border-radius:11px;
+
+        min-width:0;
+
+    }
+
+
+    .tabs-main{
+
+        gap:2px;
+
+    }
+
+
+    .tab-btn{
+
+        flex:1;
+
+        min-width:0;
+
+        min-height:36px;
+
+        padding:
+            7px 5px;
+
+        border-radius:8px;
+
+        font-size:9px;
+
+        font-weight:700;
+
+    }
+
+
+    /* ===============================
+       DOWNLOAD
+    =============================== */
+
+    .download-section{
+
+        flex-shrink:0;
+
+        min-width:0;
+
+    }
+
+
+    .download-btn{
+
+        min-height:41px;
+
+        padding:
+            0 9px;
+
+        gap:4px;
+
+        border-radius:9px;
+
+        font-size:9px;
+
+        white-space:nowrap;
+
+    }
+
+
+    .download-icon{
+
+        font-size:15px;
+
+    }
+
+
+    /*
+     * JANGAN sembunyikan teks download
+     */
+
+    .download-btn span:last-child{
+
+        display:inline;
+
+    }
+
+}
+
+@media(max-width:380px){
+
+    .tab-download-row{
+
+        gap:4px;
+
+    }
+
+
+    .tab-download-row .tabs-container{
+
+        padding:2px;
+
+    }
+
+
+    .tab-btn{
+
+        min-height:34px;
+
+        padding:
+            6px 3px;
+
+        font-size:8px;
+
+    }
+
+
+    .download-btn{
+
+        min-height:34px;
+
+        padding:
+            0 7px;
+
+        gap:3px;
+
+        font-size:8px;
+
+    }
+
+
+    .download-icon{
+
+        font-size:14px;
+
+    }
+
+}
+
+/* =========================================================
+   DOWNLOAD MODAL
+========================================================= */
+
+.download-modal-overlay{
+    position:fixed;
+    inset:0;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(15,23,42,.52);
+
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+
+    z-index:9999;
+
+    animation:downloadOverlayIn .2s ease;
+}
+
+
+/* =========================================================
+   MODAL CONTENT
+========================================================= */
+
+.download-modal-content{
+
+    width:100%;
+    max-width:360px;
+
+    padding:20px;
+
+    background:#ffffff;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 20px 50px rgba(15,23,42,.18),
+        0 5px 15px rgba(15,23,42,.08);
+
+    text-align:left;
+
+    animation:downloadModalIn .25s ease;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.download-modal-content h3{
+
+    margin:0;
+
+    color:#0f172a;
+
+    font-size:17px;
+
+    line-height:1.3;
+
+    font-weight:800;
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.download-modal-description{
+
+    margin-top:5px;
+
+    margin-bottom:20px;
+
+    color:#64748b;
+
+    font-size:10px;
+
+    line-height:1.5;
+
+    font-weight:500;
+}
+
+
+/* =========================================================
+   OPTION
+========================================================= */
+
+.download-modal-btn-option{
+
+    width:100%;
+
+    min-height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:8px;
+
+    padding:9px 11px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:12px;
+
+    background:#ffffff;
+
+    color:#334155;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.download-option-icon{
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:9px;
+
+    background:#f0f9ff;
+
+    font-size:16px;
+}
+
+
+/* =========================================================
+   TEXT
+========================================================= */
+
+.download-option-text{
+
+    min-width:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2px;
+
+}
+
+
+.download-option-text strong{
+
+    color:#334155;
+
+    font-size:11px;
+
+    line-height:1.2;
+
+    font-weight:800;
+}
+
+
+.download-option-text small{
+
+    color:#94a3b8;
+
+    font-size:9px;
+
+    line-height:1.2;
+
+    font-weight:500;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.download-option-arrow{
+
+    margin-left:auto;
+
+    color:#94a3b8;
+
+    font-size:21px;
+
+    line-height:1;
+
+    transition:
+        transform .15s ease,
+        color .15s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.download-modal-btn-option:hover{
+
+    background:#f8fafc;
+
+    border-color:#bae6fd;
+
+    box-shadow:
+        0 4px 12px rgba(2,132,199,.08);
+
+    transform:translateY(-1px);
+}
+
+
+.download-modal-btn-option:hover
+.download-option-arrow{
+
+    color:#0284c7;
+
+    transform:translateX(3px);
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.download-modal-btn-option:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.download-modal-btn-close{
+
+    width:100%;
+
+    min-height:43px;
+
+    margin-top:14px;
+
+    padding:10px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:11px;
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    font-size:10px;
+
+    font-weight:750;
+
+    cursor:pointer;
+
+    transition:
+        background .15s ease,
+        color .15s ease,
+        transform .15s ease;
+}
+
+
+.download-modal-btn-close:hover{
+
+    background:#f1f5f9;
+
+    color:#334155;
+
+}
+
+
+.download-modal-btn-close:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes downloadOverlayIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+
+@keyframes downloadModalIn{
+
+    from{
+        opacity:0;
+        transform:translateY(10px) scale(.97);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE - BOTTOM SHEET
+========================================================= */
+
+@media(max-width:639px){
+
+    .download-modal-overlay{
+
+        align-items:flex-end;
+
+        padding:0;
+
+    }
+
+
+    .download-modal-content{
+
+        max-width:none;
+
+        padding:18px 15px 15px;
+
+        border-radius:20px 20px 0 0;
+
+        box-shadow:
+            0 -10px 35px rgba(15,23,42,.15);
+
+        animation:downloadSheetIn .25s ease;
+
+    }
+
+
+    /* HANDLE */
+
+    .download-modal-content::before{
+
+        content:"";
+
+        display:block;
+
+        width:38px;
+        height:4px;
+
+        margin:0 auto 15px;
+
+        border-radius:999px;
+
+        background:#cbd5e1;
+
+    }
+
+
+    .download-modal-content h3{
+
+        font-size:16px;
+
+    }
+
+
+    .download-modal-description{
+
+        margin-top:5px;
+
+        margin-bottom:20px;
+
+        font-size:10px;
+
+    }
+
+
+    .download-modal-btn-option{
+
+        min-height:54px;
+
+    }
+
+}
+
+
+@keyframes downloadSheetIn{
+
+    from{
+        opacity:0;
+        transform:translateY(100%);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}

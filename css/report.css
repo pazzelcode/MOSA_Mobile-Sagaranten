@@ -1,0 +1,591 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+    background:#fff;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+    padding-bottom:80px;
+}
+
+.profile-header{
+    position:relative;
+    height:170px;
+    padding:25px 20px 45px;
+    background:linear-gradient(135deg,#1e3a8a,#2563eb);
+    color:#fff;
+    border-radius:0 0 30px 30px;
+    box-shadow:0 8px 25px rgba(30,58,138,.25);
+}
+
+.back-container{
+    position:absolute;
+    top:20px;
+    left:15px;
+    z-index:10;
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.28);
+    border-radius:50%;
+    box-shadow:0 4px 10px rgba(15,23,42,.15);
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.back-button{
+    display:block;
+    width:11px;
+    height:11px;
+    margin-left:4px;
+    border-left:3px solid #fff;
+    border-bottom:3px solid #fff;
+    transform:rotate(45deg);
+}
+
+.back-container:active{
+    transform:scale(.92);
+    background:rgba(255,255,255,.28);
+}
+
+.notif-title{
+    position:absolute;
+    top:45px;
+    left:0;
+    width:100%;
+    padding:0 20px;
+    text-align:center;
+    font-size:20px;
+    font-weight:800;
+}
+
+.notif-subtitle{
+    position:absolute;
+    top:76px;
+    left:0;
+    width:100%;
+    padding:0 20px;
+    text-align:center;
+    font-size:11px;
+    opacity:.8;
+}
+
+.report-container{
+    position:relative;
+    z-index:20;
+    width:100%;
+    max-width:720px;
+    margin:-40px auto 0;
+    padding:0 15px 90px;
+}
+
+.report-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    width:100%;
+    margin-bottom:12px;
+    padding:14px 16px;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:17px;
+    box-shadow:0 7px 18px rgba(15,23,42,.10);
+}
+
+.report-heading-left{
+    min-width:0;
+}
+
+.report-heading-title{
+    font-size:15px;
+    font-weight:800;
+    color:#0f172a;
+}
+
+.report-heading-desc{
+    margin-top:3px;
+    font-size:9px;
+    color:#64748b;
+}
+
+.report-heading-date{
+    flex-shrink:0;
+    padding:6px 9px;
+    border-radius:9px;
+    background:#eff6ff;
+    color:#2563eb;
+    font-size:8px;
+    font-weight:700;
+    text-align:center;
+}
+
+.report-heading-date span{
+    display:block;
+    margin-bottom:2px;
+    font-size:7px;
+    color:#64748b;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+}
+
+.total-report-card{
+    position:relative;
+    overflow:hidden;
+    width:100%;
+    margin-bottom:13px;
+    padding:17px 17px 15px;
+    background:linear-gradient(145deg,#fff 0%,#fff 72%,#f8fbff 100%);
+    color:#0f172a;
+    border:1px solid #e2e8f0;
+    border-radius:18px;
+    box-shadow:0 8px 24px rgba(15,23,42,.08);
+}
+
+.total-report-card::before{
+    content:"";
+    position:absolute;
+    top:-70px;
+    right:-55px;
+    width:125px;
+    height:125px;
+    border-radius:50%;
+    background:rgba(37,99,235,.055);
+}
+
+.total-report-card::after{
+    content:"";
+    position:absolute;
+    left:-65px;
+    bottom:-28px;
+    width:180px;
+    height:45px;
+    border-radius:50%;
+    background:rgba(37,99,235,.035);
+    transform:rotate(-8deg);
+}
+
+.total-report-content{
+    position:relative;
+    z-index:2;
+}
+
+.total-report-label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#64748b;
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.total-report-label::before{
+    content:"";
+    flex-shrink:0;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.10);
+}
+
+.total-report-value{
+    margin-top:7px;
+    color:#0f172a;
+    font-size:25px;
+    line-height:1.1;
+    font-weight:800;
+    letter-spacing:-.5px;
+}
+
+.total-report-footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:12px;
+    padding-top:9px;
+    border-top:1px solid #eef2f7;
+    color:#94a3b8;
+    font-size:8px;
+}
+
+.live-status{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    color:#64748b;
+}
+
+.live-dot{
+    flex-shrink:0;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 0 3px rgba(34,197,94,.10);
+    animation:livePulse 1.8s ease-in-out infinite;
+}
+
+.section-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:18px 3px 9px;
+}
+
+.section-title{
+    font-size:11px;
+    font-weight:800;
+    color:#0f172a;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+}
+
+.section-subtitle{
+    font-size:8px;
+    color:#94a3b8;
+}
+
+.sales-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    width:100%;
+}
+
+.sales-card{
+    position:relative;
+    overflow:hidden;
+    min-height:153px;
+    padding:12px;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    box-shadow:0 5px 15px rgba(15,23,42,.07);
+    transition:transform .18s ease;
+}
+
+.sales-card:active{
+    transform:scale(.97);
+}
+
+.sales-card::after{
+    content:"";
+    position:absolute;
+    right:-35px;
+    bottom:-35px;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#f8fafc;
+}
+
+.sales-card-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+}
+
+.sales-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    font-size:19px;
+}
+
+.sales-percent{
+    padding:4px 6px;
+    border-radius:7px;
+    background:#f8fafc;
+    color:#64748b;
+    font-size:8px;
+    font-weight:800;
+}
+
+.sales-label{
+    margin-top:11px;
+    color:#64748b;
+    font-size:9px;
+    font-weight:800;
+    text-transform:uppercase;
+    line-height:1.3;
+}
+
+.sales-value{
+    margin-top:4px;
+    color:#0f172a;
+    font-size:14px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.progress-area{
+    position:relative;
+    z-index:2;
+    margin-top:11px;
+}
+
+.progress-track{
+    width:100%;
+    height:5px;
+    overflow:hidden;
+    background:#f1f5f9;
+    border-radius:10px;
+}
+
+.progress-bar{
+    width:0;
+    height:100%;
+    border-radius:10px;
+    transition:width .7s ease;
+}
+
+.sales-card.salmo .sales-icon{
+    background:#dbeafe;
+    color:#2563eb;
+}
+
+.sales-card.salmo .progress-bar{
+    background:#2563eb;
+}
+
+.sales-card.salmo .sales-percent{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+.sales-card.sp .sales-icon{
+    background:#dcfce7;
+    color:#16a34a;
+}
+
+.sales-card.sp .progress-bar{
+    background:#16a34a;
+}
+
+.sales-card.sp .sales-percent{
+    background:#f0fdf4;
+    color:#16a34a;
+}
+
+.sales-card.paket .sales-icon{
+    background:#fef3c7;
+    color:#d97706;
+}
+
+.sales-card.paket .progress-bar{
+    background:#f59e0b;
+}
+
+.sales-card.paket .sales-percent{
+    background:#fffbeb;
+    color:#d97706;
+}
+
+.sales-card.hifi .sales-icon{
+    background:#f3e8ff;
+    color:#9333ea;
+}
+
+.sales-card.hifi .progress-bar{
+    background:#9333ea;
+}
+
+.sales-card.hifi .sales-percent{
+    background:#faf5ff;
+    color:#9333ea;
+}
+
+.chart-card{
+    width:100%;
+    padding:14px 14px 15px;
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:17px;
+    box-shadow:0 6px 17px rgba(15,23,42,.07);
+}
+
+.chart-row{
+    display:grid;
+    grid-template-columns:72px 1fr 70px;
+    align-items:center;
+    gap:7px;
+    margin-bottom:13px;
+}
+
+.chart-row:last-child{
+    margin-bottom:0;
+}
+
+.chart-label{
+    color:#475569;
+    font-size:8px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.chart-track{
+    width:100%;
+    height:9px;
+    overflow:hidden;
+    background:#f1f5f9;
+    border-radius:20px;
+}
+
+.chart-bar{
+    width:0;
+    height:100%;
+    border-radius:20px;
+    transition:width .8s ease;
+}
+
+.chart-value{
+    color:#0f172a;
+    font-size:8px;
+    font-weight:800;
+    text-align:right;
+    white-space:nowrap;
+}
+
+.chart-bar.salmo{
+    background:#2563eb;
+}
+
+.chart-bar.sp{
+    background:#16a34a;
+}
+
+.chart-bar.paket{
+    background:#f59e0b;
+}
+
+.chart-bar.hifi{
+    background:#9333ea;
+}
+
+.insight-card{
+    position:relative;
+    overflow:hidden;
+    width:100%;
+    margin-top:13px;
+    padding:13px 14px;
+    background:linear-gradient(135deg,#f8fafc,#eff6ff);
+    border:1px solid #dbeafe;
+    border-radius:15px;
+}
+
+.insight-title{
+    color:#2563eb;
+    font-size:9px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+.insight-text{
+    margin-top:5px;
+    color:#475569;
+    font-size:10px;
+    line-height:1.5;
+}
+
+.insight-text strong{
+    color:#0f172a;
+}
+
+.update-info{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    margin:15px 0 4px;
+    color:#94a3b8;
+    font-size:8px;
+}
+
+.update-info-dot{
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#22c55e;
+}
+
+.loading{
+    opacity:.45;
+}
+
+.toast-container{
+    position:fixed;
+    right:15px;
+    bottom:78px;
+    z-index:999999;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.toast{
+    padding:10px 14px;
+    background:#1e293b;
+    color:#fff;
+    border-radius:10px;
+    font-size:11px;
+    font-weight:600;
+    box-shadow:0 8px 20px rgba(0,0,0,.16);
+}
+
+@media(max-width:380px){
+
+    .report-container{
+        padding-left:11px;
+        padding-right:11px;
+    }
+
+    .sales-card{
+        min-height:145px;
+        padding:10px;
+    }
+
+    .sales-value{
+        font-size:12px;
+    }
+
+    .chart-row{
+        grid-template-columns:65px 1fr 62px;
+    }
+}
+
+@media(min-width:600px){
+
+    .report-container{
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .sales-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .sales-card{
+        min-height:155px;
+    }
+}

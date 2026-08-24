@@ -1,0 +1,704 @@
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:
+        'Segoe UI',
+        -apple-system,
+        BlinkMacSystemFont,
+        Roboto,
+        sans-serif;
+
+    color:#334155;
+
+    background:#f1f5f9;
+
+    padding-bottom:90px;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.summary-page{
+    width:100%;
+    max-width:1100px;
+
+    margin:0 auto;
+
+    padding:12px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.summary-hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:22px 20px;
+
+    border-radius:22px;
+
+    color:#ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a,
+            #2563eb
+        );
+
+    box-shadow:
+        0 15px 30px
+        rgba(37,99,235,.20);
+
+}
+
+
+/* decorative */
+
+.summary-hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    right:-55px;
+    top:-65px;
+
+    background:
+        rgba(255,255,255,.10);
+
+}
+
+.summary-hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    right:50px;
+    bottom:-70px;
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+
+.summary-label{
+
+    position:relative;
+
+    z-index:1;
+
+    display:block;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.8px;
+
+    opacity:.85;
+
+    text-transform:uppercase;
+
+    margin-bottom:6px;
+}
+
+
+.summary-total{
+
+    position:relative;
+
+    z-index:1;
+
+    display:block;
+
+    font-size:30px;
+
+    line-height:1.15;
+
+    font-weight:800;
+
+    letter-spacing:-.5px;
+}
+
+
+.summary-update{
+
+    position:relative;
+
+    z-index:1;
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    opacity:.80;
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.summary-stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+
+    margin-top:12px;
+}
+
+
+.stat-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    padding:15px;
+
+    background:#ffffff;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:17px;
+
+    box-shadow:
+        0 6px 16px
+        rgba(15,23,42,.06);
+}
+
+
+.stat-icon{
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+
+    font-size:18px;
+
+    margin-bottom:9px;
+}
+
+
+.stat-title{
+
+    font-size:10px;
+
+    color:#64748b;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:.4px;
+}
+
+
+.stat-value{
+
+    margin-top:3px;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* =========================================================
+   SECTION CARD
+========================================================= */
+
+.section-card{
+
+    margin-top:12px;
+
+    padding:16px;
+
+    background:#ffffff;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:19px;
+
+    box-shadow:
+        0 6px 16px
+        rgba(15,23,42,.05);
+}
+
+
+.section-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:14px;
+}
+
+
+.section-title{
+
+    font-size:16px;
+
+    font-weight:800;
+
+    color:#0f172a;
+}
+
+
+.section-subtitle{
+
+    font-size:10px;
+
+    color:#64748b;
+
+    margin-top:2px;
+}
+
+
+.section-count{
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   PODIUM
+========================================================= */
+
+.podium{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1.15fr 1fr;
+
+    align-items:end;
+
+    gap:8px;
+}
+
+
+.podium-item{
+
+    text-align:center;
+
+    padding:10px 5px;
+
+    border-radius:15px;
+
+    background:#f8fafc;
+}
+
+
+.podium-item.first{
+
+    padding-top:18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffbeb,
+            #fef3c7
+        );
+}
+
+
+.podium-medal{
+
+    font-size:24px;
+
+    margin-bottom:5px;
+}
+
+
+.podium-name{
+
+    font-size:10px;
+
+    line-height:1.3;
+
+    font-weight:700;
+
+    color:#334155;
+
+    display:
+        -webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+}
+
+
+.podium-amount{
+
+    margin-top:5px;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    color:#0f172a;
+}
+
+
+/* =========================================================
+   RANKING
+========================================================= */
+
+.ranking-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+}
+
+
+.ranking-item{
+
+    padding:12px;
+
+    border-radius:15px;
+
+    background:#f8fafc;
+
+    border:
+        1px solid
+        #e2e8f0;
+}
+
+
+.ranking-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+}
+
+
+.rank-number{
+
+    flex:0 0 30px;
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#e2e8f0;
+
+    color:#475569;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+.rank-number.r1{
+
+    background:#fbbf24;
+    color:#111827;
+}
+
+
+.rank-number.r2{
+
+    background:#94a3b8;
+    color:#ffffff;
+}
+
+
+.rank-number.r3{
+
+    background:#d97706;
+    color:#ffffff;
+}
+
+
+.rank-info{
+
+    min-width:0;
+
+    flex:1;
+}
+
+
+.rank-name{
+
+    font-size:13px;
+
+    font-weight:750;
+
+    color:#0f172a;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.rank-amount{
+
+    margin-top:2px;
+
+    font-size:11px;
+
+    color:#64748b;
+}
+
+
+.rank-percent{
+
+    font-size:11px;
+
+    font-weight:800;
+
+    color:#2563eb;
+}
+
+
+.progress{
+
+    width:100%;
+
+    height:6px;
+
+    margin-top:9px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#e2e8f0;
+}
+
+
+.progress-bar{
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
+
+    transition:
+        width .6s ease;
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.chart-wrapper{
+
+    position:relative;
+
+    width:100%;
+
+    height:360px;
+}
+
+
+.chart-wrapper canvas{
+
+    width:100% !important;
+
+    height:100% !important;
+}
+
+
+/* =========================================================
+   EMPTY / ERROR
+========================================================= */
+
+.loading{
+
+    padding:25px;
+
+    text-align:center;
+
+    color:#64748b;
+
+    font-size:12px;
+}
+
+
+.error-box{
+
+    padding:15px;
+
+    border-radius:12px;
+
+    background:#fef2f2;
+
+    color:#b91c1c;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(
+    min-width:768px
+){
+
+    .summary-page{
+
+        padding:20px;
+    }
+
+
+    .summary-total{
+
+        font-size:38px;
+    }
+
+
+    .summary-stats{
+
+        grid-template-columns:
+            repeat(2,220px);
+    }
+
+
+    .desktop-grid{
+
+        display:grid;
+
+        grid-template-columns:
+            .9fr 1.1fr;
+
+        gap:12px;
+
+        align-items:start;
+    }
+
+
+    .desktop-grid
+    .section-card{
+
+        margin-top:12px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media(
+    max-width:380px
+){
+
+    .summary-total{
+
+        font-size:26px;
+    }
+
+
+    .podium-name{
+
+        font-size:9px;
+    }
+
+
+    .podium-amount{
+
+        font-size:10px;
+    }
+
+}

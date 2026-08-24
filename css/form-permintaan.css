@@ -1,0 +1,171 @@
+ /* DASHBOARD CONTAINER - FULL SCREEN TANPA KARTU */
+        .dashboard-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0 10px 120px;
+        }
+
+        /* FORM BODY & SUB SECTION */
+        .form-content {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        /* SECTION TITLE - SINKRON DENGAN STYLING HEADER TABEL GUDANG */
+        .section-title {
+            background-color: #f8fafc;
+            color: #475569;
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 10px 12px;
+            border-bottom: 2px solid #cbd5e1;
+            margin-bottom: 12px;
+            margin-top: 15px;
+            letter-spacing: 0.5px;
+        }
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        /* STYLING INPUT FORM */
+        .form-group {
+            margin-bottom: 12px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #475569;
+        }
+        input[type="text"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #334155;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
+        }
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #0284c7;
+            background-color: #ffffff;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+        }
+        input[readonly] {
+            background-color: #e2e8f0;
+            color: #64748b;
+            cursor: not-allowed;
+            font-weight: 600;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+
+        /* GRID DAFTAR ITEM */
+        .item-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        /* STRUKTUR INPUT KELAS ITEM (MIMIK BARIS TABEL STOK) */
+        .item-input-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            background-color: #ffffff;
+        }
+        .item-input-group:hover {
+            background-color: #f8fafc;
+        }
+        .item-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #334155;
+            flex: 1;
+        }
+        .item-count {
+            width: 75px;
+            padding: 6px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: #0284c7;
+            background-color: #f0f9ff; /* Soft Blue khas kolom total tabel */
+            font-variant-numeric: tabular-nums;
+            outline: none;
+        }
+        .item-count:focus {
+            border-color: #0284c7;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.1);
+        }
+
+        /* BUTTON KIRIM - BERGAYA UTAMA MODERN */
+        .btn-submit {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+            color: #ffffff;
+            border: none;
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 6px;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2);
+        }
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #0369a1 0%, #0f172a 100%);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+        }
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        /* MEDIA QUERY UNTUK DESKTOP/TABLET (FLEXIBEL GRID) */
+        @media (min-width: 600px) {
+            .dashboard-container {
+                padding: 0 20px;
+            }
+            .item-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 10px;
+            }
+            .item-input-group {
+                border: 1px solid #e2e8f0;
+                border-radius: 6px;
+            }
+        }
+    

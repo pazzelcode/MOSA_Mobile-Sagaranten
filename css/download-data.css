@@ -1,0 +1,438 @@
+ .container{
+    width:100%;
+    max-width:600px;
+
+    margin:0 auto;
+
+    padding:
+        30px 12px
+        130px;
+}
+
+/* =========================================
+   BOX SETIAP FILE
+========================================= */
+
+.card{
+    background:transparent;
+
+    border:none;
+
+    box-shadow:none;
+
+    overflow:visible;
+
+    margin-top:-10px;
+}
+
+
+/* =========================================
+   SETIAP FILE = CARD SENDIRI
+========================================= */
+
+.file-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px;
+
+    margin-bottom:12px;
+
+    background:#ffffff;
+
+    border:
+        1px solid #e2e8f0;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(15,23,42,.07);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+}
+
+.file-item:last-child{
+    margin-bottom:0;
+}
+
+.file-item:active{
+    transform:scale(.985);
+
+    background:#f8fafc;
+
+    box-shadow:
+        0 3px 10px
+        rgba(15,23,42,.06);
+}
+
+.file-icon{
+    width:44px;
+    height:44px;
+
+    min-width:44px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:#f0fdf4;
+
+    border:1px solid #dcfce7;
+
+    box-shadow:
+        0 3px 8px
+        rgba(15,23,42,.06);
+}
+
+.file-icon svg{
+    width:28px;
+    height:28px;
+}
+
+.file-info{
+    flex:1;
+    min-width:0;
+}
+
+.file-name{
+    display:block;
+
+    font-size:13px;
+
+    font-weight:800;
+
+    color:#1e293b;
+
+    line-height:1.3;
+
+    margin-bottom:3px;
+}
+
+.file-desc{
+    display:block;
+
+    font-size:10px;
+
+    color:#64748b;
+
+    line-height:1.4;
+
+    margin-bottom:6px;
+}
+
+.download-count{
+    display:block;
+
+    margin-top:5px;
+
+    font-size:9px;
+
+    color:#94a3b8;
+
+    font-weight:600;
+}
+
+/* =========================================
+   BUTTON DOWNLOAD
+========================================= */
+
+.btn-download{
+    flex-shrink:0;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:6px;
+
+    min-width:82px;
+    padding:8px 10px;
+
+    border-radius:9px;
+
+    background:linear-gradient(
+        135deg,
+        #1e3a8a,
+        #2563eb
+    );
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    font-size:10px;
+    font-weight:800;
+
+    line-height:1;
+
+    box-shadow:
+        0 4px 10px
+        rgba(37,99,235,.20);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        opacity .2s ease;
+}
+
+
+/* =========================================
+   ICON DOWNLOAD
+========================================= */
+
+.btn-download svg{
+    width:13px;
+    height:13px;
+
+    flex-shrink:0;
+}
+
+
+/* =========================================
+   SAAT DITEKAN
+========================================= */
+
+.btn-download:active{
+    transform:scale(.94);
+    opacity:.85;
+}
+
+
+/* =========================================
+   DOWNLOAD BERHASIL
+========================================= */
+
+.btn-download.success{
+    background:#16a34a !important;
+
+    box-shadow:
+        0 4px 10px
+        rgba(22,163,74,.20);
+}
+
+
+.back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            color: #1e293b;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            padding: 8px 16px;
+            background: #e2e8f0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+.back-link:hover {
+            background: #cbd5e1;
+            padding-left: 20px;
+        }
+        
+/* =========================================
+   UPDATE DATE / STATUS
+========================================= */
+
+.file-info{
+    flex:1;
+    min-width:0;
+    text-align:left;
+}
+
+.update-date{
+    display:inline-block;
+    width:fit-content;
+    max-width:max-content;
+
+    font-size:9px;
+    line-height:1;
+    font-weight:700;
+
+    padding:5px 8px;
+    margin-top:3px;
+
+    border-radius:6px;
+    box-sizing:border-box;
+    white-space:nowrap;
+}
+
+
+/* HIJAU - UPDATE < 24 JAM */
+.update-date.today{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+
+/* KUNING - UPDATE 24-72 JAM */
+.update-date.medium{
+    background:#fef3c7;
+    color:#d97706;
+}
+
+
+/* MERAH - UPDATE > 72 JAM */
+.update-date.old{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+
+/* =========================================
+   SKELETON
+========================================= */
+
+.skeleton{
+    position:relative;
+
+    display:inline-block;
+
+    width:100px;
+    min-width:100px;
+
+    height:17px;
+
+    padding:0;
+
+    overflow:hidden;
+
+    background:#e2e8f0 !important;
+
+    color:transparent !important;
+
+    border-radius:5px;
+}
+
+.skeleton::after{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-100px;
+
+    width:100px;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.55),
+            transparent
+        );
+
+    animation:shimmer 1.2s infinite;
+}
+
+@keyframes shimmer{
+    100%{
+        left:100%;
+    }
+}
+
+/* =========================================
+   FILE STATE
+========================================= */
+
+.file-state{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:32px 20px;
+    margin-top:10px;
+
+    background:#ffffff;
+
+    border:1px solid #e2e8f0;
+    border-radius:18px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(15,23,42,.06);
+}
+
+.file-state-icon{
+    width:48px;
+    height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:12px;
+
+    border-radius:14px;
+
+    background:#f1f5f9;
+
+    color:#64748b;
+}
+
+.file-state-icon svg{
+    width:25px;
+    height:25px;
+}
+
+.file-state-title{
+    margin:0 0 5px;
+
+    color:#1e293b;
+
+    font-size:12px;
+    font-weight:800;
+
+    line-height:1.4;
+}
+
+.file-state-text{
+    margin:0;
+
+    color:#94a3b8;
+
+    font-size:10px;
+    font-weight:500;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.file-state.loading .file-state-icon{
+    background:#eff6ff;
+    color:#2563eb;
+}
+
+.file-state.loading .file-state-icon svg{
+    animation:none;
+}
+
+
+/* =========================================
+   EMPTY
+========================================= */
+
+.file-state.empty .file-state-icon{
+    background:#f8fafc;
+    color:#94a3b8;
+}   
+    

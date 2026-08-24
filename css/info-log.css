@@ -1,0 +1,369 @@
+ *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+    html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body{
+    min-height:100vh;
+    background:#f8fafc;
+    font-family:Arial,sans-serif;
+    padding-bottom:90px;
+}
+
+      *{
+    -webkit-tap-highlight-color:transparent;
+}
+/* =========================================================
+   HEADER INFO LOG
+========================================================= */
+
+.sticky-container{
+    position:relative;
+    width:100%;
+    z-index:10;
+}
+
+.header-wrapper{
+    position:relative;
+
+    width:100%;
+    height:170px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a,
+            #2563eb
+        );
+
+    color:#fff;
+
+    border-radius:
+        0 0 30px 30px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(30,58,138,.25);
+
+    text-align:center;
+
+    overflow:hidden;
+}
+
+
+/* =========================================================
+   APP HEADER
+========================================================= */
+
+.app-header{
+    padding:
+        55px
+        20px
+        20px;
+}
+
+.app-header h1{
+    font-size:20px;
+    font-weight:800;
+
+    margin:0;
+}
+
+.app-header p{
+    margin-top:5px;
+
+    font-size:11px;
+
+    opacity:.8;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.header-wrapper .back-container{
+    position:absolute;
+
+    top:20px;
+    left:15px;
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.18);
+
+    border:
+        1px solid
+        rgba(255,255,255,.28);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 4px 10px
+        rgba(15,23,42,.15);
+
+    cursor:pointer;
+
+    z-index:20;
+
+    transition:.2s ease;
+}
+
+.header-wrapper .back-button{
+    width:11px;
+    height:11px;
+
+    border-left:
+        3px solid #fff;
+
+    border-bottom:
+        3px solid #fff;
+
+    transform:rotate(45deg);
+
+    display:block;
+
+    margin-left:4px;
+}
+
+.header-wrapper .back-container:active{
+    transform:scale(.92);
+
+    background:
+        rgba(255,255,255,.28);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content-wrapper{
+    position:relative;
+
+    z-index:20;
+
+    padding:
+        0
+        12px
+        90px;
+
+    max-width:1100px;
+
+    margin:
+        -30px auto 0;
+}
+
+
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .stat-card, .card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .stat-card {
+            padding: 14px;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: .4px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 6px;
+        }
+
+        .card {
+            padding: 14px;
+            margin-top: 14px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+/* Ubah bagian table ini di CSS Anda */
+.table-wrap {
+    width: 100%;
+    overflow-x: hidden; /* Mencegah scroll horizontal berlebih */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    table-layout: fixed; /* Ini kunci agar kolom pas dengan lebar layar */
+}
+
+th, td {
+    padding: 12px 8px;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Menambahkan titik-titik jika teks terlalu panjang */
+    white-space: nowrap;
+}
+
+/* Mengatur lebar kolom agar proporsional */
+th:nth-child(1) { width: 30%; } /* Waktu */
+th:nth-child(2) { width: 40%; } /* User/Aktivitas */
+th:nth-child(3) { width: 30%; } /* Aksi/Halaman */
+
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px 10px;
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+      /* =========================================
+   BOTTOM NAVIGATION
+========================================= */
+.bottom-nav{
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:65px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #ffffff 25%,
+        #f7faff 42%,
+        #edf4ff 62%,
+        #dce9ff 100%
+    );
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    z-index:1000;
+
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+
+    box-shadow:
+    0 -4px 12px rgba(15,23,42,.10);
+
+    border-top: 1px solid #e2e8f0; 
+}
+
+/* ITEM */
+.bottom-item{
+    flex:1;
+
+    height:100%;
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: 5px;
+    text-decoration:none;
+    
+    color:#475569;
+    letter-spacing:.5px;
+    font-size:10px;
+    font-weight:700;
+    /* GESER ICON + TEXT BERSAMA */
+    
+    transition:.2s;
+}
+
+/* ICON + TEXT TURUN BERSAMA */
+.bottom-item > div,
+.bottom-item > span{
+    transform:translateY(4px);
+}
+
+/* ICON */
+.bottom-item div{
+    font-size:18px;
+    filter: drop-shadow(
+        0 2px 3px rgba(15,23,42,.25)
+    );
+
+}
+
+/* ACTIVE INDICATOR */
+.bottom-item.active {
+    color: #475569;
+    position: relative;
+}
+
+.bottom-item.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:28%;
+
+    right:28%;
+
+    height:3.5px;
+
+    border-radius:
+        0 0 5px 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1e3a8a,
+            #2563eb,
+            #60a5fa
+        );
+
+}
+
+/* TAP EFFECT */
+.bottom-item:active{
+    opacity:.6;
+
+    transform:scale(.96);
+}

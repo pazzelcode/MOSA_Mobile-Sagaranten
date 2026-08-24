@@ -1,0 +1,176 @@
+ *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background:#f1f5f9;
+    color:#334155;
+    min-height:100vh;
+    padding-bottom:100px;
+}
+
+/* CONTAINER */
+.report-container{
+    width:calc(100% - 24px);
+    max-width:650px;
+    margin:10px auto;
+    padding:10px;
+}
+
+/* CARD */
+.report-container{
+    background:#fff;
+    border-radius:8px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 4px 6px -1px rgba(0,0,0,.05);
+    margin-top:16px;
+}
+
+/* SECTION */
+.section-title{
+    background:#f8fafc;
+    color:#475569;
+    font-weight:700;
+    font-size:11px;
+    text-transform:uppercase;
+    padding:7px 10px;
+    border-bottom:2px solid #cbd5e1;
+    margin:14px 0 8px;
+    letter-spacing:.5px;
+    border-radius:4px;
+    margin-top: 2px;
+}
+
+/* FIELD */
+.field-group{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    padding:6px 0;
+    border-bottom:1px solid #f1f5f9;
+}
+
+.label{
+    font-size:12px;
+    font-weight:600;
+    color:#475569;
+    flex:1;
+}
+
+.value{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+/* INPUT */
+.value input,
+.value select{
+    width:130px;
+    padding:8px;
+    border:1px solid #cbd5e1;
+    border-radius:6px;
+    background:#f8fafc;
+    color:#334155;
+    font-size:13px;
+    text-align:right;
+    transition:.2s;
+}
+
+.value input:focus,
+.value select:focus{
+    outline:none;
+    border-color:#0284c7;
+    background:#fff;
+    box-shadow:0 0 0 2px rgba(2,132,199,.15);
+}
+
+/* AUTO TOTAL */
+.total-highlight{
+    background:#e0f2fe !important;
+    color:#0284c7 !important;
+    border-color:#bae6fd !important;
+    font-weight:700;
+}
+
+/* NOTE */
+.note{
+    font-size:11px;
+    background:#f8fafc;
+    padding:10px;
+    border-radius:6px;
+    margin-top:12px;
+    color:#64748b;
+    border:1px solid #e2e8f0;
+}
+
+/* BUTTON */
+.btn-container{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:20px;
+}
+
+.btn{
+    border:none;
+    border-radius:6px;
+    padding:14px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+.btn:active{
+    transform:scale(.98);
+}
+
+.btn-excel{
+    background:linear-gradient(135deg,#16a34a 0%,#15803d 100%);
+    color:#fff;
+}
+
+.btn-print{
+    background:linear-gradient(135deg,#0284c7 0%,#0369a1 100%);
+    color:#fff;
+}
+
+.btn-reset{
+    background:linear-gradient(135deg,#64748b 0%,#475569 100%);
+    color:#fff;
+}
+
+/* MOBILE */
+@media(max-width:480px){
+
+    .field-group{
+        align-items:flex-start;
+    }
+
+    .value input,
+    .value select{
+        width:120px;
+    }
+
+    .app-header h1{
+        font-size:15px;
+    }
+}
+
+@media print{
+    .btn-container,
+    .bottom-nav{
+        display:none;
+    }
+}
+      #currentDate{
+    font-size:12px;
+    font-weight:600;
+}

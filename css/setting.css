@@ -1,0 +1,565 @@
+ *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+            background:var(--bg-color);
+            color:var(--text-main);
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+            padding-bottom:70px;
+            margin:0;
+            overflow-x:hidden;
+}
+
+/* =========================================
+   FREEZE HEADER
+========================================= */
+/* Reset dasar */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+        /* =========================================================
+   HEADER SETTING
+========================================================= */
+
+.header-wrapper{
+    position:relative;
+
+    width:100%;
+    height:170px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a,
+            #2563eb
+        );
+
+    color:#fff;
+
+    border-radius:
+        0 0 30px 30px;
+
+    text-align:center;
+
+    box-shadow:
+        0 8px 25px
+        rgba(30,58,138,.25);
+
+    overflow:hidden;
+
+    z-index:10;
+}
+
+
+/* =========================================================
+   APP HEADER
+========================================================= */
+
+.app-header{
+    padding:
+        40px
+        20px
+        20px;
+}
+
+.app-header h1{
+    
+    font-size:20px;
+
+    font-weight:800;
+}
+
+.app-header p{
+    
+    font-size:11px;
+
+    opacity:.8;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.header-wrapper .back-container{
+    position:absolute;
+
+    top:20px;
+    left:15px;
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        rgba(255,255,255,.18);
+
+    border:
+        1px solid
+        rgba(255,255,255,.28);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 4px 10px
+        rgba(15,23,42,.15);
+
+    cursor:pointer;
+
+    z-index:20;
+
+    transition:.2s ease;
+}
+
+.header-wrapper .back-button{
+    width:11px;
+    height:11px;
+
+    border-left:
+        3px solid #ffffff;
+
+    border-bottom:
+        3px solid #ffffff;
+
+    transform:rotate(45deg);
+
+    display:block;
+
+    margin-left:4px;
+}
+
+.header-wrapper .back-container:active{
+    transform:scale(.92);
+
+    background:
+        rgba(255,255,255,.28);
+}
+
+
+/* =========================================================
+   CONTENT MENIMPA HEADER
+========================================================= */
+
+
+/* =========================================
+   SETTING MENU MODERN
+========================================= */
+/* =========================================
+   USER SETTING
+========================================= */
+
+.user-setting{
+    cursor:default;
+}
+
+.setting-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+}
+
+.setting-icon{
+    width:38px;
+    height:38px;
+
+    flex-shrink:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#eff6ff;
+
+    border-radius:12px;
+
+    font-size:19px;
+
+    box-shadow:
+        0 3px 8px
+        rgba(37,99,235,.12);
+}
+
+.setting-info{
+    min-width:0;
+}
+
+.setting-label{
+    font-size:13px;
+    font-weight:700;
+    color:#334155;
+}
+
+.setting-desc{
+    margin-top:3px;
+
+    font-size:10px;
+    color:#64748b;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.setting-card{
+    background:#fff;
+    border-radius:18px;
+    margin:0 0 14px;
+    border:1px solid #e2e8f0;
+    overflow:hidden;
+    box-shadow:
+        0 8px 20px rgba(15,23,42,.06);
+}
+
+.setting-section-title{
+    padding:14px 15px 8px;
+
+    font-size:10px;
+    font-weight:800;
+
+    color:#94a3b8;
+
+    text-transform:uppercase;
+    letter-spacing:.8px;
+
+    background:#f8fafc;
+}
+
+.setting-item{
+    min-height:64px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:15px;
+
+    padding:13px 15px;
+
+    border-bottom:1px solid #f1f5f9;
+
+    background:#fff;
+
+    transition:.2s ease;
+}
+
+.setting-item:last-child{
+    border-bottom:none;
+}
+
+.setting-item:active{
+    background:#f8fafc;
+    transform:none;
+}
+
+.setting-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    min-width:0;
+}
+
+.setting-icon{
+    width:38px;
+    height:38px;
+
+    flex:0 0 38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    font-size:18px;
+}
+
+.setting-info{
+    min-width:0;
+}
+
+.setting-label{
+    font-size:12px;
+    font-weight:700;
+    color:#334155;
+    line-height:1.3;
+}
+
+.setting-desc{
+    margin-top:3px;
+
+    font-size:10px;
+    line-height:1.4;
+
+    color:#94a3b8;
+}
+
+.setting-value{
+    flex:0 0 auto;
+
+    font-size:10px;
+    font-weight:700;
+
+    color:#64748b;
+
+    white-space:nowrap;
+}
+
+.setting-arrow{
+    color:#94a3b8;
+    font-size:18px;
+    line-height:1;
+}
+
+.setting-status{
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    font-size:9px;
+    font-weight:800;
+
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.setting-status.off{
+    background:#f1f5f9;
+    color:#64748b;
+}
+
+
+/* =========================================
+   INSTALL BUTTON
+========================================= */
+
+#btn-install{
+    min-width:72px;
+
+    background:#10b981;
+    color:#fff;
+
+    border:none;
+
+    padding:8px 13px;
+
+    border-radius:9px;
+
+    font-size:11px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 4px 10px rgba(16,185,129,.22);
+
+    transition:.2s ease;
+}
+
+#btn-install:active{
+    transform:scale(.95);
+}
+
+
+/* =========================================
+   FOOTER INFO
+========================================= */
+
+.app-version{
+    text-align:center;
+
+    padding:
+        8px
+        0
+        100px;
+
+    font-size:10px;
+
+    line-height:1.6;
+
+    color:#94a3b8;
+}
+
+.app-version strong{
+    color:#64748b;
+    font-weight:700;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content-wrapper{
+    position:relative;
+
+    z-index:20;
+
+    padding:
+        0
+        10px
+        0;
+
+    margin-top:-40px;
+
+    padding-bottom:0;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:767px){
+
+    .setting-card{
+        border-radius:17px;
+    }
+
+    .setting-item{
+        min-height:62px;
+        padding:12px 14px;
+    }
+
+    .setting-icon{
+        width:36px;
+        height:36px;
+        flex-basis:36px;
+        font-size:17px;
+    }
+
+}      
+        
+/* =========================================
+   BOTTOM NAVIGATION
+========================================= */
+.bottom-nav{
+    position:fixed;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:65px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #ffffff 25%,
+        #f7faff 42%,
+        #edf4ff 62%,
+        #dce9ff 100%
+    );
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+
+    z-index:1000;
+
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+
+    box-shadow:
+    0 -4px 12px rgba(15,23,42,.10);
+
+    border-top: 1px solid #e2e8f0; 
+}
+
+/* ITEM */
+.bottom-item{
+    flex:1;
+
+    height:100%;
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap: 5px;
+    text-decoration:none;
+    
+    color:#475569;
+    letter-spacing:.5px;
+    font-size:10px;
+    font-weight:700;
+    /* GESER ICON + TEXT BERSAMA */
+    
+    transition:.2s;
+}
+
+/* ICON + TEXT TURUN BERSAMA */
+.bottom-item > div,
+.bottom-item > span{
+    transform:translateY(4px);
+}
+
+/* ICON */
+.bottom-item div{
+    font-size:18px;
+    filter: drop-shadow(
+        0 2px 3px rgba(15,23,42,.25)
+    );
+
+}
+
+/* ACTIVE INDICATOR */
+.bottom-item.active {
+    color: #475569;
+    position: relative;
+}
+
+.bottom-item.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:28%;
+
+    right:28%;
+
+    height:3.5px;
+
+    border-radius:
+        0 0 5px 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1e3a8a,
+            #2563eb,
+            #60a5fa
+        );
+
+}
+
+/* TAP EFFECT */
+.bottom-item:active{
+    opacity:.6;
+
+    transform:scale(.96);
+}
+
+     *{
+    -webkit-tap-highlight-color:transparent;
+} 
+    
