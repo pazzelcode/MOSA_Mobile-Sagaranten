@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Upload Data | MC-SAGARANTEN</title>
+
+    <link rel="icon" type="image/png" href="./img/favicon.png">
+    <link rel="stylesheet" href="./css/upload-data.css">
+    <link rel="stylesheet" href="./css/global-bottom.css">
+    <link rel="stylesheet" href="./css/notif.css">
+</head>
+
+<body>
+
+<header class="page-header">
+    <a href="index.html" class="back-button" aria-label="Kembali">‹</a>
+
+    <div class="header-logo">
+        <img src="img/favicon.png" alt="MC-SAGARANTEN">
+    </div>
+
+    <div class="header-text">
+        <div class="header-title">Upload Data</div>
+        <div class="header-subtitle">Update seluruh data MC-SAGARANTEN</div>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="info-card">
+        <div class="info-title">📊 Master Data</div>
+        <div class="info-text">
+            Upload satu file Excel yang berisi seluruh sheet data MC-SAGARANTEN.
+            Setelah upload berhasil, seluruh halaman dapat menggunakan data terbaru
+            dari Master Data.
+        </div>
+    </div>
+
+    <div class="info-card">
+
+        <div class="upload-area" id="uploadArea" role="button" tabindex="0">
+            <div class="upload-icon">📤</div>
+            <div class="upload-title">Pilih File Excel</div>
+            <div class="upload-desc">Klik di sini atau tarik file Excel</div>
+            <div class="upload-desc">Format yang didukung: .xlsx / .xls</div>
+            <div class="file-name" id="fileName"></div>
+        </div>
+
+        <input type="file" id="excelFile" accept=".xlsx,.xls">
+
+        <button type="button" id="uploadButton" class="upload-button" disabled>
+            🚀 UPLOAD DATA
+        </button>
+
+        <div class="progress-wrapper" id="progressWrapper">
+            <div class="progress-label">
+                <span id="progressText">Menyiapkan file...</span>
+                <span id="progressPercent">0%</span>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-value" id="progressValue"></div>
+            </div>
+        </div>
+
+        <div class="status-card" id="statusCard"></div>
+
+    </div>
+
+    <div class="master-info" id="masterInfo">
+
+        <div class="master-title">📡 Master Data Saat Ini</div>
+
+        <div class="master-row">
+            <span class="master-label">Status</span>
+            <span class="master-value" id="masterStatus">Memuat...</span>
+        </div>
+
+        <div class="master-row">
+            <span class="master-label">File</span>
+            <span class="master-value" id="masterFile">-</span>
+        </div>
+
+        <div class="master-row">
+            <span class="master-label">Upload oleh</span>
+            <span class="master-value" id="masterUser">-</span>
+        </div>
+
+        <div class="master-row">
+            <span class="master-label">Waktu</span>
+            <span class="master-value" id="masterTime">-</span>
+        </div>
+
+        <div class="master-row">
+            <span class="master-label">Versi</span>
+            <span class="master-value" id="masterVersion">-</span>
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item active">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon">
+                <i class="fa-solid fa-bell fa-outline"></i>
+            </span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/notif.js"></script>
+<script src="./js/upload-data.js"></script>
+
+</body>
+</html>

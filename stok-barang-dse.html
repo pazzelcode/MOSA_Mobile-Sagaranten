@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stock Akhir CSO Sagaranten - Monitor Excel Real-time</title>
+
+    <link rel="stylesheet" href="./css/global-navhed.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="./css/stok-barang-dse.css">
+    <link rel="stylesheet" href="./css/notif.css">
+
+</head>
+
+<body>
+
+<!-- =========================================
+     HEADER
+========================================= -->
+<div class="sticky-container">
+    <div class="header-wrapper">
+        <div class="back-container" onclick="goBack()">
+            <div class="back-button"></div>
+        </div>
+        <div class="app-header">
+            <h1>STOK AKHIR DSE</h1>
+            <p>Monitoring stok penambahan dan pengeluaran</p>
+        </div>
+    </div>
+</div>
+
+<!-- =========================================
+     DASHBOARD
+========================================= -->
+<div class="dashboard-container">
+
+    <!-- UPDATE BAR -->
+    <div class="update-bar">
+        <div class="update-info">
+            <span class="update-dot"></span>
+            <span id="updateTime">Update Data: Memuat...</span>
+        </div>
+        <div class="live-status">LIVE</div>
+    </div>
+
+    <!-- DSE SECTION -->
+    <section class="dse-section">
+        <div class="dse-section-header">
+            <div class="dse-title">
+                <h2>Stok Akhir DSE</h2>
+                <p>Monitoring stok per user</p>
+            </div>
+            <div class="dse-total-main">
+                <span id="dse-total-label">Total Stok</span>
+                <strong id="dse-grand-total">0</strong>
+            </div>
+        </div>
+
+        <!-- SUMMARY USER -->
+        <div class="dse-summary">
+            <div class="dse-summary-item">
+                <span>Andi</span>
+                <strong id="summary-andi">0</strong>
+            </div>
+            <div class="dse-summary-item">
+                <span>Farhan</span>
+                <strong id="summary-farhan">0</strong>
+            </div>
+            <div class="dse-summary-item">
+                <span>Enden</span>
+                <strong id="summary-enden">0</strong>
+            </div>
+            <div class="dse-summary-item">
+                <span>Pebrian</span>
+                <strong id="summary-pebrian">0</strong>
+            </div>
+        </div>
+
+        <!-- TABLE HEADER -->
+        <div class="dse-table-header">
+            <div class="dse-tabs">
+                <button type="button" class="dse-tab-btn active" onclick="switchTab('pcs')">PCS</button>
+                <button type="button" class="dse-tab-btn" onclick="switchTab('rupiah')">Rupiah</button>
+                <button type="button" class="dse-tab-btn" onclick="switchTab('tambahan')">Tambahan</button>
+            </div>
+            <div>
+                <!-- Diubah memicu modal pop-up -->
+                <button type="button" class="download-table-btn" onclick="openDownloadModal()">
+                    Download Gambar
+                </button>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="dse-table-wrapper">
+            <!-- TABEL PCS / RUPIAH -->
+            <table class="dse-table main-dse-table" id="pcs-rupiah-table">
+                <thead>
+                    <tr>
+                        <th class="item-name-col">Jenis Barang</th>
+                        <th>Andi</th>
+                        <th>Farhan</th>
+                        <th>Enden</th>
+                        <th>Pebrian</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="cso-stock-table">
+                    <tr>
+                        <td colspan="6" class="loading-text">🔄 Mengambil data terbaru...</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- TABEL TAMBAHAN -->
+            <table class="dse-table tambahan-table" id="tambahan-dse-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th class="item-name-col">Nama Barang</th>
+                        <th>Andi</th>
+                        <th>Farhan</th>
+                        <th>Enden</th>
+                        <th>Pebrian</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tambahan-table">
+                    <tr>
+                        <td colspan="6" class="loading-text">🔄 Memuat data tambahan...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- =========================================
+     MODAL POPUP PILIHAN DOWNLOAD
+========================================= -->
+<div id="downloadModal" class="download-modal-overlay">
+    <div class="download-modal-content">
+        <h3>Pilih Tabel Download</h3>
+        <button type="button" class="download-modal-btn-option" onclick="executeDownload('pcs')">Tabel PCS</button>
+        <button type="button" class="download-modal-btn-option" onclick="executeDownload('rupiah')">Tabel Rupiah</button>
+        <button type="button" class="download-modal-btn-option" onclick="executeDownload('tambahan')">Tabel Tambahan</button>
+        <button type="button" class="download-modal-btn-close" onclick="closeDownloadModal()">Batal</button>
+    </div>
+</div>
+
+<!-- =========================================
+     BOTTOM NAVIGATION
+========================================= -->
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/stok-barang-dse.js"></script>
+
+</body>
+</html>

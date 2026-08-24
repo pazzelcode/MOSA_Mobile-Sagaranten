@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Penjualan HiFi Air - Monitor Real-time</title>
+
+<link rel="stylesheet" href="./css/global-navhed.css">
+<link rel="stylesheet" href="./css/penjualan-hifi.css">
+<link rel="stylesheet" href="./css/notif.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+<div class="sticky-container">
+    <div class="header-wrapper">
+
+        <div class="back-container" onclick="goBack()">
+            <div class="back-button"></div>
+        </div>
+
+        <div class="app-header">
+            <h1>PENJUALAN HIFI AIR</h1>
+            <p>Data Monitor Penjualan HiFi Air Mei 2026</p>
+        </div>
+
+    </div>
+</div>
+
+<main class="dashboard-container">
+
+    <div class="update-bar">
+        <div class="update-info">
+            <span class="update-dot"></span>
+            <span id="updateTime">Update Data: Memuat...</span>
+        </div>
+        <div class="live-status">LIVE</div>
+    </div>
+
+    <section class="page-intro">
+        <div class="page-eyebrow">MONITORING PENJUALAN</div>
+        <h2>Penjualan HiFi Air</h2>
+        <p>
+            Monitoring data stok, penjualan, nomor HiFi,
+            perangkat, pembayaran dan keterangan secara real-time.
+        </p>
+    </section>
+
+    <section class="summary-grid">
+
+        <div class="summary-card-box summary-blue">
+            <div class="summary-icon">📦</div>
+            <div class="summary-content">
+                <div class="title">Total Stok</div>
+                <div class="value" id="topTotalUnit">0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-green">
+            <div class="summary-icon">📈</div>
+            <div class="summary-content">
+                <div class="title">Terjual</div>
+                <div class="value" id="topTotalSold">0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-amber">
+            <div class="summary-icon">🔒</div>
+            <div class="summary-content">
+                <div class="title">Stok Segel</div>
+                <div class="value" id="topTotalSegel">0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-indigo">
+            <div class="summary-icon">🛒</div>
+            <div class="summary-content">
+                <div class="title">Total Terjual</div>
+                <div class="value" id="topTotalTerjual">0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-red">
+            <div class="summary-icon">💰</div>
+            <div class="summary-content">
+                <div class="title">Sisa Tagihan</div>
+                <div class="value" id="topTotalOmset">Rp 0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-purple">
+            <div class="summary-icon">📊</div>
+            <div class="summary-content">
+                <div class="title">Data</div>
+                <div class="value" id="topTotalData">0</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="filter-card">
+
+        <div class="filter-heading">
+            <div class="filter-icon">🔎</div>
+
+            <div>
+                <div class="filter-title">Filter Data</div>
+                <div class="filter-description">
+                    Pilih nama DSE atau gudang
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-control">
+            <label class="filter-label" for="hifiFilter">
+                Tampilkan
+            </label>
+
+            <select class="filter-select" id="hifiFilter">
+                <option value="ALL">-- TAMPILKAN SEMUA DATA --</option>
+            </select>
+        </div>
+
+    </section>
+
+    <section class="section-card">
+
+        <div class="section-header">
+
+            <div class="section-heading">
+                <div class="section-icon">📡</div>
+
+                <div>
+                    <div class="section-title">
+                        DATA PENJUALAN HIFI AIR
+                    </div>
+
+                    <div class="section-subtitle">
+                        Monitoring penjualan dan pembayaran
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-actions">
+                <button
+                    type="button"
+                    class="download-table-btn"
+                    id="downloadTableBtn"
+                    onclick="downloadHifiTableImage()"
+                >
+                    Download Gambar
+                </button>
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+            <div class="table-scroll-area">
+
+                <table id="hifiTable">
+
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Barang</th>
+                            <th>Jumlah</th>
+                            <th>Nomor HiFi</th>
+                            <th>ICCID</th>
+                            <th>IMEI Devices</th>
+                            <th>Nama</th>
+                            <th>Harga</th>
+                            <th>Tgl Ambil</th>
+                            <th>Tgl Bayar</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tableBody">
+                        <tr>
+                            <td colspan="11" class="loading-text">
+                                <span>🔄</span>
+                                <span>Mengambil data terbaru...</span>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/penjualan-hifi.js"></script>
+
+</body>
+</html>

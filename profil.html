@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Profil | MC-SAGARANTEN</title>
+<link rel="icon" type="image/png" href="./img/favicon.png">
+<link rel="stylesheet" href="./css/profil.css">
+<link rel="stylesheet" href="./css/global-bottom.css">
+<link rel="stylesheet" href="./css/notif.css">
+</head>
+
+<body>
+
+<header class="profile-header">
+    <div class="back-container" onclick="goBack()">
+        <div class="back-button"></div>
+    </div>
+
+    <div class="profile-avatar-wrapper">
+        <label for="profilePhotoInput" class="profile-avatar">
+            <img id="profilePhoto" src="" alt="Foto Profil">
+            <span id="profileAvatarIcon">👤</span>
+            <div class="profile-photo-overlay">📷</div>
+        </label>
+
+        <input
+            type="file"
+            id="profilePhotoInput"
+            accept="image/*"
+            hidden
+        >
+    </div>
+
+    <div class="profile-name" id="profile-name">Pengguna</div>
+    <div class="profile-role">MC-SAGARANTEN</div>
+</header>
+
+<div class="profile-card">
+
+    <div class="profile-row">
+        <div class="profile-icon">
+            <img id="profilePhotoSmall" src="" alt="Foto Profil">
+            <span id="profileSmallIcon">👤</span>
+        </div>
+
+        <div class="profile-info">
+            <div class="profile-label">NAMA</div>
+            <div class="profile-value" id="nama-user">-</div>
+        </div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-icon">📱</div>
+
+        <div class="profile-info">
+            <div class="profile-label">NOMOR HP</div>
+            <div class="profile-value" id="nomor-user">-</div>
+        </div>
+    </div>
+
+    <div class="profile-row">
+        <div class="profile-icon">🔐</div>
+
+        <div class="profile-info">
+            <div class="profile-label">STATUS AKUN</div>
+            <div class="profile-value">Aktif</div>
+        </div>
+    </div>
+
+</div>
+
+<button class="logout-btn" id="logoutBtn">LOGOUT</button>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item active">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/profil.js"></script>
+
+</body>
+</html>

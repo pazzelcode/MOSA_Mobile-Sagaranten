@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Request Stock - Monitor Stock Gudang</title>
+    <link rel="stylesheet" href="./css/global-navhed.css">
+    <link rel="stylesheet" href="./css/form-request-stock.css">
+   <link rel="stylesheet" href="./css/notif.css">
+    </head>
+<body>
+
+    <div class="sticky-container">
+    <div class="header-wrapper">
+        <div class="back-container" onclick="goBack()">
+    <div class="back-button"></div>
+</div>
+        <div class="app-header">
+        <h1>Form Request Stock Gudang</h1>
+        <p>Silakan input data kuantitas barang yang diperlukan</p>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-container">
+        <form id="requestForm" class="form-content" onsubmit="handleSubmit(event)">
+            
+            <div class="section-title">Nama Micro Cluster</div>
+
+<div class="form-group">
+    <label for="nama_cabang">Nama MC</label>
+    <select id="nama_cabang" name="nama_cabang" required>
+        <option value="" disabled selected>-- Pilih MC --</option>
+        <option value="MC-SAGARANTEN">MC-SAGARANTEN</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="tanggal">Tanggal Permintaan</label>
+    <input type="date" id="tanggal" name="tanggal" required>
+</div>
+
+            <div class="section-title">Kategori Starter Pack (SP)</div>
+            <div class="item-grid">
+                <div class="item-input-group">
+                    <span class="item-label">SP ZERO</span>
+                    <input type="number" class="item-count" name="sp_zero" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">SP 3GB</span>
+                    <input type="number" class="item-count" name="sp_3gb" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+            </div>
+
+            <div class="section-title">Kategori Voucher</div>
+            <div class="item-grid">
+                <div class="item-input-group">
+                    <span class="item-label">VDK</span>
+                    <input type="number" class="item-count" name="vdk" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">3GB 14HR</span>
+                    <input type="number" class="item-count" name="v_3gb_14hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">2,5GB 5HR</span>
+                    <input type="number" class="item-count" name="v_2_5gb_5hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">FI 3 GB 30HR</span>
+                    <input type="number" class="item-count" name="v_fi_3gb_30hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">3.5GB 5HR</span>
+                    <input type="number" class="item-count" name="v_3_5gb_5hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">5GB 5HR</span>
+                    <input type="number" class="item-count" name="v_5gb_5hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">7GB 7HR</span>
+                    <input type="number" class="item-count" name="v_7gb_7hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">Fi 6GB 3HR</span>
+                    <input type="number" class="item-count" name="v_fi_6gb_3hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">Fi 1.5GB 1HR</span>
+                    <input type="number" class="item-count" name="v_fi_1_5gb_1hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">Fi 3GB 1HR</span>
+                    <input type="number" class="item-count" name="v_fi_3gb_1hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">Fi 3GB 3HR</span>
+                    <input type="number" class="item-count" name="v_fi_3gb_3hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">Fi 5GB 2HR</span>
+                    <input type="number" class="item-count" name="v_fi_5gb_2hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+                <div class="item-input-group">
+                    <span class="item-label">Fi 5GB 3HR</span>
+                    <input type="number" class="item-count" name="v_fi_5gb_3hr" min="0" value="0" onfocus="clearZero(this)" onblur="restoreZero(this)">
+                </div>
+            </div>
+
+            <div class="section-title">Catatan Tambahan</div>
+            <div class="form-group">
+                <label for="komentar">Komentar / Keterangan Lain</label>
+                <textarea id="komentar" name="komentar" placeholder="Masukkan catatan atau instruksi khusus jika ada..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Kirim Permintaan</button>
+        </form>
+    </div>
+  
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+    
+  <script src="./js/global-log.js"></script>
+  <script src="./js/notif.js"></script>
+  <script src="./js/form-request-stock.js"></script>
+</body>
+</html>
+
+
+

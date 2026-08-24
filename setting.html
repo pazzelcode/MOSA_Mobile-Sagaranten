@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e293b">
+
+    <title>Setting - MC-SAGARANTEN</title>
+
+    <link rel="stylesheet" href="./css/setting.css">
+    <link rel="stylesheet" href="./css/global-bottom.css">
+    <link rel="stylesheet" href="./css/notif.css">
+</head>
+
+<body>
+
+<header class="header-wrapper">
+    <div class="back-container" onclick="goBack()">
+        <div class="back-button"></div>
+    </div>
+
+    <div class="app-header">
+        <h1>Pengaturan</h1>
+        <p>Konfigurasi sistem portal</p>
+    </div>
+</header>
+
+<div class="content-wrapper">
+
+    <div class="setting-card">
+
+        <div class="setting-section-title">Aplikasi</div>
+
+        <div class="setting-item" id="install-section">
+            <div class="setting-left">
+                <div class="setting-icon">📲</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">Instal Aplikasi</div>
+                    <div class="setting-desc">
+                        Tambahkan MC-SAGARANTEN ke layar utama
+                    </div>
+                </div>
+            </div>
+
+            <button id="btn-install">Install</button>
+        </div>
+
+        <div class="setting-item">
+            <div class="setting-left">
+                <div class="setting-icon">🔄</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">Sinkronisasi Otomatis</div>
+                    <div class="setting-desc">
+                        Data diperbarui secara berkala
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-status">AKTIF</div>
+        </div>
+
+    </div>
+
+
+    <div class="setting-card">
+
+        <div class="setting-section-title">Preferensi</div>
+
+        <div class="setting-item user-setting">
+            <div class="setting-left">
+                <div class="setting-icon">👤</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">Identitas User</div>
+
+                    <div class="setting-desc" id="setting-user-name">
+                        Memuat nama user...
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-status" id="setting-user-badge">
+                User
+            </div>
+        </div>
+
+        <div
+            class="setting-item"
+            onclick="window.location.href='notif.html'"
+            style="cursor:pointer;"
+        >
+            <div class="setting-left">
+                <div class="setting-icon">🔔</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">Notifikasi</div>
+                    <div class="setting-desc">
+                        Pemberitahuan informasi dan aktivitas
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-status">AKTIF</div>
+        </div>
+
+        <div
+            class="setting-item"
+            onclick="alert('Pengaturan tampilan akan segera tersedia!')"
+        >
+            <div class="setting-left">
+                <div class="setting-icon">🎨</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">Tampilan</div>
+                    <div class="setting-desc">
+                        Pengaturan tema dan tampilan aplikasi
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-value">Default</div>
+        </div>
+
+    </div>
+
+
+    <div class="setting-card">
+
+        <div class="setting-section-title">Data & Penyimpanan</div>
+
+        <div
+            class="setting-item"
+            id="clear-cache"
+            style="cursor:pointer;"
+        >
+            <div class="setting-left">
+                <div class="setting-icon">🧹</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">
+                        Bersihkan Cache Data
+                    </div>
+                    <div class="setting-desc">
+                        Hapus data sementara dan muat ulang aplikasi
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-arrow">›</div>
+        </div>
+
+        <div
+            class="setting-item"
+            onclick="window.location.reload()"
+            style="cursor:pointer;"
+        >
+            <div class="setting-left">
+                <div class="setting-icon">🔃</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">
+                        Muat Ulang Aplikasi
+                    </div>
+                    <div class="setting-desc">
+                        Ambil data terbaru dari sistem
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-arrow">›</div>
+        </div>
+
+    </div>
+
+
+    <div class="setting-card">
+
+        <div class="setting-section-title">Informasi Sistem</div>
+
+        <div class="setting-item">
+            <div class="setting-left">
+                <div class="setting-icon">ℹ️</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">Versi Aplikasi</div>
+                    <div class="setting-desc">
+                        Sistem Portal MC-SAGARANTEN
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-value">v1.0.2</div>
+        </div>
+
+        <div class="setting-item">
+            <div class="setting-left">
+                <div class="setting-icon">☁️</div>
+
+                <div class="setting-info">
+                    <div class="setting-label">Status Sistem</div>
+                    <div class="setting-desc">
+                        Koneksi dan layanan aplikasi
+                    </div>
+                </div>
+            </div>
+
+            <div class="setting-status">ONLINE</div>
+        </div>
+
+    </div>
+
+
+    <div class="app-version">
+        <strong>MC-SAGARANTEN</strong><br>
+        Sistem Monitoring & Pengelolaan Data<br>
+        Versi 1.0.2 · © 2026
+    </div>
+
+</div>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/setting.js"></script>
+
+</body>
+</html>

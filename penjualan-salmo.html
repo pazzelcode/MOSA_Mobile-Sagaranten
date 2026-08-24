@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>SUMMARY SALDO MOBO DSE</title>
+
+<link rel="stylesheet" href="./css/global-navhed.css">
+<link rel="stylesheet" href="./css/penjualan-salmo.css">
+<link rel="stylesheet" href="./css/notif.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="sticky-container">
+    <div class="header-wrapper">
+        <div class="back-container" onclick="goBack()">
+            <div class="back-button"></div>
+        </div>
+
+        <div class="app-header">
+            <h1>SUMMARY SALDO MOBO DSE</h1>
+            <p>Rekapitulasi saldo dan ranking DSE</p>
+        </div>
+    </div>
+</div>
+
+<main class="summary-page">
+
+    <section class="summary-hero">
+        <span class="summary-label">Total Saldo MOBO</span>
+
+        <strong class="summary-total" id="grandTotal">
+            Rp 0
+        </strong>
+
+        <span class="summary-update" id="updateTime">
+            Update Data: Memuat...
+        </span>
+    </section>
+
+    <section class="summary-stats">
+
+        <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <span class="stat-title">DSE Aktif</span>
+            <strong class="stat-value" id="totalDse">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <span class="stat-title">DSE Teratas</span>
+            <strong class="stat-value" id="topDse">-</strong>
+        </div>
+
+    </section>
+
+    <div class="desktop-grid">
+
+        <section class="section-card">
+            <div class="section-header">
+                <div>
+                    <div class="section-title">🏆 Top DSE</div>
+                    <div class="section-subtitle">
+                        DSE dengan saldo tertinggi
+                    </div>
+                </div>
+            </div>
+
+            <div class="podium" id="podium">
+                <div class="loading">Memuat data...</div>
+            </div>
+        </section>
+
+        <section class="section-card">
+
+            <div class="section-header">
+                <div>
+                    <div class="section-title">Ranking DSE</div>
+                    <div class="section-subtitle">
+                        Perbandingan saldo setiap DSE
+                    </div>
+                </div>
+
+                <span class="section-count" id="rankingCount">
+                    0 DSE
+                </span>
+            </div>
+
+            <div class="ranking-list" id="rankingList">
+                <div class="loading">Memuat data...</div>
+            </div>
+
+        </section>
+
+        <section class="section-card">
+
+            <div class="section-header">
+                <div>
+                    <div class="section-title">📊 Perbandingan Saldo</div>
+                    <div class="section-subtitle">
+                        Grafik saldo berdasarkan ranking
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-wrapper">
+                <canvas id="salmoChart"></canvas>
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+      <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/penjualan-salmo.js"></script>
+
+</body>
+</html>

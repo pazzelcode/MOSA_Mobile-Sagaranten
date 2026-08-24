@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MC-SAGARANTEN - Home Portal</title>
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f172a">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/notif.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="header-content-overlay">
+    <div class="header-welcome-layer">
+        <div class="header-logo-layer" id="logoPreviewTrigger">
+            <img src="img/favicon.png" alt="Logo MC-SAGARANTEN">
+        </div>
+        <div class="welcome-text-layer">
+            <div class="welcome-greeting-layer">Hallo, <span id="user-name">Pengguna</span></div>
+            <div class="welcome-title-layer">Selamat Datang...</div>
+        </div>
+    </div>
+
+    <div class="header-brand-layer">
+        <div class="brand-title-layer">Dashboard</div>
+        <div class="brand-name-layer">MC-SAGARANTEN</div>
+        <div class="brand-subtitle-layer">Monitoring Stok dan Penjualan</div>
+    </div>
+</div>
+
+<div class="hero-background"></div>
+
+<div class="summary-wrapper">
+    <div class="saldo-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:15px;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,0.2);">
+            <div class="main-summary" style="margin-bottom:0;">
+                <div class="saldo-label">Total Penjualan Salmo</div>
+                <div class="saldo-amount" id="grand-total" style="margin-bottom:0;">Memuat...</div>
+            </div>
+
+            <div id="live-clock-container" style="text-align:right;">
+                <div id="live-date" style="font-size:10px;opacity:0.8;text-transform:uppercase;letter-spacing:0.5px;">--/--/----</div>
+                <div id="live-time" style="font-size:14px;font-weight:bold;font-family:monospace;">--:--:--</div>
+            </div>
+        </div>
+
+        <div class="sub-summary-grid">
+            <div class="sub-stat">
+                <div class="sub-label">SP & Voucher</div>
+                <div class="sub-value" id="total-sp">...</div>
+            </div>
+            <div class="sub-stat">
+                <div class="sub-label">All Paket</div>
+                <div class="sub-value" id="total-paket">...</div>
+            </div>
+            <div class="sub-stat">
+                <div class="sub-label">Hifi</div>
+                <div class="sub-value" id="total-hifi">...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quick-menu-section">
+        <div class="quick-menu-grid">
+            <div class="quick-menu-item" id="openSearch">
+                <div class="quick-menu-icon"><i class="fa-solid fa-magnifying-glass fa-outline"></i></div>
+                <div class="quick-menu-title-item">CARI</div>
+            </div>
+
+            <a href="info-log.html" class="quick-menu-item">
+                <div class="quick-menu-icon"><i class="fa-solid fa-clock-rotate-left fa-outline"></i></div>
+                <div class="quick-menu-title-item">LOG</div>
+            </a>
+
+            <div class="quick-menu-item" id="btn-refresh">
+                <div class="quick-menu-icon"><i class="fa-solid fa-arrows-rotate fa-outline"></i></div>
+                <div class="quick-menu-title-item">REFRESH</div>
+            </div>
+
+            <a href="setting.html" class="quick-menu-item">
+                <div class="quick-menu-icon"><i class="fa-solid fa-gear fa-outline"></i></div>
+                <div class="quick-menu-title-item">SETTING</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="app-navigation">
+
+    <div class="menu-group">
+        <div class="section-title">
+            
+            Operasional & Gudang
+        </div>
+
+        <div class="nav-wrapper">
+
+    <a href="form-permintaan.html" class="nav-item form-link">
+        <div class="nav-icon"><i class="fa-solid fa-clipboard fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">TAMBAH STOCK</div></div>
+    </a>
+
+    <a href="form-daily.html" class="nav-item form-link">
+        <div class="nav-icon"><i class="fa-solid fa-clipboard-list fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">REPORT DSE</div></div>
+    </a>
+
+    <a href="form-Request-Stock.html" class="nav-item form-link">
+        <div class="nav-icon"><i class="fa-solid fa-box-open fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">REQUEST GUDANG</div></div>
+    </a>
+
+    <a href="stok-gudang.html" class="nav-item gudang-link">
+        <div class="nav-icon"><i class="fa-solid fa-boxes-stacked fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">STOK GUDANG</div></div>
+    </a>
+
+    <a href="stok-barang-dse.html" class="nav-item dse-link">
+        <div class="nav-icon"><i class="fa-solid fa-briefcase fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">STOK DSE</div></div>
+    </a>
+
+    <a href="penjualan-salmo.html" class="nav-item penjualan-link">
+        <div class="nav-icon"><img src="img/20260813_052238.png" class="menu-image" alt="SALMO"></div>
+        <div class="nav-details"><div class="nav-title">SALMO</div></div>
+    </a>
+
+    <a href="penjualan-reguler-new.html" class="nav-item penjualan-link">
+        <div class="nav-icon"><i class="fa-solid fa-cart-shopping fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">SP & VOUCHER</div></div>
+    </a>
+
+    <a href="penjualan-paket-jupiter.html" class="nav-item penjualan-link">
+        <div class="nav-icon"><i class="fa-solid fa-sim-card fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">PAKET</div></div>
+    </a>
+
+    <a href="penjualan-hifi.html" class="nav-item penjualan-link">
+        <div class="nav-icon"><img src="img/hifi-removebg-preview.png" class="menu-image" alt="Hifi"></div>
+        <div class="nav-details"><div class="nav-title">HIFI</div></div>
+    </a>
+
+    <a href="download-data.html" class="nav-item penjualan-link">
+        <div class="nav-icon"><i class="fa-solid fa-file-arrow-down fa-outline"></i></div>
+        <div class="nav-details"><div class="nav-title">FILE</div></div>
+    </a>
+
+</div>
+
+
+    <div class="menu-group">
+        <div class="section-title">
+            
+            Marketing & Monitoring
+        </div>
+
+        <div class="nav-wrapper">
+
+            <a href="program-outlet.html" class="nav-item trade-link">
+                <div class="nav-icon"><i class="fa-solid fa-store fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title" style="color:var(--accent-trade)">PROGRAM OUTLET</div></div>
+            </a>
+
+            <a href="segera-hadir.html" class="nav-item trade-link">
+                <div class="nav-icon"><i class="fa-solid fa-shop fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title" style="color:var(--accent-trade)">DATA OUTLET</div></div>
+            </a>
+
+            <a href="segera-hadir.html" class="nav-item kpi-link">
+                <div class="nav-icon"><i class="fa-solid fa-chart-line fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title" style="color:var(--accent-kpi)">KPI DSE</div></div>
+            </a>
+
+            <a href="segera-hadir.html" class="nav-item md-link">
+                <div class="nav-icon"><i class="fa-solid fa-store fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title" style="color:var(--accent-md)">MERCHANT MD</div></div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="menu-group admin-menu-group" id="admin-menu">
+        <div class="section-title">
+            
+            Administrator
+        </div>
+
+        <div class="nav-wrapper">
+
+            <a href="upload-data.html" class="nav-item admin-link">
+                <div class="nav-icon"><i class="fa-solid fa-file-arrow-up fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title">UPLOAD DATA</div></div>
+            </a>
+
+            <a href="kelola-file.html" class="nav-item admin-link">
+                <div class="nav-icon"><i class="fa-solid fa-folder-open fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title">KELOLA FILE DATA</div></div>
+            </a>
+
+            <a href="admin-banner.html" class="nav-item admin-link">
+                <div class="nav-icon"><i class="fa-solid fa-images fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title">KELOLA BANNER</div></div>
+            </a>
+
+            <a href="admin-program-outlet.html" class="nav-item admin-link">
+                <div class="nav-icon"><i class="fa-solid fa-store fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title">PROGRAM OUTLET</div></div>
+            </a>
+
+            <a href="broadcast.html" class="nav-item admin-link">
+                <div class="nav-icon"><i class="fa-solid fa-bullhorn fa-outline"></i></div>
+                <div class="nav-details"><div class="nav-title">BROADCAST</div></div>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="menu-banner-divider"></div>
+
+    <div class="banner-header">
+        <div class="banner-header-left">
+            <div class="banner-header-title">
+                Informasi Terbaru
+            </div>
+            <div class="banner-header-desc">Promo • Harga • Program</div>
+        </div>
+
+        <a href="semua-banner.html" class="banner-see-all">Lihat Semua <span>›</span></a>
+    </div>
+
+    <div class="banner-carousel">
+        <div class="banner-track" id="banner-track">
+            <div class="banner-loading">Memuat banner...</div>
+        </div>
+        <div class="banner-dots" id="banner-dots"></div>
+    </div>
+
+    <div class="menu-banner-divider"></div>
+
+    <section class="activity-daily-section">
+
+        <div class="activity-header">
+            <div class="activity-header-left">
+                <div class="activity-title">
+                  
+                    Activity Daily
+                </div>
+                <div class="activity-desc">Monitoring aktivitas penjualan harian DSE</div>
+            </div>
+            <div class="activity-date" id="activity-date">--</div>
+        </div>
+
+        <div class="activity-card activity-mobo-card">
+            <div class="activity-card-header">
+                <div class="activity-card-title">
+                    <i class="fa-solid fa-wallet fa-outline"></i>
+                    Saldo Mobo
+                </div>
+                <div class="activity-card-badge">DAILY</div>
+            </div>
+
+            <div class="activity-mobo-list" id="activity-mobo-list">
+                <div class="activity-loading">Memuat data...</div>
+            </div>
+        </div>
+
+        <div class="activity-card activity-fisik-card">
+            <div class="activity-card-header">
+                <div class="activity-card-title">
+                    <i class="fa-solid fa-cart-shopping fa-outline"></i>
+                    Penjualan Fisik
+                </div>
+                <div class="activity-card-badge">SP & VOUCHER</div>
+            </div>
+
+            <div class="activity-fisik-list" id="activity-fisik-list">
+                <div class="activity-loading">Memuat data...</div>
+            </div>
+        </div>
+
+        <div class="activity-card activity-paket-card">
+            <div class="activity-card-header">
+                <div class="activity-card-title">
+                    <i class="fa-solid fa-box fa-outline"></i>
+                    Penjualan Paket
+                </div>
+                <div class="activity-card-badge">PAKET</div>
+            </div>
+
+            <div class="activity-paket-list" id="activity-paket-list">
+                <div class="activity-loading">Memuat data...</div>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<div id="toast-container" class="toast-container"></div>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item active">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="global-ui.js"></script>
+
+<div class="search-overlay" id="searchOverlay">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Cari menu..." autocomplete="off">
+        <div id="searchResults"></div>
+    </div>
+</div>
+
+<div class="logo-preview-modal" id="logoPreviewModal" aria-hidden="true">
+    <div class="logo-preview-box">
+        <button type="button" class="logo-preview-close" id="logoPreviewClose" aria-label="Tutup preview">×</button>
+        <img src="img/favicon.png" alt="Preview Logo MC-SAGARANTEN" class="logo-preview-image">
+        <div class="logo-preview-title">MC-SAGARANTEN</div>
+    </div>
+</div>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/dashboard.js"></script>
+<script src="./js/activity-daily.js"></script>
+
+</body>
+</html>

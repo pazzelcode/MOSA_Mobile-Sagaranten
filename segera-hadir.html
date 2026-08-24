@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Segera Hadir | MC-SAGARANTEN</title>
+
+    <link rel="icon" type="image/png" href="./img/favicon.png">
+    <link rel="stylesheet" href="./css/global-bottom.css">
+    <link rel="stylesheet" href="./css/notif.css">
+
+    <style>
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+            -webkit-tap-highlight-color:transparent;
+        }
+
+        body{
+            min-height:100vh;
+            padding-bottom:30px;
+            background:#f8fafc;
+            color:#1e293b;
+            font-family:Arial,sans-serif;
+        }
+
+        .header-wrapper{
+            position:relative;
+            width:100%;
+            height:170px;
+            overflow:hidden;
+            z-index:10;
+            text-align:center;
+            color:#fff;
+            background:linear-gradient(135deg,#1e3a8a,#2563eb);
+            border-radius:0 0 30px 30px;
+            box-shadow:0 8px 25px rgba(30,58,138,.25);
+        }
+
+        .back-container{
+            position:absolute;
+            top:20px;
+            left:15px;
+            z-index:20;
+            width:38px;
+            height:38px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            background:rgba(255,255,255,.18);
+            border:1px solid rgba(255,255,255,.28);
+            border-radius:50%;
+            box-shadow:0 4px 10px rgba(15,23,42,.15);
+            transition:.2s ease;
+        }
+
+        .back-button{
+            width:11px;
+            height:11px;
+            margin-left:4px;
+            border-left:3px solid #fff;
+            border-bottom:3px solid #fff;
+            transform:rotate(45deg);
+        }
+
+        .back-container:active{
+            transform:scale(.92);
+            background:rgba(255,255,255,.28);
+        }
+
+        .app-header{
+            padding:55px 20px 20px;
+        }
+
+        .app-header h1{
+            font-size:20px;
+            font-weight:800;
+        }
+
+        .app-header p{
+            margin-top:5px;
+            font-size:11px;
+            opacity:.82;
+        }
+
+        .content-wrapper{
+            position:relative;
+            z-index:20;
+            max-width:500px;
+            margin:-20px auto 0;
+            padding:0 15px 30px;
+        }
+
+        .development-card{
+            padding:30px 22px;
+            text-align:center;
+            background:#fff;
+            border:1px solid #eef2f7;
+            border-radius:20px;
+            box-shadow:0 8px 25px rgba(15,23,42,.10);
+        }
+
+        .development-icon{
+            width:72px;
+            height:72px;
+            margin:0 auto 18px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:34px;
+            background:linear-gradient(135deg,#dbeafe,#eff6ff);
+            border-radius:20px;
+            box-shadow:0 6px 15px rgba(37,99,235,.12);
+        }
+
+        .development-title{
+            margin-bottom:8px;
+            color:#1e3a8a;
+            font-size:18px;
+            font-weight:800;
+        }
+
+        .development-subtitle{
+            max-width:340px;
+            margin:0 auto;
+            color:#64748b;
+            font-size:12px;
+            line-height:1.6;
+        }
+
+        .status-badge{
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+            margin-top:20px;
+            padding:7px 12px;
+            color:#2563eb;
+            background:#eff6ff;
+            border-radius:20px;
+            font-size:10px;
+            font-weight:800;
+            letter-spacing:.3px;
+        }
+
+        .status-dot{
+            width:7px;
+            height:7px;
+            border-radius:50%;
+            background:#2563eb;
+            box-shadow:0 0 0 4px rgba(37,99,235,.10);
+        }
+
+        .development-info{
+            margin-top:22px;
+            padding-top:16px;
+            color:#94a3b8;
+            border-top:1px solid #f1f5f9;
+            font-size:10px;
+            line-height:1.6;
+        }
+
+        .back-home{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            margin-top:20px;
+            padding:11px 20px;
+            color:#fff;
+            background:#2563eb;
+            border-radius:12px;
+            text-decoration:none;
+            font-size:11px;
+            font-weight:800;
+            box-shadow:0 6px 15px rgba(37,99,235,.20);
+            transition:.2s ease;
+        }
+
+        .back-home:active{
+            transform:scale(.96);
+        }
+
+        .footer-text{
+            margin-top:20px;
+            color:#cbd5e1;
+            text-align:center;
+            font-size:9px;
+        }
+
+        .bottom-nav{
+            position:fixed;
+            left:0;
+            bottom:0;
+            z-index:1000;
+            width:100%;
+            height:65px;
+            display:flex;
+            align-items:center;
+            justify-content:space-around;
+            background:linear-gradient(
+                135deg,
+                #fff 0%,
+                #fff 25%,
+                #f7faff 42%,
+                #edf4ff 62%,
+                #dce9ff 100%
+            );
+            border-radius:20px 20px 0 0;
+            box-shadow:0 -4px 12px rgba(15,23,42,.10);
+        }
+
+        .bottom-item{
+            position:relative;
+            flex:1;
+            height:100%;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            gap:5px;
+            color:#475569;
+            text-decoration:none;
+            font-size:10px;
+            font-weight:700;
+            letter-spacing:.5px;
+            transition:.2s;
+        }
+
+        .bottom-item > div,
+        .bottom-item > span{
+            transform:translateY(4px);
+        }
+
+        .bottom-item div{
+            font-size:20px;
+            filter:drop-shadow(0 2px 3px rgba(15,23,42,.25));
+        }
+
+        .bottom-item.active{
+            position:relative;
+            color:#475569;
+        }
+
+        .bottom-item.active::before{
+            content:"";
+            position:absolute;
+            top:0;
+            left:28%;
+            right:28%;
+            height:3.5px;
+            background:linear-gradient(
+                90deg,
+                #1e3a8a,
+                #2563eb,
+                #60a5fa
+            );
+            border-radius:0 0 5px 5px;
+        }
+
+        .bottom-item:active{
+            opacity:.6;
+            transform:scale(.96);
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="header-wrapper">
+
+    <div class="back-container" onclick="goBack()">
+        <div class="back-button"></div>
+    </div>
+
+    <div class="app-header">
+        <h1>Segera Hadir</h1>
+        <p>Marketing & Monitoring</p>
+    </div>
+
+</header>
+
+
+<main class="content-wrapper">
+
+    <div class="development-card">
+
+        <div class="development-icon">🚧</div>
+
+        <div class="development-title">
+            Sedang Dalam Pengembangan
+        </div>
+
+        <div class="development-subtitle">
+            Fitur ini sedang kami persiapkan untuk memberikan informasi,
+            monitoring, dan layanan yang lebih lengkap bagi pengguna
+            MC-SAGARANTEN.
+        </div>
+
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            SEGERA HADIR
+        </div>
+
+        <div class="development-info">
+            Tim MC-SAGARANTEN sedang melakukan pengembangan dan
+            penyempurnaan fitur. Silakan kembali secara berkala untuk
+            mendapatkan pembaruan terbaru.
+        </div>
+
+        <a href="index.html" class="back-home">
+            Kembali ke Beranda
+        </a>
+
+    </div>
+
+    <div class="footer-text">
+        MC-SAGARANTEN • Sistem Informasi & Monitoring
+    </div>
+
+</main>
+
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+
+<script>
+function goBack(){
+    if(document.referrer && document.referrer !== location.href){
+        history.back();
+    }else{
+        location.href='index.html';
+    }
+}
+</script>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+
+</body>
+</html>

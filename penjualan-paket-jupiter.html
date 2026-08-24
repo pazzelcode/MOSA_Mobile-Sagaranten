@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Penjualan Paket Jupiter - Monitor Real-time</title>
+
+<link rel="stylesheet" href="./css/global-navhed.css">
+<link rel="stylesheet" href="./css/penjualan-paket-jupiter.css">
+<link rel="stylesheet" href="./css/notif.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+<div class="sticky-container">
+    <div class="header-wrapper">
+
+        <div class="back-container" onclick="goBack()">
+            <div class="back-button"></div>
+        </div>
+
+        <div class="app-header">
+            <h1>PENJUALAN PAKET JUPITER</h1>
+            <p>Data Monitor Paket Mei 2026</p>
+        </div>
+
+    </div>
+</div>
+
+<div class="dashboard-container">
+
+    <div class="update-bar">
+
+        <div class="update-info">
+            <span class="update-dot"></span>
+            <span id="updateTime">Update Data: Memuat...</span>
+        </div>
+
+        <div class="live-status">LIVE</div>
+
+    </div>
+
+    <section class="summary-grid">
+
+        <div class="summary-card-box summary-blue">
+            <div class="summary-icon">📦</div>
+            <div class="summary-content">
+                <div class="title">Total Tagihan Pengambilan</div>
+                <div class="value" id="topTotalTake">Rp 0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-red">
+            <div class="summary-icon">💰</div>
+            <div class="summary-content">
+                <div class="title">Sisa Belum Bayar</div>
+                <div class="value" id="topTotalSisa">Rp 0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-green">
+            <div class="summary-icon">💵</div>
+            <div class="summary-content">
+                <div class="title">Total Pembayaran</div>
+                <div class="value" id="topTotalPay">Rp 0</div>
+            </div>
+        </div>
+
+        <div class="summary-card-box summary-slate">
+            <div class="summary-icon">📦</div>
+            <div class="summary-content">
+                <div class="title">Total Akumulasi Paket Jupiter</div>
+                <div class="value" id="topTotalQty">0 Paket</div>
+            </div>
+        </div>
+
+    </section>
+
+    <select class="filter-select" id="dseFilter">
+        <option value="ALL">-- TAMPILKAN SEMUA DATA --</option>
+        <option value="SUMMARY">-- SUMMARY PAKET JUPITER --</option>
+    </select>
+
+    <div id="mainCardsContainer" style="margin-top:10px">
+
+        <div class="section-title-container">
+            📞 REKAPITULASI PAKET JUPITER JUNI 2026
+        </div>
+
+        <div
+            class="all-cards-grid"
+            id="cardsListContainer"
+            style="display:none;"
+        ></div>
+
+        <div
+            class="ranking-card"
+            id="rankingCard"
+        ></div>
+
+        <div
+            class="total-gabungan-card"
+            id="totalGabunganCard"
+        ></div>
+
+    </div>
+
+</div>
+
+<div id="sync-total-paket" style="display:none;">
+    2500000
+</div>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/global-ui.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/penjualan-paket-jupiter.js"></script>
+
+</body>
+</html>

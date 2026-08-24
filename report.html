@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Report | MC-SAGARANTEN</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
+
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="stylesheet" href="./css/global-navhed.css">
+    <link rel="stylesheet" href="./css/report.css">
+    <link rel="stylesheet" href="./css/notif.css">
+</head>
+
+<body>
+
+<header class="profile-header">
+
+    <div class="back-container" onclick="goBack()">
+        <div class="back-button"></div>
+    </div>
+
+    <div class="notif-title">Total Penjualan</div>
+    <div class="notif-subtitle">MC-SAGARANTEN • Report</div>
+
+</header>
+
+
+<main class="report-container">
+
+    <section class="report-heading">
+
+        <div class="report-heading-left">
+            <div class="report-heading-title">
+                Ringkasan Penjualan
+            </div>
+
+            <div class="report-heading-desc">
+                Performa penjualan seluruh kategori
+            </div>
+        </div>
+
+        <div class="report-heading-date">
+            <span>Hari Ini</span>
+            <strong id="report-date">--</strong>
+        </div>
+
+    </section>
+
+
+    <section class="total-report-card">
+
+        <div class="total-report-content">
+
+            <div class="total-report-label">
+                Total Penjualan
+            </div>
+
+            <div id="grand-total" class="total-report-value loading">
+                Memuat...
+            </div>
+
+            <div class="total-report-footer">
+
+                <div class="live-status">
+                    <span class="live-dot"></span>
+                    Data realtime
+                </div>
+
+                <div id="last-update">
+                    Memuat data...
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="section-header">
+        <div class="section-title">Penjualan per Kategori</div>
+        <div class="section-subtitle">Kontribusi</div>
+    </div>
+
+
+    <section class="sales-grid">
+
+        <div class="sales-card salmo">
+
+            <div class="sales-card-top">
+                <div class="sales-icon">💳</div>
+                <div id="percent-salmo" class="sales-percent">0%</div>
+            </div>
+
+            <div class="sales-label">Penjualan Salmo</div>
+
+            <div id="total-salmo" class="sales-value loading">
+                Memuat...
+            </div>
+
+            <div class="progress-area">
+                <div class="progress-track">
+                    <div id="progress-salmo" class="progress-bar"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="sales-card sp">
+
+            <div class="sales-card-top">
+                <div class="sales-icon">🛒</div>
+                <div id="percent-sp" class="sales-percent">0%</div>
+            </div>
+
+            <div class="sales-label">SP & Voucher</div>
+
+            <div id="total-sp" class="sales-value loading">
+                Memuat...
+            </div>
+
+            <div class="progress-area">
+                <div class="progress-track">
+                    <div id="progress-sp" class="progress-bar"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="sales-card paket">
+
+            <div class="sales-card-top">
+                <div class="sales-icon">📦</div>
+                <div id="percent-paket" class="sales-percent">0%</div>
+            </div>
+
+            <div class="sales-label">Penjualan Paket</div>
+
+            <div id="total-paket" class="sales-value loading">
+                Memuat...
+            </div>
+
+            <div class="progress-area">
+                <div class="progress-track">
+                    <div id="progress-paket" class="progress-bar"></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="sales-card hifi">
+
+            <div class="sales-card-top">
+                <div class="sales-icon">📡</div>
+                <div id="percent-hifi" class="sales-percent">0%</div>
+            </div>
+
+            <div class="sales-label">Penjualan Hifi</div>
+
+            <div id="total-hifi" class="sales-value loading">
+                Memuat...
+            </div>
+
+            <div class="progress-area">
+                <div class="progress-track">
+                    <div id="progress-hifi" class="progress-bar"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="section-header">
+        <div class="section-title">Perbandingan Penjualan</div>
+        <div class="section-subtitle">Grafik</div>
+    </div>
+
+
+    <section class="chart-card">
+
+        <div class="chart-row">
+
+            <div class="chart-label">Salmo</div>
+
+            <div class="chart-track">
+                <div id="chart-salmo" class="chart-bar salmo"></div>
+            </div>
+
+            <div id="chart-value-salmo" class="chart-value">
+                Rp 0
+            </div>
+
+        </div>
+
+
+        <div class="chart-row">
+
+            <div class="chart-label">SP & Voucher</div>
+
+            <div class="chart-track">
+                <div id="chart-sp" class="chart-bar sp"></div>
+            </div>
+
+            <div id="chart-value-sp" class="chart-value">
+                Rp 0
+            </div>
+
+        </div>
+
+
+        <div class="chart-row">
+
+            <div class="chart-label">Paket</div>
+
+            <div class="chart-track">
+                <div id="chart-paket" class="chart-bar paket"></div>
+            </div>
+
+            <div id="chart-value-paket" class="chart-value">
+                Rp 0
+            </div>
+
+        </div>
+
+
+        <div class="chart-row">
+
+            <div class="chart-label">Hifi</div>
+
+            <div class="chart-track">
+                <div id="chart-hifi" class="chart-bar hifi"></div>
+            </div>
+
+            <div id="chart-value-hifi" class="chart-value">
+                Rp 0
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="insight-card">
+
+        <div class="insight-title">
+            Ringkasan Performa
+        </div>
+
+        <div id="insight-text" class="insight-text">
+            Menunggu data penjualan...
+        </div>
+
+    </section>
+
+
+    <div class="update-info">
+        <span class="update-info-dot"></span>
+        Data diperbarui otomatis setiap 10 detik
+    </div>
+
+</main>
+
+
+<div id="toast-container" class="toast-container"></div>
+
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item active">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/report.js"></script>
+
+</body>
+</html>

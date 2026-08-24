@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stok Gudang Otomatis - Monitor Excel Real-time</title>
+
+    <link rel="stylesheet" href="./css/global-navhed.css">
+    <link rel="stylesheet" href="./css/stok-gudang.css">
+    <link rel="stylesheet" href="./css/notif.css">
+</head>
+
+<body>
+
+<div class="sticky-container">
+    <div class="header-wrapper">
+        <div class="back-container" onclick="goBack()">
+            <div class="back-button"></div>
+        </div>
+
+        <div class="app-header">
+            <h1>STOK BARANG GUDANG</h1>
+            <p>Data Monitor Stok Segel dan Sellin</p>
+        </div>
+    </div>
+</div>
+
+<div class="dashboard-container">
+
+    <div class="update-bar">
+        <div class="update-info">
+            <span class="update-dot"></span>
+            <span id="updateTime">Update Data: Memuat...</span>
+        </div>
+        <div class="live-status">LIVE</div>
+    </div>
+
+    <section class="stock-section">
+
+        <div class="stock-card-title">
+            <div class="stock-card-title-left">
+                <h2>SP</h2>
+                <p>Stok Produk SP</p>
+            </div>
+
+            <div class="stock-mini-total">
+                <span>Total</span>
+                <strong id="sp-total">0</strong>
+            </div>
+        </div>
+
+        <div class="stock-table-wrapper">
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th class="item-name-col">Nama Barang</th>
+                        <th>Segel</th>
+                        <th>Sell-In</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody id="sp-data-table">
+                    <tr>
+                        <td colspan="4" class="loading-text">
+                            🔄 Mengambil data SP...
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr class="total-row">
+                        <td class="item-name-col">TOTAL SP</td>
+                        <td id="sp-footer-segel">0</td>
+                        <td id="sp-footer-sellin">0</td>
+                        <td id="sp-footer-total">0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </section>
+
+    <section class="stock-section">
+
+        <div class="stock-card-title">
+            <div class="stock-card-title-left">
+                <h2>Voucher</h2>
+                <p>Stok Produk Voucher</p>
+            </div>
+
+            <div class="stock-mini-total">
+                <span>Total</span>
+                <strong id="voucher-total">0</strong>
+            </div>
+        </div>
+
+        <div class="stock-table-wrapper">
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th class="item-name-col">Nama Barang</th>
+                        <th>Segel</th>
+                        <th>Sell-In</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody id="voucher-data-table">
+                    <tr>
+                        <td colspan="4" class="loading-text">
+                            🔄 Mengambil data Voucher...
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr class="total-row">
+                        <td class="item-name-col">TOTAL VOUCHER</td>
+                        <td id="voucher-footer-segel">0</td>
+                        <td id="voucher-footer-sellin">0</td>
+                        <td id="voucher-footer-total">0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+    </section>
+
+    <section class="stock-summary-card">
+
+        <div class="stock-summary-header">
+            <h2>Summary Stok Gudang</h2>
+            <p>Ringkasan total stok SP dan Voucher</p>
+        </div>
+
+        <div class="stock-summary-group">
+
+            <div class="stock-summary-group-title">
+                <span>SP</span>
+                <small>Stok Produk SP</small>
+            </div>
+
+            <div class="stock-summary-grid">
+
+                <div class="stock-summary-item">
+                    <span>Segel</span>
+                    <strong id="summary-sp-segel">0</strong>
+                </div>
+
+                <div class="stock-summary-item">
+                    <span>Sell-In</span>
+                    <strong id="summary-sp-sellin">0</strong>
+                </div>
+
+                <div class="stock-summary-item grand-total">
+                    <span>Total SP</span>
+                    <strong id="summary-sp">0</strong>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="stock-summary-group">
+
+            <div class="stock-summary-group-title">
+                <span>Voucher</span>
+                <small>Stok Produk Voucher</small>
+            </div>
+
+            <div class="stock-summary-grid">
+
+                <div class="stock-summary-item">
+                    <span>Segel</span>
+                    <strong id="summary-voucher-segel">0</strong>
+                </div>
+
+                <div class="stock-summary-item">
+                    <span>Sell-In</span>
+                    <strong id="summary-voucher-sellin">0</strong>
+                </div>
+
+                <div class="stock-summary-item grand-total">
+                    <span>Total Voucher</span>
+                    <strong id="summary-voucher">0</strong>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="stock-summary-group">
+
+            <div class="stock-summary-group-title">
+                <span>Total</span>
+                <small>Total Stok Produk</small>
+            </div>
+
+            <div class="stock-summary-grand">
+
+                <div class="stock-summary-grand-item">
+                    <span>Total Segel</span>
+                    <strong id="summary-grand-segel">0</strong>
+                </div>
+
+                <div class="stock-summary-grand-item">
+                    <span>Total Sell-In</span>
+                    <strong id="summary-grand-sellin">0</strong>
+                </div>
+
+                <div class="stock-summary-grand-item grand-total">
+                    <span>Grand Total</span>
+                    <strong id="summary-grand-total">0</strong>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/global-log.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/stok-gudang.js"></script>
+
+</body>
+</html>

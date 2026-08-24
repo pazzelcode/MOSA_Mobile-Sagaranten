@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Report - DSE MC Sagaranten</title>
+    <link rel="stylesheet" href="./css/global-navhed.css">
+  <link rel="stylesheet" href="./css/form-daily.css">
+  <link rel="stylesheet" href="./css/notif.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+</head>
+<body>
+<div class="sticky-container">
+    <div class="header-wrapper">
+        <div class="back-container" onclick="goBack()">
+    <div class="back-button"></div>
+</div>
+        <div class="app-header">
+            <h1>DAILY REPORT DSE</h1>  
+            <p>Penginputan laporan harian hasil di lapangan</p>
+        </div>
+    </div>
+</div>
+
+<div class="report-container">
+
+    <div class="section-title">INFO SALES</div>
+
+   <div class="field-group">
+        <span class="label">Tgl:</span>
+        <span class="value" id="currentDate" style="font-weight: bold;"></span>
+    </div>
+
+    <div class="field-group">
+    <span class="label">ID DSE:</span>
+    <span class="value">
+        <select id="id_dse" style="
+            border: none;
+            background: #f9f9f9;
+            font-family: inherit;
+            font-size: 14px;
+            width: 156px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        ">
+            <option value="">Pilih ID DSE</option>
+            <option value="SKBPLARA04">SKBPLARA04</option>
+            <option value="SKBPLARA08">SKBPLARA08</option>
+            <option value="SKBPLARA11">SKBPLARA11</option>
+            <option value="DSESGRN01">DSESGRN01</option>
+        </select>
+    </span>
+</div>
+    <div class="field-group"><span class="label">PJP Today:</span><span class="value"><input type="text" id="pjp" placeholder="..."></span></div>
+    <div class="field-group"><span class="label">EC:</span><span class="value"><input type="number" id="ec" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">Adhoc:</span><span class="value"><input type="number" id="adhoc" placeholder="0"></span></div>
+
+    <div class="section-title">SALES SUMMARY</div>
+    <div class="field-group">
+        <span class="label">Total Sellin Salmo:</span>
+        <span class="value">Rp. <input type="text" id="sellin" placeholder="0" oninput="formatRupiah(this)"></span>
+    </div>
+    <div class="field-group">
+        <span class="label">Total SP (Auto):</span>
+        <span class="value"><input type="number" id="total_sp" class="total-highlight" readonly value="0"></span>
+    </div>
+    <div class="field-group"><span class="label">SP 3GB:</span><span class="value"><input type="number" class="sp-input" id="sp_3gb" oninput="calcSP()" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">SP Zero:</span><span class="value"><input type="number" class="sp-input" id="sp_zero" oninput="calcSP()" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">Total Tagging SP:</span><span class="value"><input type="number" id="tag_sp" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">Outlet Tagging SP:</span><span class="value"><input type="number" id="tag_outlet" placeholder="0"></span></div>
+
+    <div class="section-title">VOUCHER DETAILS</div>
+    <div class="field-group">
+        <span class="label">Total Voucher (Auto):</span>
+        <span class="value"><input type="number" id="total_voucher" class="total-highlight" readonly value="0"></span>
+    </div>
+    <div class="field-group"><span class="label">1,5GB/1 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_15_1h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">3GB/1 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_3_1h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">3GB/3 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_3_3h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">3GB/30 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_3_30h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">5GB/2 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_5_2h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">5GB/3 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_5_3h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">2,5GB/5 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_25_5h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">3,5GB/5 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_35_5h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">5GB/5 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_5_5h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">7GB/7 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_7_7h" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">6GB/30 Hari:</span><span class="value"><input type="number" class="v-input" oninput="calcVoucher()" id="v_6_30h" placeholder="0"></span></div>
+
+    <div class="section-title">OTHERS</div>
+    <div class="field-group"><span class="label">Inject Rabu Mantap:</span><span class="value"><input type="number" id="rabu_mantap" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">FWA/Hifi Air:</span><span class="value"><input type="number" id="fwa_hifi" placeholder="0"></span></div>
+
+    <div class="section-title">ONO WARUNG / NON TELCO</div>
+    <div class="field-group"><span class="label">Target ONO:</span><span class="value"><input type="number" id="target_ono" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">Actual ONO:</span><span class="value"><input type="number" id="actual_ono" placeholder="0"></span></div>
+
+        <div class="section-title">BRANDING</div>
+    <div class="field-group"><span class="label">Total Shopblind:</span><span class="value"><input type="number" id="b_shopblind" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">Total Poster:</span><span class="value"><input type="number" id="b_poster" placeholder="0"></span></div>
+    <div class="field-group"><span class="label">Biometric:</span><span class="value"><input type="number" id="b_biometric" placeholder="0"></span></div>
+
+    <p class="note">Note: Input branding berdasarkan outlet yg sudah di submit ke MKID</p>
+
+    <div class="btn-container">
+        <button class="btn btn-excel" onclick="exportToExcel()">💾 Simpan ke Download</button>
+        <button class="btn btn-print" onclick="kirimWhatsApp()">📎 Kirim Hasil Download</button>
+        <button class="btn btn-reset" onclick="window.location.reload()">🔄 Reset Form</button>
+    </div>
+</div>
+  
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+  <script src="./js/global-log.js"></script>
+  <script src="./js/notif.js"></script>
+  <script src="./js/form-daily.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Broadcast | MC-SAGARANTEN</title>
+
+<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f172a">
+
+<link rel="stylesheet" href="./css/broadcast.css">
+<link rel="stylesheet" href="./css/global-bottom.css">
+<link rel="stylesheet" href="./css/notif.css">
+</head>
+
+<body>
+
+<header class="page-header">
+
+    <a
+        href="index.html"
+        class="back-button"
+        aria-label="Kembali"
+    >‹</a>
+
+    <div class="header-logo">
+        <img src="img/favicon.png" alt="MC-SAGARANTEN">
+    </div>
+
+    <div class="header-text">
+
+        <div class="header-title">
+            Broadcast
+        </div>
+
+        <div class="header-subtitle">
+            Bagikan informasi Form Permintaan Barang kepada pengguna melalui WhatsApp.
+        </div>
+
+    </div>
+
+</header>
+
+<main class="broadcast-container">
+
+    <section class="broadcast-card">
+
+        <div class="card-heading">
+
+            <div class="card-heading-icon">📱</div>
+
+            <div class="card-heading-text">
+
+                <div class="card-heading-title">
+                    Bagikan Form Permintaan
+                </div>
+
+                <div class="card-heading-subtitle">
+                    WhatsApp Share
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="broadcast-info">
+
+            <div class="broadcast-info-icon">ℹ️</div>
+
+            <div class="broadcast-info-text">
+                Klik tombol <strong>Kirim ke WhatsApp</strong>
+                untuk membuka WhatsApp dengan pesan dan link form
+                yang sudah disiapkan.
+                <br><br>
+                Setelah WhatsApp terbuka, Anda dapat memilih sendiri
+                kontak atau grup yang akan menerima pesan.
+            </div>
+
+        </div>
+
+        <label class="form-label" for="messageInput">
+            Pesan WhatsApp
+        </label>
+
+        <div class="message-wrapper">
+
+            <textarea
+                id="messageInput"
+                spellcheck="false"
+            >📢 *FORM PERMINTAAN BARANG*
+
+Halo,
+
+Silakan melakukan pengisian Form Permintaan Barang melalui link berikut:
+
+{LINK_FORM}
+
+Terima kasih.
+MC-SAGARANTEN</textarea>
+
+        </div>
+
+        <div class="link-box">
+
+            <div class="link-icon">🔗</div>
+
+            <div class="link-text" id="formLink">
+                Memuat link...
+            </div>
+
+            <button
+                type="button"
+                class="copy-link"
+                id="copyLink"
+            >
+                COPY
+            </button>
+
+        </div>
+
+        <div class="broadcast-actions">
+
+            <button
+                type="button"
+                class="broadcast-button btn-preview"
+                id="previewButton"
+            >
+                👁️ Preview
+            </button>
+
+            <button
+                type="button"
+                class="broadcast-button btn-whatsapp"
+                id="whatsappButton"
+            >
+                📱 Kirim ke WhatsApp
+            </button>
+
+        </div>
+
+        <div
+            class="preview-section"
+            id="previewSection"
+        >
+
+            <div class="preview-label">
+                Preview Pesan
+            </div>
+
+            <div
+                class="preview-message"
+                id="previewMessage"
+            ></div>
+
+        </div>
+
+        <div
+            class="broadcast-status"
+            id="broadcastStatus"
+        ></div>
+
+    </section>
+
+</main>
+
+<div
+    id="toast-container"
+    class="toast-container"
+></div>
+
+<footer class="bottom-nav">
+
+    <a href="index.html" class="bottom-item">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+
+<script src="./js/notif.js"></script>
+<script src="./js/broadcast.js"></script>
+
+</body>
+</html>
