@@ -383,7 +383,7 @@ if (typeof logAktivitas === 'function') {
             () => {
 
                 window.location.replace(
-                    'index.html'
+                    'dashboard.html'
                 );
 
             },
@@ -483,7 +483,7 @@ if(
 ){
 
     window.location.replace(
-        'index.html'
+        'dashboard.html'
     );
 
 }else{
