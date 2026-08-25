@@ -174,7 +174,7 @@ function getGlobalLogPageName(){
     ){
 
         fileName =
-            'index.html';
+            'dashboard.html';
 
     }
 

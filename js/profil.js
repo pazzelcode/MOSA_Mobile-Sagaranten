@@ -46,7 +46,7 @@ if(
     );
 
     window.location.replace(
-        'login.html'
+        'index.html'
     );
 
 }
@@ -151,7 +151,7 @@ if(logoutBtn){
             /* KEMBALI KE LOGIN */
 
             window.location.replace(
-                'login.html'
+                'index.html'
             );
 
         }
@@ -318,7 +318,7 @@ function goBack(){
 
     }else{
 
-        window.location.href = 'index.html';
+        window.location.href = 'dashboard.html';
 
     }
 

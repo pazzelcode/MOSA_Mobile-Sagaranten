@@ -140,7 +140,7 @@ function proteksiHalamanAdmin(){
 
 
         window.location.replace(
-            'index.html'
+            'dashboard.html'
         );
 
 
@@ -605,7 +605,7 @@ uploadButton.addEventListener(
 
 
             window.location.replace(
-                'index.html'
+                'dashboard.html'
             );
 
 
@@ -1346,7 +1346,7 @@ async function kirimNotifikasiOtomatis(namaFile, namaAdmin) {
             title: 'Pembaruan Sistem 🚀',
             message: `Admin ${namaAdmin} baru saja memperbarui Master Data (${namaFile}). Data terbaru sudah tersedia!`,
             type: 'system',
-            url: 'index.html',
+            url: 'dashboard.html',
             createdAt: new Date().toISOString()
         }
     };

@@ -74,7 +74,7 @@ function cekAdmin() {
         );
 
         window.location.replace(
-            'index.html'
+            'dashboard.html'
         );
 
         return false;
@@ -1433,7 +1433,7 @@ async function kirimNotifikasiBanner(
                 'banner',
 
             url:
-                'index.html',
+                'dashboard.html',
 
             createdAt:
                 new Date().toISOString()

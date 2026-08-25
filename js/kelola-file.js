@@ -28,7 +28,7 @@ let currentEditKey = null;
 function cekAdmin(){
     if(!ADMIN_PHONE || ADMIN_PHONE !== ADMIN_NUMBER){
         alert('Akses Administrator ditolak.');
-        window.location.replace('index.html');
+        window.location.replace('dashboard.html');
         return false;
     }
     return true;

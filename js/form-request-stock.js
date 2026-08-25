@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const dseMapping = {
             'SKBPLARA04': 'Parhan',
-            'SKBPLARA08': 'Andi',
+            'SKBPLARA08': 'Adiguna',
             'SKBPLARA11': 'Endem',
             'DSESGRN01': 'Pebrian'
         };
@@ -71,7 +71,7 @@ function goBack(){
 
     }else{
 
-        window.location.href = "index.html";
+        window.location.href = "dashboard.html";
 
     }
 

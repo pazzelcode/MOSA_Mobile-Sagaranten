@@ -2750,7 +2750,7 @@ function goBack(){
     else{
 
         window.location.href =
-            'index.html';
+            'dashboard.html';
 
     }
 

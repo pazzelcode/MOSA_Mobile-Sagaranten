@@ -836,7 +836,7 @@ function goBack(){
     }else{
 
         window.location.href =
-            'index.html';
+            'dashboard.html';
 
     }
 
@@ -901,7 +901,7 @@ function goBack(){
 
     }else{
 
-        window.location.href = "index.html";
+        window.location.href = "dashboard.html";
 
     }
 
