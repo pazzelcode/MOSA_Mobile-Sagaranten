@@ -173,7 +173,7 @@ body{
     top:0;
     left:0;
     width:100%;
-    height:232px;
+    height:260px;
     background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 65%,#2563eb 100%);
     border-bottom-left-radius:30px;
     border-bottom-right-radius:30px;
@@ -294,9 +294,10 @@ body{
     padding:0 5px;
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:10px;
+    gap:14px !important;
     background:#fff;
     box-sizing:border-box;
+    transform:translateX(-3px);
 }
 
 .quick-menu-item{
@@ -400,8 +401,8 @@ body{
     max-width:100%;
     margin:0 auto;
     display:grid;
-    grid-template-columns:repeat(4,70px);
-    gap:10px 18px;
+    grid-template-columns:repeat(4,70px) !important;
+    gap:10px 18px !important;
 }
 
 .nav-item{
@@ -1318,69 +1319,151 @@ body{
     text-align:center;
 }
 
+/* =========================================================
+   SEARCH OVERLAY
+========================================================= */
+
 .search-overlay{
-    position:fixed;
-    inset:0;
-    z-index:999999;
+    position:fixed !important;
+    top:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    left:0 !important;
+
+    width:100vw !important;
+    height:100vh !important;
+
     display:none;
     align-items:flex-start;
     justify-content:center;
-    padding:80px 14px 20px;
-    background:rgba(15,23,42,.55);
+
+    padding:90px 14px 20px;
+
+    background:rgba(15,23,42,.62);
+
+    -webkit-backdrop-filter:blur(5px);
     backdrop-filter:blur(5px);
+
+    z-index:2147483646 !important;
+
+    isolation:isolate;
 }
 
 .search-overlay.active{
-    display:flex;
+    display:flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    pointer-events:auto !important;
 }
 
 .search-box{
+    position:relative !important;
+
     width:100%;
     max-width:500px;
+
+    margin:0 auto;
+
     background:#fff;
+
+    border:1px solid #e2e8f0;
     border-radius:18px;
+
     overflow:hidden;
-    box-shadow:0 15px 40px rgba(0,0,0,.18);
+
+    box-shadow:
+        0 20px 50px rgba(15,23,42,.30),
+        0 5px 15px rgba(15,23,42,.15);
+
+    z-index:2147483647 !important;
+
+    transform:translateZ(0);
 }
 
 #searchInput{
+    position:relative;
+
+    display:block;
+
     width:100%;
-    padding:16px;
+    height:52px;
+
+    padding:0 16px;
+
+    background:#fff;
+
     border:0;
     border-bottom:1px solid #e2e8f0;
-    outline:0;
+
+    outline:none;
+
+    color:#0f172a;
+
+    font-family:'Segoe UI',Arial,sans-serif;
     font-size:15px;
     font-weight:600;
+
+    z-index:2;
+}
+
+#searchInput::placeholder{
+    color:#94a3b8;
+    font-weight:500;
+}
+
+#searchInput:focus{
+    border-bottom-color:#2563eb;
 }
 
 #searchResults{
+    width:100%;
     max-height:60vh;
+
     overflow-y:auto;
+    overflow-x:hidden;
+
+    background:#fff;
 }
 
 .search-item{
     display:flex;
     align-items:center;
     gap:12px;
+
+    width:100%;
+
     padding:14px 16px;
+
+    background:#fff;
+
     color:#0f172a;
     text-decoration:none;
+
     border-bottom:1px solid #f1f5f9;
 }
 
-.search-item:active{
+.search-item:hover{
     background:#f8fafc;
 }
 
+.search-item:active{
+    background:#eff6ff;
+}
+
 .search-icon{
+    flex:0 0 auto;
+    width:30px;
     font-size:20px;
+    text-align:center;
 }
 
 .search-text{
+    min-width:0;
     flex:1;
 }
 
 .search-title{
+    color:#0f172a;
     font-size:13px;
     font-weight:700;
 }
@@ -1393,7 +1476,9 @@ body{
 
 .empty-search{
     padding:20px;
+
     color:#94a3b8;
+
     font-size:12px;
     text-align:center;
 }
@@ -1571,4 +1656,100 @@ body{
     .nav-wrapper{grid-template-columns:repeat(7,minmax(90px,1fr));gap:28px 20px}
 
     .quick-menu-grid{grid-template-columns:repeat(4,1fr);gap:20px}
+}
+
+/* =========================================
+   SEARCH RESULT ICON
+========================================= */
+
+.search-icon{
+    width:40px;
+    height:40px;
+
+    min-width:40px;
+    max-width:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    overflow:hidden;
+}
+
+.search-icon i{
+    width:auto !important;
+    height:auto !important;
+
+    font-size:20px !important;
+
+    line-height:1 !important;
+
+    display:block !important;
+
+    transform:none !important;
+}
+
+.search-icon img{
+    width:26px !important;
+    height:26px !important;
+
+    max-width:26px !important;
+    max-height:26px !important;
+
+    min-width:26px !important;
+    min-height:26px !important;
+
+    object-fit:contain !important;
+
+    display:block !important;
+
+    position:static !important;
+
+    transform:none !important;
+}
+
+/* =========================================
+   WARNA IKON SEARCH
+   MENGIKUTI WARNA NAV MENU
+========================================= */
+
+.search-icon-form i{
+    color:var(--accent-form) !important;
+    -webkit-text-stroke:1.35px var(--accent-form);
+}
+
+.search-icon-trade i{
+    color:var(--accent-trade) !important;
+    -webkit-text-stroke:1.35px var(--accent-trade);
+}
+
+.search-icon-gudang i{
+    color:var(--accent-gudang) !important;
+    -webkit-text-stroke:1.35px var(--accent-gudang);
+}
+
+.search-icon-kpi i{
+    color:var(--accent-kpi) !important;
+    -webkit-text-stroke:1.35px var(--accent-kpi);
+}
+/* =========================================================
+   FORCE SEARCH TO TOP
+========================================================= */
+
+body:has(.search-overlay.active) .header-content-overlay,
+body:has(.search-overlay.active) .hero-background,
+body:has(.search-overlay.active) .summary-wrapper,
+body:has(.search-overlay.active) .app-navigation,
+body:has(.search-overlay.active) .bottom-nav{
+    z-index:auto !important;
+}
+
+.search-overlay.active{
+    z-index:2147483646 !important;
+}
+
+.search-overlay.active .search-box{
+    z-index:2147483647 !important;
 }
