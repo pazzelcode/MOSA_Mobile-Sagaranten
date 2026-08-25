@@ -63,9 +63,6 @@ function tampilkanNamaPengguna(){
         return;
     }
 
-    /*
-       Ambil nama dari localStorage
-    */
     const nama =
         localStorage.getItem(
             'mc_sagaranten_nama'
@@ -127,6 +124,7 @@ function cekAksesAdmin(){
     }
 
 }
+
 /* =========================================
    LOG AKTIVITAS
 ========================================= */
@@ -213,6 +211,41 @@ function ambilAngka(value){
 const MASTER_DATA_API_URL =
 'https://script.google.com/macros/s/AKfycbyUTB9KwjzJ8q3WrOBNwMxIu6f_0A_PHBb2h36pYy6tItdSeN5CA-4MI0YZC86_qSxWCQ/exec';
 
+
+/* =========================================
+   CACHE DASHBOARD INSTANT (AGAR TIDAK BERKEDIP)
+========================================= */
+
+function muatDashboardCache(){
+    try{
+        const cached = localStorage.getItem('mc_cached_dashboard');
+        if(!cached) return;
+
+        const data = JSON.parse(cached);
+
+        const grandTotalElement = document.getElementById('grand-total');
+        const totalSPElement = document.getElementById('total-sp');
+        const totalPaketElement = document.getElementById('total-paket');
+        const totalHifiElement = document.getElementById('total-hifi');
+
+        if(grandTotalElement && data.grandTotal !== undefined){
+            grandTotalElement.innerText = formatRupiah(data.grandTotal);
+        }
+        if(totalSPElement && data.totalSPVoucher !== undefined){
+            totalSPElement.innerText = formatRupiah(data.totalSPVoucher);
+        }
+        if(totalPaketElement && data.totalPaket !== undefined){
+            totalPaketElement.innerText = formatRupiah(data.totalPaket);
+        }
+        if(totalHifiElement && data.totalHifi !== undefined){
+            totalHifiElement.innerText = formatRupiah(data.totalHifi);
+        }
+    }catch(e){
+        console.error('Gagal memuat cache dashboard:', e);
+    }
+}
+
+
 async function updateDashboardData(){
 
     try{
@@ -280,6 +313,21 @@ async function updateDashboardData(){
             ambilAngka(
                 dashboard.hifi
             );
+
+        // =====================================
+        // SIMPAN KE LOCALSTORAGE (CACHE)
+        // =====================================
+        try{
+            localStorage.setItem('mc_cached_dashboard', JSON.stringify({
+                grandTotal: grandTotal,
+                totalSPVoucher: totalSPVoucher,
+                totalPaket: totalPaket,
+                totalHifi: totalHifi,
+                timestamp: Date.now()
+            }));
+        }catch(err){
+            console.warn('Gagal menyimpan cache:', err);
+        }
 
         console.log(
             '================================='
@@ -680,110 +728,163 @@ async function loadSemua(){
 ========================================= */
 
 const openSearchBtn =
-    document.getElementById(
-        'openSearch'
-    );
+    document.getElementById('openSearch');
 
 const searchOverlay =
-    document.getElementById(
-        'searchOverlay'
-    );
+    document.getElementById('searchOverlay');
 
 const searchInput =
-    document.getElementById(
-        'searchInput'
-    );
+    document.getElementById('searchInput');
 
 const searchResults =
-    document.getElementById(
-        'searchResults'
-    );
+    document.getElementById('searchResults');
 
+/* =========================================
+   ICON SEARCH (DISAMAKAN DENGAN MENU UTAMA HTML)
+========================================= */
+
+function getSearchIcon(item){
+
+    const icon =
+        item.querySelector('.nav-icon i, .nav-icon img');
+
+    let colorClass = '';
+
+    if(
+        item.classList.contains('form-link') ||
+        item.classList.contains('gudang-link') ||
+        item.classList.contains('dse-link')
+    ){
+        colorClass = 'search-icon-form';
+
+    }else if(
+        item.classList.contains('penjualan-link')
+    ){
+        colorClass = 'search-icon-trade';
+
+    }else if(
+        item.classList.contains('trade-link')
+    ){
+        colorClass = 'search-icon-gudang';
+
+    }else if(
+        item.classList.contains('kpi-link') ||
+        item.classList.contains('md-link')
+    ){
+        colorClass = 'search-icon-kpi';
+    }
+
+    if(!icon){
+
+        return `
+            <span class="search-icon ${colorClass}">
+                <i class="fa-solid fa-file fa-outline"></i>
+            </span>
+        `;
+
+    }
+
+    if(icon.tagName.toLowerCase() === 'i'){
+
+        return `
+            <span class="search-icon ${colorClass}">
+                <i class="${icon.className}"></i>
+            </span>
+        `;
+
+    }
+
+    if(icon.tagName.toLowerCase() === 'img'){
+
+        return `
+            <span class="search-icon ${colorClass}">
+                <img
+                    src="${icon.getAttribute('src')}"
+                    alt="${icon.getAttribute('alt') || ''}"
+                >
+            </span>
+        `;
+
+    }
+
+    return `
+        <span class="search-icon ${colorClass}">
+            <i class="fa-solid fa-file fa-outline"></i>
+        </span>
+    `;
+}
 
 function ambilSemuaMenu(){
 
     const menus = [];
 
+    const nomorLogin =
+        (
+            localStorage.getItem(
+                'mc_sagaranten_phone'
+            ) || ''
+        ).trim();
 
-    /* DOWNLOAD */
+    const nomorAdmin = [
+        '085759695969'
+    ];
 
-    menus.push({
-
-        title:'Download File',
-
-        desc:
-            'Unduh data excel dan backup',
-
-        href:
-            'download-data.html',
-
-        icon:'📥'
-
-    });
-
-
-    /* MENU UTAMA */
+    const isAdmin =
+        nomorAdmin.includes(
+            nomorLogin
+        );
 
     document
         .querySelectorAll(
-            '.nav-item[href], .submenu-item[href]'
+            '.nav-item[href], .submenu-item[href], .bottom-item[href]'
         )
         .forEach(item => {
 
+            const isAdminMenu =
+                item.id === 'admin-menu' ||
+                item.closest('#admin-menu') !== null ||
+                item.classList.contains('admin-menu') ||
+                item.classList.contains('admin-link') ||
+                item.getAttribute('data-menu') === 'admin' ||
+                item.getAttribute('data-role') === 'admin';
+
+            if(
+                !isAdmin &&
+                isAdminMenu
+            ){
+
+                return;
+
+            }
+
+            const title =
+                item.querySelector(
+                    '.nav-title'
+                )?.innerText.trim() || '';
+
+            if(!title){
+                return;
+            }
+
+            const desc =
+                item.querySelector(
+                    '.nav-desc'
+                )?.innerText.trim() || '';
+
+            const href =
+                item.getAttribute(
+                    'href'
+                );
+
             menus.push({
 
-                title:
-                    item.querySelector(
-                        '.nav-title, .submenu-title'
-                    )?.innerText || '',
+                title: title,
 
-                desc:
-                    item.querySelector(
-                        '.nav-desc'
-                    )?.innerText || '',
+                desc: desc,
 
-                href:
-                    item.getAttribute(
-                        'href'
-                    ),
+                href: href,
 
-                icon:
-                    item.querySelector(
-                        '.nav-icon, .submenu-icon'
-                    )?.innerText || '📄'
-
-            });
-
-        });
-
-
-    /* QUICK ACTION */
-
-    document
-        .querySelectorAll(
-            '.action-btn[href]'
-        )
-        .forEach(item => {
-
-            menus.push({
-
-                title:
-                    item.querySelector(
-                        '.action-label'
-                    )?.innerText || '',
-
-                desc:
-                    'Menu Aksi Cepat',
-
-                href:
-                    item.getAttribute(
-                        'href'
-                    ),
-
-                icon:
-                    item.querySelector(
-                        '.action-icon'
-                    )?.innerText || '⚡'
+                icon: getSearchIcon(item)
 
             });
 
@@ -794,14 +895,8 @@ function ambilSemuaMenu(){
 
 }
 
-
-const allMenus =
+let allMenus =
     ambilSemuaMenu();
-
-
-/* =========================================
-   BUKA SEARCH
-========================================= */
 
 if(openSearchBtn){
 
@@ -820,7 +915,6 @@ if(openSearchBtn){
                 ''
             );
 
-
             setTimeout(
                 () => {
 
@@ -834,11 +928,6 @@ if(openSearchBtn){
     );
 
 }
-
-
-/* =========================================
-   TUTUP SEARCH
-========================================= */
 
 if(searchOverlay){
 
@@ -862,11 +951,6 @@ if(searchOverlay){
 
 }
 
-
-/* =========================================
-   SEARCH REALTIME
-========================================= */
-
 if(searchInput){
 
     searchInput.addEventListener(
@@ -882,18 +966,12 @@ if(searchInput){
 
 }
 
-
-/* =========================================
-   HASIL SEARCH
-========================================= */
-
 function tampilkanHasil(keyword){
 
     keyword =
         keyword
         .toLowerCase()
         .trim();
-
 
     const hasil =
         allMenus.filter(
@@ -920,7 +998,6 @@ function tampilkanHasil(keyword){
             }
         );
 
-
     if(
         !searchResults
     ){
@@ -928,7 +1005,6 @@ function tampilkanHasil(keyword){
         return;
 
     }
-
 
     if(
         hasil.length === 0
@@ -945,7 +1021,6 @@ function tampilkanHasil(keyword){
         return;
 
     }
-
 
     searchResults.innerHTML =
         hasil.map(
@@ -979,15 +1054,10 @@ function tampilkanHasil(keyword){
 
 }
 
-/* =========================================
-   REFRESH
-========================================= */
-
 const refreshButton =
     document.getElementById(
         'btn-refresh'
     );
-
 
 if(refreshButton){
 
@@ -1000,7 +1070,6 @@ if(refreshButton){
                     'refresh-icon'
                 );
 
-
             if(icon){
 
                 icon.classList.add(
@@ -1009,21 +1078,17 @@ if(refreshButton){
 
             }
 
-
             kirimLog(
                 'Manual Refresh Halaman'
             );
-
 
             tambahNotif(
                 'Halaman sedang direfresh...'
             );
 
-
             showToast(
                 'Halaman sedang direfresh...'
             );
-
 
             setTimeout(
                 () => {
@@ -1039,16 +1104,10 @@ if(refreshButton){
 
 }
 
-
-/* =========================================
-   DOWNLOAD
-========================================= */
-
 const downloadButton =
     document.getElementById(
         'btn-download'
     );
-
 
 if(downloadButton){
 
@@ -1058,11 +1117,9 @@ if(downloadButton){
 
             e.preventDefault();
 
-
             kirimLog(
                 'Melakukan Download File'
             );
-
 
             window.location.href =
                 'download-data.html?download=success';
@@ -1071,11 +1128,6 @@ if(downloadButton){
     );
 
 }
-
-
-/* =========================================
-   STORAGE EVENT
-========================================= */
 
 window.addEventListener(
     'storage',
@@ -1093,11 +1145,6 @@ window.addEventListener(
     }
 );
 
-
-/* =========================================
-   HAPUS NOTIF SAAT MENU DIBUKA
-========================================= */
-
 document
     .querySelectorAll(
         '.nav-item[href], .submenu-item[href], .bottom-item[href]'
@@ -1112,12 +1159,10 @@ document
                     'notif_logs'
                 );
 
-
                 const badge =
                     document.getElementById(
                         'notif-badge'
                     );
-
 
                 if(badge){
 
@@ -1136,12 +1181,15 @@ document
 
 
 /* =========================================
-   INIT
+   INIT (DIPERBARUI DENGAN MUAT CACHE)
 ========================================= */
 
 document.addEventListener(
     'DOMContentLoaded',
     () => {
+
+        // Memuat cache angka terakhir secara instan agar tidak kosong/berkedip
+        muatDashboardCache();
 
         tampilkanNamaPengguna();
 
@@ -1168,28 +1216,16 @@ setInterval(
     10000
 );
 
- /* =========================================================
+/* =========================================================
    BANNER API
 ========================================================= */
 
 const BANNER_API_URL =
     'https://script.google.com/macros/s/AKfycbxpgqbNoi4_2FdP1pxrr6qxPrR9z17GRNkQVXXYq3nyGkvubJqNJe1JTzw_f5vsGVpcBw/exec';
 
-
-/* =========================================================
-   BANNER CAROUSEL
-========================================================= */
-
 let homeBanners = [];
-
 let bannerIndex = 0;
-
 let bannerTimer = null;
-
-
-/* =========================================================
-   LOAD BANNER
-========================================================= */
 
 async function loadHomeBanners(){
 
@@ -1202,7 +1238,6 @@ async function loadHomeBanners(){
                 Date.now()
             );
 
-
         if(
             !response.ok
         ){
@@ -1214,10 +1249,8 @@ async function loadHomeBanners(){
 
         }
 
-
         const result =
             await response.json();
-
 
         if(
             !result.success
@@ -1229,7 +1262,6 @@ async function loadHomeBanners(){
             );
 
         }
-
 
         homeBanners =
             (result.data || [])
@@ -1243,9 +1275,7 @@ async function loadHomeBanners(){
                     Number(b.urutan)
             );
 
-
         renderHomeBanners();
-
 
     }catch(error){
 
@@ -1257,11 +1287,6 @@ async function loadHomeBanners(){
     }
 
 }
-
-
-/* =========================================================
-   RENDER (DIPERBARUI UNTUK PERFORMA)
-========================================================= */
 
 function renderHomeBanners(){
 
@@ -1289,8 +1314,6 @@ function renderHomeBanners(){
 
     track.innerHTML = homeBanners.map((banner, index) => {
         const safeLink = banner.link && banner.link !== '' ? banner.link : '#';
-        
-        // Optimasi Performa: Slide pertama dimuat langsung (eager), sisanya belakangan (lazy)
         const loadingAttr = index === 0 ? 'eager' : 'lazy';
         const fetchPriority = index === 0 ? 'high' : 'auto';
 
@@ -1325,12 +1348,6 @@ function renderHomeBanners(){
     }
 }
 
-
-
-/* =========================================================
-   PINDAH BANNER
-========================================================= */
-
 function pindahHomeBanner(
     index
 ){
@@ -1340,12 +1357,10 @@ function pindahHomeBanner(
             'banner-track'
         );
 
-
     const dots =
         document.querySelectorAll(
             '#banner-dots .banner-dot'
         );
-
 
     if(
         !track ||
@@ -1356,10 +1371,8 @@ function pindahHomeBanner(
 
     }
 
-
     bannerIndex =
         index;
-
 
     if(
         bannerIndex >=
@@ -1371,7 +1384,6 @@ function pindahHomeBanner(
 
     }
 
-
     if(
         bannerIndex < 0
     ){
@@ -1381,10 +1393,8 @@ function pindahHomeBanner(
 
     }
 
-
     track.style.transform =
         `translateX(-${bannerIndex * 100}%)`;
-
 
     dots.forEach(
         (
@@ -1402,17 +1412,11 @@ function pindahHomeBanner(
 
 }
 
-
-/* =========================================================
-   AUTO SLIDE
-========================================================= */
-
 function mulaiHomeBanner(){
 
     clearInterval(
         bannerTimer
     );
-
 
     if(
         homeBanners.length <= 1
@@ -1421,7 +1425,6 @@ function mulaiHomeBanner(){
         return;
 
     }
-
 
     bannerTimer =
         setInterval(
@@ -1436,11 +1439,6 @@ function mulaiHomeBanner(){
         );
 
 }
-
-
-/* =========================================================
-   ESCAPE
-========================================================= */
 
 function escapeBannerHtml(
     value
@@ -1471,6 +1469,7 @@ function escapeBannerHtml(
     );
 
 }
+
 /* =========================================
    LOGO PREVIEW
 ========================================= */
@@ -1486,75 +1485,40 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-
-    /* BUKA PREVIEW */
-
     function openLogoPreview() {
-
         modal.classList.add("show");
         modal.setAttribute("aria-hidden", "false");
-
-        // Mencegah halaman belakang ikut scroll
         document.body.style.overflow = "hidden";
     }
 
-
-    /* TUTUP PREVIEW */
-
     function closeLogoPreview() {
-
         modal.classList.remove("show");
         modal.setAttribute("aria-hidden", "true");
-
         document.body.style.overflow = "";
     }
-
-
-    /* KLIK LOGO */
 
     trigger.addEventListener("click", function () {
         openLogoPreview();
     });
 
-
-    /* TOMBOL X */
-
     closeBtn.addEventListener("click", function (event) {
-
         event.stopPropagation();
-
         closeLogoPreview();
-
     });
 
-
-    /* KLIK AREA GELAP */
-
     modal.addEventListener("click", function (event) {
-
         if (event.target === modal) {
             closeLogoPreview();
         }
-
     });
 
-
-    /* TOMBOL ESC */
-
     document.addEventListener("keydown", function (event) {
-
         if (event.key === "Escape") {
             closeLogoPreview();
         }
-
     });
 
 });
-
-
-/* =========================================================
-   INIT
-========================================================= */
 
 document.addEventListener(
     'DOMContentLoaded',
@@ -1564,4 +1528,3 @@ document.addEventListener(
 
     }
 );
-
