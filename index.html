@@ -1,224 +1,128 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta property="og:title" content="MOSA - MOBILE SAGARANTEN">
+<meta property="og:description" content="Monitoring Stok dan Penjualan - Dashboard MC-SAGARANTEN">
+<meta property="og:image" content="https://raw.githubusercontent.com/pazzelcode/MOSA_Mobile-Sagaranten/refs/heads/main/img/favicon.png">
+<meta property="og:url" content="https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/">
+<meta property="og:type" content="website">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<title>Login | MC-SAGARANTEN</title>
 
-<title>
-Login | MC-SAGARANTEN
-</title>
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
->
-<link
-    rel="icon"
-    type="image/png"
-    href="./img/favicon.png"
->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="icon" type="image/png" href="./img/favicon.png">
 <link rel="stylesheet" href="./css/login.css">
-
 </head>
 
 <body>
 
-
 <div class="login-page">
 
-
     <div class="bg-circle one"></div>
-
     <div class="bg-circle two"></div>
-
     <div class="bg-circle three"></div>
-
     <div class="bg-pattern left"></div>
-
     <div class="bg-pattern right"></div>
-
     <div class="wave one"></div>
-
     <div class="wave two"></div>
-
     <div class="wave three"></div>
-
     <div class="wave four"></div>
-
 
     <main class="login-container">
 
-
-        <!-- BRAND -->
-
         <div class="brand">
-
-            <img
-                src="./img/favicon.png"
-                class="brand-logo"
-                alt="MC-SAGARANTEN"
-            >
-
-            <div class="brand-title">
-                MC-SAGARANTEN
-            </div>
-
-            <div class="brand-subtitle">
-                Monitoring Stok & Penjualan
-            </div>
-
+            <img src="./img/favicon.png" class="brand-logo" alt="MC-SAGARANTEN">
+            <div class="brand-title">MC-SAGARANTEN</div>
+            <div class="brand-subtitle">Monitoring Stok & Penjualan</div>
         </div>
-
-
-        <!-- LOGIN CARD -->
 
         <section class="login-card">
 
+            <div class="card-title">Selamat Datang 👋</div>
+            <div class="card-desc">Silakan masuk menggunakan nomor HP dan PIN Anda.</div>
 
-            <div class="card-title">
-                Selamat Datang 👋
-            </div>
-
-            <div class="card-desc">
-                Silakan masuk menggunakan
-                nomor HP dan PIN Anda.
-            </div>
-
-
-            <!-- ERROR -->
-
-            <div
-                class="login-error"
-                id="loginError"
-            >
+            <div class="login-error" id="loginError">
                 <span id="errorText"></span>
             </div>
 
+            <div class="form-group">
+                <label class="form-label" for="phone">Nomor HP</label>
 
-            <!-- NOMOR HP -->
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
 
-            <!-- NOMOR HP -->
+                    <input
+                        type="tel"
+                        id="phone"
+                        class="form-input"
+                        placeholder="081234567890"
+                        inputmode="numeric"
+                        autocomplete="tel"
+                        maxlength="15"
+                    >
+                </div>
+            </div>
 
-<div class="form-group">
+            <div class="form-group">
+                <label class="form-label" for="pin">PIN 6 Digit</label>
 
-    <label
-        class="form-label"
-        for="phone"
-    >
-        Nomor HP
-    </label>
+                <div class="input-wrapper">
+                    <div class="input-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
 
-    <div class="input-wrapper">
+                    <input
+                        type="password"
+                        id="pin"
+                        class="form-input pin-input"
+                        placeholder="••••••"
+                        inputmode="numeric"
+                        maxlength="6"
+                        autocomplete="off"
+                    >
 
-        <div class="input-icon">
-            <i class="fa-solid fa-mobile-screen-button"></i>
-        </div>
-
-        <input
-            type="tel"
-            id="phone"
-            class="form-input"
-            placeholder="081234567890"
-            inputmode="numeric"
-            autocomplete="tel"
-            maxlength="15"
-        >
-
-    </div>
-
-</div>
-
-
-<!-- PIN -->
-
-<div class="form-group">
-
-    <label
-        class="form-label"
-        for="pin"
-    >
-        PIN 6 Digit
-    </label>
-
-    <div class="input-wrapper">
-
-        <div class="input-icon">
-            <i class="fa-solid fa-lock"></i>
-        </div>
-
-        <input
-    type="password"
-    id="pin"
-    class="form-input pin-input"
-    placeholder="••••••"
-    inputmode="numeric"
-    maxlength="6"
-    autocomplete="off"
->
-
-        <button
-            type="button"
-            class="toggle-pin"
-            id="togglePin"
-            aria-label="Tampilkan PIN"
-        >
-            <i class="fa-solid fa-eye"></i>
-        </button>
-
-    </div>
-
-</div>
-
-
-            <!-- BUTTON -->
+                    <button
+                        type="button"
+                        class="toggle-pin"
+                        id="togglePin"
+                        aria-label="Tampilkan PIN"
+                    >
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
 
             <button
                 type="button"
                 class="login-button"
                 id="loginButton"
             >
-
-                <span class="button-text">
-                    MASUK
-                </span>
-
+                <span class="button-text">MASUK</span>
                 <span class="spinner"></span>
-
             </button>
 
-
             <div class="security">
-
                 🔒 Login aman untuk pengguna terdaftar
-
             </div>
-
 
         </section>
 
-
         <div class="footer">
-
-            <strong>
-                M O S A
-            </strong>
-
+            <strong>M O S A</strong>
             <br>
-
             Mobile Sagaranten
-
         </div>
-
 
     </main>
 
 </div>
+
 <script src="./js/global-log.js"></script>
 <script src="./js/login.js"></script>
+
 </body>
 </html>
