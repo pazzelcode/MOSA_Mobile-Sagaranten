@@ -704,7 +704,9 @@ uploadButton.addEventListener(
             ===================================== */
 
             const uploadData = {
-
+                action: 
+                    'upload',
+              
                 fileName:
                     selectedFile.name,
 
