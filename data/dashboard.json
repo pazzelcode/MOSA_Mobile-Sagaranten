@@ -1,9 +1,14 @@
 {
   "success": true,
-  "data": {
-    "totalPenjualanSalmo": 402316100,
-    "spDanVoucher": 79274350,
-    "allPaket": 30241900,
-    "hifi": 350000
-  }
+  "sheet": "Dashboard",
+  "updated_at": "2026-08-29T12:27:28.787Z",
+  "total_data": 1,
+  "data": [
+    {
+      "total_penjualan_salmo": 10000000,
+      "sp_dan_voucher": 10000000,
+      "all_paket": 10000000,
+      "hifi": 10000000
+    }
+  ]
 }
