@@ -1,0 +1,52 @@
+{
+  "success": true,
+  "sheet": "Activity Daily",
+  "updated_at": "2026-08-29T12:27:28.787Z",
+  "total_data": 4,
+  "data": [
+    {
+      "tanggal": "2026-08-22T16:59:48.000Z",
+      "dse": "Adiguna",
+      "saldo_mobo": 2500000,
+      "sp": 10,
+      "voucher": 10,
+      "total_sp_voucher": 50000,
+      "nama_paket": "Paket 1",
+      "jumlah_paket": 5,
+      "paket_rupiah": 70000
+    },
+    {
+      "tanggal": "2026-08-22T16:59:48.000Z",
+      "dse": "Parhan",
+      "saldo_mobo": 2500000,
+      "sp": 10,
+      "voucher": 10,
+      "total_sp_voucher": 50000,
+      "nama_paket": "Paket 1",
+      "jumlah_paket": 5,
+      "paket_rupiah": 70000
+    },
+    {
+      "tanggal": "2026-08-22T16:59:48.000Z",
+      "dse": "Enden",
+      "saldo_mobo": 2500000,
+      "sp": 10,
+      "voucher": 10,
+      "total_sp_voucher": 50000,
+      "nama_paket": "Paket 1",
+      "jumlah_paket": 5,
+      "paket_rupiah": 70000
+    },
+    {
+      "tanggal": "2026-08-22T16:59:48.000Z",
+      "dse": "Pebrian",
+      "saldo_mobo": 2500000,
+      "sp": 10,
+      "voucher": 10,
+      "total_sp_voucher": 50000,
+      "nama_paket": "Paket 1",
+      "jumlah_paket": 5,
+      "paket_rupiah": 70000
+    }
+  ]
+}
