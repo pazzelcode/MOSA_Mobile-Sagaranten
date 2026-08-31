@@ -1,14 +1,18 @@
 {
   "success": true,
   "sheet": "Dashboard",
-  "updated_at": "2026-08-29T12:27:28.787Z",
+  "updated_at": "2026-08-31T12:31:07.208Z",
+  "uploaded_by": "Admin1",
+  "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
+  "uploaded_by_email": "085759695969@mc-sagaranten.local",
+  "version": "20260831-123107",
   "total_data": 1,
   "data": [
     {
-      "total_penjualan_salmo": 10000000,
-      "sp_dan_voucher": 10000000,
-      "all_paket": 10000000,
-      "hifi": 10000000
+      "TOTAL PENJUALAN SALMO": 10000000,
+      "SP DAN VOUCHER": 10000000,
+      "ALL PAKET": 10000000,
+      "HIFI": 10000000
     }
   ]
 }
