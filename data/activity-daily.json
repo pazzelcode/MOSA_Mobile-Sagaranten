@@ -1,52 +1,56 @@
 {
   "success": true,
   "sheet": "Activity Daily",
-  "updated_at": "2026-08-29T12:27:28.787Z",
+  "updated_at": "2026-08-31T12:31:07.208Z",
+  "uploaded_by": "Admin1",
+  "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
+  "uploaded_by_email": "085759695969@mc-sagaranten.local",
+  "version": "20260831-123107",
   "total_data": 4,
   "data": [
     {
-      "tanggal": "2026-08-22T16:59:48.000Z",
-      "dse": "Adiguna",
-      "saldo_mobo": 2500000,
-      "sp": 10,
-      "voucher": 10,
-      "total_sp_voucher": 50000,
-      "nama_paket": "Paket 1",
-      "jumlah_paket": 5,
-      "paket_rupiah": 70000
+      "TANGGAL": "2026-08-22T16:59:48.000Z",
+      "DSE": "Adiguna",
+      "SALDO MOBO": 2500000,
+      "SP": 10,
+      "VOUCHER": 10,
+      "TOTAL SP VOUCHER": 50000,
+      "NAMA PAKET": "Paket 1",
+      "JUMLAH PAKET": 5,
+      "PAKET RUPIAH": 70000
     },
     {
-      "tanggal": "2026-08-22T16:59:48.000Z",
-      "dse": "Parhan",
-      "saldo_mobo": 2500000,
-      "sp": 10,
-      "voucher": 10,
-      "total_sp_voucher": 50000,
-      "nama_paket": "Paket 1",
-      "jumlah_paket": 5,
-      "paket_rupiah": 70000
+      "TANGGAL": "2026-08-22T16:59:48.000Z",
+      "DSE": "Parhan",
+      "SALDO MOBO": 2500000,
+      "SP": 10,
+      "VOUCHER": 10,
+      "TOTAL SP VOUCHER": 50000,
+      "NAMA PAKET": "Paket 1",
+      "JUMLAH PAKET": 5,
+      "PAKET RUPIAH": 70000
     },
     {
-      "tanggal": "2026-08-22T16:59:48.000Z",
-      "dse": "Enden",
-      "saldo_mobo": 2500000,
-      "sp": 10,
-      "voucher": 10,
-      "total_sp_voucher": 50000,
-      "nama_paket": "Paket 1",
-      "jumlah_paket": 5,
-      "paket_rupiah": 70000
+      "TANGGAL": "2026-08-22T16:59:48.000Z",
+      "DSE": "Enden",
+      "SALDO MOBO": 2500000,
+      "SP": 10,
+      "VOUCHER": 10,
+      "TOTAL SP VOUCHER": 50000,
+      "NAMA PAKET": "Paket 1",
+      "JUMLAH PAKET": 5,
+      "PAKET RUPIAH": 70000
     },
     {
-      "tanggal": "2026-08-22T16:59:48.000Z",
-      "dse": "Pebrian",
-      "saldo_mobo": 2500000,
-      "sp": 10,
-      "voucher": 10,
-      "total_sp_voucher": 50000,
-      "nama_paket": "Paket 1",
-      "jumlah_paket": 5,
-      "paket_rupiah": 70000
+      "TANGGAL": "2026-08-22T16:59:48.000Z",
+      "DSE": "Pebrian",
+      "SALDO MOBO": 2500000,
+      "SP": 10,
+      "VOUCHER": 10,
+      "TOTAL SP VOUCHER": 50000,
+      "NAMA PAKET": "Paket 1",
+      "JUMLAH PAKET": 5,
+      "PAKET RUPIAH": 70000
     }
   ]
 }
