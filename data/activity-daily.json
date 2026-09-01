@@ -1,17 +1,17 @@
 {
   "success": true,
   "sheet": "Activity Daily",
-  "updated_at": "2026-09-01T11:45:05.654Z",
+  "updated_at": "2026-09-01T18:27:20.156Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260901-114505",
+  "version": "20260901-182720",
   "total_data": 4,
   "data": [
     {
       "TANGGAL": "2026-08-22T16:59:48.000Z",
       "DSE": "Adiguna",
-      "SALDO MOBO": 2250000,
+      "SALDO MOBO": "",
       "SP": 0,
       "VOUCHER": 0,
       "TOTAL SP VOUCHER": 0,
@@ -22,7 +22,7 @@
     {
       "TANGGAL": "2026-08-22T16:59:48.000Z",
       "DSE": "Parhan",
-      "SALDO MOBO": 2950000,
+      "SALDO MOBO": "",
       "SP": 0,
       "VOUCHER": 165,
       "TOTAL SP VOUCHER": 50000,
@@ -33,7 +33,7 @@
     {
       "TANGGAL": "2026-08-22T16:59:48.000Z",
       "DSE": "Enden",
-      "SALDO MOBO": 3900000,
+      "SALDO MOBO": "",
       "SP": 5,
       "VOUCHER": 11,
       "TOTAL SP VOUCHER": 50000,
