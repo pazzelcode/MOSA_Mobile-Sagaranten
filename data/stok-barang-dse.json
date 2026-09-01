@@ -1,186 +1,141 @@
 {
   "success": true,
   "sheet": "stok-barang-dse",
-  "updated_at": "2026-08-31T12:31:07.208Z",
+  "updated_at": "2026-09-01T11:45:05.654Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260831-123107",
-  "total_data": 22,
+  "version": "20260901-114505",
+  "total_data": 17,
   "data": [
     {
       "JENIS BARANG": "SP ZERO",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 72,
+      "FARHAN": 60,
+      "ENDEN": 78,
+      "PEBRIAN": 95,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 305
     },
     {
       "JENIS BARANG": "SP 3GB INJEK",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 122,
+      "FARHAN": 30,
+      "ENDEN": 39,
+      "PEBRIAN": 25,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 216
     },
     {
       "JENIS BARANG": "SP 3GB ORI",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 0,
+      "FARHAN": 63,
+      "ENDEN": 80,
+      "PEBRIAN": 183,
       "SPV": "",
-      "TOTAL": 40
-    },
-    {
-      "JENIS BARANG": "SP 9GB",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
-      "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 326
     },
     {
       "JENIS BARANG": "SP 10GB",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 0,
+      "FARHAN": 0,
+      "ENDEN": 0,
+      "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 40
-    },
-    {
-      "JENIS BARANG": "",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
-      "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 0
     },
     {
       "JENIS BARANG": "VDK",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 200,
+      "FARHAN": 150,
+      "ENDEN": 33,
+      "PEBRIAN": 150,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 533
     },
     {
       "JENIS BARANG": "Voucher 3GB 14HR",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 0,
+      "FARHAN": 0,
+      "ENDEN": 0,
+      "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 0
     },
     {
       "JENIS BARANG": "Voucher 2,5GB",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 72,
+      "FARHAN": 57,
+      "ENDEN": 55,
+      "PEBRIAN": 134,
       "SPV": "",
-      "TOTAL": 40
-    },
-    {
-      "JENIS BARANG": "Freedom Internet  3 GB",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
-      "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 318
     },
     {
       "JENIS BARANG": "Voucher 3.5GB 5HR",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 9,
+      "FARHAN": 15,
+      "ENDEN": 15,
+      "PEBRIAN": 65,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 104
     },
     {
       "JENIS BARANG": "Voucher 5GB 5HR",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 56,
+      "FARHAN": 0,
+      "ENDEN": 48,
+      "PEBRIAN": 52,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 156
     },
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 9,
+      "FARHAN": 7,
+      "ENDEN": 15,
+      "PEBRIAN": 66,
       "SPV": "",
-      "TOTAL": 40
-    },
-    {
-      "JENIS BARANG": "Fi 6GB",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
-      "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 97
     },
     {
       "JENIS BARANG": "Fi 1.5GB/1D",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 0,
+      "FARHAN": 0,
+      "ENDEN": 0,
+      "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 40
-    },
-    {
-      "JENIS BARANG": "Fi 3GB/1D",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
-      "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 0
     },
     {
       "JENIS BARANG": "Fi 3GB/3D",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 11,
+      "FARHAN": 0,
+      "ENDEN": 9,
+      "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 20
     },
     {
       "JENIS BARANG": "Fi 5GB/2D",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 75,
+      "FARHAN": 0,
+      "ENDEN": 75,
+      "PEBRIAN": 45,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 195
     },
     {
       "JENIS BARANG": "Fi 5GB/3D",
-      "ADIGUNA": 10,
-      "FARHAN": 10,
-      "ENDEN": 10,
-      "PEBRIAN": 10,
+      "ADIGUNA": 15,
+      "FARHAN": 0,
+      "ENDEN": 3,
+      "PEBRIAN": 54,
       "SPV": "",
-      "TOTAL": 40
+      "TOTAL": 72
     },
     {
-      "JENIS BARANG": "",
+      "JENIS BARANG": "Fi 7GB/28D",
       "ADIGUNA": "-",
       "FARHAN": "-",
       "ENDEN": "-",
@@ -199,12 +154,12 @@
     },
     {
       "JENIS BARANG": "TOTAL",
-      "ADIGUNA": 190,
-      "FARHAN": 190,
-      "ENDEN": 190,
-      "PEBRIAN": 190,
+      "ADIGUNA": 641,
+      "FARHAN": 382,
+      "ENDEN": 450,
+      "PEBRIAN": 869,
       "SPV": 0,
-      "TOTAL": 760
+      "TOTAL": 2342
     }
   ]
 }
