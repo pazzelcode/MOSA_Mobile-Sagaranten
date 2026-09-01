@@ -1,0 +1,2184 @@
+{
+  "success": true,
+  "sheet": "data-outlet",
+  "updated_at": "2026-09-01T18:27:20.156Z",
+  "uploaded_by": "Admin1",
+  "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
+  "uploaded_by_email": "085759695969@mc-sagaranten.local",
+  "version": "20260901-182720",
+  "total_data": 362,
+  "data": [
+    {
+      "ID OUTLET": 17399553,
+      "NAMA OUTLET": "Jaya cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 572672,
+      "NAMA OUTLET": "Bahagia cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 572677,
+      "NAMA OUTLET": "Fitri cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1305444,
+      "NAMA OUTLET": "TIME CEL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1314309,
+      "NAMA OUTLET": "ANDRI CEL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1348548,
+      "NAMA OUTLET": "MIRRA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1451710,
+      "NAMA OUTLET": "RISS CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1513829,
+      "NAMA OUTLET": "ADITYA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1554004,
+      "NAMA OUTLET": "MANDIRI CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1554006,
+      "NAMA OUTLET": "ABUELA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1555825,
+      "NAMA OUTLET": "SILVI CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17005974,
+      "NAMA OUTLET": "Nira Cell 2",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17022249,
+      "NAMA OUTLET": "GARASI CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17031504,
+      "NAMA OUTLET": "PUTRA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17031830,
+      "NAMA OUTLET": "M2R CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17067459,
+      "NAMA OUTLET": "N2 cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1287387,
+      "NAMA OUTLET": "DEAN CLL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17191895,
+      "NAMA OUTLET": "Riza cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1554005,
+      "NAMA OUTLET": "BARITO CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17197682,
+      "NAMA OUTLET": "HELMIA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17198475,
+      "NAMA OUTLET": "AKHSAN CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17201103,
+      "NAMA OUTLET": "CINTA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17203857,
+      "NAMA OUTLET": "DIKA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17215843,
+      "NAMA OUTLET": "HENDI CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17219451,
+      "NAMA OUTLET": "FAJAR CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17231464,
+      "NAMA OUTLET": "RINA CELL.",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17241854,
+      "NAMA OUTLET": "CHA CHA CELL 2",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17247114,
+      "NAMA OUTLET": "NURUL CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17260654,
+      "NAMA OUTLET": "GILANG CELL2",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17260963,
+      "NAMA OUTLET": "DIKI CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17272018,
+      "NAMA OUTLET": "FUTUHAT  CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17274329,
+      "NAMA OUTLET": "YOYOY CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17279399,
+      "NAMA OUTLET": "V3 KOMUNIKA",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17304908,
+      "NAMA OUTLET": "BIO CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17382744,
+      "NAMA OUTLET": "Toko pds cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17437435,
+      "NAMA OUTLET": "FIRMAN CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1554007,
+      "NAMA OUTLET": "NIRA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17450776,
+      "NAMA OUTLET": "Bintang cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17539928,
+      "NAMA OUTLET": "ABIM CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17632897,
+      "NAMA OUTLET": "HM Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17650936,
+      "NAMA OUTLET": "PC CIAWI CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17651007,
+      "NAMA OUTLET": "Jemih Wijaya Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17659685,
+      "NAMA OUTLET": "Jemih cell 2",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17670006,
+      "NAMA OUTLET": "Rai Raka Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1554354,
+      "NAMA OUTLET": "ALIYA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17673189,
+      "NAMA OUTLET": "Gevan Store",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17677142,
+      "NAMA OUTLET": "WP - Warung Eka",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17677163,
+      "NAMA OUTLET": "WP - Ruswandi",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17138377,
+      "NAMA OUTLET": "EMYRATE CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17716718,
+      "NAMA OUTLET": "Herlan cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17728380,
+      "NAMA OUTLET": "AGEN TERMINAL SAGARANTEN",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17195026,
+      "NAMA OUTLET": "JST CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 1350434,
+      "NAMA OUTLET": "IND STUDIO CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17449694,
+      "NAMA OUTLET": "CENTRAL PHONE ACC",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17670926,
+      "NAMA OUTLET": "Jihan Cellular",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17735572,
+      "NAMA OUTLET": "Fauziah Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17695935,
+      "NAMA OUTLET": "Taufiq cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17740819,
+      "NAMA OUTLET": "Toko Paisal",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17747972,
+      "NAMA OUTLET": "Jujum Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17751205,
+      "NAMA OUTLET": "Ruspita Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17762530,
+      "NAMA OUTLET": "JAY PHONE STORE",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17769389,
+      "NAMA OUTLET": "HASANAH STORE",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17780368,
+      "NAMA OUTLET": "Toko Dewi",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17781688,
+      "NAMA OUTLET": "Cikupa Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17778406,
+      "NAMA OUTLET": "RAFLI CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17782547,
+      "NAMA OUTLET": "Alya Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17782560,
+      "NAMA OUTLET": "Andi Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17787814,
+      "NAMA OUTLET": "ICA CELL",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17788641,
+      "NAMA OUTLET": "RARAN RAINA STORE",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17792292,
+      "NAMA OUTLET": "Gilang cell 6",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17793789,
+      "NAMA OUTLET": "XELL STORE",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17805909,
+      "NAMA OUTLET": "ISP SAGARANTEN",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17833870,
+      "NAMA OUTLET": "ZAYN STORE",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17754885,
+      "NAMA OUTLET": "Diana Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17769829,
+      "NAMA OUTLET": "Keysya Cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17807761,
+      "NAMA OUTLET": "Dzaka cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17819224,
+      "NAMA OUTLET": "WR Family",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17794351,
+      "NAMA OUTLET": "Aden cell",
+      "ID DSE": "DSESGRN01",
+      "NAMA DSE": "Pebrian Sahri Ramdani"
+    },
+    {
+      "ID OUTLET": 17431650,
+      "NAMA OUTLET": "ZFN CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1287334,
+      "NAMA OUTLET": "RAMDANY",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1287411,
+      "NAMA OUTLET": "SCREEN CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1305544,
+      "NAMA OUTLET": "KIKI CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1306929,
+      "NAMA OUTLET": "SM 3 CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1339357,
+      "NAMA OUTLET": "LENI 2 CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1555650,
+      "NAMA OUTLET": "RENDI CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1555658,
+      "NAMA OUTLET": "PONK CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1559327,
+      "NAMA OUTLET": "dzaki cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17031672,
+      "NAMA OUTLET": "ZM CELLULER",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17190542,
+      "NAMA OUTLET": "BERKAH CELLULAR",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17197757,
+      "NAMA OUTLET": "GIAN ABDULLAH CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17203837,
+      "NAMA OUTLET": "IDOLA CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17139620,
+      "NAMA OUTLET": "SBL STORE",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17249588,
+      "NAMA OUTLET": "Callista cellular",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17289671,
+      "NAMA OUTLET": "NIRA CELL 3",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17232779,
+      "NAMA OUTLET": "PIXEL CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 1554483,
+      "NAMA OUTLET": "AMEL CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17402875,
+      "NAMA OUTLET": "Haris cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17648575,
+      "NAMA OUTLET": "RMB CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17678743,
+      "NAMA OUTLET": "WP - TOKO TIGA PUTRA",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17678758,
+      "NAMA OUTLET": "WP - TOKO TIGA PUTRA 2",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17683405,
+      "NAMA OUTLET": "WP-Afifah",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17402816,
+      "NAMA OUTLET": "Kinsi cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17142202,
+      "NAMA OUTLET": "WIRAMAS CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17228538,
+      "NAMA OUTLET": "ADLI CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17234805,
+      "NAMA OUTLET": "MHIKA CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17234958,
+      "NAMA OUTLET": "Mega Citra Cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17289540,
+      "NAMA OUTLET": "Dila cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17383074,
+      "NAMA OUTLET": "KENTHU CELULER",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17401318,
+      "NAMA OUTLET": "Rafli 2cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17704547,
+      "NAMA OUTLET": "MOBILE STORE",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17434826,
+      "NAMA OUTLET": "Gilang Cell 3",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17435959,
+      "NAMA OUTLET": "RAHAGKA CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17437773,
+      "NAMA OUTLET": "Kimo stor",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17448324,
+      "NAMA OUTLET": "Dian barito cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17459415,
+      "NAMA OUTLET": "Amel cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17472706,
+      "NAMA OUTLET": "Vita cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17472759,
+      "NAMA OUTLET": "Davina cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17513411,
+      "NAMA OUTLET": "Albar cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17541871,
+      "NAMA OUTLET": "AF CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17588141,
+      "NAMA OUTLET": "Cuf cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17677158,
+      "NAMA OUTLET": "WP - Atharrizmi",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17678324,
+      "NAMA OUTLET": "OJH Celluar",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17690107,
+      "NAMA OUTLET": "Notary Luthvi",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17692934,
+      "NAMA OUTLET": "Lina Cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17753565,
+      "NAMA OUTLET": "Japra cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17705349,
+      "NAMA OUTLET": "DS STORE 2",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17729830,
+      "NAMA OUTLET": "Ryan store",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17729845,
+      "NAMA OUTLET": "Lisna cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17729987,
+      "NAMA OUTLET": "RE phonestore",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17730702,
+      "NAMA OUTLET": "Om Den cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17732567,
+      "NAMA OUTLET": "Raffanza cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17733853,
+      "NAMA OUTLET": "Alifa cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17731188,
+      "NAMA OUTLET": "TOMZ CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17734713,
+      "NAMA OUTLET": "Aurora cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17737026,
+      "NAMA OUTLET": "Yan cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17737142,
+      "NAMA OUTLET": "Riefka cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17740037,
+      "NAMA OUTLET": "SHITA olshop",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17740226,
+      "NAMA OUTLET": "Kayla cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17747923,
+      "NAMA OUTLET": "Hasan cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17763475,
+      "NAMA OUTLET": "Angga cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17749042,
+      "NAMA OUTLET": "Cuf cell 2",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17769354,
+      "NAMA OUTLET": "MIDINOS Store",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17769744,
+      "NAMA OUTLET": "RJ cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17769751,
+      "NAMA OUTLET": "Nabila cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17769760,
+      "NAMA OUTLET": "Wakiah cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17778250,
+      "NAMA OUTLET": "Siti Nuraeni",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17779453,
+      "NAMA OUTLET": "ABAY CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17793232,
+      "NAMA OUTLET": "Vit Cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17805936,
+      "NAMA OUTLET": "Anugrah Cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17781791,
+      "NAMA OUTLET": "Mamet cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17781808,
+      "NAMA OUTLET": "Delisa cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17218897,
+      "NAMA OUTLET": "SOFYAN CELL",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17253618,
+      "NAMA OUTLET": "Fania cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17782396,
+      "NAMA OUTLET": "Almira",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17782464,
+      "NAMA OUTLET": "JSM",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17782476,
+      "NAMA OUTLET": "Vix cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17787463,
+      "NAMA OUTLET": "10 Cell",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17787825,
+      "NAMA OUTLET": "Abjad Ce",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17819218,
+      "NAMA OUTLET": "WR-Angga",
+      "ID DSE": "SKBPLARA04",
+      "NAMA DSE": "Aldi Ibrahim"
+    },
+    {
+      "ID OUTLET": 17725125,
+      "NAMA OUTLET": "ELSA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17473082,
+      "NAMA OUTLET": "AL-BASIT",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17467095,
+      "NAMA OUTLET": "Hj jaojah",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17467036,
+      "NAMA OUTLET": "Vero cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17268883,
+      "NAMA OUTLET": "DEDE CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17399957,
+      "NAMA OUTLET": "SETIAWAN CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1553895,
+      "NAMA OUTLET": "YESI CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17512672,
+      "NAMA OUTLET": "SAM CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17210294,
+      "NAMA OUTLET": "YUSUF CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17674275,
+      "NAMA OUTLET": "WP-Warung Putra Tunggal",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17681407,
+      "NAMA OUTLET": "WP - Rafa Cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17702380,
+      "NAMA OUTLET": "GI CELL 2",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17193748,
+      "NAMA OUTLET": "ODOY CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 718879,
+      "NAMA OUTLET": "GAYUNG CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17716333,
+      "NAMA OUTLET": "UNA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17459590,
+      "NAMA OUTLET": "TOKO MANG MAWI",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1287331,
+      "NAMA OUTLET": "AKEW CEL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1287335,
+      "NAMA OUTLET": "HILMAN CEL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17261466,
+      "NAMA OUTLET": "BINTANG CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1553873,
+      "NAMA OUTLET": "FANS CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1553874,
+      "NAMA OUTLET": "ARROMI CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1555437,
+      "NAMA OUTLET": "HIKARU CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1557173,
+      "NAMA OUTLET": "ANYU CELL2",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 1558179,
+      "NAMA OUTLET": "ZR STORE",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17255778,
+      "NAMA OUTLET": "ANGLEPULSA",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17044133,
+      "NAMA OUTLET": "QUEENY CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17050774,
+      "NAMA OUTLET": "HELGISTA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17139621,
+      "NAMA OUTLET": "BRANDAL CINTA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17187866,
+      "NAMA OUTLET": "Wijar cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17276084,
+      "NAMA OUTLET": "SHALMA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17223136,
+      "NAMA OUTLET": "Salman Cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17541847,
+      "NAMA OUTLET": "Road cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17249792,
+      "NAMA OUTLET": "LESTARI CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17249927,
+      "NAMA OUTLET": "BONDAN PULSA",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17253568,
+      "NAMA OUTLET": "AHZACELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17253622,
+      "NAMA OUTLET": "ZAMALLCELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17255674,
+      "NAMA OUTLET": "ARVAN CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17256507,
+      "NAMA OUTLET": "REGYA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17139612,
+      "NAMA OUTLET": "SPH CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17261389,
+      "NAMA OUTLET": "RIKZA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17264618,
+      "NAMA OUTLET": "HD CELLULAR",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17264973,
+      "NAMA OUTLET": "NRGK CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17268971,
+      "NAMA OUTLET": "AKBAR CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17286625,
+      "NAMA OUTLET": "SUNBECELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17381211,
+      "NAMA OUTLET": "SABISANA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17399911,
+      "NAMA OUTLET": "HIKARU CELL 2",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17438405,
+      "NAMA OUTLET": "ALKHA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17438800,
+      "NAMA OUTLET": "MELI CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17445229,
+      "NAMA OUTLET": "WARUNG DIGITAL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17457844,
+      "NAMA OUTLET": "BAROKAH CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17459602,
+      "NAMA OUTLET": "DEWALA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17472717,
+      "NAMA OUTLET": "RE PHONE STORE",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17473097,
+      "NAMA OUTLET": "Wonder cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17473280,
+      "NAMA OUTLET": "Src",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17589115,
+      "NAMA OUTLET": "GI CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17645922,
+      "NAMA OUTLET": "Toko BJM",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17650729,
+      "NAMA OUTLET": "Zaidan cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17650895,
+      "NAMA OUTLET": "Arsyad Copy",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17663717,
+      "NAMA OUTLET": "GHAISAN ADLAN CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17670175,
+      "NAMA OUTLET": "WARJO CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17677552,
+      "NAMA OUTLET": "GILANG CELL 4",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17681962,
+      "NAMA OUTLET": "WP-Nay Cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17695551,
+      "NAMA OUTLET": "Andri Store",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17695552,
+      "NAMA OUTLET": "Dillara cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17702472,
+      "NAMA OUTLET": "Andin Cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17711073,
+      "NAMA OUTLET": "GILANG CELL 3",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17729700,
+      "NAMA OUTLET": "Zarfan Cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17734116,
+      "NAMA OUTLET": "BAR-BAR CEL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17737339,
+      "NAMA OUTLET": "Parhan Cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17746540,
+      "NAMA OUTLET": "JELEGONG CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17740152,
+      "NAMA OUTLET": "SILFA FAMILY",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17750160,
+      "NAMA OUTLET": "ICA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17750872,
+      "NAMA OUTLET": "ENY CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17757938,
+      "NAMA OUTLET": "Helmi Olshop",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17769363,
+      "NAMA OUTLET": "NURANI CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17781760,
+      "NAMA OUTLET": "NASIR CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17769860,
+      "NAMA OUTLET": "GIBRAN CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17787914,
+      "NAMA OUTLET": "SATYA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17775117,
+      "NAMA OUTLET": "YANA SAPUTRA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17799231,
+      "NAMA OUTLET": "ANUGRAH CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17782501,
+      "NAMA OUTLET": "CICA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17782596,
+      "NAMA OUTLET": "AULIA CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17733903,
+      "NAMA OUTLET": "ABM CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17774883,
+      "NAMA OUTLET": "MDF CELL",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17782619,
+      "NAMA OUTLET": "Fourteen cell",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 17821272,
+      "NAMA OUTLET": "WR-ENIK",
+      "ID DSE": "SKBPLARA08",
+      "NAMA DSE": "Andi Sutiawan"
+    },
+    {
+      "ID OUTLET": 694114,
+      "NAMA OUTLET": "TIGA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17230362,
+      "NAMA OUTLET": "ThreeBoys Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 702377,
+      "NAMA OUTLET": "CITRA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17472009,
+      "NAMA OUTLET": "Black cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17473281,
+      "NAMA OUTLET": "Choki",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17355717,
+      "NAMA OUTLET": "DAFA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17152276,
+      "NAMA OUTLET": "RENDI",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17438862,
+      "NAMA OUTLET": "Wahyudin cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17445519,
+      "NAMA OUTLET": "Lia cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17402156,
+      "NAMA OUTLET": "Umi cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17461683,
+      "NAMA OUTLET": "WM cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17249790,
+      "NAMA OUTLET": "Arya cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17408047,
+      "NAMA OUTLET": "NURSYIFUL CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17472799,
+      "NAMA OUTLET": "Abang cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17459362,
+      "NAMA OUTLET": "Raven cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17472004,
+      "NAMA OUTLET": "Unnu cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17675968,
+      "NAMA OUTLET": "WP - warung mamah aldo",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17676384,
+      "NAMA OUTLET": "NB CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17684071,
+      "NAMA OUTLET": "WP - Caca Cuci Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17686035,
+      "NAMA OUTLET": "WP - Avika Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17690505,
+      "NAMA OUTLET": "WP - Toko Raisha",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17690900,
+      "NAMA OUTLET": "WP - Depo Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17461674,
+      "NAMA OUTLET": "Den SR cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17461610,
+      "NAMA OUTLET": "Selina cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17408992,
+      "NAMA OUTLET": "Revin cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 663219,
+      "NAMA OUTLET": "SAND S CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1368488,
+      "NAMA OUTLET": "TUWU CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17731189,
+      "NAMA OUTLET": "BERKAH CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 774331,
+      "NAMA OUTLET": "MARDENA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1295672,
+      "NAMA OUTLET": "RAYHAN CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1305465,
+      "NAMA OUTLET": "ADI CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1318884,
+      "NAMA OUTLET": "BETI CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1387852,
+      "NAMA OUTLET": "NAIL CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1511652,
+      "NAMA OUTLET": "KANZA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17018791,
+      "NAMA OUTLET": "DILAN CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17031868,
+      "NAMA OUTLET": "HIBAR CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17139607,
+      "NAMA OUTLET": "TZA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17179164,
+      "NAMA OUTLET": "JR STORE",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17187147,
+      "NAMA OUTLET": "Nazila cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17199166,
+      "NAMA OUTLET": "Kaysa cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17215999,
+      "NAMA OUTLET": "Warpeut cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17222900,
+      "NAMA OUTLET": "AZZAM CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17232348,
+      "NAMA OUTLET": "Wida cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17288556,
+      "NAMA OUTLET": "M luthvi Qolbi",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17328908,
+      "NAMA OUTLET": "Sand 2 Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17438164,
+      "NAMA OUTLET": "Bima cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17438554,
+      "NAMA OUTLET": "Dian cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17473278,
+      "NAMA OUTLET": "Edi",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17458119,
+      "NAMA OUTLET": "Rizqo cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17459384,
+      "NAMA OUTLET": "Mama cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17640234,
+      "NAMA OUTLET": "Agen lancar bersama",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17461654,
+      "NAMA OUTLET": "Mira olshop cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17466424,
+      "NAMA OUTLET": "Jovan cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17468592,
+      "NAMA OUTLET": "11 Enung cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17472458,
+      "NAMA OUTLET": "Jaya Phone",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17588132,
+      "NAMA OUTLET": "LUTHVI STORE",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17632992,
+      "NAMA OUTLET": "EZ Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17635767,
+      "NAMA OUTLET": "Betun cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17670346,
+      "NAMA OUTLET": "Syakira Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17670650,
+      "NAMA OUTLET": "AR Store",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17672233,
+      "NAMA OUTLET": "G-mart Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17674552,
+      "NAMA OUTLET": "Doa Umi",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17675348,
+      "NAMA OUTLET": "AF Cell 2",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17673227,
+      "NAMA OUTLET": "Sinar agung",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17680343,
+      "NAMA OUTLET": "Berkah Abadi Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17680707,
+      "NAMA OUTLET": "Naura Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1455420,
+      "NAMA OUTLET": "WR CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17684094,
+      "NAMA OUTLET": "WP - Fathan Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 1297812,
+      "NAMA OUTLET": "YANS CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 763128,
+      "NAMA OUTLET": "HENDRA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17690910,
+      "NAMA OUTLET": "WP - Irzia Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17231624,
+      "NAMA OUTLET": "Total Cellular",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17231676,
+      "NAMA OUTLET": "Glagatz cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17708933,
+      "NAMA OUTLET": "EL CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17244335,
+      "NAMA OUTLET": "Miko cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17407735,
+      "NAMA OUTLET": "DHENIZ CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17436986,
+      "NAMA OUTLET": "OLIVYA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17444285,
+      "NAMA OUTLET": "Wa ONE cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17444343,
+      "NAMA OUTLET": "INAYA cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17450962,
+      "NAMA OUTLET": "FHAZAR CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17473548,
+      "NAMA OUTLET": "Bule cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17473562,
+      "NAMA OUTLET": "Ujang cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17473581,
+      "NAMA OUTLET": "Pang cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17545711,
+      "NAMA OUTLET": "Barter srv1",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17714089,
+      "NAMA OUTLET": "Afdhal Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17732510,
+      "NAMA OUTLET": "Mandiri Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17732554,
+      "NAMA OUTLET": "Rafqi Pulsa",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17733268,
+      "NAMA OUTLET": "Setia Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17734002,
+      "NAMA OUTLET": "EBEH CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17737459,
+      "NAMA OUTLET": "WP - CACA CICI",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17738322,
+      "NAMA OUTLET": "Azzura Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17739291,
+      "NAMA OUTLET": "Alfian Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17747719,
+      "NAMA OUTLET": "Ikiw Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17749333,
+      "NAMA OUTLET": "WP Toko Ai Tatang",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17749448,
+      "NAMA OUTLET": "ZAI CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17754807,
+      "NAMA OUTLET": "Sulam Ratu Store",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17757362,
+      "NAMA OUTLET": "MEGA CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17762144,
+      "NAMA OUTLET": "Chica Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17757887,
+      "NAMA OUTLET": "Aksara Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17774358,
+      "NAMA OUTLET": "Hafiza Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17776796,
+      "NAMA OUTLET": "Hafiza cell 2",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17782535,
+      "NAMA OUTLET": "Foto Copy Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17793761,
+      "NAMA OUTLET": "AR 2 STORE",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17780409,
+      "NAMA OUTLET": "Aditya Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17796084,
+      "NAMA OUTLET": "Oky Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17798355,
+      "NAMA OUTLET": "Yasmin Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17782418,
+      "NAMA OUTLET": "Farel Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17185912,
+      "NAMA OUTLET": "Arlugea store",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17731374,
+      "NAMA OUTLET": "Lucky Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17782593,
+      "NAMA OUTLET": "King Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17781703,
+      "NAMA OUTLET": "BINTANG CELL",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17781894,
+      "NAMA OUTLET": "Magnum Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17782585,
+      "NAMA OUTLET": "Family Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17793754,
+      "NAMA OUTLET": "Tini Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17787903,
+      "NAMA OUTLET": "Zyan Bersinar Cell",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17796077,
+      "NAMA OUTLET": "Mafia Pulsa",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    },
+    {
+      "ID OUTLET": 17819225,
+      "NAMA OUTLET": "WR Pagelaran",
+      "ID DSE": "SKBPLARA11",
+      "NAMA DSE": "M Enden Abdul Latif"
+    }
+  ]
+}
