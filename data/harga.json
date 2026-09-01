@@ -1,11 +1,11 @@
 {
   "success": true,
-  "sheet": "Harga",
-  "updated_at": "2026-08-31T13:39:45.000Z",
+  "sheet": "harga",
+  "updated_at": "2026-09-01T11:45:05.654Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260831-133945",
+  "version": "20260901-114505",
   "total_data": 18,
   "data": [
     {
@@ -14,19 +14,15 @@
     },
     {
       "JENIS BARANG": "SP 3GB INJEK",
-      "HARGA": 20000
-    },
-    {
-      "JENIS BARANG": "SP 3GB ORI",
       "HARGA": 25000
     },
     {
-      "JENIS BARANG": "SP 9GB",
-      "HARGA": 40000
+      "JENIS BARANG": "SP 3GB ORI",
+      "HARGA": 30000
     },
     {
       "JENIS BARANG": "SP 10GB",
-      "HARGA": null
+      "HARGA": 40000
     },
     {
       "JENIS BARANG": "VDK",
@@ -62,7 +58,7 @@
     },
     {
       "JENIS BARANG": "Fi 1.5GB/1D",
-      "HARGA": 6900
+      "HARGA": 7500
     },
     {
       "JENIS BARANG": "Fi 3GB/1D",
@@ -79,7 +75,10 @@
     {
       "JENIS BARANG": "Fi 5GB/3D",
       "HARGA": 13200
+    },
+    {
+      "JENIS BARANG": "Fi 7GB/28D",
+      "HARGA": 33500
     }
   ]
 }
-
