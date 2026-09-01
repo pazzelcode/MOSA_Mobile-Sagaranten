@@ -1,126 +1,102 @@
 {
   "success": true,
   "sheet": "stok-gudang",
-  "updated_at": "2026-08-31T12:31:07.208Z",
+  "updated_at": "2026-09-01T11:45:05.654Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260831-123107",
-  "total_data": 19,
+  "version": "20260901-114505",
+  "total_data": 15,
   "data": [
     {
       "nama barang": "SP ZERO",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 100,
+      "sellin": 0,
+      "total stok": 100
     },
     {
       "nama barang": "SP 3GB injek",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 2698,
+      "sellin": 0,
+      "total stok": 2698
     },
     {
       "nama barang": "SP 3GB ori",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
-    },
-    {
-      "nama barang": "SP 9GB",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 70,
+      "sellin": 8,
+      "total stok": 78
     },
     {
       "nama barang": "SP 10GB",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 711,
+      "sellin": 0,
+      "total stok": 711
     },
     {
       "nama barang": "",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 0,
+      "sellin": 0,
+      "total stok": 0
     },
     {
       "nama barang": "VDK",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 6299,
+      "sellin": 0,
+      "total stok": 6299
     },
     {
       "nama barang": "3GB/14HR",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 0,
+      "sellin": 97,
+      "total stok": 97
     },
     {
       "nama barang": "2,5GB",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
-    },
-    {
-      "nama barang": "FI 3 GB",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 120,
+      "sellin": 809,
+      "total stok": 929
     },
     {
       "nama barang": "3.5GB 5HR",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 60,
+      "sellin": 221,
+      "total stok": 281
     },
     {
       "nama barang": "5GB 5HR",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 0,
+      "sellin": 0,
+      "total stok": 0
     },
     {
       "nama barang": "7GB 7HR",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
-    },
-    {
-      "nama barang": "Fi 6GB",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 381,
+      "sellin": 15,
+      "total stok": 396
     },
     {
       "nama barang": "Fi 1.5GB/1D",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
-    },
-    {
-      "nama barang": "Fi 3GB/1D",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
-    },
-    {
-      "nama barang": "Fi 3GB/3D",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 0,
+      "sellin": 21,
+      "total stok": 21
     },
     {
       "nama barang": "Fi 5GB/2D",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 30,
+      "sellin": 859,
+      "total stok": 889
     },
     {
       "nama barang": "Fi 5GB/3D",
-      "segel": 10,
-      "sellin": 10,
-      "total stok": 20
+      "segel": 207,
+      "sellin": 8,
+      "total stok": 215
+    },
+    {
+      "nama barang": "Fi 7GB/28D",
+      "segel": 0,
+      "sellin": 300,
+      "total stok": 300
     }
   ]
 }
