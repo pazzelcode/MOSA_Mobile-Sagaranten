@@ -477,3 +477,63 @@ body{
 
     transform:scale(.96);
 }
+
+/* =========================================================
+   EDIT PROFILE BUTTON
+========================================================= */
+
+.profile-actions{
+    width:100%;
+    margin-top:20px;
+    padding-top:18px;
+    border-top:1px solid rgba(0,0,0,.06);
+}
+
+
+.edit-profile-btn{
+    width:100%;
+    min-height:48px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+
+    border:1px solid #2563eb;
+    border-radius:14px;
+
+    background:#fff;
+    color:#2563eb;
+
+    font-family:inherit;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.4px;
+
+    cursor:pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .15s ease,
+        box-shadow .2s ease;
+}
+
+
+.edit-profile-btn i{
+    font-size:15px;
+}
+
+
+.edit-profile-btn:hover{
+    background:#2563eb;
+    color:#fff;
+
+    box-shadow:
+        0 8px 20px rgba(37,99,235,.18);
+}
+
+
+.edit-profile-btn:active{
+    transform:scale(.98);
+}

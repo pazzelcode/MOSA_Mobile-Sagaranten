@@ -2533,3 +2533,319 @@ and (orientation:landscape){
 #tableBody tr.filter-hidden {
     display: none !important;
 }
+
+/* =========================================================
+   HIFI CARD MODE - COMPACT
+========================================================= */
+
+.hifi-card-container {
+    display: none;
+    width: 100%;
+}
+
+.hifi-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.hifi-data-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 13px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, .055);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.hifi-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 9px;
+    margin-bottom: 9px;
+    border-bottom: 1px solid #eef0f3;
+}
+
+.hifi-card-title {
+    min-width: 0;
+}
+
+.hifi-card-title strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+}
+
+.hifi-card-title span {
+    display: block;
+    margin-top: 2px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.hifi-card-no {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* =========================================================
+   DATA
+========================================================= */
+
+.hifi-card-info {
+    display: grid;
+    gap: 6px;
+}
+
+.hifi-info-row {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 7px;
+    align-items: start;
+}
+
+.hifi-info-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+    line-height: 1.3;
+}
+
+.hifi-info-value {
+    min-width: 0;
+    font-size: 11px;
+    font-weight: 700;
+    color: #1e293b;
+    text-align: right;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.hifi-info-value.mono {
+    font-family: monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .15px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.hifi-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px solid #eef0f3;
+}
+
+.hifi-card-price {
+    font-size: 11px;
+    font-weight: 800;
+    color: #dc2626;
+}
+
+.hifi-card-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 8px;
+    border-radius: 999px;
+    font-size: 8px;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.hifi-card-status.segel {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.hifi-card-status.onhand {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.hifi-card-status.terjual {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.hifi-card-status.danger {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.hifi-card-status.default {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+/* =========================================================
+   KARTU KOSONG
+========================================================= */
+
+.hifi-card-empty {
+    padding: 25px 15px;
+    text-align: center;
+    border: 1px dashed #cbd5e1;
+    border-radius: 13px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+/* =========================================================
+   GUDANG
+========================================================= */
+
+.hifi-gudang-card {
+    border-color: #fde68a;
+}
+
+.hifi-gudang-card .hifi-card-head {
+    border-bottom-color: #fef3c7;
+}
+
+.hifi-gudang-qty {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 10px 11px;
+    border-radius: 10px;
+    background: #fffbeb;
+}
+
+.hifi-gudang-qty-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #92400e;
+}
+
+.hifi-gudang-qty strong {
+    font-size: 16px;
+    font-weight: 800;
+    color: #b45309;
+    white-space: nowrap;
+}
+
+.hifi-gudang-qty small {
+    font-size: 9px;
+    font-weight: 600;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .hifi-card-grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .hifi-data-card {
+        padding: 11px;
+        border-radius: 12px;
+    }
+
+    .hifi-card-head {
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+    }
+
+    .hifi-card-title strong {
+        font-size: 13px;
+    }
+
+    .hifi-card-title span {
+        font-size: 10px;
+    }
+
+    .hifi-card-no {
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        font-size: 10px;
+    }
+
+    .hifi-card-info {
+        gap: 5px;
+    }
+
+    .hifi-info-row {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 6px;
+    }
+
+    .hifi-info-label {
+        font-size: 10px;
+    }
+
+    .hifi-info-value {
+        font-size: 11px;
+    }
+
+    .hifi-info-value.mono {
+        font-size: 10px;
+    }
+
+    .hifi-card-footer {
+        margin-top: 8px;
+        padding-top: 8px;
+    }
+
+    .hifi-card-price {
+        font-size: 11px;
+    }
+
+    .hifi-card-status {
+        padding: 4px 7px;
+        font-size: 7px;
+    }
+
+    .hifi-gudang-qty {
+        padding: 9px 10px;
+        margin-bottom: 9px;
+    }
+
+    .hifi-gudang-qty-label {
+        font-size: 9px;
+    }
+
+    .hifi-gudang-qty strong {
+        font-size: 15px;
+    }
+
+    .hifi-gudang-qty small {
+        font-size: 9px;
+    }
+}
