@@ -1,40 +1,768 @@
+/*! MC-SAGARANTEN - GLOBAL NOTIFICATION.JS */
+
+(function () {
+
+    'use strict';
+
+    /* =========================================================
+       CONFIG
+    ========================================================= */
+
+    const NOTIFICATION_API =
+        'http://localhost:3000/api/notifications';
+
+    const POLLING_INTERVAL = 30000;
+
+    const AUTH_RETRY_INTERVAL = 300;
+
+    const AUTH_MAX_ATTEMPTS = 40;
+
+
+    /* =========================================================
+       STATE
+    ========================================================= */
+
+    let auth = null;
+
+    let currentUser = null;
+
+    let notifications = [];
+
+    let pollingTimer = null;
+
+    let authRetryTimer = null;
+
+    let initialized = false;
+
+    let firstFetchCompleted = false;
+
+
+    /* =========================================================
+       LOG
+    ========================================================= */
+
+    console.log(
+        '🔥 MC-SAGARANTEN notif.js TERLOAD'
+    );
+
+
+    /* =========================================================
+       CACHE KEY
+    ========================================================= */
+
+    function getCacheKey(uid) {
+
+        return (
+            'mc_sagaranten_notifications_' +
+            uid
+        );
+
+    }
+
+
+    function getToastCacheKey(uid) {
+
+        return (
+            'mc_sagaranten_toasted_notifications_' +
+            uid
+        );
+
+    }
+
+
+    /* =========================================================
+       CACHE
+    ========================================================= */
+
+    function getCachedNotifications() {
+
+        if (!currentUser) {
+            return [];
+        }
+
+        try {
+
+            const data =
+                localStorage.getItem(
+                    getCacheKey(
+                        currentUser.uid
+                    )
+                );
+
+            if (!data) {
+                return [];
+            }
+
+            const parsed =
+                JSON.parse(data);
+
+            return Array.isArray(parsed)
+                ? parsed
+                : [];
+
+        } catch (error) {
+
+            console.warn(
+                '⚠️ NOTIFICATION CACHE ERROR:',
+                error
+            );
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveCachedNotifications(data) {
+
+        if (!currentUser) {
+            return;
+        }
+
+        try {
+
+            localStorage.setItem(
+                getCacheKey(
+                    currentUser.uid
+                ),
+                JSON.stringify(data)
+            );
+
+        } catch (error) {
+
+            console.warn(
+                '⚠️ NOTIFICATION SAVE CACHE ERROR:',
+                error
+            );
+
+        }
+
+    }
+
+
+    function getToastedNotifications() {
+
+        if (!currentUser) {
+            return [];
+        }
+
+        try {
+
+            const data =
+                localStorage.getItem(
+                    getToastCacheKey(
+                        currentUser.uid
+                    )
+                );
+
+            if (!data) {
+                return [];
+            }
+
+            const parsed =
+                JSON.parse(data);
+
+            return Array.isArray(parsed)
+                ? parsed
+                : [];
+
+        } catch {
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveToastedNotifications(ids) {
+
+        if (!currentUser) {
+            return;
+        }
+
+        try {
+
+            localStorage.setItem(
+                getToastCacheKey(
+                    currentUser.uid
+                ),
+                JSON.stringify(
+                    ids.slice(-100)
+                )
+            );
+
+        } catch {
+
+            /* ignore */
+
+        }
+
+    }
+
+
+    /* =========================================================
+       AUTH TOKEN
+    ========================================================= */
+
+    async function getAuthToken() {
+
+        if (
+            !auth ||
+            !auth.currentUser
+        ) {
+
+            console.warn(
+                '⚠️ NOTIFICATION: currentUser belum tersedia'
+            );
+
+            return null;
+
+        }
+
+        try {
+
+            return await auth.currentUser.getIdToken();
+
+        } catch (error) {
+
+            console.error(
+                '❌ NOTIFICATION TOKEN ERROR:',
+                error
+            );
+
+            return null;
+
+        }
+
+    }
+
+
+    /* =========================================================
+       FETCH NOTIFICATIONS
+    ========================================================= */
+
+    async function fetchGlobalNotifications() {
+
+        if (!auth) {
+
+            console.warn(
+                '⚠️ NOTIFICATION: Firebase Auth belum tersedia'
+            );
+
+            return [];
+
+        }
+
+
+        if (!auth.currentUser) {
+
+            console.log(
+                '⏳ NOTIFICATION: Menunggu currentUser...'
+            );
+
+            return [];
+
+        }
+
+
+        currentUser =
+            auth.currentUser;
+
+
+        console.log(
+            '🔔 NOTIFICATION: User terdeteksi',
+            currentUser.uid
+        );
+
+
+        const token =
+            await getAuthToken();
+
+
+        if (!token) {
+
+            console.warn(
+                '⚠️ NOTIFICATION: Token tidak tersedia'
+            );
+
+            return [];
+
+        }
+
+
+        try {
+
+            console.log(
+                '🔔 NOTIFICATION: Mengambil data...'
+            );
+
+
+            const response =
+                await fetch(
+                    NOTIFICATION_API +
+                    '?t=' +
+                    Date.now(),
+                    {
+                        method: 'GET',
+
+                        cache: 'no-store',
+
+                        headers: {
+                            'Authorization':
+                                'Bearer ' +
+                                token,
+
+                            'Content-Type':
+                                'application/json'
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    'HTTP ' +
+                    response.status
+                );
+
+            }
+
+
+            const json =
+                await response.json();
+
+
+            if (
+                !json ||
+                json.success !== true
+            ) {
+
+                throw new Error(
+                    json?.message ||
+                    'Response API tidak valid'
+                );
+
+            }
+
+
+            const previous =
+                notifications;
+
+
+            notifications =
+                Array.isArray(
+                    json.data
+                )
+                    ? json.data
+                    : [];
+
+
+            saveCachedNotifications(
+                notifications
+            );
+
+
+            console.log(
+                '🔔 NOTIFICATION FETCH BERHASIL:',
+                notifications.length
+            );
+
+
+            updateGlobalNotificationBadge();
+
+
+            /*
+             * Jangan tampilkan toast
+             * pada fetch pertama.
+             *
+             * Toast hanya untuk
+             * notifikasi yang muncul
+             * setelah sistem sudah aktif.
+             */
+
+            if (firstFetchCompleted) {
+
+                checkNewNotifications(
+                    notifications,
+                    previous
+                );
+
+            }
+
+
+            firstFetchCompleted = true;
+
+
+            return notifications;
+
+
+        } catch (error) {
+
+            console.error(
+                '❌ NOTIFICATION FETCH ERROR:',
+                error
+            );
+
+
+            /*
+             * Gunakan cache apabila
+             * backend sedang tidak tersedia.
+             */
+
+            const cached =
+                getCachedNotifications();
+
+
+            if (cached.length) {
+
+                notifications =
+                    cached;
+
+            }
+
+
+            updateGlobalNotificationBadge();
+
+
+            return notifications;
+
+        }
+
+    }
+
+
+    /* =========================================================
+       READ STATUS
+    ========================================================= */
+
+    function isNotificationRead(notification) {
+
+        if (
+            !currentUser ||
+            !notification
+        ) {
+
+            return false;
+
+        }
+
+
+        const readBy =
+            Array.isArray(
+                notification.readBy
+            )
+                ? notification.readBy
+                : [];
+
+
+        return readBy.includes(
+            currentUser.uid
+        );
+
+    }
+
+
+    function getUnreadNotifications() {
+
+        return notifications.filter(
+            notification =>
+                !isNotificationRead(
+                    notification
+                )
+        );
+
+    }
+
+
+    /* =========================================================
+       BADGE
+    ========================================================= */
+
+    function updateGlobalNotificationBadge() {
+
+        const badges =
+            document.querySelectorAll(
+                '.notif-badge'
+            );
+
+
+        const unread =
+            getUnreadNotifications();
+
+
+        const count =
+            unread.length;
+
+
+        badges.forEach(
+            badge => {
+
+                if (count > 0) {
+
+                    badge.style.display =
+                        'flex';
+
+                    badge.textContent =
+                        count > 99
+                            ? '99+'
+                            : count;
+
+                } else {
+
+                    badge.style.display =
+                        'none';
+
+                    badge.textContent =
+                        '';
+
+                }
+
+            }
+        );
+
+
+        console.log(
+            '🔴 NOTIFICATION BADGE:',
+            count
+        );
+
+    }
+
+
+    /* =========================================================
+       MARK AS READ
+    ========================================================= */
+
+    async function markNotificationAsRead(id) {
+
+        if (
+            !id ||
+            !currentUser ||
+            !auth
+        ) {
+
+            return false;
+
+        }
+
+
+        const token =
+            await getAuthToken();
+
+
+        if (!token) {
+            return false;
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    NOTIFICATION_API +
+                    '/' +
+                    encodeURIComponent(id) +
+                    '/read',
+                    {
+                        method: 'POST',
+
+                        headers: {
+                            'Authorization':
+                                'Bearer ' +
+                                token,
+
+                            'Content-Type':
+                                'application/json'
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    'HTTP ' +
+                    response.status
+                );
+
+            }
+
+
+            notifications =
+                notifications.map(
+                    notification => {
+
+                        if (
+                            notification.id !==
+                            id
+                        ) {
+
+                            return notification;
+
+                        }
+
+
+                        const readBy =
+                            Array.isArray(
+                                notification.readBy
+                            )
+                                ? [
+                                    ...notification.readBy
+                                ]
+                                : [];
+
+
+                        if (
+                            !readBy.includes(
+                                currentUser.uid
+                            )
+                        ) {
+
+                            readBy.push(
+                                currentUser.uid
+                            );
+
+                        }
+
+
+                        return {
+                            ...notification,
+                            readBy
+                        };
+
+                    }
+                );
+
+
+            saveCachedNotifications(
+                notifications
+            );
+
+
+            updateGlobalNotificationBadge();
+
+
+            return true;
+
+
+        } catch (error) {
+
+            console.error(
+                '❌ NOTIFICATION READ ERROR:',
+                error
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+    /* =========================================================
+       MARK ALL READ
+    ========================================================= */
+
+    async function markAllNotificationsAsRead() {
+
+        const unread =
+            getUnreadNotifications();
+
+
+        if (!unread.length) {
+
+            updateGlobalNotificationBadge();
+
+            return true;
+
+        }
+
+
+        for (
+            const notification
+            of unread
+        ) {
+
+            await markNotificationAsRead(
+                notification.id
+            );
+
+        }
+
+
+        updateGlobalNotificationBadge();
+
+
+        return true;
+
+    }
+
+    /*! MC-SAGARANTEN - GLOBAL NOTIFICATION.JS */
+
 /* =========================================================
-   MC-SAGARANTEN
-   GLOBAL NOTIFICATION CLIENT
+   CLEAR ALL NOTIFICATIONS
 ========================================================= */
 
-const GLOBAL_NOTIFICATION_API =
-    'https://script.google.com/macros/s/AKfycbzINzFJt38mQyqrgvzrTDechPja8b7tyoO5MMZkDmDSfw-Ftjp_y2POSAfYuP0fqi5WKw/exec';
+async function clearAllNotifications() {
+
+    if (
+        !currentUser ||
+        !auth
+    ) {
+
+        console.warn(
+            '⚠️ NOTIFICATION: User belum tersedia'
+        );
+
+        return false;
+
+    }
 
 
-const NOTIF_STORAGE_KEY =
-    'mc_sagaranten_read_notifications';
+    const token =
+        await getAuthToken();
 
 
-const NOTIF_CACHE_KEY =
-    'mc_sagaranten_notifications';
+    if (!token) {
+
+        return false;
+
+    }
 
 
-/* =========================================================
-   AMBIL NOTIFIKASI SERVER
-========================================================= */
+    try {
 
-async function fetchGlobalNotifications(){
+        console.log(
+            '🗑️ NOTIFICATION: Menghapus semua notification...'
+        );
 
-    try{
 
         const response =
             await fetch(
-                GLOBAL_NOTIFICATION_API +
-                '?action=notifications&t=' +
-                Date.now(),
+                NOTIFICATION_API +
+                '/clear-all',
                 {
-                    cache:'no-store'
+                    method: 'DELETE',
+
+                    headers: {
+
+                        'Authorization':
+                            'Bearer ' +
+                            token,
+
+                        'Content-Type':
+                            'application/json'
+
+                    }
+
                 }
             );
 
 
-        if(!response.ok){
+        if (!response.ok) {
 
             throw new Error(
                 'HTTP ' +
@@ -44,516 +772,854 @@ async function fetchGlobalNotifications(){
         }
 
 
-        const result =
+        const json =
             await response.json();
 
 
-        if(
-            !result.success
-        ){
+        if (
+            !json ||
+            json.success !== true
+        ) {
 
             throw new Error(
-                result.message ||
-                'Gagal mengambil notifikasi.'
+                json?.message ||
+                'Gagal menghapus notification'
             );
 
         }
 
 
-        const notifications =
-            Array.isArray(
-                result.data
-            )
-                ? result.data
-                : [];
+        /*
+         * Bersihkan memory
+         */
+
+        notifications = [];
 
 
-        localStorage.setItem(
+        /*
+         * Bersihkan cache
+         */
 
-            NOTIF_CACHE_KEY,
-
-            JSON.stringify(
-                notifications
-            )
-
+        saveCachedNotifications(
+            []
         );
 
+
+        /*
+         * Badge langsung menjadi 0
+         */
 
         updateGlobalNotificationBadge();
 
 
-        /*
-           Event agar halaman lain
-           bisa ikut memperbarui UI
-        */
-
-        window.dispatchEvent(
-            new CustomEvent(
-                'mcNotificationUpdated',
-                {
-                    detail:
-                        notifications
-                }
-            )
+        console.log(
+            '✅ NOTIFICATION: Semua notification berhasil dihapus:',
+            json.deleted
         );
 
 
-        return notifications;
+        return true;
 
 
-    }catch(error){
+    } catch (error) {
 
         console.error(
-            'Gagal mengambil notifikasi global:',
+            '❌ NOTIFICATION CLEAR ALL ERROR:',
             error
         );
 
 
-        return [];
+        return false;
 
     }
 
 }
+    /* =========================================================
+       ICON
+    ========================================================= */
+
+    function getNotificationIcon(type) {
+
+        const icons = {
+
+            stock:
+                'fa-boxes-stacked',
+
+            sales:
+                'fa-chart-line',
+
+            request:
+                'fa-file-circle-check',
+
+            user:
+                'fa-user',
+
+            broadcast:
+                'fa-bullhorn',
+
+            program:
+                'fa-gift',
+
+            banner:
+                'fa-image',
+
+            activity:
+                'fa-list-check',
+
+            dashboard:
+                'fa-chart-pie',
+
+            warning:
+                'fa-triangle-exclamation',
+
+            system:
+                'fa-gear'
+
+        };
 
 
-/* =========================================================
-   NOTIFIKASI YANG SUDAH DIBACA
-========================================================= */
-
-function getReadNotificationIds(){
-
-    try{
-
-        return JSON.parse(
-
-            localStorage.getItem(
-                NOTIF_STORAGE_KEY
-            ) || '[]'
-
+        return (
+            icons[type] ||
+            'fa-bell'
         );
 
-    }catch(error){
-
-        return [];
-
-    }
-
-}
-
-
-/* =========================================================
-   SIMPAN SUDAH DIBACA
-========================================================= */
-
-function markNotificationAsRead(
-    id
-){
-
-    if(!id){
-
-        return;
-
     }
 
 
-    let readIds =
-        getReadNotificationIds();
+    /* =========================================================
+       TIME
+    ========================================================= */
+
+    function formatNotificationTime(value) {
+
+        if (!value) {
+            return '';
+        }
 
 
-    if(
-        !readIds.includes(id)
-    ){
+        let date = null;
 
-        readIds.push(id);
+
+        try {
+
+            if (
+                typeof value === 'object' &&
+                value.seconds != null
+            ) {
+
+                date =
+                    new Date(
+                        Number(
+                            value.seconds
+                        ) * 1000
+                    );
+
+            } else {
+
+                date =
+                    new Date(value);
+
+            }
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return '';
+
+            }
+
+
+            const now =
+                new Date();
+
+
+            const diff =
+                now.getTime() -
+                date.getTime();
+
+
+            const minute =
+                60 * 1000;
+
+            const hour =
+                60 * minute;
+
+            const day =
+                24 * hour;
+
+
+            if (diff < minute) {
+
+                return 'Baru saja';
+
+            }
+
+
+            if (diff < hour) {
+
+                return (
+                    Math.floor(
+                        diff / minute
+                    ) +
+                    ' menit lalu'
+                );
+
+            }
+
+
+            if (diff < day) {
+
+                return (
+                    Math.floor(
+                        diff / hour
+                    ) +
+                    ' jam lalu'
+                );
+
+            }
+
+
+            if (diff < 7 * day) {
+
+                return (
+                    Math.floor(
+                        diff / day
+                    ) +
+                    ' hari lalu'
+                );
+
+            }
+
+
+            return date.toLocaleDateString(
+                'id-ID',
+                {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                }
+            );
+
+
+        } catch {
+
+            return '';
+
+        }
 
     }
 
 
-    /*
-       Maksimal 200 ID
-    */
+    /* =========================================================
+       TOAST
+    ========================================================= */
 
-    readIds =
-        readIds.slice(
-            -200
+    function showNotificationToast(
+        notification
+    ) {
+
+        const title =
+            notification?.title ||
+            notification?.judul ||
+            'Ada notifikasi baru';
+
+
+        if (
+            typeof window.showToast ===
+            'function'
+        ) {
+
+            window.showToast(
+                '🔔 ' + title
+            );
+
+            return;
+
+        }
+
+
+        let container =
+            document.getElementById(
+                'toast-container'
+            );
+
+
+        if (!container) {
+
+            container =
+                document.createElement(
+                    'div'
+                );
+
+
+            container.id =
+                'toast-container';
+
+
+            container.style.position =
+                'fixed';
+
+            container.style.top =
+                '20px';
+
+            container.style.right =
+                '20px';
+
+            container.style.zIndex =
+                '99999';
+
+
+            document.body.appendChild(
+                container
+            );
+
+        }
+
+
+        const toast =
+            document.createElement(
+                'div'
+            );
+
+
+        toast.textContent =
+            '🔔 ' + title;
+
+
+        toast.style.background =
+            '#111827';
+
+        toast.style.color =
+            '#fff';
+
+        toast.style.padding =
+            '12px 16px';
+
+        toast.style.borderRadius =
+            '12px';
+
+        toast.style.marginBottom =
+            '10px';
+
+        toast.style.fontSize =
+            '14px';
+
+
+        container.appendChild(
+            toast
         );
 
 
-    localStorage.setItem(
-
-        NOTIF_STORAGE_KEY,
-
-        JSON.stringify(
-            readIds
-        )
-
-    );
-
-
-    updateGlobalNotificationBadge();
-
-}
-
-
-/* =========================================================
-   SEMUA SUDAH DIBACA
-========================================================= */
-
-function markAllNotificationsAsRead(){
-
-    const notifications =
-        getCachedNotifications();
-
-
-    const ids =
-        notifications.map(
-            notification =>
-                notification.id
+        setTimeout(
+            () => toast.remove(),
+            4000
         );
-
-
-    localStorage.setItem(
-
-        NOTIF_STORAGE_KEY,
-
-        JSON.stringify(
-            ids.slice(-200)
-        )
-
-    );
-
-
-    updateGlobalNotificationBadge();
-
-}
-
-
-/* =========================================================
-   CACHE
-========================================================= */
-
-function getCachedNotifications(){
-
-    try{
-
-        return JSON.parse(
-
-            localStorage.getItem(
-                NOTIF_CACHE_KEY
-            ) || '[]'
-
-        );
-
-    }catch(error){
-
-        return [];
 
     }
 
-}
+
+    /* =========================================================
+       NEW NOTIFICATION
+    ========================================================= */
+
+    function checkNewNotifications(
+        latest,
+        previous
+    ) {
+
+        if (
+            !currentUser ||
+            !Array.isArray(latest)
+        ) {
+
+            return;
+
+        }
 
 
-/* =========================================================
-   HITUNG UNREAD
-========================================================= */
-
-function getUnreadNotifications(){
-
-    const notifications =
-        getCachedNotifications();
-
-
-    const readIds =
-        getReadNotificationIds();
+        const oldIds =
+            new Set(
+                Array.isArray(previous)
+                    ? previous.map(
+                        item => item.id
+                    )
+                    : []
+            );
 
 
-    return notifications.filter(
-        notification =>
-            !readIds.includes(
-                notification.id
+        const toasted =
+            getToastedNotifications();
+
+
+        const newItems =
+            latest.filter(
+                notification => {
+
+                    if (
+                        !notification?.id
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    if (
+                        oldIds.has(
+                            notification.id
+                        )
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    if (
+                        toasted.includes(
+                            notification.id
+                        )
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    if (
+                        isNotificationRead(
+                            notification
+                        )
+                    ) {
+
+                        return false;
+
+                    }
+
+
+                    return true;
+
+                }
+            );
+
+
+        if (!newItems.length) {
+            return;
+        }
+
+
+        newItems
+            .slice(0, 3)
+            .forEach(
+                notification => {
+
+                    showNotificationToast(
+                        notification
+                    );
+
+                }
+            );
+
+
+        const ids = [
+            ...toasted,
+            ...newItems.map(
+                notification =>
+                    notification.id
             )
-    );
-
-}
+        ];
 
 
-/* =========================================================
-   UPDATE BADGE
-========================================================= */
+        saveToastedNotifications(
+            ids
+        );
 
-function updateGlobalNotificationBadge(){
+    }
 
-    const badges =
-        document.querySelectorAll(
-            '#notif-badge, .notif-badge'
+
+    /* =========================================================
+       POLLING
+    ========================================================= */
+
+    function startPolling() {
+
+        stopPolling();
+
+
+        pollingTimer =
+            setInterval(
+                () => {
+
+                    if (
+                        document.visibilityState ===
+                        'visible'
+                    ) {
+
+                        fetchGlobalNotifications();
+
+                    }
+
+                },
+                POLLING_INTERVAL
+            );
+
+
+        console.log(
+            '🔄 NOTIFICATION POLLING AKTIF:',
+            POLLING_INTERVAL / 1000,
+            'detik'
+        );
+
+    }
+
+
+    function stopPolling() {
+
+        if (pollingTimer) {
+
+            clearInterval(
+                pollingTimer
+            );
+
+            pollingTimer = null;
+
+        }
+
+    }
+
+
+    /* =========================================================
+       WAIT FOR CURRENT USER
+       ========================================================= */
+
+    function waitForCurrentUser() {
+
+        if (!auth) {
+            return;
+        }
+
+
+        if (auth.currentUser) {
+
+            currentUser =
+                auth.currentUser;
+
+
+            console.log(
+                '🔥 NOTIFICATION: User terdeteksi',
+                currentUser.uid
+            );
+
+
+            fetchGlobalNotifications();
+
+
+            startPolling();
+
+
+            return;
+
+        }
+
+
+        let attempts = 0;
+
+
+        console.log(
+            '⏳ NOTIFICATION: Menunggu currentUser...'
         );
 
 
-    const unread =
-        getUnreadNotifications();
+        if (authRetryTimer) {
+
+            clearInterval(
+                authRetryTimer
+            );
+
+        }
 
 
-    badges.forEach(
-        badge => {
+        authRetryTimer =
+            setInterval(
+                () => {
 
-            if(
-                unread.length > 0
-            ){
+                    attempts++;
 
-                badge.style.display =
-                    'flex';
 
-                badge.textContent =
-                    unread.length > 99
-                        ? '99+'
-                        : unread.length;
+                    if (
+                        auth.currentUser
+                    ) {
 
-            }else{
+                        clearInterval(
+                            authRetryTimer
+                        );
 
-                badge.style.display =
-                    'none';
+                        authRetryTimer =
+                            null;
 
-                badge.textContent =
-                    '';
+
+                        currentUser =
+                            auth.currentUser;
+
+
+                        console.log(
+                            '🔥 NOTIFICATION: User terdeteksi',
+                            currentUser.uid
+                        );
+
+
+                        fetchGlobalNotifications();
+
+
+                        startPolling();
+
+
+                        return;
+
+                    }
+
+
+                    if (
+                        attempts >=
+                        AUTH_MAX_ATTEMPTS
+                    ) {
+
+                        clearInterval(
+                            authRetryTimer
+                        );
+
+                        authRetryTimer =
+                            null;
+
+
+                        console.warn(
+                            '⚠️ NOTIFICATION: currentUser tidak ditemukan'
+                        );
+
+                    }
+
+                },
+                AUTH_RETRY_INTERVAL
+            );
+
+    }
+
+
+    /* =========================================================
+       INIT AUTH
+    ========================================================= */
+
+    function initNotificationAuth(
+        firebaseAuth
+    ) {
+
+        if (!firebaseAuth) {
+
+            console.warn(
+                '⚠️ NOTIFICATION: Firebase Auth tidak ditemukan'
+            );
+
+            return;
+
+        }
+
+
+        if (
+            initialized &&
+            auth === firebaseAuth
+        ) {
+
+            return;
+
+        }
+
+
+        auth =
+            firebaseAuth;
+
+
+        initialized =
+            true;
+
+
+        console.log(
+            '🔥 NOTIFICATION: Firebase Auth diterima'
+        );
+
+
+        waitForCurrentUser();
+
+    }
+
+
+    /* =========================================================
+       WAIT FIREBASE AUTH
+    ========================================================= */
+
+    function waitForFirebaseAuth() {
+
+        /*
+         * Jika dashboard-auth.js
+         * sudah selesai lebih dahulu.
+         */
+
+        if (
+            window.firebaseAuth
+        ) {
+
+            console.log(
+                '🔥 NOTIFICATION: Firebase Auth sudah tersedia'
+            );
+
+
+            initNotificationAuth(
+                window.firebaseAuth
+            );
+
+
+            return;
+
+        }
+
+
+        /*
+         * Jika dashboard-auth.js
+         * belum selesai.
+         */
+
+        console.log(
+            '⏳ NOTIFICATION: Menunggu Firebase Auth...'
+        );
+
+
+        window.addEventListener(
+            'firebase-auth-ready',
+            () => {
+
+                console.log(
+                    '🔥 NOTIFICATION: firebase-auth-ready diterima'
+                );
+
+
+                if (
+                    window.firebaseAuth
+                ) {
+
+                    initNotificationAuth(
+                        window.firebaseAuth
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       VISIBILITY
+    ========================================================= */
+
+    document.addEventListener(
+        'visibilitychange',
+        () => {
+
+            if (
+                document.visibilityState ===
+                'visible' &&
+                currentUser
+            ) {
+
+                fetchGlobalNotifications();
 
             }
 
         }
     );
 
-}
 
+    /* =========================================================
+       PUBLIC API
+    ========================================================= */
 
-/* =========================================================
-   FORMAT WAKTU
-========================================================= */
+    window.MCNotification = {
 
-function formatNotificationTime(
-    value
-){
+    fetch:
+        fetchGlobalNotifications,
 
-    if(!value){
+    getCached:
+        getCachedNotifications,
 
-        return '';
+    getUnread:
+        getUnreadNotifications,
 
-    }
+    markAsRead:
+        markNotificationAsRead,
 
+    markAllAsRead:
+        markAllNotificationsAsRead,
 
-    const date =
-        new Date(value);
+    clearAll:
+        clearAllNotifications,
 
+    updateBadge:
+        updateGlobalNotificationBadge,
 
-    if(
-        isNaN(
-            date.getTime()
-        )
-    ){
+    getIcon:
+        getNotificationIcon,
 
-        return value;
+    formatTime:
+        formatNotificationTime
 
-    }
-
-
-    return date.toLocaleString(
-        'id-ID',
-        {
-            day:'2-digit',
-            month:'short',
-            year:'numeric',
-            hour:'2-digit',
-            minute:'2-digit'
-        }
-    );
-
-}
-
-
-/* =========================================================
-   ICON
-========================================================= */
-
-function getNotificationIcon(
-    type
-){
-
-    const icons = {
-
-        sales:'📈',
-
-        dashboard:'📊',
-
-        report:'📋',
-
-        system:'⚙️',
-
-        info:'ℹ️',
-
-        warning:'⚠️',
-
-        success:'✅',
-
-        banner:'📢'
-
-    };
-
-
-    return (
-        icons[type] ||
-        '🔔'
-    );
-
-}
-
-
-/* =========================================================
-   TAMBAH NOTIFIKASI DARI SERVER
-========================================================= */
-
-async function refreshGlobalNotifications(){
-
-    await fetchGlobalNotifications();
-
-}
-
-
-/* =========================================================
-   AUTO REFRESH
-========================================================= */
-
-function startGlobalNotificationPolling(){
-
-    /*
-       Pertama langsung cek
-    */
-
-    refreshGlobalNotifications();
+};
 
 
     /*
-       Kemudian setiap 15 detik
-    */
+     * Backward compatibility
+     */
 
-    setInterval(
+    window.fetchGlobalNotifications =
+        fetchGlobalNotifications;
 
-        refreshGlobalNotifications,
+    window.getCachedNotifications =
+        getCachedNotifications;
 
-        15000
+    window.getUnreadNotifications =
+        getUnreadNotifications;
 
+    window.getNotificationIcon =
+        getNotificationIcon;
+
+    window.formatNotificationTime =
+        formatNotificationTime;
+
+    window.markNotificationAsRead =
+        markNotificationAsRead;
+
+    window.markAllNotificationsAsRead =
+        markAllNotificationsAsRead;
+
+    window.clearAllNotifications =
+        clearAllNotifications;
+  
+    window.updateGlobalNotificationBadge =
+        updateGlobalNotificationBadge;
+
+
+    /* =========================================================
+       START
+    ========================================================= */
+
+    waitForFirebaseAuth();
+
+
+    console.log(
+        '🔥 MC-SAGARANTEN GLOBAL NOTIFICATION AKTIF'
     );
 
-}
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
-document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-
-        updateGlobalNotificationBadge();
-
-        startGlobalNotificationPolling();
-
-    }
-);
-
-/* =========================================================
-   POPUP/TOAST NOTIFICATION TRIGGER
-========================================================= */
-
-const TOASTED_STORAGE_KEY = 'mc_sagaranten_toasted_notifications';
-
-// Dengarkan event saat data notifikasi baru saja ditarik dari server
-window.addEventListener('mcNotificationUpdated', (e) => {
-    const notifications = e.detail;
-    const readIds = getReadNotificationIds();
-    
-    // Ambil ID notifikasi yang sudah pernah dimunculkan popup-nya
-    let toastedIds = [];
-    try {
-        toastedIds = JSON.parse(localStorage.getItem(TOASTED_STORAGE_KEY) || '[]');
-    } catch(err) {}
-
-    let hasNewToast = false;
-
-    // Cek satu per satu notifikasi
-    notifications.forEach(notif => {
-        // Jika belum dibaca DAN belum pernah di-toast
-        if(!readIds.includes(notif.id) && !toastedIds.includes(notif.id)) {
-            showToastPopup(notif); // Munculkan popup
-            toastedIds.push(notif.id); // Tandai sudah di-toast
-            hasNewToast = true;
-        }
-    });
-
-    // Simpan kembali daftar yang sudah di-toast
-    if(hasNewToast) {
-        // Batasi memori agar tidak terlalu besar (simpan 200 id terakhir)
-        toastedIds = toastedIds.slice(-200);
-        localStorage.setItem(TOASTED_STORAGE_KEY, JSON.stringify(toastedIds));
-    }
-});
-
-/* =========================================================
-   FUNGSI MEMBUAT ELEMEN TOAST HTML
-========================================================= */
-function showToastPopup(notif) {
-    // 1. Cek apakah container toast sudah ada di halaman, jika belum buatkan
-    let container = document.querySelector('.global-notif-toast-container');
-    if (!container) {
-        container = document.createElement('div');
-        container.className = 'global-notif-toast-container';
-        document.body.appendChild(container);
-    }
-
-    // 2. Buat elemen toast
-    const toast = document.createElement('div');
-    toast.className = 'global-notif-toast';
-    
-    toast.innerHTML = `
-        <div class="toast-icon">
-            ${getNotificationIcon(notif.type)}
-        </div>
-        <div class="toast-content">
-            <div class="toast-title">${escapeHtml(notif.title)}</div>
-            <div class="toast-message">${escapeHtml(notif.message)}</div>
-        </div>
-        <button class="toast-close">✕</button>
-    `;
-
-    // 3. Masukkan ke container
-    container.appendChild(toast);
-
-    // 4. Beri efek animasi muncul (delay sedikit agar transisi CSS berjalan)
-    setTimeout(() => {
-        toast.classList.add('show');
-    }, 50);
-
-    // 5. Fungsi hapus toast (bisa di-klik tutup atau hilang otomatis 5 detik)
-    const removeToast = () => {
-        toast.classList.remove('show');
-        setTimeout(() => {
-            if(toast.parentElement) toast.remove();
-        }, 300);
-    };
-
-    toast.querySelector('.toast-close').addEventListener('click', (e) => {
-        e.stopPropagation();
-        removeToast();
-    });
-
-    // Hilang otomatis setelah 5 detik
-    setTimeout(removeToast, 5000);
-
-    // Jika toast di-klik, arahkan ke halaman notifikasi (opsional)
-    toast.addEventListener('click', () => {
-        window.location.href = 'notif.html';
-    });
-}
-
-// Fungsi bantu escape HTML (hindari error karakter khusus)
-function escapeHtml(value){
-    return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
-}
+})();

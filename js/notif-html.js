@@ -1,138 +1,799 @@
-document.addEventListener('DOMContentLoaded', async function() {
+/* =========================================================
+   MC-SAGARANTEN
+   NOTIFICATION PAGE UI
+========================================================= */
 
-    const list = document.getElementById('notif-list');
+(function () {
+
+    'use strict';
+
+    console.log('🔔 MC-SAGARANTEN NOTIFICATION PAGE AKTIF');
+
+    let allNotifications = [];
+    let currentFilter = 'all';
+
+    const listElement =
+        document.getElementById('notif-list');
+
+    const unreadCountElement =
+        document.querySelector('[data-notif-unread]');
+
+    const markAllButton =
+        document.getElementById('btn-mark-all');
+
+    const clearAllButton =
+        document.getElementById('btn-clear-all');
+
+
+    /* =====================================================
+       GET CACHE
+    ===================================================== */
+
+    function getNotifications() {
+
+        if (
+            window.MCNotification &&
+            typeof window.MCNotification.getCached === 'function'
+        ) {
+
+            const data =
+                window.MCNotification.getCached();
+
+            if (Array.isArray(data)) {
+                return data;
+            }
+        }
+
+        if (
+            Array.isArray(window.__MC_NOTIFICATIONS__)
+        ) {
+            return window.__MC_NOTIFICATIONS__;
+        }
+
+        return [];
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+    ===================================================== */
+
+    function escapeHtml(value) {
+
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+
+    }
+
+
+    /* =====================================================
+       FORMAT TIME
+    ===================================================== */
+
+    function formatTime(notification) {
+
+        if (
+            window.MCNotification &&
+            typeof window.MCNotification.formatTime === 'function'
+        ) {
+
+            return window.MCNotification.formatTime(
+                notification.createdAt
+            );
+        }
+
+        const value =
+            notification.createdAt;
+
+        if (!value) {
+            return '';
+        }
+
+        try {
+
+            let date;
+
+            if (
+                typeof value === 'object' &&
+                value._seconds
+            ) {
+
+                date = new Date(
+                    value._seconds * 1000
+                );
+
+            } else if (
+                typeof value === 'object' &&
+                value.seconds
+            ) {
+
+                date = new Date(
+                    value.seconds * 1000
+                );
+
+            } else {
+
+                date = new Date(value);
+            }
+
+            if (isNaN(date.getTime())) {
+                return '';
+            }
+
+            return date.toLocaleString(
+                'id-ID',
+                {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }
+            );
+
+        } catch (error) {
+
+            return '';
+        }
+    }
+
+
+    /* =====================================================
+       ICON
+    ===================================================== */
+
+    function getIcon(notification) {
+
+        if (
+            window.MCNotification &&
+            typeof window.MCNotification.getIcon === 'function'
+        ) {
+
+            return window.MCNotification.getIcon(
+                notification.type
+            );
+        }
+
+        const icons = {
+
+            stock: 'fa-boxes-stacked',
+            sales: 'fa-chart-column',
+            request: 'fa-clipboard-list',
+            user: 'fa-user',
+            broadcast: 'fa-bullhorn',
+            program: 'fa-store',
+            banner: 'fa-image',
+            activity: 'fa-calendar-check',
+            dashboard: 'fa-chart-line',
+            warning: 'fa-triangle-exclamation',
+            system: 'fa-bell'
+
+        };
+
+        return icons[
+            String(notification.type || '').toLowerCase()
+        ] || 'fa-bell';
+    }
+
+
+    /* =====================================================
+       URL
+    ===================================================== */
+
+    function getNotificationUrl(notification) {
+
+        const data =
+            notification.data || {};
+
+        if (data.url) {
+            return data.url;
+        }
+
+        if (data.href) {
+            return data.href;
+        }
+
+        if (data.page) {
+            return data.page;
+        }
+
+        const type =
+            String(notification.type || '')
+                .toLowerCase();
+
+        const urls = {
+
+            stock: 'stok-gudang.html',
+            sales: 'penjualan-reguler-new.html',
+            program: 'program-outlet.html',
+            banner: 'index.html',
+            activity: 'activity-daily.html',
+            dashboard: 'index.html',
+            system: 'index.html',
+            warning: 'index.html'
+
+        };
+
+        return urls[type] || null;
+    }
+
+
+    /* =====================================================
+       SUMMARY
+    ===================================================== */
+
+    function updateSummary() {
+
+        const unread =
+            allNotifications.filter(
+                n => !n.isRead
+            ).length;
+
+        if (unreadCountElement) {
+
+            unreadCountElement.textContent =
+                unread;
+        }
+
+    }
+
+
+    /* =====================================================
+       FILTER
+    ===================================================== */
+
+    function getFilteredNotifications() {
+
+        if (currentFilter === 'unread') {
+
+            return allNotifications.filter(
+                n => !n.isRead
+            );
+
+        }
+
+        return allNotifications;
+    }
+
+
+    /* =====================================================
+       RENDER
+    ===================================================== */
+
+    function renderNotifications() {
+
+        if (!listElement) {
+            return;
+        }
+
+        const notifications =
+            getFilteredNotifications();
+
+        listElement.innerHTML = '';
+
+
+        /* =================================================
+           EMPTY
+        ================================================= */
+
+        if (!notifications.length) {
+
+            listElement.innerHTML = `
+
+                <div class="notif-empty">
+
+                    <div class="notif-empty-icon">
+                        <i class="fa-regular fa-bell-slash"></i>
+                    </div>
+
+                    <div class="notif-empty-title">
+                        Belum Ada Notifikasi
+                    </div>
+
+                    <div class="notif-empty-text">
+                        Belum ada pembaruan untuk Anda.
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
+        }
+
+
+        /* =================================================
+           RENDER ITEMS
+        ================================================= */
+
+        notifications.forEach(notification => {
+
+            const item =
+                document.createElement('div');
+
+            item.className =
+                `notif-item ${
+                    notification.isRead
+                        ? 'read'
+                        : 'unread'
+                }`;
+
+            item.dataset.id =
+                notification.id;
+
+
+            const title =
+                notification.title ||
+                'Notifikasi';
+
+            const message =
+                notification.message ||
+                '';
+
+            const icon =
+                getIcon(notification);
+
+            const time =
+                formatTime(notification);
+
+
+            item.innerHTML = `
+
+                <div class="notif-item-icon">
+                    <i class="fa-solid ${icon}"></i>
+                </div>
+
+                <div class="notif-item-content">
+
+                    <div class="notif-item-title">
+                        ${escapeHtml(title)}
+                    </div>
+
+                    <div class="notif-item-message">
+                        ${escapeHtml(message)}
+                    </div>
+
+                    <div class="notif-item-time">
+                        ${escapeHtml(time)}
+                    </div>
+
+                </div>
+
+                ${
+                    !notification.isRead
+                        ? `
+                            <div class="notif-unread-dot"></div>
+                          `
+                        : ''
+                }
+
+            `;
+
+
+            item.addEventListener(
+                'click',
+                async () => {
+
+                    if (
+                        !notification.isRead &&
+                        typeof window.markNotificationAsRead ===
+                        'function'
+                    ) {
+
+                        try {
+
+                            await window.markNotificationAsRead(
+                                notification.id
+                            );
+
+                            notification.isRead =
+                                true;
+
+                        } catch (error) {
+
+                            console.error(
+                                '❌ MARK READ ERROR:',
+                                error
+                            );
+                        }
+                    }
+
+
+                    updateSummary();
+                    renderNotifications();
+
+
+                    const url =
+                        getNotificationUrl(
+                            notification
+                        );
+
+                    if (url) {
+
+                        window.location.href =
+                            url;
+                    }
+
+                }
+            );
+
+
+            listElement.appendChild(item);
+
+        });
+
+
+        console.log(
+            '📋 NOTIF PAGE: Render selesai:',
+            notifications.length
+        );
+
+    }
+
+
+    /* =====================================================
+       SYNC CACHE
+    ===================================================== */
+
+    async function syncFromCache() {
 
     try {
 
-        // Ambil data notifikasi
-        const notifications = await fetchGlobalNotifications();
+        /*
+         * Ambil data terbaru dari global notification
+         */
 
-        // Pastikan berupa array
-        const notifData = Array.isArray(notifications)
-            ? notifications
-            : [];
+        if (
+            window.MCNotification &&
+            typeof window.MCNotification.fetch ===
+            'function'
+        ) {
 
-        // =========================================
-        // UPDATE JUMLAH BELUM DIBACA
-        // =========================================
-        updateUnreadCount(notifData);
-
-        // Tampilkan semua notifikasi
-        renderNotifications(notifData, 'all');
+            const data =
+                await window.MCNotification.fetch();
 
 
-        // =========================================
-        // LOGIKA FILTER
-        // =========================================
-        const filterButtons =
-            document.querySelectorAll('.notif-filter button');
+            if (Array.isArray(data)) {
+
+                allNotifications =
+                    data.slice();
 
 
-        filterButtons.forEach(button => {
+                updateSummary();
 
-            button.addEventListener('click', function() {
-
-                // Hapus active
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-
-                // Tambahkan active
-                this.classList.add('active');
+                renderNotifications();
 
 
-                // Ambil filter
-                const filterType =
-                    this.getAttribute('data-filter');
-
-
-                // Render
-                renderNotifications(
-                    notifData,
-                    filterType
+                console.log(
+                    '🔄 NOTIF PAGE: Data berhasil disinkronkan:',
+                    allNotifications.length
                 );
 
-            });
 
-        });
+                return true;
+
+            }
+
+        }
+
+
+        /*
+         * Fallback ke cache
+         */
+
+        const cached =
+            getNotifications();
+
+
+        if (Array.isArray(cached)) {
+
+            allNotifications =
+                cached.slice();
+
+
+            updateSummary();
+
+            renderNotifications();
+
+
+            console.log(
+                '📦 NOTIF PAGE: Menggunakan cache:',
+                allNotifications.length
+            );
+
+
+            return true;
+
+        }
+
+
+        return false;
 
 
     } catch (error) {
 
         console.error(
-            'Gagal memuat notifikasi:',
+            '❌ NOTIF PAGE SYNC ERROR:',
             error
         );
 
-        // Jika gagal, tampilkan 0
-        updateUnreadCount([]);
+        return false;
 
     }
 
-});
+}
 
 
+    /* =====================================================
+       WAIT FOR DATA
+    ===================================================== */
 
-/* =========================================
-   UPDATE JUMLAH NOTIFIKASI BELUM DIBACA
-========================================= */
+    function startSync() {
 
-function updateUnreadCount(notifications) {
+    /*
+     * Ambil data pertama kali
+     */
 
-    const countElement =
-        document.querySelector('[data-notif-unread]');
-
-
-    if (!countElement) return;
-
-
-    // Ambil daftar ID yang sudah dibaca
-    const readIds =
-        typeof getReadNotificationIds === 'function'
-            ? getReadNotificationIds()
-            : [];
+    syncFromCache();
 
 
-    // Hitung yang belum dibaca
-    const unreadCount =
-        (notifications || []).filter(notification => {
+    /*
+     * Beri kesempatan notif.js selesai
+     * melakukan fetch dari backend.
+     */
 
-            return !readIds.includes(
-                String(notification.id)
+    let attempts = 0;
+
+
+    const timer =
+        setInterval(
+            async () => {
+
+                attempts++;
+
+
+                const updated =
+                    await syncFromCache();
+
+
+                if (
+                    updated &&
+                    allNotifications.length > 0
+                ) {
+
+                    console.log(
+                        '✅ NOTIF PAGE: Notification berhasil ditampilkan:',
+                        allNotifications.length
+                    );
+
+                    clearInterval(timer);
+
+                }
+
+
+                /*
+                 * Maksimal 20 detik
+                 */
+
+                if (
+                    attempts >= 40
+                ) {
+
+                    clearInterval(timer);
+
+
+                    if (
+                        allNotifications.length === 0
+                    ) {
+
+                        console.warn(
+                            '⚠️ NOTIF PAGE: Data notification tidak ditemukan'
+                        );
+
+                    }
+
+                }
+
+            },
+            500
+        );
+
+
+    /*
+     * Re-sync setiap 30 detik
+     */
+
+    setInterval(
+        () => {
+
+            syncFromCache();
+
+        },
+        30000
+    );
+
+}
+
+
+    /* =====================================================
+       FILTER BUTTON
+    ===================================================== */
+
+    function setupFilters() {
+
+        document
+            .querySelectorAll(
+                '.notif-filter button'
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    'click',
+                    () => {
+
+                        document
+                            .querySelectorAll(
+                                '.notif-filter button'
+                            )
+                            .forEach(btn =>
+                                btn.classList.remove(
+                                    'active'
+                                )
+                            );
+
+                        button.classList.add(
+                            'active'
+                        );
+
+                        currentFilter =
+                            button.dataset.filter ||
+                            'all';
+
+                        renderNotifications();
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    /* =====================================================
+       MARK ALL
+    ===================================================== */
+
+    async function markAllRead() {
+
+        if (
+            typeof window.markAllNotificationsAsRead !==
+            'function'
+        ) {
+
+            return;
+        }
+
+        try {
+
+            await window.markAllNotificationsAsRead();
+
+            allNotifications =
+                allNotifications.map(
+                    n => ({
+                        ...n,
+                        isRead: true
+                    })
+                );
+
+            updateSummary();
+            renderNotifications();
+
+        } catch (error) {
+
+            console.error(
+                '❌ MARK ALL ERROR:',
+                error
+            );
+        }
+    }
+
+
+    async function clearAll() {
+
+    const total =
+        allNotifications.length;
+
+
+    if (!total) {
+
+        alert(
+            'Tidak ada notifikasi untuk dihapus.'
+        );
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            `Hapus semua ${total} notifikasi?\n\n` +
+            `Notifikasi akan dihapus dari daftar Anda.`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    try {
+
+        if (clearAllButton) {
+
+            clearAllButton.disabled = true;
+
+            clearAllButton.textContent =
+                'Menghapus...';
+
+        }
+
+
+        const success =
+            await window.clearAllNotifications();
+
+
+        if (!success) {
+
+            throw new Error(
+                'Gagal menghapus notification'
             );
 
-        }).length;
+        }
 
 
-    // Tampilkan angka
-    countElement.textContent = unreadCount;
+        /*
+         * Kosongkan halaman
+         */
+
+        allNotifications = [];
 
 
-    // =========================================
-    // OPTIONAL:
-    // Update badge pada bottom navigation
-    // =========================================
+        updateSummary();
 
-    const badge =
-        document.getElementById('notif-badge');
+        renderNotifications();
 
 
-    if (badge) {
+        console.log(
+            '✅ NOTIF PAGE: Semua notification dihapus'
+        );
 
-        if (unreadCount > 0) {
 
-            badge.textContent =
-                unreadCount > 99
-                    ? '99+'
-                    : unreadCount;
+    } catch (error) {
 
-            badge.style.display = 'flex';
+        console.error(
+            '❌ CLEAR ALL ERROR:',
+            error
+        );
 
-        } else {
 
-            badge.textContent = '';
+        alert(
+            'Gagal menghapus semua notifikasi.'
+        );
 
-            badge.style.display = 'none';
+
+    } finally {
+
+        if (clearAllButton) {
+
+            clearAllButton.disabled = false;
+
+            clearAllButton.textContent =
+                'Hapus Semua';
 
         }
 
@@ -141,311 +802,75 @@ function updateUnreadCount(notifications) {
 }
 
 
+    /* =====================================================
+       BACK
+    ===================================================== */
 
-/* =========================================
-   RENDER NOTIFICATIONS
-========================================= */
+    window.goBack = function () {
 
-function renderNotifications(
-    notifications,
-    filterType = 'all'
-) {
+        if (
+            document.referrer &&
+            document.referrer !==
+            window.location.href
+        ) {
 
-    const list =
-        document.getElementById('notif-list');
+            window.history.back();
 
+        } else {
 
-    const readIds =
-        typeof getReadNotificationIds === 'function'
-            ? getReadNotificationIds()
-            : [];
+            window.location.href =
+                'index.html';
+        }
 
-
-    // =========================================
-    // FILTER
-    // =========================================
-
-    let filteredNotifications =
-        notifications || [];
+    };
 
 
-    if (filterType === 'unread') {
+    /* =====================================================
+       INIT
+    ===================================================== */
 
-        filteredNotifications =
-            filteredNotifications.filter(
-                notification =>
-                    !readIds.includes(
-                        String(notification.id)
-                    )
+    function init() {
+
+        setupFilters();
+
+        if (markAllButton) {
+
+            markAllButton.addEventListener(
+                'click',
+                markAllRead
             );
+
+        }
+
+        if (clearAllButton) {
+
+            clearAllButton.addEventListener(
+                'click',
+                clearAll
+            );
+
+        }
+
+        startSync();
 
     }
 
-
-    // =========================================
-    // EMPTY STATE
-    // =========================================
 
     if (
-        !filteredNotifications ||
-        filteredNotifications.length === 0
+        document.readyState === 'loading'
     ) {
 
-        list.innerHTML = `
-
-            <div class="notif-empty">
-
-                <div class="notif-empty-icon">
-                    🔔
-                </div>
-
-                <div class="notif-empty-title">
-                    Tidak ada notifikasi
-                </div>
-
-                <div class="notif-empty-text">
-
-                    ${
-                        filterType === 'unread'
-                            ? 'Hore! Semua notifikasi sudah Anda baca.'
-                            : 'Saat ini belum ada pemberitahuan baru.'
-                    }
-
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    // =========================================
-    // LIST NOTIFIKASI
-    // =========================================
-
-    list.innerHTML =
-        filteredNotifications.map(notification => {
-
-            const isRead =
-                readIds.includes(
-                    String(notification.id)
-                );
-
-
-            return `
-
-                <div
-                    class="notif-item ${
-                        isRead
-                            ? 'read'
-                            : 'unread'
-                    }"
-                    data-id="${escapeHtml(
-                        notification.id
-                    )}"
-                >
-
-                    <div class="notif-item-icon">
-
-                        ${
-                            typeof getNotificationIcon === 'function'
-                                ? getNotificationIcon(
-                                    notification.type
-                                )
-                                : '📄'
-                        }
-
-                    </div>
-
-
-                    <div class="notif-item-content">
-
-                        <div class="notif-item-title">
-
-                            ${escapeHtml(
-                                notification.title
-                            )}
-
-                        </div>
-
-
-                        <div class="notif-item-message">
-
-                            ${escapeHtml(
-                                notification.message
-                            )}
-
-                        </div>
-
-
-                        <div class="notif-item-time">
-
-                            ${
-                                typeof formatNotificationTime === 'function'
-                                    ? formatNotificationTime(
-                                        notification.createdAt
-                                    )
-                                    : 'Baru saja'
-                            }
-
-                        </div>
-
-                    </div>
-
-
-                    ${
-                        !isRead
-                            ? '<div class="notif-unread-dot"></div>'
-                            : ''
-                    }
-
-                </div>
-
-            `;
-
-        }).join('');
-
-
-    // =========================================
-    // EVENT KLIK NOTIFIKASI
-    // =========================================
-
-    list
-        .querySelectorAll('.notif-item')
-        .forEach(item => {
-
-            item.addEventListener(
-                'click',
-                () => {
-
-                    const id =
-                        String(item.dataset.id);
-
-
-                    const notification =
-                        notifications.find(
-                            n =>
-                                String(n.id) === id
-                        );
-
-
-                    // Tandai dibaca
-                    if (
-                        typeof markNotificationAsRead ===
-                        'function'
-                    ) {
-
-                        markNotificationAsRead(id);
-
-                    }
-
-
-                    // Update visual
-                    item.classList.remove(
-                        'unread'
-                    );
-
-                    item.classList.add(
-                        'read'
-                    );
-
-
-                    const dot =
-                        item.querySelector(
-                            '.notif-unread-dot'
-                        );
-
-
-                    if (dot) {
-
-                        dot.remove();
-
-                    }
-
-
-                    // =========================================
-                    // UPDATE ANGKA SECARA LANGSUNG
-                    // =========================================
-
-                    updateUnreadCount(
-                        notifications
-                    );
-
-
-                    // =========================================
-                    // REDIRECT
-                    // =========================================
-
-                    if (
-                        notification &&
-                        notification.url &&
-                        notification.url !== '#'
-                    ) {
-
-                        window.location.href =
-                            notification.url;
-
-                    }
-
-                }
-            );
-
-        });
-
-}
-
-
-
-/* =========================================
-   ESCAPE HTML
-========================================= */
-
-function escapeHtml(value) {
-
-    return String(value || '')
-        .replace(
-            /&/g,
-            '&amp;'
-        )
-        .replace(
-            /</g,
-            '&lt;'
-        )
-        .replace(
-            />/g,
-            '&gt;'
-        )
-        .replace(
-            /"/g,
-            '&quot;'
-        )
-        .replace(
-            /'/g,
-            '&#039;'
+        document.addEventListener(
+            'DOMContentLoaded',
+            init,
+            { once: true }
         );
-
-}
-
-
-
-/* =========================================
-   BACK
-========================================= */
-
-function goBack() {
-
-    if (window.history.length > 1) {
-
-        window.history.back();
 
     } else {
 
-        window.location.href =
-            'dashboard.html';
+        init();
 
     }
 
-}
+
+})();

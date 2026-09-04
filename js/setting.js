@@ -1,82 +1,153 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-    .then(() => console.log('Service Worker aktif'))
-    .catch(err => console.log('SW gagal', err));
+/* =========================================================
+   MC-SAGARANTEN - SETTING
+========================================================= */
+
+'use strict';
+
+const BACKEND_API_URL = 'http://localhost:3000';
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyDxEBq9_j05HDWHHpYcvM1_AfNlZr12xYU",
+
+    authDomain:
+        "mc-sagaranten.firebaseapp.com",
+
+    projectId:
+        "mc-sagaranten",
+
+    storageBucket:
+        "mc-sagaranten.firebasestorage.app",
+
+    messagingSenderId:
+        "1055595672864",
+
+    appId:
+        "1:1055595672864:web:29dfeb6fed0f15673b5345"
+
+};
+
+import('https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js')
+.then(async ({ initializeApp }) => {
+    const { getAuth, onAuthStateChanged } = await import('https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js');
+    let app;
+
+    try {
+        app = initializeApp(firebaseConfig);
+    } catch (error) {
+        console.warn('Firebase app mungkin sudah aktif:', error.message);
+    }
+
+    const auth = getAuth();
+    window.firebaseAuth = auth;
+    console.log('SETTING FIREBASE AUTH AKTIF');
+
+    onAuthStateChanged(auth, async user => {
+        if (!user) {
+            console.warn('SETTING: User belum login');
+            tampilkanUserOffline();
+            return;
+        }
+        console.log('SETTING AUTH:', user.uid);
+        await loadUserProfile(user);
+    });
+})
+.catch(error => {
+    console.error('SETTING FIREBASE ERROR:', error);
+    tampilkanUserOffline();
+});
+
+const nameElement = document.getElementById('setting-user-name');
+const badgeElement = document.getElementById('setting-user-badge');
+
+async function loadUserProfile(user) {
+    if (!user) {
+        tampilkanUserOffline();
+        return;
+    }
+
+    try {
+        const token = await user.getIdToken();
+        console.log('SETTING: Mengambil profil dari backend...');
+
+        const response = await fetch(`${BACKEND_API_URL}/api/users/me`, {
+            method: 'GET',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            cache: 'no-store'
+        });
+
+        let result = null;
+        try { result = await response.json(); } catch (error) { result = null; }
+
+        if (!response.ok) throw new Error(result?.message || `HTTP ${response.status}`);
+        if (!result || !result.success) throw new Error(result?.message || 'Profil user tidak ditemukan.');
+
+        const profile = result.data || result.user || result.profile || {};
+        const nama = profile.nama || user.displayName || 'Pengguna';
+        const role = profile.role || 'user';
+        const status = profile.status || 'inactive';
+
+        if (nameElement) nameElement.textContent = 'Login sebagai ' + nama;
+
+        if (badgeElement) {
+            if (status === 'active') {
+                badgeElement.textContent = formatRole(role);
+                badgeElement.classList.remove('inactive');
+                badgeElement.classList.add('active');
+            } else {
+                badgeElement.textContent = 'NONAKTIF';
+                badgeElement.classList.remove('active');
+                badgeElement.classList.add('inactive');
+            }
+        }
+
+        localStorage.setItem('mc_sagaranten_nama', nama);
+        localStorage.setItem('mc_sagaranten_role', role);
+        localStorage.setItem('mc_sagaranten_status', status);
+
+        console.log('SETTING PROFILE:', { uid: user.uid, nama, role, status });
+    } catch (error) {
+        console.error('SETTING PROFILE ERROR:', error);
+        if (nameElement) nameElement.textContent = user.displayName || 'Pengguna';
+        if (badgeElement) badgeElement.textContent = 'TERHUBUNG';
+    }
 }
 
-let deferredPrompt;
+function formatRole(role) {
+    const roleMap = { admin: 'ADMIN', manager: 'MANAGER', supervisor: 'SUPERVISOR', dse: 'DSE', user: 'USER' };
+    return roleMap[String(role).toLowerCase()] || String(role || 'USER').toUpperCase();
+}
 
+function tampilkanUserOffline() {
+    const cachedNama = localStorage.getItem('mc_sagaranten_nama');
+    const cachedRole = localStorage.getItem('mc_sagaranten_role');
+    const cachedStatus = localStorage.getItem('mc_sagaranten_status');
+
+    if (nameElement) {
+        nameElement.textContent = cachedNama ? 'Login sebagai ' + cachedNama : 'Menunggu autentikasi...';
+    }
+
+    if (badgeElement) {
+        if (cachedStatus === 'active') {
+            badgeElement.textContent = formatRole(cachedRole);
+        } else {
+            badgeElement.textContent = cachedStatus ? cachedStatus.toUpperCase() : 'USER';
+        }
+    }
+}
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+        .then(() => console.log('Service Worker aktif'))
+        .catch(error => console.log('SW gagal', error));
+}
+
+let deferredPrompt = null;
 const installSection = document.getElementById('install-section');
 const btnInstall = document.getElementById('btn-install');
 
-// Deteksi apakah aplikasi sudah terinstall
-window.addEventListener('appinstalled', () => {
-    btnInstall.innerText = 'Terinstall';
-    btnInstall.style.background = '#64748b';
-    btnInstall.disabled = true;
-});
-
-// Menangkap event install PWA
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-
-    btnInstall.style.display = 'inline-block';
-});
-
-// Tombol install diklik
-btnInstall.addEventListener('click', async () => {
-
-    // Efek loading
-    btnInstall.innerText = 'Memproses...';
-    btnInstall.style.opacity = '0.7';
-
-    if (deferredPrompt) {
-
-        // Menampilkan popup install
-        deferredPrompt.prompt();
-
-        const { outcome } = await deferredPrompt.userChoice;
-
-        if (outcome === 'accepted') {
-
-            btnInstall.innerText = 'Berhasil Diinstall';
-            btnInstall.style.background = '#64748b';
-
-        } else {
-
-            btnInstall.innerText = 'Install';
-            btnInstall.style.opacity = '1';
-
-        }
-
-        deferredPrompt = null;
-
-    } else {
-
-        // Jika browser tidak mendukung
-        alert('Install aplikasi belum didukung atau aplikasi sudah terinstall.');
-
-        btnInstall.innerText = 'Install';
-        btnInstall.style.opacity = '1';
-    }
-});
-document.getElementById('clear-cache').addEventListener('click', () => {
-    if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-        // Mengirim pesan ke service worker
-        navigator.serviceWorker.controller.postMessage({ action: 'clearCache' });
-        alert('Cache berhasil dibersihkan! Aplikasi akan dimuat ulang.');
-        
-        // Opsional: Reload halaman
-        setTimeout(() => { window.location.reload(); }, 500);
-    } else {
-        alert('Service Worker tidak aktif.');
-    }
-});
-// Fungsi untuk mengecek apakah PWA sudah terinstall/berjalan sebagai standalone
 function checkAppInstalled() {
-    // Jika window.matchMedia mengembalikan true untuk display-mode: standalone
-    // Berarti aplikasi sudah terinstall dan dijalankan dari homescreen
+    if (!btnInstall) return false;
     if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
         btnInstall.innerText = 'Terinstall';
         btnInstall.style.background = '#64748b';
@@ -87,113 +158,66 @@ function checkAppInstalled() {
     return false;
 }
 
-// 1. Cek saat halaman dimuat
-window.addEventListener('DOMContentLoaded', () => {
-    checkAppInstalled();
+window.addEventListener('DOMContentLoaded', () => { checkAppInstalled(); });
+
+window.addEventListener('beforeinstallprompt', event => {
+    if (checkAppInstalled()) return;
+    event.preventDefault();
+    deferredPrompt = event;
+    if (installSection) installSection.style.display = 'flex';
 });
 
-// 2. Tetap pertahankan event appinstalled untuk perubahan real-time tanpa refresh
 window.addEventListener('appinstalled', () => {
+    if (!btnInstall) return;
     btnInstall.innerText = 'Terinstall';
     btnInstall.style.background = '#64748b';
     btnInstall.disabled = true;
+    deferredPrompt = null;
 });
 
-// 3. Logika beforeinstallprompt tetap seperti semula
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Jika sudah terinstall, jangan tampilkan apa-apa
-    if (checkAppInstalled()) return;
-    
-    e.preventDefault();
-    deferredPrompt = e;
-    installSection.style.display = 'flex'; // Pastikan section t
-});
+if (btnInstall) {
+    btnInstall.addEventListener('click', async () => {
+        btnInstall.innerText = 'Memproses...';
+        btnInstall.style.opacity = '0.7';
 
-/* =========================================================
-   IDENTITAS USER LOGIN
-========================================================= */
-
-function loadSettingUser(){
-
-    const nameElement =
-        document.getElementById(
-            'setting-user-name'
-        );
-
-    const badgeElement =
-        document.getElementById(
-            'setting-user-badge'
-        );
-
-
-    if(!nameElement){
-
-        return;
-
-    }
-
-
-    /*
-       Nama sudah disimpan ketika login berhasil
-    */
-
-    const nama =
-        localStorage.getItem(
-            'mc_sagaranten_nama'
-        );
-
-
-    if(
-        nama &&
-        nama.trim() !== ''
-    ){
-
-        nameElement.textContent =
-            'Login sebagai ' + nama;
-
-        if(badgeElement){
-
-            badgeElement.textContent =
-                'AKTIF';
-
+        if (!deferredPrompt) {
+            alert('Install aplikasi belum didukung atau aplikasi sudah terinstall.');
+            btnInstall.innerText = 'Install';
+            btnInstall.style.opacity = '1';
+            return;
         }
 
-    }else{
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
 
-        nameElement.textContent =
-            'Identitas user tidak ditemukan';
-
-        if(badgeElement){
-
-            badgeElement.textContent =
-                'Guest';
-
+        if (outcome === 'accepted') {
+            btnInstall.innerText = 'Berhasil Diinstall';
+            btnInstall.style.background = '#64748b';
+        } else {
+            btnInstall.innerText = 'Install';
+            btnInstall.style.opacity = '1';
         }
-
-    }
-
+        deferredPrompt = null;
+    });
 }
 
+const clearCacheButton = document.getElementById('clear-cache');
+if (clearCacheButton) {
+    clearCacheButton.addEventListener('click', () => {
+        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage({ action: 'clearCache' });
+            alert('Cache berhasil dibersihkan! Aplikasi akan dimuat ulang.');
+            setTimeout(() => { window.location.reload(); }, 500);
+        } else {
+            alert('Service Worker tidak aktif.');
+        }
+    });
+}
 
-/* =========================================================
-   LOAD
-========================================================= */
-
-document.addEventListener(
-    'DOMContentLoaded',
-    loadSettingUser
-);
-
-function goBack(){
-
-    if(window.history.length > 1){
-
+window.goBack = function() {
+    if (window.history.length > 1) {
         window.history.back();
-
-    }else{
-
-        window.location.href = "dashboard.html";
-
+    } else {
+        window.location.href = 'dashboard.html';
     }
-
-}
+};

@@ -1,1370 +1,343 @@
 /* =========================================================
-   KONFIGURASI
+   MC-SAGARANTEN - UPLOAD DATA
 ========================================================= */
 
-const API_URL =
-    'https://script.google.com/macros/s/AKfycbzINzFJt38mQyqrgvzrTDechPja8b7tyoO5MMZkDmDSfw-Ftjp_y2POSAfYuP0fqi5WKw/exec';
-
-
-/* =========================================================
-   KONFIGURASI ADMIN
-========================================================= */
-
-const NOMOR_ADMIN = [
-    '085759695969'
-];
-
-
-/* =========================================================
-   CEK AKSES ADMIN
-========================================================= */
-
-function cekAksesAdmin(){
-
-    const nomorLogin =
-        String(
-            localStorage.getItem(
-                'mc_sagaranten_phone'
-            ) || ''
-        ).trim();
-
-
-    console.log(
-        'Nomor login:',
-        nomorLogin
-    );
-
-
-    console.log(
-        'Nomor admin:',
-        NOMOR_ADMIN
-    );
-
-
-    return NOMOR_ADMIN.includes(
-        nomorLogin
-    );
-
-}
-
-
-/* =========================================================
-   PROTEKSI LOGIN
-========================================================= */
-
-function cekLogin(){
-
-    const loginStatus =
-        localStorage.getItem(
-            'mc_sagaranten_login'
-        );
-
-
-    const loginExpire =
-        Number(
-            localStorage.getItem(
-                'mc_sagaranten_expire'
-            )
-        );
-
-
-    /*
-       Jika belum login
-       atau login sudah expired
-    */
-
-    if(
-        loginStatus !== 'true' ||
-        !loginExpire ||
-        Date.now() >= loginExpire
-    ){
-
-        localStorage.removeItem(
-            'mc_sagaranten_login'
-        );
-
-        localStorage.removeItem(
-            'mc_sagaranten_phone'
-        );
-
-        localStorage.removeItem(
-            'mc_sagaranten_login_time'
-        );
-
-        localStorage.removeItem(
-            'mc_sagaranten_expire'
-        );
-
-
-        window.location.replace(
-            'login.html'
-        );
-
-
-        return false;
-
-    }
-
-
-    return true;
-
-}
-
-
-/* =========================================================
-   PROTEKSI HALAMAN ADMIN
-========================================================= */
-
-function proteksiHalamanAdmin(){
-
-    /*
-       Cek login terlebih dahulu
-    */
-
-    if(!cekLogin()){
-
-        return false;
-
-    }
-
-
-    /*
-       Kemudian cek nomor admin
-    */
-
-    if(!cekAksesAdmin()){
-
-        alert(
-            'Akses hanya untuk administrator.'
-        );
-
-
-        window.location.replace(
-            'dashboard.html'
-        );
-
-
-        return false;
-
-    }
-
-
-    return true;
-
-}
-
-
-/* =========================================================
-   NAMA PENGGUNA
-========================================================= */
-
-function getNamaPengguna(){
-
-    const nama =
-        localStorage.getItem(
-            'mc_sagaranten_nama'
-        );
-
-
-    if(
-        nama &&
-        nama.trim() !== ''
-    ){
-
-        return nama.trim();
-
-    }
-
-
-    return 'Administrator';
-
-}
-
-
-/* =========================================================
-   ELEMENT
-========================================================= */
-
-const excelFile =
-    document.getElementById(
-        'excelFile'
-    );
-
-
-const uploadArea =
-    document.getElementById(
-        'uploadArea'
-    );
-
-
-const fileName =
-    document.getElementById(
-        'fileName'
-    );
-
-
-const uploadButton =
-    document.getElementById(
-        'uploadButton'
-    );
-
-
-const progressWrapper =
-    document.getElementById(
-        'progressWrapper'
-    );
-
-
-const progressValue =
-    document.getElementById(
-        'progressValue'
-    );
-
-
-const progressText =
-    document.getElementById(
-        'progressText'
-    );
-
-
-const progressPercent =
-    document.getElementById(
-        'progressPercent'
-    );
-
-
-const statusCard =
-    document.getElementById(
-        'statusCard'
-    );
-
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js';
+import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js';
+import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js';
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDxEBq9_j05HDWHHpYcvM1_AfNlZr12xYU",
+    authDomain: "mc-sagaranten.firebaseapp.com",
+    projectId: "mc-sagaranten",
+    storageBucket: "mc-sagaranten.firebasestorage.app",
+    messagingSenderId: "1055595672864",
+    appId: "1:1055595672864:web:29dfeb6fed0f15673b5345"
+};
+
+const BACKEND_URL = 'http://localhost:3000';
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const excelFile = document.getElementById('excelFile');
+const uploadArea = document.getElementById('uploadArea');
+const fileName = document.getElementById('fileName');
+const uploadButton = document.getElementById('uploadButton');
+const progressWrapper = document.getElementById('progressWrapper');
+const progressValue = document.getElementById('progressValue');
+const progressText = document.getElementById('progressText');
+const progressPercent = document.getElementById('progressPercent');
+const statusCard = document.getElementById('statusCard');
 
 let selectedFile = null;
+let currentUser = null;
+let currentUserData = null;
 
-
-/* =========================================================
-   UPDATE BUTTON
-========================================================= */
-
-function updateUploadButton(){
-
-    if(!uploadButton){
-
-        return;
-
-    }
-
-
-    uploadButton.disabled =
-        !selectedFile;
-
+function formatBytes(bytes) {
+    if (!bytes || bytes === 0) return '0 Bytes';
+    const units = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + units[i];
 }
 
-
-/* =========================================================
-   FORMAT UKURAN FILE
-========================================================= */
-
-function formatBytes(bytes){
-
-    if(
-        !bytes ||
-        bytes === 0
-    ){
-
-        return '0 Bytes';
-
-    }
-
-
-    const units = [
-        'Bytes',
-        'KB',
-        'MB',
-        'GB'
-    ];
-
-
-    const i =
-        Math.floor(
-            Math.log(bytes) /
-            Math.log(1024)
-        );
-
-
-    return (
-        bytes /
-        Math.pow(
-            1024,
-            i
-        )
-    ).toFixed(2)
-    + ' ' +
-    units[i];
-
+function escapeHTML(value) {
+    return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
 }
 
-
-/* =========================================================
-   SET FILE
-========================================================= */
-
-function setSelectedFile(file){
-
-    if(!file){
-
-        selectedFile =
-            null;
-
-
-        fileName.textContent =
-            '';
-
-
-        fileName.style.display =
-            'none';
-
-
-        updateUploadButton();
-
-
-        return;
-
-    }
-
-
-    const extension =
-        file.name
-        .split('.')
-        .pop()
-        .toLowerCase();
-
-
-    /*
-       Validasi format Excel
-    */
-
-    if(
-        extension !== 'xlsx' &&
-        extension !== 'xls'
-    ){
-
-        alert(
-            'Silakan pilih file Excel .xlsx atau .xls.'
-        );
-
-
-        excelFile.value =
-            '';
-
-
-        selectedFile =
-            null;
-
-
-        fileName.textContent =
-            '';
-
-
-        fileName.style.display =
-            'none';
-
-
-        updateUploadButton();
-
-
-        return;
-
-    }
-
-
-    /*
-       Simpan file
-    */
-
-    selectedFile =
-        file;
-
-
-    /*
-       Tampilkan nama file
-    */
-
-    fileName.textContent =
-        '📄 ' +
-        file.name +
-        ' (' +
-        formatBytes(
-            file.size
-        ) +
-        ')';
-
-
-    fileName.style.display =
-        'block';
-
-
-    updateUploadButton();
-
+function updateUploadButton() {
+    if (!uploadButton) return;
+    uploadButton.disabled = !selectedFile || !currentUser;
 }
 
-
-/* =========================================================
-   KLIK AREA UPLOAD
-========================================================= */
-
-uploadArea.addEventListener(
-    'click',
-    function(){
-
-        excelFile.click();
-
-    }
-);
-
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-uploadArea.addEventListener(
-    'keydown',
-    function(event){
-
-        if(
-            event.key === 'Enter' ||
-            event.key === ' '
-        ){
-
-            event.preventDefault();
-
-
-            excelFile.click();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   FILE CHANGE
-========================================================= */
-
-excelFile.addEventListener(
-    'change',
-    function(){
-
-        const file =
-            this.files[0];
-
-
-        setSelectedFile(
-            file
-        );
-
-    }
-);
-
-
-/* =========================================================
-   DRAG OVER
-========================================================= */
-
-uploadArea.addEventListener(
-    'dragover',
-    function(event){
-
-        event.preventDefault();
-
-
-        uploadArea.classList.add(
-            'dragging'
-        );
-
-    }
-);
-
-
-/* =========================================================
-   DRAG LEAVE
-========================================================= */
-
-uploadArea.addEventListener(
-    'dragleave',
-    function(){
-
-        uploadArea.classList.remove(
-            'dragging'
-        );
-
-    }
-);
-
-
-/* =========================================================
-   DROP
-========================================================= */
-
-uploadArea.addEventListener(
-    'drop',
-    function(event){
-
-        event.preventDefault();
-
-
-        uploadArea.classList.remove(
-            'dragging'
-        );
-
-
-        const file =
-            event
-            .dataTransfer
-            .files[0];
-
-
-        setSelectedFile(
-            file
-        );
-
-    }
-);
-
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-function tampilkanStatus(
-    type,
-    title,
-    message
-){
-
-    statusCard.className =
-        'status-card ' +
-        type;
-
-
+function tampilkanStatus(type, title, message) {
+    statusCard.className = 'status-card ' + type;
     statusCard.innerHTML = `
-
-        <div class="status-title">
-            ${title}
-        </div>
-
-        <div>
-            ${message}
-        </div>
-
+        <div class="status-title">${title}</div>
+        <div>${message}</div>
     `;
-
 }
 
-
-/* =========================================================
-   PROGRESS
-========================================================= */
-
-function setProgress(
-    percent,
-    text
-){
-
-    progressValue.style.width =
-        percent + '%';
-
-
-    progressPercent.textContent =
-        percent + '%';
-
-
-    progressText.textContent =
-        text;
-
+function setProgress(percent, text) {
+    progressValue.style.width = percent + '%';
+    progressPercent.textContent = percent + '%';
+    progressText.textContent = text;
 }
 
-
-/* =========================================================
-   UPLOAD DATA
-========================================================= */
-
-uploadButton.addEventListener(
-    'click',
-    async function(){
-
-        /*
-           Cek admin lagi sebelum upload
-        */
-
-        if(!cekAksesAdmin()){
-
-            alert(
-                'Akses hanya untuk administrator.'
-            );
-
-
-            window.location.replace(
-                'dashboard.html'
-            );
-
-
-            return;
-
-        }
-
-
-        /*
-           Cek file
-        */
-
-        if(!selectedFile){
-
-            alert(
-                'Silakan pilih file Excel terlebih dahulu.'
-            );
-
-
-            return;
-
-        }
-
-
-        /*
-           Konfirmasi
-        */
-
-        const yakin =
-            confirm(
-
-                'Upload file ini sebagai Master Data?\n\n' +
-
-                selectedFile.name +
-
-                '\n\n' +
-
-                'Data lama akan digantikan.'
-
-            );
-
-
-        if(!yakin){
-
-            return;
-
-        }
-
-
-        /*
-           Disable button
-        */
-
-        uploadButton.disabled =
-            true;
-
-
-        /*
-           Tampilkan progress
-        */
-
-        progressWrapper.style.display =
-            'block';
-
-
-        statusCard.className =
-            'status-card';
-
-
-        setProgress(
-            10,
-            'Membaca file Excel...'
-        );
-
-
-        try{
-
-            /* =====================================
-               FILE → BASE64
-            ===================================== */
-
-            const base64 =
-                await fileToBase64(
-                    selectedFile
-                );
-
-
-            setProgress(
-                30,
-                'Mengirim file ke server...'
-            );
-
-
-            /* =====================================
-               DATA UPLOAD
-            ===================================== */
-
-            const uploadData = {
-                action: 
-                    'upload',
-              
-                fileName:
-                    selectedFile.name,
-
-                fileData:
-                    base64,
-
-                uploadedBy:
-                    getNamaPengguna()
-
-            };
-
-
-            console.log(
-                'Mengirim data upload...'
-            );
-
-
-            /* =====================================
-               REQUEST KE GOOGLE APPS SCRIPT
-            ===================================== */
-
-            const response =
-                await fetch(
-                    API_URL,
-                    {
-
-                        method:
-                            'POST',
-
-                        headers:{
-                            'Content-Type':
-                                'text/plain;charset=utf-8'
-                        },
-
-                        body:
-                            JSON.stringify(
-                                uploadData
-                            )
-
-                    }
-                );
-
-
-            setProgress(
-                70,
-                'Memproses Master Data...'
-            );
-
-
-            /* =====================================
-               RESPONSE SERVER
-            ===================================== */
-
-            const text =
-                await response.text();
-
-
-            console.log(
-                'SERVER RESPONSE:',
-                text
-            );
-
-
-            let result;
-
-
-            try{
-
-                result =
-                    JSON.parse(
-                        text
-                    );
-
-            }catch(error){
-
-                console.error(
-                    'JSON ERROR:',
-                    error
-                );
-
-
-                throw new Error(
-                    'Server mengembalikan response yang tidak valid.'
-                );
-
-            }
-
-
-            /* =====================================
-               CEK HASIL
-            ===================================== */
-
-            if(!result.success){
-
-                throw new Error(
-                    result.message ||
-                    'Upload gagal.'
-                );
-
-            }
-
-
-            /* =====================================
-               PROGRESS SELESAI
-            ===================================== */
-
-            setProgress(
-                100,
-                'Upload selesai.'
-            );
-
-
-            /* =====================================
-               HASIL SHEET
-            ===================================== */
-
-            let sheetHTML =
-                '';
-
-
-            if(
-                result.sheets &&
-                result.sheets.length
-            ){
-
-                sheetHTML =
-                    '<div class="sheet-list">';
-
-
-                result.sheets.forEach(
-                    sheet => {
-
-                        sheetHTML += `
-
-                            <div class="sheet-item">
-
-                                <span class="sheet-name">
-                                    📄 ${escapeHTML(
-                                        sheet.name
-                                    )}
-                                </span>
-
-                                <span class="sheet-count">
-                                    ${Number(
-                                        sheet.rows || 0
-                                    ).toLocaleString('id-ID')}
-                                    baris
-                                </span>
-
-                            </div>
-
-                        `;
-
-                    }
-                );
-
-
-                sheetHTML +=
-                    '</div>';
-
-            }
-
-
-            /* =====================================
-               STATUS SUKSES
-            ===================================== */
-
-            tampilkanStatus(
-
-                'success',
-
-                '✓ DATA BERHASIL DIPERBARUI',
-
-                `
-                Master Data berhasil diupload.
-
-                <br><br>
-
-                <strong>File:</strong>
-                ${escapeHTML(
-                    result.fileName ||
-                    selectedFile.name
-                )}
-
-                <br>
-
-                <strong>Upload oleh:</strong>
-                ${escapeHTML(
-                    result.uploadedBy ||
-                    getNamaPengguna()
-                )}
-
-                <br>
-
-                <strong>Versi:</strong>
-                ${escapeHTML(
-                    result.version ||
-                    '-'
-                )}
-
-                ${sheetHTML}
-                `
-
-            );
-
-const namaFileTerupload = result.fileName || selectedFile.name;
-            const namaAdminUpload = result.uploadedBy || getNamaPengguna();
-            kirimNotifikasiOtomatis(namaFileTerupload, namaAdminUpload);
-          
-            /* =====================================
-               RESET FILE
-            ===================================== */
-
-            excelFile.value =
-                '';
-
-
-            selectedFile =
-                null;
-
-
-            fileName.textContent =
-                '';
-
-
-            fileName.style.display =
-                'none';
-
-
-            updateUploadButton();
-
-
-            /* =====================================
-               LOAD MASTER INFO
-            ===================================== */
-
-            await loadMasterInfo();
-
-
-        }catch(error){
-
-            console.error(
-                'UPLOAD ERROR:',
-                error
-            );
-
-
-            setProgress(
-                0,
-                'Upload gagal.'
-            );
-
-
-            tampilkanStatus(
-
-                'error',
-
-                '✕ UPLOAD GAGAL',
-
-                escapeHTML(
-                    error.message
-                )
-
-            );
-
-        }finally{
-
-            updateUploadButton();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   FILE TO BASE64
-========================================================= */
-
-function fileToBase64(file){
-
-    return new Promise(
-        (
-            resolve,
-            reject
-        ) => {
-
-            const reader =
-                new FileReader();
-
-
-            reader.onload =
-                function(){
-
-                    try{
-
-                        const result =
-                            reader.result;
-
-
-                        const parts =
-                            result.split(',');
-
-
-                        const base64 =
-                            parts[1];
-
-
-                        if(!base64){
-
-                            reject(
-                                new Error(
-                                    'File tidak dapat dibaca.'
-                                )
-                            );
-
-
-                            return;
-
-                        }
-
-
-                        resolve(
-                            base64
-                        );
-
-                    }catch(error){
-
-                        reject(
-                            error
-                        );
-
-                    }
-
-                };
-
-
-            reader.onerror =
-                function(){
-
-                    reject(
-                        new Error(
-                            'Gagal membaca file Excel.'
-                        )
-                    );
-
-                };
-
-
-            reader.readAsDataURL(
-                file
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   LOAD MASTER INFO
-========================================================= */
-
-async function loadMasterInfo(){
-
-    const status =
-        document.getElementById(
-            'masterStatus'
-        );
-
-
-    const file =
-        document.getElementById(
-            'masterFile'
-        );
-
-
-    const user =
-        document.getElementById(
-            'masterUser'
-        );
-
-
-    const time =
-        document.getElementById(
-            'masterTime'
-        );
-
-
-    const version =
-        document.getElementById(
-            'masterVersion'
-        );
-
-
-    try{
-
-        const response =
-            await fetch(
-                API_URL +
-                '?action=info&t=' +
-                Date.now()
-            );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                'Server tidak dapat dihubungi.'
-            );
-
-        }
-
-
-        const result =
-            await response.json();
-
-
-        if(!result.success){
-
-            status.textContent =
-                'Belum tersedia';
-
-
-            status.style.color =
-                '#64748b';
-
-
-            return;
-
-        }
-
-
-        status.textContent =
-            '🟢 Aktif';
-
-
-        status.style.color =
-            '#059669';
-
-
-        file.textContent =
-            result.fileName ||
-            '-';
-
-
-        user.textContent =
-            result.uploadedBy ||
-            '-';
-
-
-        time.textContent =
-            formatTanggal(
-                result.uploadedAt
-            );
-
-
-        version.textContent =
-            result.version ||
-            '-';
-
-    }catch(error){
-
-        console.error(
-            'MASTER INFO ERROR:',
-            error
-        );
-
-
-        status.textContent =
-            'Tidak dapat terhubung';
-
-
-        status.style.color =
-            '#dc2626';
-
-    }
-
-}
-
-
-/* =========================================================
-   FORMAT TANGGAL
-========================================================= */
-
-function formatTanggal(value){
-
-    if(!value){
-
-        return '-';
-
-    }
-
-
-    const date =
-        new Date(
-            value
-        );
-
-
-    if(
-        Number.isNaN(
-            date.getTime()
-        )
-    ){
-
-        return String(
-            value
-        );
-
-    }
-
-
-    return date.toLocaleString(
-        'id-ID',
-        {
-
-            day:
-                '2-digit',
-
-            month:
-                'long',
-
-            year:
-                'numeric',
-
-            hour:
-                '2-digit',
-
-            minute:
-                '2-digit'
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value){
-
-    return String(
-        value ?? ''
-    )
-
-    .replace(
-        /&/g,
-        '&amp;'
-    )
-
-    .replace(
-        /</g,
-        '&lt;'
-    )
-
-    .replace(
-        />/g,
-        '&gt;'
-    )
-
-    .replace(
-        /"/g,
-        '&quot;'
-    )
-
-    .replace(
-        /'/g,
-        '&#039;'
-    );
-
-}
-
-
-/* =========================================================
-   INIT
-========================================================= */
-
-(function init(){
-
-    /*
-       Proteksi halaman dijalankan
-       paling awal.
-    */
-
-    const bolehMasuk =
-        proteksiHalamanAdmin();
-
-
-    if(!bolehMasuk){
-
+function setSelectedFile(file) {
+    if (!file) {
+        selectedFile = null;
+        fileName.textContent = '';
+        fileName.style.display = 'none';
+        updateUploadButton();
         return;
-
     }
 
+    const extension = file.name.split('.').pop().toLowerCase();
+    if (extension !== 'xlsx' && extension !== 'xls') {
+        alert('Silakan pilih file Excel .xlsx atau .xls.');
+        excelFile.value = '';
+        selectedFile = null;
+        fileName.textContent = '';
+        fileName.style.display = 'none';
+        updateUploadButton();
+        return;
+    }
 
-    /*
-       Admin valid.
-       Sekarang load data.
-    */
+    const maxSize = 20 * 1024 * 1024;
+    if (file.size > maxSize) {
+        alert('Ukuran file maksimal 20 MB.');
+        excelFile.value = '';
+        selectedFile = null;
+        fileName.textContent = '';
+        fileName.style.display = 'none';
+        updateUploadButton();
+        return;
+    }
 
-    console.log(
-        '✓ Akses administrator diterima.'
-    );
-
-
-    console.log(
-        '✓ Nama:',
-        getNamaPengguna()
-    );
-
-
-    console.log(
-        '✓ Nomor:',
-        localStorage.getItem(
-            'mc_sagaranten_phone'
-        )
-    );
-
-
-    loadMasterInfo();
-
-
+    selectedFile = file;
+    fileName.textContent = '📄 ' + file.name + ' (' + formatBytes(file.size) + ')';
+    fileName.style.display = 'block';
     updateUploadButton();
+}
 
-})();
-  
-/* =========================================================
-   KIRIM NOTIFIKASI OTOMATIS (GLOBAL)
-========================================================= */
-async function kirimNotifikasiOtomatis(namaFile, namaAdmin) {
-    const NOTIF_API_URL = 'https://script.google.com/macros/s/AKfycbzINzFJt38mQyqrgvzrTDechPja8b7tyoO5MMZkDmDSfw-Ftjp_y2POSAfYuP0fqi5WKw/exec';
+uploadArea.addEventListener('click', () => { excelFile.click(); });
 
-    const payloadNotif = {
-        action: 'create_notification',
-        data: {
-            title: 'Pembaruan Sistem 🚀',
-            message: `Admin ${namaAdmin} baru saja memperbarui Master Data (${namaFile}). Data terbaru sudah tersedia!`,
-            type: 'system',
-            url: 'dashboard.html',
-            createdAt: new Date().toISOString()
-        }
-    };
+uploadArea.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        excelFile.click();
+    }
+});
+
+excelFile.addEventListener('change', function () {
+    setSelectedFile(this.files[0]);
+});
+
+uploadArea.addEventListener('dragover', event => {
+    event.preventDefault();
+    uploadArea.classList.add('dragging');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragging');
+});
+
+uploadArea.addEventListener('drop', event => {
+    event.preventDefault();
+    uploadArea.classList.remove('dragging');
+    const file = event.dataTransfer.files[0];
+    setSelectedFile(file);
+});
+
+async function loadCurrentUserData(user) {
+    if (!user) throw new Error('Pengguna belum login.');
+
+    const userRef = doc(db, 'users', user.uid);
+    const snapshot = await getDoc(userRef);
+
+    if (!snapshot.exists()) throw new Error('Data akun tidak ditemukan.');
+
+    const data = snapshot.data();
+    const role = String(data.role || '').trim().toLowerCase();
+    const status = String(data.status || '').trim().toLowerCase();
+
+    if (role !== 'admin') throw new Error('Akses hanya untuk administrator.');
+    if (status !== 'active') throw new Error('Akun Anda tidak aktif.');
+
+    currentUserData = data;
+    return data;
+}
+
+async function loadMasterInfo() {
+    const status = document.getElementById('masterStatus');
+    const file = document.getElementById('masterFile');
+    const user = document.getElementById('masterUser');
+    const time = document.getElementById('masterTime');
+    const version = document.getElementById('masterVersion');
 
     try {
-        await fetch(NOTIF_API_URL, {
-            method: 'POST',
-            // ---> TAMBAHKAN HEADERS INI <---
-            headers: {
-                'Content-Type': 'text/plain;charset=utf-8'
-            },
-            body: JSON.stringify(payloadNotif)
-        });
-        
-        console.log("Notifikasi update data telah dipancarkan ke seluruh pengguna.");
+        const response = await fetch(BACKEND_URL + '/api/data/info?t=' + Date.now());
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            status.textContent = 'Belum tersedia';
+            status.style.color = '#64748b';
+            return;
+        }
+
+        status.textContent = '🟢 Aktif';
+        status.style.color = '#059669';
+        file.textContent = result.fileName || '-';
+        user.textContent = result.uploadedBy || '-';
+        time.textContent = formatTanggal(result.uploadedAt);
+        version.textContent = result.version || '-';
     } catch (error) {
-        console.error("Gagal memancarkan notifikasi:", error);
+        console.error('MASTER INFO ERROR:', error);
+        status.textContent = 'Backend tidak terhubung';
+        status.style.color = '#dc2626';
     }
 }
+
+function formatTanggal(value) {
+    if (!value) return '-';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return String(value);
+
+    return date.toLocaleString('id-ID', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+uploadButton.addEventListener('click', async () => {
+    if (!currentUser) {
+        alert('Sesi login tidak ditemukan.');
+        return;
+    }
+
+    if (!selectedFile) {
+        alert('Silakan pilih file Excel terlebih dahulu.');
+        return;
+    }
+
+    try {
+        await loadCurrentUserData(currentUser);
+    } catch (error) {
+        alert(error.message);
+        return;
+    }
+
+    const yakin = confirm(
+        'Upload file ini sebagai Master Data?\n\n' +
+        selectedFile.name +
+        '\n\n' +
+        'Semua JSON pada folder data/ yang memiliki sheet dengan nama yang sama akan diperbarui.'
+    );
+
+    if (!yakin) return;
+
+    uploadButton.disabled = true;
+    progressWrapper.style.display = 'block';
+    statusCard.className = 'status-card';
+    statusCard.innerHTML = '';
+
+    setProgress(5, 'Menyiapkan upload...');
+
+    try {
+        setProgress(15, 'Memverifikasi akun Firebase...');
+        const idToken = await currentUser.getIdToken(true);
+
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+        setProgress(25, 'Mengirim file Excel ke backend...');
+
+        const response = await fetch(BACKEND_URL + '/api/data/upload', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${idToken}` },
+            body: formData
+        });
+
+        setProgress(65, 'Backend sedang memproses Excel...');
+        const text = await response.text();
+        let result;
+
+        try {
+            result = JSON.parse(text);
+        } catch {
+            throw new Error('Backend mengembalikan response yang tidak valid.');
+        }
+
+        if (!response.ok || !result.success) {
+            throw new Error(result.message || 'Upload Master Data gagal.');
+        }
+
+        setProgress(90, 'Memperbarui informasi Master Data...');
+
+        let sheetHTML = '';
+        if (Array.isArray(result.sheets) && result.sheets.length) {
+            sheetHTML = '<div class="sheet-list">';
+            result.sheets.forEach(sheet => {
+                sheetHTML += `
+                    <div class="sheet-item">
+                        <span class="sheet-name">📄 ${escapeHTML(sheet.name)}</span>
+                        <span class="sheet-count">${Number(sheet.rows || 0).toLocaleString('id-ID')} baris</span>
+                    </div>
+                `;
+            });
+            sheetHTML += '</div>';
+        }
+
+        setProgress(100, 'Upload selesai.');
+        tampilkanStatus(
+            'success',
+            '✓ DATA BERHASIL DIPERBARUI',
+            `
+            Master Data berhasil dikonversi dan dikirim ke GitHub.
+            <br><br>
+            <strong>File:</strong> ${escapeHTML(result.fileName || selectedFile.name)}
+            <br>
+            <strong>Upload oleh:</strong> ${escapeHTML(result.uploadedBy || 'Administrator')}
+            <br>
+            <strong>Versi:</strong> ${escapeHTML(result.version || '-')}
+            <br>
+            <strong>Total Sheet:</strong> ${Number(result.totalSheets || 0).toLocaleString('id-ID')}
+            ${sheetHTML}
+            `
+        );
+
+        excelFile.value = '';
+        selectedFile = null;
+        fileName.textContent = '';
+        fileName.style.display = 'none';
+        updateUploadButton();
+
+        await loadMasterInfo();
+    } catch (error) {
+        console.error('UPLOAD ERROR:', error);
+        setProgress(0, 'Upload gagal.');
+        tampilkanStatus('error', '✕ UPLOAD GAGAL', escapeHTML(error.message));
+    } finally {
+        updateUploadButton();
+    }
+});
+
+onAuthStateChanged(auth, async user => {
+    console.log('UPLOAD DATA AUTH STATE:', user ? user.uid : 'BELUM LOGIN');
+    currentUser = user;
+
+    if (!user) {
+        currentUserData = null;
+        updateUploadButton();
+        window.location.replace('index.html');
+        return;
+    }
+
+    try {
+        await loadCurrentUserData(user);
+        console.log('✓ Admin Firebase terverifikasi');
+        console.log('UID:', user.uid);
+        console.log('Nama:', currentUserData.nama || currentUserData.name || '-');
+        console.log('Role:', currentUserData.role);
+        console.log('Status:', currentUserData.status);
+
+        updateUploadButton();
+        await loadMasterInfo();
+    } catch (error) {
+        console.error('AUTH ACCESS ERROR:', error);
+        currentUserData = null;
+        updateUploadButton();
+        tampilkanStatus('error', '✕ AKSES DITOLAK', escapeHTML(error.message));
+        setTimeout(() => { window.location.replace('dashboard.html'); }, 1500);
+    }
+});

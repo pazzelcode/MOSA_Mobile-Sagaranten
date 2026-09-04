@@ -1,1904 +1,438 @@
-/* =========================================================
-   MASTER DATA API
-========================================================= */
-
-const MASTER_DATA_API_URL =
-'https://script.google.com/macros/s/AKfycbyUTB9KwjzJ8q3WrOBNwMxIu6f_0A_PHBb2h36pYy6tItdSeN5CA-4MI0YZC86_qSxWCQ/exec';
-
-const TARGET_SHEET_NAME =
-'penjualan-hifi';
-
-
-/* =========================================================
-   DATA GUDANG
-========================================================= */
-
+/*! MC-SAGARANTEN - PENJUALAN HIFI */
+const JSON_DATA_URL = 'https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/data/penjualan-hifi.json';
 let gudangDataMap = [];
 
+const parseNumber = val => {
+    if (val === null || val === undefined || val === '') return 0;
+    if (typeof val === 'number') return Number.isFinite(val) ? val : 0;
+    const text = String(val).trim().replace(/^"|"$/g, '');
+    if (!text || text === '-') return 0;
+    const num = Number(text.replace(/\./g, '').replace(',', '.'));
+    return Number.isFinite(num) ? num : 0;
+};
 
-/* =========================================================
-   FORMAT RUPIAH
-========================================================= */
+const formatRupiah = val => parseNumber(val) === 0 ? '-' : 'Rp ' + new Intl.NumberFormat('id-ID').format(parseNumber(val));
+const formatNumber = val => parseNumber(val) === 0 ? '-' : parseNumber(val).toLocaleString('id-ID');
+const escapeHTML = val => String(val ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
 
-function formatRupiah(angka){
-
-    const number =
-        parseNumber(angka);
-
-    if(number === 0){
-        return '-';
+function normalisasiData(rawData) {
+    if (!rawData) return [];
+    if (!Array.isArray(rawData) && typeof rawData === 'object') {
+        rawData = rawData.data || rawData.rows || rawData.values || [rawData];
     }
-
-    return 'Rp ' +
-        new Intl.NumberFormat(
-            'id-ID'
-        ).format(number);
-
-}
-
-
-/* =========================================================
-   PARSE NUMBER
-========================================================= */
-
-function parseNumber(value){
-
-    if(
-        value === null ||
-        value === undefined ||
-        value === ''
-    ){
-        return 0;
+    if (!Array.isArray(rawData) || !rawData.length) return [];
+    if (typeof rawData[0] === 'object' && !Array.isArray(rawData[0])) return rawData;
+    if (Array.isArray(rawData[0])) {
+        const headers = rawData[0];
+        return rawData.slice(1).map(row => {
+            const obj = {};
+            headers.forEach((h, i) => { obj[String(h).trim()] = row[i]; });
+            return obj;
+        });
     }
-
-    if(typeof value === 'number'){
-
-        return Number.isFinite(value)
-            ? value
-            : 0;
-
-    }
-
-    let text =
-        String(value)
-            .trim()
-            .replace(/^"|"$/g,'');
-
-    if(
-        text === '' ||
-        text === '-'
-    ){
-        return 0;
-    }
-
-    text =
-        text.replace(/\./g,'');
-
-    text =
-        text.replace(',', '.');
-
-    const number =
-        Number(text);
-
-    return Number.isFinite(number)
-        ? number
-        : 0;
-
-}
-
-
-/* =========================================================
-   FORMAT ANGKA
-========================================================= */
-
-function formatNumber(value){
-
-    const number =
-        parseNumber(value);
-
-    if(number === 0){
-        return '-';
-    }
-
-    return number.toLocaleString(
-        'id-ID'
-    );
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-========================================================= */
-
-function escapeHTML(value){
-
-    return String(value ?? '')
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;')
-        .replace(/'/g,'&#039;');
-
-}
-
-
-/* =========================================================
-   NORMALISASI DATA API
-========================================================= */
-
-function normalisasiData(rawData){
-
-    if(!rawData){
-        return [];
-    }
-
-    if(
-        !Array.isArray(rawData) &&
-        typeof rawData === 'object'
-    ){
-
-        if(Array.isArray(rawData.data)){
-
-            rawData =
-                rawData.data;
-
-        }
-
-        else if(Array.isArray(rawData.rows)){
-
-            rawData =
-                rawData.rows;
-
-        }
-
-        else if(Array.isArray(rawData.values)){
-
-            rawData =
-                rawData.values;
-
-        }
-
-        else{
-
-            rawData =
-                [rawData];
-
-        }
-
-    }
-
-    if(!Array.isArray(rawData)){
-        return [];
-    }
-
-    if(rawData.length === 0){
-        return [];
-    }
-
-    if(
-        typeof rawData[0] === 'object' &&
-        !Array.isArray(rawData[0])
-    ){
-
-        return rawData;
-
-    }
-
-    if(Array.isArray(rawData[0])){
-
-        const headers =
-            rawData[0];
-
-        return rawData
-            .slice(1)
-            .map(row => {
-
-                const object = {};
-
-                headers.forEach(
-                    (header,index) => {
-
-                        object[
-                            String(header).trim()
-                        ] =
-                            row[index];
-
-                    }
-                );
-
-                return object;
-
-            });
-
-    }
-
     return [];
-
 }
 
-
-/* =========================================================
-   GET OBJECT VALUE
-========================================================= */
-
-function getObjectValue(
-    row,
-    kemungkinan
-){
-
-    if(!row){
-        return '';
-    }
-
-    const keys =
-        Object.keys(row);
-
-    for(
-        const namaKolom of kemungkinan
-    ){
-
-        for(
-            const key of keys
-        ){
-
-            if(
-                String(key)
-                    .trim()
-                    .toLowerCase()
-                ===
-                String(namaKolom)
-                    .trim()
-                    .toLowerCase()
-            ){
-
-                return row[key];
-
-            }
-
+function getObjectValue(row, keys) {
+    if (!row) return '';
+    const rowKeys = Object.keys(row);
+    for (const key of keys) {
+        for (const rKey of rowKeys) {
+            if (rKey.trim().toLowerCase() === key.trim().toLowerCase()) return row[rKey];
         }
-
     }
-
-    for(
-        const key of keys
-    ){
-
-        const lowerKey =
-            String(key)
-                .trim()
-                .toLowerCase();
-
-        for(
-            const namaKolom of kemungkinan
-        ){
-
-            const target =
-                String(namaKolom)
-                    .trim()
-                    .toLowerCase();
-
-            if(
-                lowerKey.includes(target)
-            ){
-
-                return row[key];
-
-            }
-
+    for (const rKey of rowKeys) {
+        const lowerKey = rKey.trim().toLowerCase();
+        for (const key of keys) {
+            if (lowerKey.includes(key.trim().toLowerCase())) return row[rKey];
         }
-
     }
-
     return '';
-
 }
 
-
-/* =========================================================
-   PARSE TANGGAL
-========================================================= */
-
-function parseExcelDate(value){
-
-    if(
-        value === null ||
-        value === undefined ||
-        value === ''
-    ){
-        return '-';
+function parseExcelDate(val) {
+    if (val === null || val === undefined || val === '' || val === '-') return '-';
+    if (typeof val === 'string') {
+        const text = val.trim();
+        if (/^\d{4}-\d{2}-\d{2}$/.test(text)) return text;
+        const date = new Date(text);
+        return !isNaN(date.getTime()) ? formatDateObj(date) : text;
     }
-
-    if(value === '-'){
-        return '-';
+    if (typeof val === 'number' && typeof XLSX !== 'undefined') {
+        const obj = XLSX.SSF.parse_date_code(val);
+        if (obj) return [obj.y, String(obj.m).padStart(2, '0'), String(obj.d).padStart(2, '0')].join('-');
     }
-
-    if(typeof value === 'string'){
-
-        const text =
-            value.trim();
-
-        if(
-            /^\d{4}-\d{2}-\d{2}$/.test(text)
-        ){
-            return text;
-        }
-
-        const date =
-            new Date(text);
-
-        if(!isNaN(date.getTime())){
-
-            return formatDate(
-                date
-            );
-
-        }
-
-        return text;
-
-    }
-
-    if(
-        typeof value === 'number' &&
-        typeof XLSX !== 'undefined'
-    ){
-
-        const dateObj =
-            XLSX.SSF.parse_date_code(
-                value
-            );
-
-        if(dateObj){
-
-            const day =
-                String(
-                    dateObj.d
-                ).padStart(2,'0');
-
-            const month =
-                String(
-                    dateObj.m
-                ).padStart(2,'0');
-
-            const year =
-                dateObj.y;
-
-            return `${year}-${month}-${day}`;
-
-        }
-
-    }
-
-    return String(value);
-
+    return String(val);
 }
 
+const formatDateObj = d => !d || isNaN(d.getTime()) ? '-' : [d.getFullYear(), String(d.getMonth() + 1).padStart(2, '0'), String(d.getDate()).padStart(2, '0')].join('-');
+const formatUpdateDate = d => !d || isNaN(d.getTime()) ? '-' : d.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
 
-/* =========================================================
-   FORMAT DATE
-========================================================= */
-
-function formatDate(date){
-
-    if(
-        !date ||
-        isNaN(date.getTime())
-    ){
-        return '-';
-    }
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(2,'0');
-
-    const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(2,'0');
-
-    const year =
-        date.getFullYear();
-
-    return `${year}-${month}-${day}`;
-
-}
-
-
-/* =========================================================
-   FORMAT UPDATE DATE
-   TANPA JAM
-========================================================= */
-
-function formatUpdateDate(date){
-
-    if(
-        !date ||
-        isNaN(date.getTime())
-    ){
-        return '-';
-    }
-
-    return date.toLocaleDateString(
-        'id-ID',
-        {
-            day:'2-digit',
-            month:'long',
-            year:'numeric'
-        }
-    );
-
-}
-
-
-/* =========================================================
-   GET DATA HI-FI
-========================================================= */
-
-function getHiFiData(row){
-
+function getHiFiData(row) {
     return {
-
-        no:
-            getObjectValue(
-                row,
-                [
-                    'No',
-                    'no'
-                ]
-            ),
-
-        barang:
-            String(
-                getObjectValue(
-                    row,
-                    [
-                        'Barang',
-                        'barang',
-                        'Produk',
-                        'produk'
-                    ]
-                ) || '-'
-            ).trim(),
-
-        jumlah:
-            parseNumber(
-                getObjectValue(
-                    row,
-                    [
-                        'Jumlah',
-                        'jumlah',
-                        'Qty',
-                        'qty'
-                    ]
-                )
-            ),
-
-        nomor:
-            String(
-                getObjectValue(
-                    row,
-                    [
-                        'Nomor Hifi',
-                        'Nomor HIFI',
-                        'Nomor HiFi',
-                        'nomor hifi'
-                    ]
-                ) || '-'
-            ).trim(),
-
-        iccid:
-            String(
-                getObjectValue(
-                    row,
-                    [
-                        'ICCID',
-                        'iccid'
-                    ]
-                ) || '-'
-            ).trim(),
-
-        imei:
-            String(
-                getObjectValue(
-                    row,
-                    [
-                        'IMEI Devices',
-                        'IMEI Device',
-                        'IMEI',
-                        'imei'
-                    ]
-                ) || '-'
-            ).trim(),
-
-        nama:
-            String(
-                getObjectValue(
-                    row,
-                    [
-                        'Nama',
-                        'nama'
-                    ]
-                ) || ''
-            )
-            .trim()
-            .toUpperCase(),
-
-        harga:
-            parseNumber(
-                getObjectValue(
-                    row,
-                    [
-                        'Harga',
-                        'harga'
-                    ]
-                )
-            ),
-
-        tglAmbil:
-            parseExcelDate(
-                getObjectValue(
-                    row,
-                    [
-                        'Tgl Ambil',
-                        'Tanggal Ambil',
-                        'tgl ambil'
-                    ]
-                )
-            ),
-
-        tglBayar:
-            parseExcelDate(
-                getObjectValue(
-                    row,
-                    [
-                        'Tgl Bayar',
-                        'Tanggal Bayar',
-                        'tgl bayar'
-                    ]
-                )
-            ),
-
-        keterangan:
-            String(
-                getObjectValue(
-                    row,
-                    [
-                        'Keterangan',
-                        'keterangan',
-                        'Status',
-                        'status'
-                    ]
-                ) || ''
-            ).trim()
-
+        no: getObjectValue(row, ['No', 'no']),
+        barang: String(getObjectValue(row, ['Barang', 'barang', 'Produk', 'produk']) || '-').trim(),
+        jumlah: parseNumber(getObjectValue(row, ['Jumlah', 'jumlah', 'Qty', 'qty'])),
+        nomor: String(getObjectValue(row, ['Nomor Hifi', 'Nomor HIFI', 'Nomor HiFi', 'nomor hifi']) || '-').trim(),
+        iccid: String(getObjectValue(row, ['ICCID', 'iccid']) || '-').trim(),
+        imei: String(getObjectValue(row, ['IMEI Devices', 'IMEI Device', 'IMEI', 'imei']) || '-').trim(),
+        nama: String(getObjectValue(row, ['Nama', 'nama']) || '').trim().toUpperCase(),
+        harga: parseNumber(getObjectValue(row, ['Harga', 'harga'])),
+        tglAmbil: parseExcelDate(getObjectValue(row, ['Tgl Ambil', 'Tanggal Ambil', 'tgl ambil'])),
+        tglBayar: parseExcelDate(getObjectValue(row, ['Tgl Bayar', 'Tanggal Bayar', 'tgl bayar'])),
+        keterangan: String(getObjectValue(row, ['Keterangan', 'keterangan', 'Status', 'status']) || '').trim()
     };
-
 }
 
-
-/* =========================================================
-   RENDER DASHBOARD
-========================================================= */
-
-function renderHiFiDashboard(
-    objectData
-){
-
-    const tbody =
-        document.getElementById(
-            'tableBody'
-        );
-
-    const hifiFilter =
-        document.getElementById(
-            'hifiFilter'
-        );
-
-    if(!tbody || !hifiFilter){
-
-        console.error(
-            'Element dashboard tidak ditemukan'
-        );
-
-        return;
-
-    }
+function renderHiFiDashboard(objectData) {
+    const tbody = document.getElementById('tableBody');
+    const hifiFilter = document.getElementById('hifiFilter');
+    if (!tbody || !hifiFilter) return;
 
     tbody.innerHTML = '';
-
     gudangDataMap = [];
+    hifiFilter.innerHTML = '<option value="ALL">-- TAMPILKAN SEMUA DATA --</option>';
 
-    hifiFilter.innerHTML = `
-        <option value="ALL">
-            -- TAMPILKAN SEMUA DATA --
-        </option>
-    `;
+    const listNamaFilter = new Set();
+    let totalStok = 0, dseSudahBayarCount = 0, sisaOnHandDSE = 0, segelGudangCount = 0, sisaTagihanNominal = 0, sisaTagihanQty = 0;
 
-    const listNamaFilter =
-        new Set();
+    objectData.map(getHiFiData).forEach(row => {
+        const { no, barang, jumlah, nomor, iccid, imei, nama, harga, tglAmbil, tglBayar, keterangan } = row;
+        totalStok += jumlah;
 
-    let totalStok = 0;
+        if (nama && nama !== 'GUDANG' && nama !== 'STOK GUDANG') listNamaFilter.add(nama);
 
-    let dseSudahBayarCount = 0;
+        const statusText = keterangan || '-';
+        const ketLower = statusText.toLowerCase();
+        let badgeClass = 'badge-status';
 
-    let sisaOnHandDSE = 0;
+        if (ketLower.includes('stok gudang')) badgeClass += ' badge-segel';
+        else if (ketLower.includes('on hand dse')) badgeClass += ' badge-onhand';
+        else if (ketLower.includes('terjual') || ketLower.includes('lunas')) badgeClass += ' badge-terjual-sukses';
+        else if (ketLower.includes('reture')) badgeClass += ' badge-status-danger';
+        else badgeClass += ' badge-sold';
 
-    let segelGudangCount = 0;
-
-    let sisaTagihanNominal = 0;
-
-    let sisaTagihanQty = 0;
-
-    const data =
-        objectData.map(
-            row =>
-                getHiFiData(row)
-        );
-
-    data.forEach(
-        row => {
-
-            const {
-                no,
-                barang,
-                jumlah,
-                nomor,
-                iccid,
-                imei,
-                nama,
-                harga,
-                tglAmbil,
-                tglBayar,
-                keterangan
-            } = row;
-
-            totalStok +=
-                jumlah;
-
-            if(
-                nama &&
-                nama !== 'GUDANG' &&
-                nama !== 'STOK GUDANG'
-            ){
-
-                listNamaFilter.add(
-                    nama
-                );
-
-            }
-
-            const statusText =
-                keterangan === ''
-                    ? '-'
-                    : keterangan;
-
-            const ketLower =
-                statusText.toLowerCase();
-
-            let badgeClass =
-                'badge-status';
-
-            if(
-                ketLower.includes(
-                    'stok gudang'
-                )
-            ){
-
-                badgeClass +=
-                    ' badge-segel';
-
-            }
-
-            else if(
-                ketLower.includes(
-                    'on hand dse'
-                )
-            ){
-
-                badgeClass +=
-                    ' badge-onhand';
-
-            }
-
-            else if(
-                ketLower.includes(
-                    'terjual'
-                ) ||
-                ketLower.includes(
-                    'lunas'
-                )
-            ){
-
-                badgeClass +=
-                    ' badge-terjual-sukses';
-
-            }
-
-            else if(
-                ketLower.includes(
-                    'reture'
-                )
-            ){
-
-                badgeClass +=
-                    ' badge-status-danger';
-
-            }
-
-            else{
-
-                badgeClass +=
-                    ' badge-sold';
-
-            }
-
-            if(
-                nama !== 'STOK GUDANG'
-            ){
-
-                if(
-                    ketLower.includes(
-                        'stok gudang'
-                    )
-                ){
-
-                    segelGudangCount +=
-                        jumlah;
-
-                    gudangDataMap.push({
-
-                        barang:
-                            barang,
-
-                        noHifi:
-                            nomor,
-
-                        imei:
-                            imei,
-
-                        iccid:
-                            iccid,
-
-                        qty:
-                            jumlah
-
-                    });
-
+        if (nama !== 'STOK GUDANG') {
+            if (ketLower.includes('stok gudang')) {
+                segelGudangCount += jumlah;
+                gudangDataMap.push({ barang, noHifi: nomor, imei, iccid, qty: jumlah });
+            } else if (!ketLower.includes('reward') && !ketLower.includes('reture')) {
+                if (ketLower.includes('terjual') || ketLower.includes('lunas')) {
+                    dseSudahBayarCount += jumlah;
+                } else if (ketLower.includes('on hand dse')) {
+                    sisaOnHandDSE += jumlah;
+                    sisaTagihanNominal += harga;
+                    sisaTagihanQty += jumlah;
                 }
-
-                else if(
-                    ketLower.includes(
-                        'reward'
-                    ) ||
-                    ketLower.includes(
-                        'reture'
-                    )
-                ){
-
-                    // Tidak dihitung
-
-                }
-
-                else if(
-                    ketLower.includes(
-                        'terjual'
-                    ) ||
-                    ketLower.includes(
-                        'lunas'
-                    )
-                ){
-
-                    dseSudahBayarCount +=
-                        jumlah;
-
-                }
-
-                else if(
-                    ketLower.includes(
-                        'on hand dse'
-                    )
-                ){
-
-                    sisaOnHandDSE +=
-                        jumlah;
-
-                    sisaTagihanNominal +=
-                        harga;
-
-                    sisaTagihanQty +=
-                        jumlah;
-
-                }
-
             }
-
-            else{
-
-                segelGudangCount +=
-                    jumlah;
-
-                gudangDataMap.push({
-
-                    barang:
-                        barang,
-
-                    noHifi:
-                        nomor,
-
-                    imei:
-                        imei,
-
-                    iccid:
-                        iccid,
-
-                    qty:
-                        jumlah
-
-                });
-
-            }
-
-            const hasData =
-
-                barang !== '-' ||
-
-                nomor !== '-' ||
-
-                iccid !== '-' ||
-
-                imei !== '-' ||
-
-                nama !== '' ||
-
-                harga > 0 ||
-
-                jumlah > 0;
-
-            if(!hasData){
-                return;
-            }
-
-            const tr =
-                document.createElement(
-                    'tr'
-                );
-
-            tr.className =
-    'row-item';
-
-tr.setAttribute(
-    'data-nama',
-    nama
-);
-
-tr.setAttribute(
-    'data-keterangan',
-    ketLower
-);
-
-            tr.innerHTML = `
-
-                <td
-                    class="text-center"
-                    data-label="No"
-                >
-                    ${escapeHTML(no)}
-                </td>
-
-                <td
-                    class="text-center"
-                    data-label="Barang"
-                >
-                    ${escapeHTML(barang)}
-                </td>
-
-                <td
-                    class="qty-col"
-                    data-label="Jumlah"
-                >
-                    ${formatNumber(jumlah)}
-                </td>
-
-                <td
-                    class="text-center"
-                    data-label="Nomor Hifi"
-                >
-                    ${escapeHTML(nomor)}
-                </td>
-
-                <td
-                    class="text-center mono-col"
-                    data-label="ICCID"
-                >
-                    ${escapeHTML(iccid)}
-                </td>
-
-                <td
-                    class="text-center mono-col"
-                    data-label="IMEI Devices"
-                >
-                    ${escapeHTML(imei)}
-                </td>
-
-                <td
-                    class="text-left"
-                    data-label="Nama"
-                >
-                    ${escapeHTML(nama || '-')}
-                </td>
-
-                <td
-                    class="text-right currency-col"
-                    data-label="Harga"
-                >
-                    ${
-                        harga
-                            ? formatRupiah(harga)
-                            : '-'
-                    }
-                </td>
-
-                <td
-                    class="text-center"
-                    data-label="Tgl Ambil"
-                >
-                    ${escapeHTML(tglAmbil)}
-                </td>
-
-                <td
-                    class="text-center"
-                    data-label="Tgl Bayar"
-                >
-                    ${escapeHTML(tglBayar)}
-                </td>
-
-                <td
-                    class="text-center"
-                    data-label="Keterangan"
-                >
-                    <span
-                        class="${badgeClass}"
-                    >
-                        ${escapeHTML(statusText)}
-                    </span>
-                </td>
-
-            `;
-
-            tbody.appendChild(
-                tr
-            );
-
+        } else {
+            segelGudangCount += jumlah;
+            gudangDataMap.push({ barang, noHifi: nomor, imei, iccid, qty: jumlah });
         }
-    );
 
-    /* =====================================================
-       FILTER DSE
-    ===================================================== */
+        if (barang === '-' && nomor === '-' && iccid === '-' && imei === '-' && !nama && harga === 0 && jumlah === 0) return;
 
-    Array.from(
-        listNamaFilter
-    )
-    .sort()
-    .forEach(
-        namaDse => {
+        const tr = document.createElement('tr');
+        tr.className = 'row-item';
+        tr.setAttribute('data-nama', nama);
+        tr.setAttribute('data-keterangan', ketLower);
+        tr.innerHTML = `
+            <td class="text-center" data-label="No">${escapeHTML(no)}</td>
+            <td class="text-center" data-label="Barang">${escapeHTML(barang)}</td>
+            <td class="qty-col" data-label="Jumlah">${formatNumber(jumlah)}</td>
+            <td class="text-center" data-label="Nomor Hifi">${escapeHTML(nomor)}</td>
+            <td class="text-center mono-col" data-label="ICCID">${escapeHTML(iccid)}</td>
+            <td class="text-center mono-col" data-label="IMEI Devices">${escapeHTML(imei)}</td>
+            <td class="text-left" data-label="Nama">${escapeHTML(nama || '-')}</td>
+            <td class="text-right currency-col" data-label="Harga">${harga ? formatRupiah(harga) : '-'}</td>
+            <td class="text-center" data-label="Tgl Ambil">${escapeHTML(tglAmbil)}</td>
+            <td class="text-center" data-label="Tgl Bayar">${escapeHTML(tglBayar)}</td>
+            <td class="text-center" data-label="Keterangan"><span class="${badgeClass}">${escapeHTML(statusText)}</span></td>
+        `;
+        tbody.appendChild(tr);
+    });
 
-            const opt =
-                document.createElement(
-                    'option'
-                );
+    Array.from(listNamaFilter).sort().forEach(dse => {
+        const option = document.createElement('option');
+        option.value = option.textContent = dse;
+        hifiFilter.appendChild(option);
+    });
 
-            opt.value =
-                namaDse;
+    const optGudang = document.createElement('option');
+    optGudang.value = 'GUDANG';
+    optGudang.textContent = 'GUDANG (STOK SEGEL)';
+    hifiFilter.appendChild(optGudang);
 
-            opt.textContent =
-                namaDse;
-
-            hifiFilter.appendChild(
-                opt
-            );
-
-        }
-    );
-
-    /* =====================================================
-       FILTER GUDANG
-    ===================================================== */
-
-    const optGudang =
-        document.createElement(
-            'option'
-        );
-
-    optGudang.value =
-        'GUDANG';
-
-    optGudang.textContent =
-        'GUDANG (STOK SEGEL)';
-
-    hifiFilter.appendChild(
-        optGudang
-    );
-
-    /* =====================================================
-       TOTAL ROW
-    ===================================================== */
-
-    const totalTr =
-        document.createElement(
-            'tr'
-        );
-
-    totalTr.className =
-        'total-row';
-
-    totalTr.id =
-        'defaultTotalRow';
-
+    const totalTr = document.createElement('tr');
+    totalTr.className = 'total-row';
+    totalTr.id = 'defaultTotalRow';
     totalTr.innerHTML = `
-
-        <td
-            class="text-left"
-            colspan="4"
-        >
-            TOTAL SISA TAGIHAN
-        </td>
-
-        <td
-            class="qty-col"
-            id="bottomTotalQty"
-        >
-            ${formatNumber(
-                sisaTagihanQty
-            )} Unit
-        </td>
-
+        <td class="text-left" colspan="4">TOTAL SISA TAGIHAN</td>
+        <td class="qty-col" id="bottomTotalQty">${formatNumber(sisaTagihanQty)} Unit</td>
         <td colspan="6"></td>
-
     `;
+    tbody.appendChild(totalTr);
 
-    tbody.appendChild(
-        totalTr
-    );
-
-    /* =====================================================
-       UPDATE SUMMARY
-    ===================================================== */
-
-    const totalUnit =
-        document.getElementById(
-            'topTotalUnit'
-        );
-
-    const totalTerjual =
-        document.getElementById(
-            'topTotalTerjual'
-        );
-
-    const totalSold =
-        document.getElementById(
-            'topTotalSold'
-        );
-
-    const totalSegel =
-        document.getElementById(
-            'topTotalSegel'
-        );
-
-    const totalOmset =
-        document.getElementById(
-            'topTotalOmset'
-        );
-
-    if(totalUnit){
-
-        totalUnit.textContent =
-            `${formatNumber(
-                totalStok
-            )} Unit`;
-
-    }
-
-    if(totalTerjual){
-
-        totalTerjual.textContent =
-            `${formatNumber(
-                dseSudahBayarCount
-            )} Unit`;
-
-    }
-
-    if(totalSold){
-
-        totalSold.textContent =
-            `${formatNumber(
-                sisaOnHandDSE
-            )} Unit`;
-
-    }
-
-    if(totalSegel){
-
-        totalSegel.textContent =
-            `${formatNumber(
-                segelGudangCount
-            )} Unit`;
-
-    }
-
-    if(totalOmset){
-
-        totalOmset.textContent =
-            formatRupiah(
-                sisaTagihanNominal
-            );
-
-    }
+    const setVal = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    setVal('topTotalUnit', formatNumber(totalStok) + ' Unit');
+    setVal('topTotalTerjual', formatNumber(dseSudahBayarCount) + ' Unit');
+    setVal('topTotalSold', formatNumber(sisaOnHandDSE) + ' Unit');
+    setVal('topTotalSegel', formatNumber(segelGudangCount) + ' Unit');
+    setVal('topTotalOmset', formatRupiah(sisaTagihanNominal));
 
     setupHifiFilterListener();
-
 }
 
+function renderHifiCards(selectedType) {
+    const container = document.getElementById('hifiCardContainer');
+    if (!container) return;
 
-/* =========================================================
-   FILTER HI-FI
-   DSE + GUDANG
-========================================================= */
+    const rows = [...document.querySelectorAll('#tableBody tr.row-item')];
+    const selected = String(selectedType || '').trim().toUpperCase();
+    const isGudangMode = selected === 'GUDANG';
 
-function setupHifiFilterListener(){
+    const data = rows.filter(row => {
+        const nama = String(row.dataset.nama || '').trim().toUpperCase();
+        const ket = String(row.dataset.keterangan || '').trim().toLowerCase();
+        const gudang = !nama || nama === '-' || nama === 'GUDANG' || nama === 'STOK GUDANG' || ket.includes('stok gudang');
+        return isGudangMode ? gudang : !gudang && nama === selected;
+    });
 
-    const hifiFilter =
-        document.getElementById('hifiFilter');
-
-    const tbody =
-        document.getElementById('tableBody');
-
-    if(!hifiFilter || !tbody){
-
-        console.error(
-            '❌ Filter atau tableBody tidak ditemukan'
-        );
-
+    if (!data.length) {
+        container.innerHTML = `
+            <div class="hifi-card-empty">
+                📭 Tidak ada data untuk <strong>${isGudangMode ? 'STOK SEGEL GUDANG' : escapeHTML(selectedType)}</strong>
+            </div>
+        `;
         return;
-
     }
 
-
-    /*
-     * HAPUS LISTENER LAMA
-     */
-
-    hifiFilter.onchange = null;
-
-
-    /*
-     * LISTENER FILTER
-     */
-
-    hifiFilter.addEventListener(
-        'change',
-        function(){
-
-            const selected =
-                String(this.value || '')
-                    .trim()
-                    .toUpperCase();
-
-
-            console.log(
-                '🔎 FILTER:',
-                selected
-            );
-
-
-            const rows =
-                tbody.querySelectorAll(
-                    'tr.row-item'
-                );
-
-
-            console.log(
-                '📊 JUMLAH ROW:',
-                rows.length
-            );
-
-
-            rows.forEach(
-                row => {
-
-                    const nama =
-                        String(
-                            row.getAttribute(
-                                'data-nama'
-                            ) || ''
-                        )
-                        .trim()
-                        .toUpperCase();
-
-
-                    const keterangan =
-                        String(
-                            row.getAttribute(
-                                'data-keterangan'
-                            ) || ''
-                        )
-                        .trim()
-                        .toLowerCase();
-
-
-                    /*
-                     * GUDANG
-                     *
-                     * Nama kosong dianggap gudang.
-                     *
-                     * Selain itu status
-                     * STOK GUDANG juga dianggap gudang.
-                     */
-
-                    const gudang =
-                        nama === '' ||
-                        nama === '-' ||
-                        nama === 'GUDANG' ||
-                        nama === 'STOK GUDANG' ||
-                        keterangan.includes(
-                            'stok gudang'
-                        );
-
-
-                    let tampil =
-                        false;
-
-
-                    /*
-                     * SEMUA
-                     */
-
-                    if(
-                        selected === 'ALL'
-                    ){
-
-                        tampil =
-                            true;
-
-                    }
-
-
-                    /*
-                     * GUDANG
-                     */
-
-                    else if(
-                        selected === 'GUDANG'
-                    ){
-
-                        tampil =
-                            gudang;
-
-                    }
-
-
-                    /*
-                     * DSE
-                     */
-
-                    else{
-
-                        tampil =
-                            !gudang &&
-                            nama === selected;
-
-                    }
-
-
-                    /*
-                     * PAKAI !important
-                     * agar tidak dikalahkan CSS
-                     */
-
-                    if(tampil){
-
-                        row.style.setProperty(
-                            'display',
-                            'table-row',
-                            'important'
-                        );
-
-                    }
-
-                    else{
-
-                        row.style.setProperty(
-                            'display',
-                            'none',
-                            'important'
-                        );
-
-                    }
-
-                }
-            );
-
-
-            /*
-             * TOTAL ROW
-             */
-
-            const totalRow =
-                document.getElementById(
-                    'defaultTotalRow'
-                );
-
-
-            if(totalRow){
-
-                if(
-                    selected === 'ALL'
-                ){
-
-                    totalRow.style.setProperty(
-                        'display',
-                        'table-row',
-                        'important'
-                    );
-
-                }
-
-                else{
-
-                    totalRow.style.setProperty(
-                        'display',
-                        'none',
-                        'important'
-                    );
-
-                }
-
-            }
-
-        }
-    );
-
-
-    console.log(
-        '✅ FILTER HIFI AKTIF'
-    );
-
-}
-
-
-/* =========================================================
-   FETCH MASTER DATA API
-   JANGAN DIUBAH
-========================================================= */
-
-async function fetchMasterData(){
-
-    try{
-
-        console.log(
-            '======================================'
-        );
-
-        console.log(
-            '🚀 MENGAMBIL DATA PENJUALAN HIFI AIR'
-        );
-
-        const updateTime =
-            document.getElementById(
-                'updateTime'
-            );
-
-        if(updateTime){
-
-            updateTime.textContent =
-                'Update Data: Memuat...';
-
-        }
-
-        const url =
-            MASTER_DATA_API_URL +
-            '?action=' +
-            encodeURIComponent(
-                TARGET_SHEET_NAME
-            ) +
-            '&t=' +
-            Date.now();
-
-        console.log(
-            'MASTER DATA API:',
-            url
-        );
-
-        const response =
-            await fetch(
-                url,
-                {
-                    method:'GET',
-                    cache:'no-store'
-                }
-            );
-
-        if(!response.ok){
-
-            throw new Error(
-                'Master Data API gagal. HTTP ' +
-                response.status
-            );
-
-        }
-
-        const result =
-            await response.json();
-
-        console.log(
-            'RESPONSE:',
-            result
-        );
-
-        if(
-            !result ||
-            result.success !== true
-        ){
-
-            throw new Error(
-                result?.message ||
-                'API mengembalikan response gagal'
-            );
-
-        }
-
-        const objectData =
-            normalisasiData(
-                result.data
-            );
-
-        console.log(
-            'DATA HIFI AIR:',
-            objectData
-        );
-
-        if(objectData.length === 0){
-
-            throw new Error(
-                'Data HiFi Air kosong'
-            );
-
-        }
-
-        renderHiFiDashboard(
-            objectData
-        );
-
-        /* =================================================
-           UPDATE DATE
-           HANYA TANGGAL
-        ================================================= */
-
-        let updateDate =
-            null;
-
-        if(result.updatedAt){
-
-            const parsed =
-                new Date(
-                    result.updatedAt
-                );
-
-            if(
-                !isNaN(
-                    parsed.getTime()
-                )
-            ){
-
-                updateDate =
-                    parsed;
-
-            }
-
-        }
-
-        if(!updateDate){
-
-            updateDate =
-                new Date();
-
-        }
-
-        if(updateTime){
-
-            updateTime.innerHTML =
-                'Update Data: ' +
-                formatUpdateDate(
-                    updateDate
-                ) +
-                '';
-
-        }
-
-        console.log(
-            '✅ DATA HIFI AIR BERHASIL DIMUAT'
-        );
-
-    }
-
-    catch(error){
-
-        console.error(
-            '❌ GAGAL MENGAMBIL DATA HIFI AIR',
-            error
-        );
-
-        const updateTime =
-            document.getElementById(
-                'updateTime'
-            );
-
-        if(updateTime){
-
-            updateTime.textContent =
-                'Update Data: Gagal memuat';
-
-        }
-
-        const tbody =
-            document.getElementById(
-                'tableBody'
-            );
-
-        if(tbody){
-
-            tbody.innerHTML = `
-
-                <tr>
-
-                    <td
-                        colspan="11"
-                        class="loading-text"
-                    >
-                        ⚠️ Gagal memuat data:
-                        ${escapeHTML(
-                            error.message
-                        )}
-                    </td>
-
-                </tr>
-
+    const cards = data.map((row, index) => {
+        const cell = sel => row.querySelector(sel)?.textContent?.trim() || '-';
+        const [no, barang, jumlah, nomor, iccid, imei, nama, harga, tglAmbil, tglBayar] = [
+            '[data-label="No"]', '[data-label="Barang"]', '[data-label="Jumlah"]',
+            '[data-label="Nomor Hifi"]', '[data-label="ICCID"]', '[data-label="IMEI Devices"]',
+            '[data-label="Nama"]', '[data-label="Harga"]', '[data-label="Tgl Ambil"]', '[data-label="Tgl Bayar"]'
+        ].map(cell);
+
+        const status = row.querySelector('[data-label="Keterangan"] .badge-status')?.textContent?.trim() || '-';
+        const sLower = status.toLowerCase();
+        let statusClass = sLower.includes('stok gudang') ? 'segel' 
+            : sLower.includes('on hand dse') ? 'onhand' 
+            : (sLower.includes('terjual') || sLower.includes('lunas')) ? 'terjual' 
+            : sLower.includes('reture') ? 'danger' : 'default';
+
+        const cardNo = no !== '-' ? no : String(index + 1);
+
+        if (isGudangMode) {
+            return `
+                <article class="hifi-data-card hifi-gudang-card">
+                    <div class="hifi-card-head">
+                        <div class="hifi-card-title"><strong>📦 ${escapeHTML(barang)}</strong><span>STOK SEGEL GUDANG</span></div>
+                        <div class="hifi-card-no">${escapeHTML(cardNo)}</div>
+                    </div>
+                    <div class="hifi-gudang-qty">
+                        <span class="hifi-gudang-qty-label">STOK TERSEDIA</span>
+                        <strong>${escapeHTML(jumlah)}<small>Unit</small></strong>
+                    </div>
+                    <div class="hifi-card-info">
+                        <div class="hifi-info-row"><span class="hifi-info-label">Nomor HiFi</span><span class="hifi-info-value mono">${escapeHTML(nomor)}</span></div>
+                        <div class="hifi-info-row"><span class="hifi-info-label">ICCID</span><span class="hifi-info-value mono">${escapeHTML(iccid)}</span></div>
+                        <div class="hifi-info-row"><span class="hifi-info-label">IMEI Device</span><span class="hifi-info-value mono">${escapeHTML(imei)}</span></div>
+                    </div>
+                    <div class="hifi-card-footer">
+                        <div class="hifi-card-price">${escapeHTML(harga)}</div>
+                        <span class="hifi-card-status ${statusClass}">${escapeHTML(status)}</span>
+                    </div>
+                </article>
             `;
-
         }
 
-    }
+        return `
+            <article class="hifi-data-card">
+                <div class="hifi-card-head">
+                    <div class="hifi-card-title"><strong>${escapeHTML(barang)}</strong><span>${escapeHTML(nama)}</span></div>
+                    <div class="hifi-card-no">${escapeHTML(cardNo)}</div>
+                </div>
+                <div class="hifi-card-info">
+                    <div class="hifi-info-row"><span class="hifi-info-label">Jumlah</span><span class="hifi-info-value">${escapeHTML(jumlah)}</span></div>
+                    <div class="hifi-info-row"><span class="hifi-info-label">Nomor HiFi</span><span class="hifi-info-value mono">${escapeHTML(nomor)}</span></div>
+                    <div class="hifi-info-row"><span class="hifi-info-label">ICCID</span><span class="hifi-info-value mono">${escapeHTML(iccid)}</span></div>
+                    <div class="hifi-info-row"><span class="hifi-info-label">IMEI Device</span><span class="hifi-info-value mono">${escapeHTML(imei)}</span></div>
+                    <div class="hifi-info-row"><span class="hifi-info-label">Nama</span><span class="hifi-info-value">${escapeHTML(nama)}</span></div>
+                    <div class="hifi-info-row"><span class="hifi-info-label">Tgl Ambil</span><span class="hifi-info-value">${escapeHTML(tglAmbil)}</span></div>
+                    <div class="hifi-info-row"><span class="hifi-info-label">Tgl Bayar</span><span class="hifi-info-value">${escapeHTML(tglBayar)}</span></div>
+                </div>
+                <div class="hifi-card-footer">
+                    <div class="hifi-card-price">${escapeHTML(harga)}</div>
+                    <span class="hifi-card-status ${statusClass}">${escapeHTML(status)}</span>
+                </div>
+            </article>
+        `;
+    }).join('');
 
+    container.innerHTML = `<div class="hifi-card-grid">${cards}</div>`;
 }
 
 
-/* =========================================================
-   DOWNLOAD TABEL SEBAGAI GAMBAR
-========================================================= */
+function setupHifiFilterListener() {
 
-async function downloadHifiTableImage(){
+    const hifiFilter = document.getElementById('hifiFilter');
+    const tbody = document.getElementById('tableBody');
+    const tableResponsive = document.querySelector('.table-responsive');
+    const cardContainer = document.getElementById('hifiCardContainer');
 
-    const button =
-        document.getElementById(
-            'downloadTableBtn'
-        );
+    if (!hifiFilter || !tbody) return;
 
-    const table =
-        document.getElementById(
-            'hifiTable'
-        );
+    hifiFilter.onchange = function () {
 
-    if(!table){
+        const selected =
+            String(this.value || 'ALL').trim().toUpperCase();
 
-        alert(
-            'Tabel belum tersedia.'
-        );
+        const rows = tbody.querySelectorAll('tr.row-item');
+        const totalRow = document.getElementById('defaultTotalRow');
 
-        return;
+        /* =====================================================
+           MODE SEMUA DATA
+        ===================================================== */
 
+        if (selected === 'ALL') {
+
+            if (tableResponsive) {
+                tableResponsive.style.display = '';
+            }
+
+            if (cardContainer) {
+                cardContainer.style.display = 'none';
+            }
+
+            rows.forEach(row => {
+                row.style.setProperty(
+                    'display',
+                    'table-row',
+                    'important'
+                );
+            });
+
+            if (totalRow) {
+                totalRow.style.setProperty(
+                    'display',
+                    'table-row',
+                    'important'
+                );
+            }
+
+            return;
+        }
+
+        /* =====================================================
+           MODE DSE
+        ===================================================== */
+
+        if (tableResponsive) {
+            tableResponsive.style.display = 'none';
+        }
+
+        if (cardContainer) {
+            cardContainer.style.display = 'block';
+        }
+
+        rows.forEach(row => {
+            row.style.setProperty(
+                'display',
+                'none',
+                'important'
+            );
+        });
+
+        if (totalRow) {
+            totalRow.style.setProperty(
+                'display',
+                'none',
+                'important'
+            );
+        }
+
+        renderHifiCards(selected);
+    };
+}
+
+async function fetchMasterData() {
+    const updateTime = document.getElementById('updateTime');
+    const tbody = document.getElementById('tableBody');
+    try {
+        if (updateTime) updateTime.textContent = 'Update Data: Memuat...';
+        const res = await fetch(`${JSON_DATA_URL}?t=${Date.now()}`, { method: 'GET', cache: 'no-store' });
+        if (!res.ok) throw new Error(`JSON gagal dimuat. HTTP ${res.status}`);
+        const result = await res.json();
+        if (!result || result.success !== true) throw new Error(result?.message || 'Format JSON tidak valid');
+
+        const objectData = normalisasiData(result.data);
+        if (!objectData.length) throw new Error('Data HiFi Air kosong');
+
+        renderHiFiDashboard(objectData);
+
+        let updateDate = result.updated_at ? new Date(result.updated_at) : new Date();
+        if (isNaN(updateDate.getTime())) updateDate = new Date();
+        if (updateTime) updateTime.innerHTML = 'Update Data: ' + formatUpdateDate(updateDate);
+    } catch (error) {
+        console.error('❌ GAGAL MENGAMBIL DATA HIFI AIR', error);
+        if (updateTime) updateTime.textContent = 'Update Data: Gagal memuat';
+        if (tbody) tbody.innerHTML = `<tr><td colspan="11" class="loading-text">⚠️ Gagal memuat data: ${escapeHTML(error.message)}</td></tr>`;
     }
+}
 
-    if(
-        typeof html2canvas ===
-        'undefined'
-    ){
+async function downloadHifiTableImage() {
+    const button = document.getElementById('downloadTableBtn');
+    const table = document.getElementById('hifiTable');
+    if (!table || typeof html2canvas === 'undefined') return alert('Library / Tabel belum tersedia.');
 
-        alert(
-            'Library download gambar belum tersedia.'
-        );
+    const rows = table.querySelectorAll('tbody tr');
+    if (!rows.length) return alert('Belum ada data.');
 
-        return;
-
-    }
-
-    const rows =
-        table.querySelectorAll(
-            'tbody tr'
-        );
-
-    if(rows.length === 0){
-
-        alert(
-            'Belum ada data yang dapat didownload.'
-        );
-
-        return;
-
-    }
-
-    const originalHTML =
-        button
-            ? button.innerHTML
-            : '';
-
-    if(button){
-
-        button.disabled =
-            true;
-
-        button.innerHTML =
-            '⏳ Memproses...';
-
-    }
+    const originalHTML = button ? button.innerHTML : '';
+    if (button) { button.disabled = true; button.innerHTML = '⏳ Memproses...'; }
 
     let wrapper = null;
+    try {
+        wrapper = document.createElement('div');
+        wrapper.className = 'hifi-download-clone';
+        
+        const title = document.createElement('div'); title.className = 'hifi-download-title'; title.textContent = 'REKAPITULASI PENJUALAN HIFI AIR';
+        const subtitle = document.createElement('div'); subtitle.className = 'hifi-download-subtitle'; subtitle.textContent = 'Data Monitor Penjualan HiFi Air Mei 2026';
+        
+        wrapper.appendChild(title);
+        wrapper.appendChild(subtitle);
 
-    try{
+        const clonedTable = table.cloneNode(true);
+        clonedTable.querySelectorAll('tr').forEach(r => { r.style.display = 'table-row'; });
+        clonedTable.querySelectorAll('td, th').forEach(c => { c.style.display = 'table-cell'; c.style.whiteSpace = 'nowrap'; c.style.visibility = 'visible'; });
+        clonedTable.querySelectorAll('.badge-status').forEach(b => { b.style.display = 'inline-block'; });
+        wrapper.appendChild(clonedTable);
 
-        wrapper =
-            document.createElement(
-                'div'
-            );
+        const footer = document.createElement('div'); footer.className = 'hifi-download-footer'; footer.textContent = 'Generated from MC Sagaranten • ' + formatUpdateDate(new Date());
+        wrapper.appendChild(footer);
 
-        wrapper.className =
-            'hifi-download-clone';
+        document.body.appendChild(wrapper);
+        await new Promise(r => setTimeout(r, 300));
 
-        const title =
-            document.createElement(
-                'div'
-            );
-
-        title.className =
-            'hifi-download-title';
-
-        title.textContent =
-            'REKAPITULASI PENJUALAN HIFI AIR';
-
-        wrapper.appendChild(
-            title
-        );
-
-        const subtitle =
-            document.createElement(
-                'div'
-            );
-
-        subtitle.className =
-            'hifi-download-subtitle';
-
-        subtitle.textContent =
-            'Data Monitor Penjualan HiFi Air Mei 2026';
-
-        wrapper.appendChild(
-            subtitle
-        );
-
-        const clonedTable =
-            table.cloneNode(
-                true
-            );
-
-        /*
-           Tampilkan semua baris
-        */
-
-        clonedTable
-            .querySelectorAll(
-                'tr'
-            )
-            .forEach(
-                row => {
-
-                    row.style.display =
-                        'table-row';
-
-                }
-            );
-
-        clonedTable
-            .querySelectorAll(
-                'td, th'
-            )
-            .forEach(
-                cell => {
-
-                    cell.style.display =
-                        'table-cell';
-
-                    cell.style.whiteSpace =
-                        'nowrap';
-
-                    cell.style.visibility =
-                        'visible';
-
-                }
-            );
-
-        clonedTable
-            .querySelectorAll(
-                '.badge-status'
-            )
-            .forEach(
-                badge => {
-
-                    badge.style.display =
-                        'inline-block';
-
-                }
-            );
-
-        wrapper.appendChild(
-            clonedTable
-        );
-
-        const footer =
-            document.createElement(
-                'div'
-            );
-
-        footer.className =
-            'hifi-download-footer';
-
-        footer.textContent =
-            'Generated from MC Sagaranten • ' +
-            formatUpdateDate(
-                new Date()
-            );
-
-        wrapper.appendChild(
-            footer
-        );
-
-        document.body.appendChild(
-            wrapper
-        );
-
-        await new Promise(
-            resolve =>
-                setTimeout(
-                    resolve,
-                    300
-                )
-        );
-
-        const canvas =
-            await html2canvas(
-                wrapper,
-                {
-                    backgroundColor:'#ffffff',
-
-                    scale:
-                        Math.min(
-                            2,
-                            window.devicePixelRatio ||
-                            1
-                        ),
-
-                    useCORS:true,
-
-                    allowTaint:true,
-
-                    logging:false,
-
-                    imageTimeout:0
-
-                }
-            );
-
-        const link =
-            document.createElement(
-                'a'
-            );
-
-        const date =
-            new Date();
-
-        const dateString =
-            date
-                .toISOString()
-                .slice(
-                    0,
-                    10
-                );
-
-        link.download =
-            `Rekap-Penjualan-HiFi-Air-${dateString}.png`;
-
-        link.href =
-            canvas.toDataURL(
-                'image/png',
-                1.0
-            );
-
+        const canvas = await html2canvas(wrapper, { backgroundColor: '#ffffff', scale: Math.min(2, window.devicePixelRatio || 1), useCORS: true, allowTaint: true, logging: false, imageTimeout: 0 });
+        const link = document.createElement('a');
+        link.download = `Rekap-Penjualan-HiFi-Air-${new Date().toISOString().slice(0, 10)}.png`;
+        link.href = canvas.toDataURL('image/png', 1.0);
         link.click();
-
+    } catch (error) {
+        console.error('Gagal membuat gambar tabel:', error);
+        alert('Gagal membuat gambar tabel.');
+    } finally {
+        if (wrapper) wrapper.remove();
+        if (button) { button.disabled = false; button.innerHTML = originalHTML; }
     }
-
-    catch(error){
-
-        console.error(
-            'Gagal membuat gambar tabel:',
-            error
-        );
-
-        alert(
-            'Gagal membuat gambar tabel. ' +
-            'Silakan coba lagi.'
-        );
-
-    }
-
-    finally{
-
-        if(wrapper){
-
-            wrapper.remove();
-
-        }
-
-        if(button){
-
-            button.disabled =
-                false;
-
-            button.innerHTML =
-                originalHTML;
-
-        }
-
-    }
-
 }
 
+document.addEventListener('DOMContentLoaded', fetchMasterData);
 
-/* =========================================================
-   START
-========================================================= */
-
-document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-
-        /*
-           AMBIL DATA PERTAMA
-        */
-
-        fetchMasterData();
-
-    }
-);
-
-/* =========================================================
-   BACK BUTTON
-========================================================= */
-
-function goBack(){
-
-    if(
-        window.history.length > 1
-    ){
-
-        window.history.back();
-
-    }
-
-    else{
-
-        window.location.href =
-            'dashboard.html';
-
-    }
-
+function goBack() {
+    if (window.history.length > 1) window.history.back();
+    else window.location.href = 'dashboard.html';
 }
