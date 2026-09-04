@@ -4,11 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MC-SAGARANTEN - Home Portal</title>
-<link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
+<link rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://res.cloudinary.com/szj67w13/image/upload/v1788418861/favicon.png">
+
+<link rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://res.cloudinary.com/szj67w13/image/upload/v1788418861/favicon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0f172a">
 <link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/global-bottom.css">
 <link rel="stylesheet" href="./css/notif.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
@@ -18,7 +25,8 @@
 <div class="header-content-overlay">
     <div class="header-welcome-layer">
         <div class="header-logo-layer" id="logoPreviewTrigger">
-            <img src="img/favicon.png" alt="Logo MC-SAGARANTEN">
+            <img src="https://res.cloudinary.com/szj67w13/image/upload/v1788418920/logo-mosa.png"
+     alt="Logo MC-SAGARANTEN">
         </div>
         <div class="welcome-text-layer">
             <div class="welcome-greeting-layer">Hallo, <span id="user-name">Pengguna</span></div>
@@ -105,20 +113,10 @@
         <div class="nav-details"><div class="nav-title">TAMBAH STOCK</div></div>
     </a>
 
-    <a href="form-daily.html" class="nav-item form-link">
-        <div class="nav-icon"><i class="fa-solid fa-clipboard-list fa-outline"></i></div>
-        <div class="nav-details"><div class="nav-title">REPORT DSE</div></div>
-    </a>
-
-    <a href="form-Request-Stock.html" class="nav-item form-link">
-        <div class="nav-icon"><i class="fa-solid fa-box-open fa-outline"></i></div>
-        <div class="nav-details"><div class="nav-title">REQUEST GUDANG</div></div>
-    </a>
-
     <a href="stok-gudang.html" class="nav-item gudang-link">
-        <div class="nav-icon"><i class="fa-solid fa-boxes-stacked fa-outline"></i></div>
-        <div class="nav-details"><div class="nav-title">STOK GUDANG</div></div>
-    </a>
+    <div class="nav-icon"><i class="fa-solid fa-box-open fa-outline"></i></div>
+    <div class="nav-details"><div class="nav-title">STOK GUDANG</div></div>
+</a>
 
     <a href="stok-barang-dse.html" class="nav-item dse-link">
         <div class="nav-icon"><i class="fa-solid fa-briefcase fa-outline"></i></div>
@@ -126,7 +124,9 @@
     </a>
 
     <a href="penjualan-salmo.html" class="nav-item penjualan-link">
-        <div class="nav-icon"><img src="img/20260813_052238.png" class="menu-image" alt="SALMO"></div>
+        <div class="nav-icon"><img src="https://res.cloudinary.com/szj67w13/image/upload/v1788270500/mobii.png"
+     class="menu-image"
+     alt="SALMO"></div>
         <div class="nav-details"><div class="nav-title">SALMO</div></div>
     </a>
 
@@ -141,7 +141,9 @@
     </a>
 
     <a href="penjualan-hifi.html" class="nav-item penjualan-link">
-        <div class="nav-icon"><img src="img/hifi-removebg-preview.png" class="menu-image" alt="Hifi"></div>
+        <div class="nav-icon"><img src="https://res.cloudinary.com/szj67w13/image/upload/v1788270501/hifi-removebg-preview.png"
+     class="menu-image"
+     alt="Hifi"></div>
         <div class="nav-details"><div class="nav-title">HIFI</div></div>
     </a>
 
@@ -166,17 +168,17 @@
                 <div class="nav-details"><div class="nav-title" style="color:var(--accent-trade)">PROGRAM OUTLET</div></div>
             </a>
 
-            <a href="segera-hadir.html" class="nav-item trade-link">
+            <a href="data-outlet.html" class="nav-item trade-link">
                 <div class="nav-icon"><i class="fa-solid fa-shop fa-outline"></i></div>
                 <div class="nav-details"><div class="nav-title" style="color:var(--accent-trade)">DATA OUTLET</div></div>
             </a>
 
-            <a href="segera-hadir.html" class="nav-item kpi-link">
+            <a href="kpi.html" class="nav-item kpi-link">
                 <div class="nav-icon"><i class="fa-solid fa-chart-line fa-outline"></i></div>
                 <div class="nav-details"><div class="nav-title" style="color:var(--accent-kpi)">KPI DSE</div></div>
             </a>
 
-            <a href="segera-hadir.html" class="nav-item md-link">
+            <a href="md.html" class="nav-item md-link">
                 <div class="nav-icon"><i class="fa-solid fa-store fa-outline"></i></div>
                 <div class="nav-details"><div class="nav-title" style="color:var(--accent-md)">MERCHANT MD</div></div>
             </a>
@@ -185,40 +187,101 @@
     </div>
 
     <div class="menu-group admin-menu-group" id="admin-menu">
-        <div class="section-title">
-            
-            Administrator
-        </div>
 
-        <div class="nav-wrapper">
-
-            <a href="upload-data.html" class="nav-item admin-link">
-                <div class="nav-icon"><i class="fa-solid fa-file-arrow-up fa-outline"></i></div>
-                <div class="nav-details"><div class="nav-title">UPLOAD DATA</div></div>
-            </a>
-
-            <a href="kelola-file.html" class="nav-item admin-link">
-                <div class="nav-icon"><i class="fa-solid fa-folder-open fa-outline"></i></div>
-                <div class="nav-details"><div class="nav-title">KELOLA FILE DATA</div></div>
-            </a>
-
-            <a href="admin-banner.html" class="nav-item admin-link">
-                <div class="nav-icon"><i class="fa-solid fa-images fa-outline"></i></div>
-                <div class="nav-details"><div class="nav-title">KELOLA BANNER</div></div>
-            </a>
-
-            <a href="admin-program-outlet.html" class="nav-item admin-link">
-                <div class="nav-icon"><i class="fa-solid fa-store fa-outline"></i></div>
-                <div class="nav-details"><div class="nav-title">PROGRAM OUTLET</div></div>
-            </a>
-
-            <a href="broadcast.html" class="nav-item admin-link">
-                <div class="nav-icon"><i class="fa-solid fa-bullhorn fa-outline"></i></div>
-                <div class="nav-details"><div class="nav-title">BROADCAST</div></div>
-            </a>
-
-        </div>
+    <div class="section-title">
+        Administrator
     </div>
+
+    <div class="nav-wrapper">
+
+        <!-- UPLOAD DATA -->
+        <a href="upload-data.html" class="nav-item admin-link">
+            <div class="nav-icon">
+                <i class="fa-solid fa-file-arrow-up fa-outline"></i>
+            </div>
+
+            <div class="nav-details">
+                <div class="nav-title">
+                    UPLOAD DATA
+                </div>
+            </div>
+        </a>
+
+
+        <!-- KELOLA FILE DATA -->
+        <a href="kelola-file.html" class="nav-item admin-link">
+            <div class="nav-icon">
+                <i class="fa-solid fa-folder-open fa-outline"></i>
+            </div>
+
+            <div class="nav-details">
+                <div class="nav-title">
+                    KELOLA FILE DATA
+                </div>
+            </div>
+        </a>
+
+
+        <!-- KELOLA PELANGGAN -->
+        <a href="kelola-pengguna.html" class="nav-item admin-link">
+
+            <div class="nav-icon">
+                <i class="fa-solid fa-users fa-outline"></i>
+            </div>
+
+            <div class="nav-details">
+                <div class="nav-title">
+                    KELOLA USER
+                </div>
+            </div>
+
+        </a>
+
+
+        <!-- KELOLA BANNER -->
+        <a href="admin-banner.html" class="nav-item admin-link">
+            <div class="nav-icon">
+                <i class="fa-solid fa-images fa-outline"></i>
+            </div>
+
+            <div class="nav-details">
+                <div class="nav-title">
+                    KELOLA BANNER
+                </div>
+            </div>
+        </a>
+
+
+        <!-- PROGRAM OUTLET -->
+        <a href="admin-program-outlet.html" class="nav-item admin-link">
+            <div class="nav-icon">
+                <i class="fa-solid fa-store fa-outline"></i>
+            </div>
+
+            <div class="nav-details">
+                <div class="nav-title">
+                    PROGRAM OUTLET
+                </div>
+            </div>
+        </a>
+
+
+        <!-- BROADCAST -->
+        <a href="broadcast.html" class="nav-item admin-link">
+            <div class="nav-icon">
+                <i class="fa-solid fa-bullhorn fa-outline"></i>
+            </div>
+
+            <div class="nav-details">
+                <div class="nav-title">
+                    BROADCAST
+                </div>
+            </div>
+        </a>
+
+    </div>
+
+</div>
 
     <div class="menu-banner-divider"></div>
 
@@ -242,7 +305,7 @@
 
     <div class="menu-banner-divider"></div>
 
-    <section class="activity-daily-section">
+    <section id="activity-daily" class="activity-daily-section">
 
         <div class="activity-header">
             <div class="activity-header-left">
@@ -343,15 +406,18 @@
 <div class="logo-preview-modal" id="logoPreviewModal" aria-hidden="true">
     <div class="logo-preview-box">
         <button type="button" class="logo-preview-close" id="logoPreviewClose" aria-label="Tutup preview">×</button>
-        <img src="img/favicon.png" alt="Preview Logo MC-SAGARANTEN" class="logo-preview-image">
+        <img src="https://res.cloudinary.com/szj67w13/image/upload/v1788418920/logo-mosa.png"
+     alt="Preview Logo MC-SAGARANTEN"
+     class="logo-preview-image">
         <div class="logo-preview-title">MC-SAGARANTEN</div>
     </div>
 </div>
 
 <script src="./js/global-log.js"></script>
 <script src="./js/notif.js"></script>
+<script type="module" src="./js/dashboard-auth.js"></script>
+<script type="module" src="./js/firebase-dashboard.js"></script>
 <script src="./js/dashboard.js"></script>
 <script src="./js/activity-daily.js"></script>
-
 </body>
 </html>

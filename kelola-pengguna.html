@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kelola Pengguna | MC-SAGARANTEN</title>
+
+<link rel="stylesheet" href="./css/kelola-pengguna.css">
+<link rel="stylesheet" href="./css/global-bottom.css">
+<link rel="stylesheet" href="./css/notif.css">
+</head>
+
+<body>
+
+<header class="page-header">
+
+    <a href="dashboard.html" class="back-button" aria-label="Kembali">‹</a>
+
+    <div class="header-text">
+        <div class="header-title">Kelola Pengguna</div>
+        <div class="header-subtitle">Pengelolaan pengguna MC-SAGARANTEN</div>
+    </div>
+
+</header>
+
+<main class="user-admin-container">
+
+    <section class="report-heading">
+        <div class="report-heading-left">
+            <div class="report-heading-title">Administrator Pengguna</div>
+            <div class="report-heading-desc">Pengelolaan akun dan akses pengguna</div>
+        </div>
+    </section>
+
+    <div class="user-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+            type="search"
+            id="user-search-input"
+            placeholder="Cari nama atau nomor HP..."
+            autocomplete="off"
+        >
+    </div>
+
+    <button
+        class="add-user-btn"
+        id="btn-add-user"
+        type="button"
+    >
+        ＋ Tambah Pengguna
+    </button>
+
+    <section class="user-summary">
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="summary-info">
+                <span>Total Pengguna</span>
+                <strong id="total-users">0</strong>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+            <div class="summary-info">
+                <span>Aktif</span>
+                <strong id="active-users">0</strong>
+            </div>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div class="summary-info">
+                <span>Admin</span>
+                <strong id="admin-users">0</strong>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="user-list" id="user-list">
+        <div class="loading">Memuat pengguna...</div>
+    </section>
+
+</main>
+
+<div class="user-modal" id="user-modal">
+
+    <div class="user-modal-box">
+
+        <div class="user-modal-title" id="modal-title">
+            Tambah Pengguna
+        </div>
+
+        <div class="form-group">
+            <label for="user-nama">Nama Pengguna</label>
+            <input
+                type="text"
+                id="user-nama"
+                placeholder="Contoh: Andi Ramdani"
+                autocomplete="name"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="user-phone">Nomor HP</label>
+            <input
+                type="tel"
+                id="user-phone"
+                placeholder="081234567890"
+                inputmode="numeric"
+                autocomplete="tel"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="user-password">Password</label>
+            <input
+                type="password"
+                id="user-password"
+                placeholder="Minimal 8 karakter"
+                autocomplete="new-password"
+            >
+            <div class="file-info">Password minimal 8 karakter.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="user-role">Role</label>
+            <select id="user-role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="user-status">Status</label>
+            <select id="user-status">
+                <option value="active">Aktif</option>
+                <option value="inactive">Nonaktif</option>
+            </select>
+        </div>
+
+        <div class="modal-actions">
+
+            <button
+                class="modal-btn modal-cancel"
+                id="btn-cancel"
+                type="button"
+            >
+                Batal
+            </button>
+
+            <button
+                class="modal-btn modal-save"
+                id="btn-save"
+                type="button"
+            >
+                Simpan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    id="detail-modal"
+    class="user-modal"
+>
+
+    <div class="user-modal-box">
+
+        <div class="user-modal-title">
+            Detail Pengguna
+        </div>
+
+
+        <div id="user-detail">
+            <!-- Detail user -->
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                id="btn-detail-close"
+                class="modal-btn modal-cancel"
+            >
+                Tutup
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="user-toast" id="user-toast"></div>
+
+<footer class="bottom-nav">
+
+    <a href="dashboard.html" class="bottom-item active">
+        <div><i class="fa-solid fa-house fa-outline"></i></div>
+        <span>HOME</span>
+    </a>
+
+    <a href="report.html" class="bottom-item">
+        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+        <span>REPORT</span>
+    </a>
+
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container">
+            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+            <span class="notif-badge"></span>
+        </div>
+        <span>NOTIF</span>
+    </a>
+
+    <a href="profil.html" class="bottom-item">
+        <div><i class="fa-solid fa-user fa-outline"></i></div>
+        <span>PROFIL</span>
+    </a>
+
+</footer>
+<script type="module" src="./js/dashboard-auth.js"></script>
+<script type="module" src="./js/notif.js"></script>
+<script type="module" src="./js/kelola-pengguna.js"></script>
+</body>
+</html>

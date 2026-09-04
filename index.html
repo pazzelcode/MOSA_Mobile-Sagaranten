@@ -12,43 +12,722 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="icon" type="image/png" href="./img/favicon.png">
 <link rel="stylesheet" href="./css/login.css">
-  <script>
-(function(){
+  
+<style>
 
-    const loginStatus =
-        localStorage.getItem(
-            'mc_sagaranten_login'
+  /* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+*{
+    -webkit-tap-highlight-color:transparent;
+}
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b2f73 0%,
+            #155dcc 48%,
+            #0b3b91 100%
         );
 
-    const loginExpire =
-        Number(
-            localStorage.getItem(
-                'mc_sagaranten_expire'
-            )
+    color:#0f172a;
+
+    overflow:hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.login-page{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:24px 16px;
+
+    overflow:hidden;
+}
+
+
+/* =========================================
+   DECORATION
+========================================= */
+
+.bg-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.07);
+
+    pointer-events:none;
+}
+
+.bg-circle.one{
+
+    width:320px;
+    height:320px;
+
+    top:-160px;
+    left:-130px;
+}
+
+.bg-circle.two{
+
+    width:280px;
+    height:280px;
+
+    right:-140px;
+    bottom:-120px;
+}
+
+.bg-circle.three{
+
+    width:100px;
+    height:100px;
+
+    right:12%;
+    top:9%;
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+/* =========================================
+   DOT PATTERN
+========================================= */
+
+.bg-pattern{
+
+    position:absolute;
+
+    width:190px;
+    height:190px;
+
+    opacity:.22;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.8) 1.5px,
+            transparent 1.5px
         );
 
-    if(
-        loginStatus === 'true' &&
-        loginExpire &&
-        Date.now() < loginExpire
-    ){
+    background-size:18px 18px;
+}
 
-        location.replace(
-            'dashboard.html'
-        );
+.bg-pattern.left{
 
-        return;
+    left:-30px;
+    bottom:70px;
+}
+
+.bg-pattern.right{
+
+    right:-30px;
+    top:90px;
+}
+
+
+/* =========================================
+   WAVE
+========================================= */
+
+.wave{
+
+    position:absolute;
+
+    width:430px;
+    height:430px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius:45%;
+
+    transform:rotate(-25deg);
+
+    pointer-events:none;
+}
+
+.wave.one{
+
+    left:-280px;
+    top:-170px;
+}
+
+.wave.two{
+
+    left:-260px;
+    top:-130px;
+}
+
+.wave.three{
+
+    right:-280px;
+    bottom:-190px;
+}
+
+.wave.four{
+
+    right:-260px;
+    bottom:-150px;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.login-container{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+
+    max-width:300px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    color:#fff;
+
+    margin-bottom:20px;
+}
+
+.brand-logo{
+
+    width:72px;
+    height:72px;
+
+    padding:9px;
+
+    object-fit:contain;
+
+    border-radius:21px;
+
+    background:
+        rgba(255,255,255,.15);
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.18);
+
+    backdrop-filter:blur(10px);
+
+    margin-bottom:12px;
+}
+
+.brand-title{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    letter-spacing:.4px;
+}
+
+.brand-subtitle{
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    opacity:.82;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.login-card{
+
+    width:100%;
+
+    border-radius:26px;
+
+    padding:28px 24px 22px;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.card-title{
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:#fff;
+}
+
+.card-desc{
+
+    margin-top:6px;
+
+    font-size:12px;
+
+    color:rgba(255,255,255,.55);
+
+    line-height:1.5;
+
+    margin-bottom:22px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group{
+
+    margin-bottom:17px;
+}
+
+.form-label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:#fff;
+}
+
+.input-wrapper{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+}
+
+.input-icon{
+
+    position:absolute;
+
+    left:15px;
+
+    font-size:18px;
+
+    pointer-events:none;
+}
+
+.form-input{
+
+    width:100%;
+
+    height:52px;
+
+    padding:
+        0 45px
+        0 46px;
+
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.22);
+    color:#fff;
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.2s ease;
+}
+
+.form-input:focus{
+
+    background:#fff;
+
+    background:rgba(255,255,255,.16);
+    border-color:rgba(255,255,255,.65);
+    box-shadow:0 0 0 4px rgba(255,255,255,.08);
+
+}
+
+.form-input::placeholder{
+
+    color:rgba(255,255,255,.55);
+
+    font-weight:400;
+}
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+.toggle-pin{
+
+    position:absolute;
+
+    right:9px;
+
+    width:36px;
+    height:36px;
+
+    border:0;
+
+    background:transparent;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:17px;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.login-error{
+
+    display:none;
+
+    padding:11px 13px;
+
+    margin-bottom:15px;
+
+    border-radius:12px;
+
+    background:#fef2f2;
+
+    border:
+        1px solid
+        #fecaca;
+
+    color:#dc2626;
+
+    font-size:11px;
+
+    font-weight:600;
+
+    line-height:1.4;
+}
+
+.login-error.show{
+
+    display:block;
+
+    animation:
+        shake .3s ease;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.login-button{
+
+    width:100%;
+
+    height:52px;
+
+    border: 0;
+
+
+    border-radius:14px;
+
+    background: linear-gradient(
+    135deg,
+    #2563eb 50%,
+    #191970 80%
+);
+
+
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:800;
+
+    letter-spacing:.3px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 18px
+        rgba(37,99,235,.28);
+
+    transition:.2s ease;
+}
+
+.login-button:active{
+
+    transform:scale(.98);
+}
+
+.login-button.loading{
+
+    pointer-events:none;
+
+    opacity:.7;
+}
+
+
+/* =========================================
+   SPINNER
+========================================= */
+
+.spinner{
+
+    display:none;
+
+    width:18px;
+    height:18px;
+
+    margin:auto;
+
+    border:
+        2px solid
+        rgba(255,255,255,.35);
+
+    border-top-color:#fff;
+
+    border-radius:50%;
+
+    animation:
+        spin .7s linear infinite;
+}
+
+.login-button.loading .button-text{
+
+    display:none;
+}
+
+.login-button.loading .spinner{
+
+    display:block;
+}
+
+
+/* =========================================
+   SECURITY
+========================================= */
+
+.security{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:6px;
+
+    margin-top:18px;
+
+    font-size:10px;
+
+    color:rgba(255,255,255,.55);
+
+    text-align:center;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+
+    margin-top:18px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size:10px;
+
+    text-align:center;
+
+    line-height:1.6;
+}
+
+.footer strong{
+
+    color:#fff;
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
     }
 
-    // Login belum aktif / sudah expired
-    document.documentElement.style.visibility = 'visible';
+}
 
-})();
-</script>
+@keyframes shake{
 
-<style>
-html{
-    visibility:hidden;
+    0%,100%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-5px);
+    }
+
+    75%{
+        transform:translateX(5px);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:380px){
+
+    .login-card{
+
+        padding:
+            23px 18px 20px;
+
+        border-radius:22px;
+    }
+
+    .brand-logo{
+
+        width:64px;
+        height:64px;
+    }
+
+    .brand-title{
+
+        font-size:18px;
+    }
+
+}
+
+.input-icon {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-icon i {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.toggle-pin {
+    color: #ffffff;
+}
+
+.toggle-pin i {
+    color: #ffffff;
+}
+
+.toggle-password{
+
+    position:absolute;
+
+    right:9px;
+
+    width:36px;
+    height:36px;
+
+    border:0;
+
+    background:transparent;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    color:#fff;
+
+}
+
+.toggle-password i{
+
+    color:#fff;
+
+    font-size:17px;
+
 }
 </style>
 </head>
@@ -78,7 +757,9 @@ html{
         <section class="login-card">
 
             <div class="card-title">Selamat Datang 👋</div>
-            <div class="card-desc">Silakan masuk menggunakan nomor HP dan PIN Anda.</div>
+            <div class="card-desc">
+    Silakan masuk menggunakan nomor HP dan password Anda.
+</div>
 
             <div class="login-error" id="loginError">
                 <span id="errorText"></span>
@@ -105,33 +786,35 @@ html{
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="pin">PIN 6 Digit</label>
+    <label class="form-label" for="password">
+        Password
+    </label>
 
-                <div class="input-wrapper">
-                    <div class="input-icon">
-                        <i class="fa-solid fa-lock"></i>
-                    </div>
+    <div class="input-wrapper">
 
-                    <input
-                        type="password"
-                        id="pin"
-                        class="form-input pin-input"
-                        placeholder="••••••"
-                        inputmode="numeric"
-                        maxlength="6"
-                        autocomplete="off"
-                    >
+        <div class="input-icon">
+            <i class="fa-solid fa-lock"></i>
+        </div>
 
-                    <button
-                        type="button"
-                        class="toggle-pin"
-                        id="togglePin"
-                        aria-label="Tampilkan PIN"
-                    >
-                        <i class="fa-solid fa-eye"></i>
-                    </button>
-                </div>
-            </div>
+        <input
+            type="password"
+            id="password"
+            class="form-input"
+            placeholder="Masukkan password"
+            autocomplete="current-password"
+        >
+
+        <button
+            type="button"
+            class="toggle-password"
+            id="togglePassword"
+            aria-label="Tampilkan password"
+        >
+            <i class="fa-solid fa-eye"></i>
+        </button>
+
+    </div>
+</div>
 
             <button
                 type="button"
@@ -159,7 +842,8 @@ html{
 </div>
 
 <script src="./js/global-log.js"></script>
-<script src="./js/login.js"></script>
+<script type="module" src="./js/login.js"
+></script>
 
 </body>
 </html>

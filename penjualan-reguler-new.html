@@ -1,489 +1,352 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Penjualan Fisik - Monitor Excel Real-time</title>
-
-<link rel="stylesheet" href="./css/global-navhed.css">
-<link rel="stylesheet" href="./css/penjualan-reguler-new.css">
-<link rel="stylesheet" href="./css/notif.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penjualan Fisik - Monitor Excel Real-time</title>
+    <link rel="stylesheet" href="./css/global-navhed.css">
+    <link rel="stylesheet" href="./css/penjualan-reguler-new.css">
+    <link rel="stylesheet" href="./css/notif.css">
 </head>
-
 <body>
-
-<div class="sticky-container">
-    <div class="header-wrapper">
-        <div class="back-container" onclick="goBack()">
-            <div class="back-button"></div>
-        </div>
-
-        <div class="app-header">
-            <h1>PENJUALAN FISIK</h1>
-            <p>Monitoring penjualan SP dan Voucher DSE</p>
-        </div>
-    </div>
-</div>
-
-<div class="dashboard-container">
-
-    <div class="update-bar">
-        <div class="update-info">
-            <span class="update-dot"></span>
-            <span id="updateTime">Update Data: Memuat...</span>
+    <div class="sticky-container">
+        <div class="header-wrapper">
+            <div class="back-container" onclick="goBack()">
+                <div class="back-button"></div>
+            </div>
+            <div class="app-header">
+                <h1>PENJUALAN FISIK</h1>
+                <p>Monitoring penjualan SP dan Voucher DSE</p>
+            </div>
         </div>
     </div>
 
-    <section class="sales-hero">
-        <div class="hero-content">
-
-            <div class="hero-label">
-                <div class="hero-label-icon">📊</div>
-                Penjualan Fisik
-            </div>
-
-            <div class="hero-title">Monitoring Penjualan</div>
-
-            <p class="hero-subtitle">
-                Rekap penjualan SP & Voucher berdasarkan DSE
-            </p>
-
-            <div class="hero-stats">
-
-                <div class="hero-stat">
-                    <div class="hero-stat-label">TOTAL PCS</div>
-                    <div class="hero-stat-value" id="heroTotalPCS">-</div>
-                </div>
-
-                <div class="hero-stat">
-                    <div class="hero-stat-label">TOTAL RUPIAH</div>
-                    <div class="hero-stat-value" id="heroTotalRp">-</div>
-                </div>
-
-                <div class="hero-stat">
-                    <div class="hero-stat-label">PRODUK</div>
-                    <div class="hero-stat-value" id="heroProductCount">-</div>
-                </div>
-
-                <div class="hero-stat">
-                    <div class="hero-stat-label">STATUS</div>
-                    <div class="hero-stat-value" id="heroStatus">LIVE</div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="section-title">
-        <h2>Ringkasan DSE</h2>
-        <span>Total penjualan</span>
-    </div>
-
-    <div class="user-summary">
-
-        <div class="user-card">
-            <div class="user-top">
-                <div class="user-avatar">A</div>
-                <div>
-                    <div class="user-name">Andi</div>
-                    <div class="user-role">DSE</div>
-                </div>
-            </div>
-
-            <div class="dse-summary-lines">
-                <div class="dse-summary-line">
-                    <span>SP</span>
-                    <strong id="summaryAndiSP">-</strong>
-                </div>
-                <div class="dse-summary-line">
-                    <span>VCR</span>
-                    <strong id="summaryAndiVCR">-</strong>
-                </div>
-            </div>
-
-            <div class="dse-summary-rp">
-                <span>TOTAL RP.</span>
-                <strong id="summaryAndiRp">-</strong>
+    <div class="dashboard-container">
+        <div class="update-bar">
+            <div class="update-info">
+                <span class="update-dot"></span>
+                <span id="updateTime">Update Data: Memuat...</span>
             </div>
         </div>
 
-        <div class="user-card">
-            <div class="user-top">
-                <div class="user-avatar">P</div>
-                <div>
-                    <div class="user-name">Parhan</div>
-                    <div class="user-role">DSE</div>
+        <section class="sales-hero">
+            <div class="hero-content">
+                <div class="hero-label">
+                    <div class="hero-label-icon">📊</div> Penjualan Fisik
+                </div>
+                <div class="hero-title">Monitoring Penjualan</div>
+                <p class="hero-subtitle">Rekap penjualan SP & Voucher berdasarkan DSE</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-label">TOTAL PCS</div>
+                        <div class="hero-stat-value" id="heroTotalPCS">-</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-label">TOTAL RUPIAH</div>
+                        <div class="hero-stat-value" id="heroTotalRp">-</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-label">PRODUK</div>
+                        <div class="hero-stat-value" id="heroProductCount">-</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-label">STATUS</div>
+                        <div class="hero-stat-value" id="heroStatus">LIVE</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-title">
+            <h2>Ringkasan DSE</h2>
+            <span>Total penjualan</span>
+        </div>
+
+        <div class="user-summary">
+            <!-- ADIGUNA -->
+            <div class="user-card">
+                <div class="user-top">
+                    <div class="user-avatar">A</div>
+                    <div>
+                        <div class="user-name">Adiguna</div>
+                        <div class="user-role">DSE</div>
+                    </div>
+                </div>
+                <div class="dse-summary-lines">
+                    <div class="dse-summary-line">
+                        <span>SP</span> <strong id="summaryAdigunaSP">-</strong>
+                    </div>
+                    <div class="dse-summary-line">
+                        <span>VCR</span> <strong id="summaryAdigunaVCR">-</strong>
+                    </div>
+                </div>
+                <div class="dse-summary-rp">
+                    <span>TOTAL RP.</span> <strong id="summaryAdigunaRp">-</strong>
                 </div>
             </div>
 
-            <div class="dse-summary-lines">
-                <div class="dse-summary-line">
-                    <span>SP</span>
-                    <strong id="summaryParhanSP">-</strong>
+            <!-- PARHAN -->
+            <div class="user-card">
+                <div class="user-top">
+                    <div class="user-avatar">P</div>
+                    <div>
+                        <div class="user-name">Parhan</div>
+                        <div class="user-role">DSE</div>
+                    </div>
                 </div>
-                <div class="dse-summary-line">
-                    <span>VCR</span>
-                    <strong id="summaryParhanVCR">-</strong>
+                <div class="dse-summary-lines">
+                    <div class="dse-summary-line">
+                        <span>SP</span> <strong id="summaryParhanSP">-</strong>
+                    </div>
+                    <div class="dse-summary-line">
+                        <span>VCR</span> <strong id="summaryParhanVCR">-</strong>
+                    </div>
+                </div>
+                <div class="dse-summary-rp">
+                    <span>TOTAL RP.</span> <strong id="summaryParhanRp">-</strong>
                 </div>
             </div>
 
-            <div class="dse-summary-rp">
-                <span>TOTAL RP.</span>
-                <strong id="summaryParhanRp">-</strong>
+            <!-- ENDEN -->
+            <div class="user-card">
+                <div class="user-top">
+                    <div class="user-avatar">E</div>
+                    <div>
+                        <div class="user-name">Enden</div>
+                        <div class="user-role">DSE</div>
+                    </div>
+                </div>
+                <div class="dse-summary-lines">
+                    <div class="dse-summary-line">
+                        <span>SP</span> <strong id="summaryEndenSP">-</strong>
+                    </div>
+                    <div class="dse-summary-line">
+                        <span>VCR</span> <strong id="summaryEndenVCR">-</strong>
+                    </div>
+                </div>
+                <div class="dse-summary-rp">
+                    <span>TOTAL RP.</span> <strong id="summaryEndenRp">-</strong>
+                </div>
+            </div>
+
+            <!-- PEBRIAN -->
+            <div class="user-card">
+                <div class="user-top">
+                    <div class="user-avatar">P</div>
+                    <div>
+                        <div class="user-name">Pebrian</div>
+                        <div class="user-role">DSE</div>
+                    </div>
+                </div>
+                <div class="dse-summary-lines">
+                    <div class="dse-summary-line">
+                        <span>SP</span> <strong id="summaryPebrianSP">-</strong>
+                    </div>
+                    <div class="dse-summary-line">
+                        <span>VCR</span> <strong id="summaryPebrianVCR">-</strong>
+                    </div>
+                </div>
+                <div class="dse-summary-rp">
+                    <span>TOTAL RP.</span> <strong id="summaryPebrianRp">-</strong>
+                </div>
             </div>
         </div>
 
-        <div class="user-card">
-            <div class="user-top">
-                <div class="user-avatar">E</div>
-                <div>
-                    <div class="user-name">Enden</div>
-                    <div class="user-role">DSE</div>
-                </div>
-            </div>
-
-            <div class="dse-summary-lines">
-                <div class="dse-summary-line">
-                    <span>SP</span>
-                    <strong id="summaryEndenSP">-</strong>
-                </div>
-                <div class="dse-summary-line">
-                    <span>VCR</span>
-                    <strong id="summaryEndenVCR">-</strong>
-                </div>
-            </div>
-
-            <div class="dse-summary-rp">
-                <span>TOTAL RP.</span>
-                <strong id="summaryEndenRp">-</strong>
-            </div>
+        <div class="section-title">
+            <h2>Detail Penjualan</h2>
+            <span>Data real-time</span>
         </div>
 
-        <div class="user-card">
-            <div class="user-top">
-                <div class="user-avatar">P</div>
-                <div>
-                    <div class="user-name">Pebrian</div>
-                    <div class="user-role">DSE</div>
+        <div class="tab-download-row">
+            <div class="tabs-container">
+                <div class="tabs-main">
+                    <button id="btnDaily" class="tab-btn active" onclick="showTab('daily')">Daily</button>
+                    <button id="btnWeekly" class="tab-btn" onclick="showTab('weekly')">Weekly</button>
+                    <button id="btnTotal" class="tab-btn" onclick="showTab('total')">Total</button>
                 </div>
             </div>
-
-            <div class="dse-summary-lines">
-                <div class="dse-summary-line">
-                    <span>SP</span>
-                    <strong id="summaryPebrianSP">-</strong>
-                </div>
-                <div class="dse-summary-line">
-                    <span>VCR</span>
-                    <strong id="summaryPebrianVCR">-</strong>
-                </div>
-            </div>
-
-            <div class="dse-summary-rp">
-                <span>TOTAL RP.</span>
-                <strong id="summaryPebrianRp">-</strong>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="section-title">
-        <h2>Detail Penjualan</h2>
-        <span>Data real-time</span>
-    </div>
-
-    <div class="tab-download-row">
-
-        <div class="tabs-container">
-            <div class="tabs-main">
-                <button id="btnDaily" class="tab-btn active" onclick="showTab('daily')">
-                    Daily
-                </button>
-
-                <button id="btnWeekly" class="tab-btn" onclick="showTab('weekly')">
-                    Weekly
-                </button>
-
-                <button id="btnTotal" class="tab-btn" onclick="showTab('total')">
-                    Total
+            <div class="download-section">
+                <button id="btnDownload" class="download-btn" onclick="openDownloadModal()">
+                    <span class="download-icon">↓</span>
+                    <span>Download Gambar</span>
                 </button>
             </div>
         </div>
 
-        <div class="download-section">
-            <button
-                id="btnDownload"
-                class="download-btn"
-                onclick="openDownloadModal()"
-            >
-                <span class="download-icon">↓</span>
-                <span>Download Gambar</span>
+        <!-- DAILY -->
+        <div id="wrapperDaily" class="table-card">
+            <div class="table-card-header">
+                <div class="table-card-title">
+                    <div class="table-card-icon">📅</div>
+                    <div>
+                        <strong>Daily Penjualan</strong>
+                        <span>Penjualan harian per produk</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="tableDaily">
+                    <colgroup>
+                        <col style="width:150px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:80px">
+                        <col style="width:100px">
+                    </colgroup>
+                    <thead id="headDaily"></thead>
+                    <tbody id="bodyDaily"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- WEEKLY -->
+        <div id="wrapperWeekly" class="table-card" style="display:none;">
+            <div class="table-card-header">
+                <div class="table-card-title">
+                    <div class="table-card-icon">📈</div>
+                    <div>
+                        <strong>Weekly Penjualan</strong>
+                        <span>Perbandingan W1 sampai W4</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="tableWeekly">
+                    <colgroup>
+                        <col class="col-product">
+                        <col class="col-num"><col class="col-num"><col class="col-num"><col class="col-num"><col class="col-total">
+                        <col class="col-num"><col class="col-num"><col class="col-num"><col class="col-num"><col class="col-total">
+                        <col class="col-num"><col class="col-num"><col class="col-num"><col class="col-num"><col class="col-total">
+                        <col class="col-num"><col class="col-num"><col class="col-num"><col class="col-num"><col class="col-total">
+                        <col class="col-grand"><col class="col-num"><col class="col-grand">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">PRODUK</th>
+                            <th colspan="5">Adiguna</th>
+                            <th colspan="5">Parhan</th>
+                            <th colspan="5">Enden</th>
+                            <th colspan="5">Pebrian</th>
+                            <th rowspan="2">TOTAL WEEKLY</th>
+                            <th rowspan="2">HARGA</th>
+                            <th rowspan="2">AMOUNT</th>
+                        </tr>
+                        <tr>
+                            <th>W1</th> <th>W2</th> <th>W3</th> <th>W4</th> <th>Total</th>
+                            <th>W1</th> <th>W2</th> <th>W3</th> <th>W4</th> <th>Total</th>
+                            <th>W1</th> <th>W2</th> <th>W3</th> <th>W4</th> <th>Total</th>
+                            <th>W1</th> <th>W2</th> <th>W3</th> <th>W4</th> <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyWeekly"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TOTAL -->
+        <div id="wrapperTotal" class="table-card" style="display:none;">
+            <div class="table-card-header">
+                <div class="table-card-title">
+                    <div class="table-card-icon">🧾</div>
+                    <div>
+                        <strong>Total Penjualan</strong>
+                        <span>Akumulasi seluruh penjualan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table id="tableTotal">
+                    <colgroup>
+                        <col style="width:150px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:90px">
+                        <col style="width:80px">
+                        <col style="width:100px">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Produk</th>
+                            <th>Adiguna</th>
+                            <th>Parhan</th>
+                            <th>Enden</th>
+                            <th>Pebrian</th>
+                            <th>Total PCS</th>
+                            <th>Harga</th>
+                            <th>Total Rp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bodyTotal"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOWNLOAD MODAL -->
+    <div id="downloadModal" class="download-modal-overlay">
+        <div class="download-modal-content">
+            <h3>Download Tabel</h3>
+            <div class="download-modal-description">Pilih tabel yang ingin disimpan sebagai gambar</div>
+            <button type="button" class="download-modal-btn-option" onclick="executeDownload('daily')">
+                <span class="download-option-icon">📅</span>
+                <span class="download-option-text">
+                    <strong>Tabel Daily</strong>
+                    <small>Penjualan harian per produk</small>
+                </span>
+                <span class="download-option-arrow">›</span>
             </button>
+            <button type="button" class="download-modal-btn-option" onclick="executeDownload('weekly')">
+                <span class="download-option-icon">📈</span>
+                <span class="download-option-text">
+                    <strong>Tabel Weekly</strong>
+                    <small>Perbandingan penjualan W1–W4</small>
+                </span>
+                <span class="download-option-arrow">›</span>
+            </button>
+            <button type="button" class="download-modal-btn-option" onclick="executeDownload('total')">
+                <span class="download-option-icon">🧾</span>
+                <span class="download-option-text">
+                    <strong>Tabel Total</strong>
+                    <small>Akumulasi seluruh penjualan</small>
+                </span>
+                <span class="download-option-arrow">›</span>
+            </button>
+            <button type="button" class="download-modal-btn-close" onclick="closeDownloadModal()">Batal</button>
         </div>
-
     </div>
 
-    <div id="wrapperDaily" class="table-card">
-
-        <div class="table-card-header">
-            <div class="table-card-title">
-                <div class="table-card-icon">📅</div>
-                <div>
-                    <strong>Daily Penjualan</strong>
-                    <span>Penjualan harian per produk</span>
-                </div>
+    <!-- BOTTOM NAV -->
+    <footer class="bottom-nav">
+        <a href="dashboard.html" class="bottom-item">
+            <div><i class="fa-solid fa-house fa-outline"></i></div>
+            <span>HOME</span>
+        </a>
+        <a href="report.html" class="bottom-item">
+            <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
+            <span>REPORT</span>
+        </a>
+        <a href="notif.html" class="bottom-item">
+            <div class="notif-container">
+                <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
+                <span class="notif-badge"></span>
             </div>
-        </div>
+            <span>NOTIF</span>
+        </a>
+        <a href="profil.html" class="bottom-item">
+            <div><i class="fa-solid fa-user fa-outline"></i></div>
+            <span>PROFIL</span>
+        </a>
+    </footer>
 
-        <div class="table-wrapper">
-            <table id="tableDaily">
-                <colgroup>
-                    <col style="width:150px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:80px">
-                    <col style="width:100px">
-                </colgroup>
-                <thead id="headDaily"></thead>
-                <tbody id="bodyDaily"></tbody>
-            </table>
-        </div>
-
-    </div>
-
-    <div id="wrapperWeekly" class="table-card" style="display:none;">
-
-        <div class="table-card-header">
-            <div class="table-card-title">
-                <div class="table-card-icon">📈</div>
-                <div>
-                    <strong>Weekly Penjualan</strong>
-                    <span>Perbandingan W1 sampai W4</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="table-wrapper">
-            <table id="tableWeekly">
-
-                <colgroup>
-                    <col class="col-product">
-
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-total">
-
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-total">
-
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-total">
-
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-num">
-                    <col class="col-total">
-
-                    <col class="col-grand">
-                    <col class="col-num">
-                    <col class="col-grand">
-                </colgroup>
-
-                <thead>
-                    <tr>
-                        <th rowspan="2">PRODUK</th>
-                        <th colspan="5">Andi</th>
-                        <th colspan="5">Parhan</th>
-                        <th colspan="5">Enden</th>
-                        <th colspan="5">Pebrian</th>
-                        <th rowspan="2">TOTAL WEEKLY</th>
-                        <th rowspan="2">HARGA</th>
-                        <th rowspan="2">AMOUNT</th>
-                    </tr>
-
-                    <tr>
-                        <th>W1</th>
-                        <th>W2</th>
-                        <th>W3</th>
-                        <th>W4</th>
-                        <th>Total</th>
-
-                        <th>W1</th>
-                        <th>W2</th>
-                        <th>W3</th>
-                        <th>W4</th>
-                        <th>Total</th>
-
-                        <th>W1</th>
-                        <th>W2</th>
-                        <th>W3</th>
-                        <th>W4</th>
-                        <th>Total</th>
-
-                        <th>W1</th>
-                        <th>W2</th>
-                        <th>W3</th>
-                        <th>W4</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-
-                <tbody id="bodyWeekly"></tbody>
-            </table>
-        </div>
-
-    </div>
-
-    <div id="wrapperTotal" class="table-card" style="display:none;">
-
-        <div class="table-card-header">
-            <div class="table-card-title">
-                <div class="table-card-icon">🧾</div>
-                <div>
-                    <strong>Total Penjualan</strong>
-                    <span>Akumulasi seluruh penjualan</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="table-wrapper">
-            <table id="tableTotal">
-
-                <colgroup>
-                    <col style="width:150px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:90px">
-                    <col style="width:80px">
-                    <col style="width:100px">
-                </colgroup>
-
-                <thead>
-                    <tr>
-                        <th>Produk</th>
-                        <th>Andi</th>
-                        <th>Parhan</th>
-                        <th>Enden</th>
-                        <th>Pebrian</th>
-                        <th>Total PCS</th>
-                        <th>Harga</th>
-                        <th>Total Rp</th>
-                    </tr>
-                </thead>
-
-                <tbody id="bodyTotal"></tbody>
-            </table>
-        </div>
-
-    </div>
-
-</div>
-
-<div id="downloadModal" class="download-modal-overlay">
-
-    <div class="download-modal-content">
-
-        <h3>Download Tabel</h3>
-
-        <div class="download-modal-description">
-            Pilih tabel yang ingin disimpan sebagai gambar
-        </div>
-
-        <button
-            type="button"
-            class="download-modal-btn-option"
-            onclick="executeDownload('daily')"
-        >
-            <span class="download-option-icon">📅</span>
-            <span class="download-option-text">
-                <strong>Tabel Daily</strong>
-                <small>Penjualan harian per produk</small>
-            </span>
-            <span class="download-option-arrow">›</span>
-        </button>
-
-        <button
-            type="button"
-            class="download-modal-btn-option"
-            onclick="executeDownload('weekly')"
-        >
-            <span class="download-option-icon">📈</span>
-            <span class="download-option-text">
-                <strong>Tabel Weekly</strong>
-                <small>Perbandingan penjualan W1–W4</small>
-            </span>
-            <span class="download-option-arrow">›</span>
-        </button>
-
-        <button
-            type="button"
-            class="download-modal-btn-option"
-            onclick="executeDownload('total')"
-        >
-            <span class="download-option-icon">🧾</span>
-            <span class="download-option-text">
-                <strong>Tabel Total</strong>
-                <small>Akumulasi seluruh penjualan</small>
-            </span>
-            <span class="download-option-arrow">›</span>
-        </button>
-
-        <button
-            type="button"
-            class="download-modal-btn-close"
-            onclick="closeDownloadModal()"
-        >
-            Batal
-        </button>
-
-    </div>
-</div>
-
-<footer class="bottom-nav">
-
-    <a href="dashboard.html" class="bottom-item">
-        <div><i class="fa-solid fa-house fa-outline"></i></div>
-        <span>HOME</span>
-    </a>
-
-    <a href="report.html" class="bottom-item">
-        <div><i class="fa-solid fa-chart-column fa-outline"></i></div>
-        <span>REPORT</span>
-    </a>
-
-    <a href="notif.html" class="bottom-item">
-        <div class="notif-container">
-            <span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span>
-            <span class="notif-badge"></span>
-        </div>
-        <span>NOTIF</span>
-    </a>
-
-    <a href="profil.html" class="bottom-item">
-        <div><i class="fa-solid fa-user fa-outline"></i></div>
-        <span>PROFIL</span>
-    </a>
-
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="./js/global-log.js"></script>
-<script src="./js/notif.js"></script>
-<script src="./js/penjualan-reguler-new.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="./js/global-log.js"></script>
+    <script src="./js/notif.js"></script>
+    <script type="module" src="./js/dashboard-auth.js"></script>
+    <script src="./js/penjualan-reguler-new.js"></script>
 </body>
 </html>

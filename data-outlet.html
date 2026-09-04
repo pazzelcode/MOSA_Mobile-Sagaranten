@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Outlet | MC-SAGARANTEN</title>
+<link rel="stylesheet" href="./css/data-outlet.css">
+<link rel="stylesheet" href="./css/global-bottom.css">
+<link rel="stylesheet" href="./css/notif.css">
+</head>
+<body>
+<header class="page-header">
+    <a href="dashboard.html" class="back-button">‹</a>
+   <div class="header-text">
+        <div class="header-title">Data Outlet</div>
+        <div class="header-subtitle">Informasi &amp; Data Outlet</div>
+    </div>
+    <button class="refresh-button" id="refresh-button" type="button" aria-label="Refresh data">↻</button>
+</header>
+
+<main class="outlet-container">
+    <section class="outlet-heading">
+        <div class="outlet-heading-title">🏪 Data Outlet</div>
+        <div class="outlet-heading-desc">All populasi outlet pjp dan non pjp.</div>
+    </section>
+
+     <section class="dse-summary-section">
+    <div
+        class="dse-summary-list"
+        id="dse-summary-list"
+    >
+        <!-- Diisi JavaScript -->
+    </div>
+
+</section>
+  
+    <section class="outlet-summary" id="outlet-summary">
+        <div class="summary-card">
+            <div class="summary-icon">🏪</div>
+            <div class="summary-info">
+                <div class="summary-label">TOTAL OUTLET</div>
+                <div class="summary-value" id="total-outlet">0</div>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-icon">✓</div>
+            <div class="summary-info">
+                <div class="summary-label">AKTIF</div>
+                <div class="summary-value" id="total-aktif">0</div>
+            </div>
+        </div>
+        <div class="summary-card">
+            <div class="summary-icon">⏸</div>
+            <div class="summary-info">
+                <div class="summary-label">NONAKTIF</div>
+                <div class="summary-value" id="total-nonaktif">0</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="outlet-search">
+        <div class="search-box">
+            <span class="search-icon">⌕</span>
+            <input type="search" id="outlet-search" placeholder="Cari outlet..." autocomplete="off">
+            <button type="button" id="clear-search" class="clear-search" aria-label="Hapus pencarian">×</button>
+        </div>
+    </section>
+  
+    <section class="outlet-filter">
+        <button type="button" class="filter-button active" data-filter="all">SEMUA</button>
+        <button type="button" class="filter-button" data-filter="aktif">AKTIF</button>
+        <button type="button" class="filter-button" data-filter="nonaktif">NONAKTIF</button>
+    </section>
+  
+    <section class="outlet-list" id="outlet-list">
+        <div class="outlet-loading">
+            <div class="outlet-skeleton"></div>
+            <div class="outlet-skeleton"></div>
+            <div class="outlet-skeleton"></div>
+        </div>
+    </section>
+
+    <section class="outlet-empty" id="outlet-empty" style="display:none;">
+        <div class="empty-icon">🏪</div>
+        <div class="empty-title">Data outlet tidak ditemukan</div>
+        <div class="empty-desc">Belum ada data yang sesuai dengan pencarian.</div>
+    </section>
+</main>
+
+<footer class="bottom-nav">
+    <a href="dashboard.html" class="bottom-item"><div><i class="fa-solid fa-house fa-outline"></i></div><span>HOME</span></a>
+    <a href="report.html" class="bottom-item"><div><i class="fa-solid fa-chart-column fa-outline"></i></div><span>REPORT</span></a>
+    <a href="notif.html" class="bottom-item">
+        <div class="notif-container"><span class="bell-icon"><i class="fa-solid fa-bell fa-outline"></i></span><span class="notif-badge"></span></div>
+        <span>NOTIF</span>
+    </a>
+    <a href="profil.html" class="bottom-item"><div><i class="fa-solid fa-user fa-outline"></i></div><span>PROFIL</span></a>
+</footer>
+
+<script src="./js/global-log.js"></script>
+<script type="module" src="./js/dashboard-auth.js"></script>
+<script src="./js/notif.js"></script>
+<script src="./js/data-outlet.js"></script>
+</body>
+</html>
