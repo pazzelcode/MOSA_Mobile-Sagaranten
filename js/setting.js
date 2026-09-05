@@ -4,7 +4,7 @@
 
 'use strict';
 
-const BACKEND_API_URL = 'http://localhost:3000';
+const BACKEND_API_URL = 'https://mc-sagaranten-backend.vercel.app';
 const firebaseConfig = {
 
     apiKey:
