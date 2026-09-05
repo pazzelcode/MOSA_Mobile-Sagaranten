@@ -9,7 +9,7 @@
     ========================================================= */
 
     const NOTIFICATION_API =
-        'http://localhost:3000/api/notifications';
+        'https://mc-sagaranten-backend.vercel.app/api/notifications';
 
     const POLLING_INTERVAL = 30000;
 
