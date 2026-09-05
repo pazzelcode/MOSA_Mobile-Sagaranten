@@ -1,39 +1,39 @@
 {
   "success": true,
   "sheet": "stok-barang-dse",
-  "updated_at": "2026-09-02T14:25:53.080Z",
+  "updated_at": "2026-09-05T16:05:04.535Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260902-142553",
+  "version": "20260905-160504",
   "total_data": 17,
   "data": [
     {
       "JENIS BARANG": "SP ZERO",
-      "ADIGUNA": 72,
-      "FARHAN": 60,
-      "ENDEN": 78,
-      "PEBRIAN": 95,
+      "ADIGUNA": 56,
+      "FARHAN": "-",
+      "ENDEN": 70,
+      "PEBRIAN": 92,
       "SPV": "",
-      "TOTAL": 305
+      "TOTAL": 218
     },
     {
       "JENIS BARANG": "SP 3GB INJEK",
       "ADIGUNA": 122,
       "FARHAN": 30,
-      "ENDEN": 39,
+      "ENDEN": 30,
       "PEBRIAN": 25,
       "SPV": "",
-      "TOTAL": 216
+      "TOTAL": 207
     },
     {
       "JENIS BARANG": "SP 3GB ORI",
-      "ADIGUNA": 0,
+      "ADIGUNA": "-",
       "FARHAN": 63,
       "ENDEN": 80,
-      "PEBRIAN": 183,
+      "PEBRIAN": 163,
       "SPV": "",
-      "TOTAL": 326
+      "TOTAL": 306
     },
     {
       "JENIS BARANG": "SP 10GB",
@@ -64,39 +64,39 @@
     },
     {
       "JENIS BARANG": "Voucher 2,5GB",
-      "ADIGUNA": 72,
-      "FARHAN": 57,
-      "ENDEN": 55,
-      "PEBRIAN": 134,
+      "ADIGUNA": 66,
+      "FARHAN": 32,
+      "ENDEN": 85,
+      "PEBRIAN": 131,
       "SPV": "",
-      "TOTAL": 318
+      "TOTAL": 314
     },
     {
       "JENIS BARANG": "Voucher 3.5GB 5HR",
-      "ADIGUNA": 9,
-      "FARHAN": 0,
-      "ENDEN": 15,
-      "PEBRIAN": 50,
+      "ADIGUNA": "-",
+      "FARHAN": "-",
+      "ENDEN": 45,
+      "PEBRIAN": 30,
       "SPV": "",
-      "TOTAL": 74
+      "TOTAL": 75
     },
     {
       "JENIS BARANG": "Voucher 5GB 5HR",
       "ADIGUNA": 56,
-      "FARHAN": 0,
-      "ENDEN": 38,
-      "PEBRIAN": 52,
+      "FARHAN": "-",
+      "ENDEN": 2,
+      "PEBRIAN": 49,
       "SPV": "",
-      "TOTAL": 146
+      "TOTAL": 107
     },
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
-      "ADIGUNA": 9,
-      "FARHAN": 7,
+      "ADIGUNA": 0,
+      "FARHAN": 19,
       "ENDEN": 15,
       "PEBRIAN": 66,
       "SPV": "",
-      "TOTAL": 97
+      "TOTAL": 100
     },
     {
       "JENIS BARANG": "Fi 1.5GB/1D",
@@ -111,24 +111,24 @@
       "JENIS BARANG": "Fi 3GB/3D",
       "ADIGUNA": 11,
       "FARHAN": 0,
-      "ENDEN": 9,
+      "ENDEN": 3,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 20
+      "TOTAL": 14
     },
     {
       "JENIS BARANG": "Fi 5GB/2D",
-      "ADIGUNA": 63,
-      "FARHAN": 0,
-      "ENDEN": 75,
-      "PEBRIAN": 15,
+      "ADIGUNA": 45,
+      "FARHAN": 30,
+      "ENDEN": 66,
+      "PEBRIAN": 45,
       "SPV": "",
-      "TOTAL": 153
+      "TOTAL": 186
     },
     {
       "JENIS BARANG": "Fi 5GB/3D",
       "ADIGUNA": 15,
-      "FARHAN": 0,
+      "FARHAN": "-",
       "ENDEN": 3,
       "PEBRIAN": 54,
       "SPV": "",
@@ -154,12 +154,12 @@
     },
     {
       "JENIS BARANG": "TOTAL",
-      "ADIGUNA": 629,
-      "FARHAN": 367,
-      "ENDEN": 440,
-      "PEBRIAN": 824,
+      "ADIGUNA": 571,
+      "FARHAN": 324,
+      "ENDEN": 432,
+      "PEBRIAN": 805,
       "SPV": 0,
-      "TOTAL": 2260
+      "TOTAL": 2132
     }
   ]
 }
