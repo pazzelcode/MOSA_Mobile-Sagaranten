@@ -4,7 +4,7 @@
 
 'use strict';
 
-const PROGRAM_OUTLET_API_URL = 'http://localhost:3000/api/program-outlet';
+const PROGRAM_OUTLET_API_URL = 'https://mc-sagaranten-backend.vercel.app/api/program-outlet';
 const PROGRAM_CACHE_KEY = 'mc_sagaranten_programs_cache';
 const PROGRAM_CACHE_TIME_KEY = 'mc_sagaranten_programs_time';
 const PROGRAM_CACHE_TTL = 5 * 60 * 1000;
