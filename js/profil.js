@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://mc-sagaranten-backend.vercel.app';
 
 /* =========================================================
    ELEMENTS & STATE
