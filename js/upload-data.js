@@ -15,7 +15,7 @@ const firebaseConfig = {
     appId: "1:1055595672864:web:29dfeb6fed0f15673b5345"
 };
 
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = 'https://mc-sagaranten-backend.vercel.app';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
