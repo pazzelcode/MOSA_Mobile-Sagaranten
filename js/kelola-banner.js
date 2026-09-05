@@ -4,7 +4,7 @@
 
 'use strict';
 
-const BANNER_API_URL = 'http://localhost:3000/api/banners';
+const BANNER_API_URL = 'https://mc-sagaranten-backend.vercel.app/api/banners';
 
 const bannerList = document.getElementById('banner-list');
 const modal = document.getElementById('banner-modal');
