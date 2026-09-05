@@ -1,7 +1,7 @@
 /*! MC-SAGARANTEN - DASHBOARD.JS */
 (function () {
     const DASHBOARD_JSON_URL = 'https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/data/dashboard.json';
-    const BANNER_API_URL = 'http://localhost:3000/api/banners';
+    const BANNER_API_URL = 'https://mc-sagaranten-backend.vercel.app/api/banners';
     let lastDashboardSignature = null, isFirstDashboardLoad = true, allMenus = [], dashboardBanners = [], bannerCurrentIndex = 0, bannerAutoPlay = null;
 
     const $ = id => document.getElementById(id);
