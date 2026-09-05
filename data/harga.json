@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "harga",
-  "updated_at": "2026-09-02T14:25:53.080Z",
+  "updated_at": "2026-09-05T16:05:04.535Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260902-142553",
+  "version": "20260905-160504",
   "total_data": 18,
   "data": [
     {
@@ -22,63 +22,63 @@
     },
     {
       "JENIS BARANG": "SP 10GB",
-      "HARGA": 30000
+      "HARGA": 40000
     },
     {
       "JENIS BARANG": "VDK",
-      "HARGA": 600
+      "HARGA": 0
     },
     {
       "JENIS BARANG": "Voucher 3GB 14HR",
-      "HARGA": 22500
+      "HARGA": 600
     },
     {
       "JENIS BARANG": "Voucher 2,5GB",
-      "HARGA": 14000
+      "HARGA": 22500
     },
     {
       "JENIS BARANG": "Freedom Internet  3 GB",
-      "HARGA": 20000
+      "HARGA": 14000
     },
     {
       "JENIS BARANG": "Voucher 3.5GB 5HR",
-      "HARGA": 15400
+      "HARGA": 20000
     },
     {
       "JENIS BARANG": "Voucher 5GB 5HR",
-      "HARGA": 17500
+      "HARGA": 15400
     },
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
-      "HARGA": 23800
+      "HARGA": 17500
     },
     {
       "JENIS BARANG": "Fi 6GB",
-      "HARGA": 30000
+      "HARGA": 23800
     },
     {
       "JENIS BARANG": "Fi 1.5GB/1D",
-      "HARGA": 7500
+      "HARGA": 30000
     },
     {
       "JENIS BARANG": "Fi 3GB/1D",
-      "HARGA": 7000
+      "HARGA": 7500
     },
     {
       "JENIS BARANG": "Fi 3GB/3D",
-      "HARGA": 12000
+      "HARGA": 7000
     },
     {
       "JENIS BARANG": "Fi 5GB/2D",
-      "HARGA": 10000
+      "HARGA": 12000
     },
     {
       "JENIS BARANG": "Fi 5GB/3D",
-      "HARGA": 13200
+      "HARGA": 10000
     },
     {
       "JENIS BARANG": "Fi 7GB/28D",
-      "HARGA": 33500
+      "HARGA": 13200
     }
   ]
 }
