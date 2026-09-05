@@ -4,7 +4,7 @@
 
 'use strict';
 
-const BANNER_API_URL = 'http://localhost:3000/api/banners';
+const BANNER_API_URL = 'https://mc-sagaranten-backend.vercel.app/api/banners';
 const CACHE_KEY = 'mc_sagaranten_banners_cache';
 const CACHE_TIME_KEY = 'mc_sagaranten_banners_time';
 const CACHE_TTL = 5 * 60 * 1000;
