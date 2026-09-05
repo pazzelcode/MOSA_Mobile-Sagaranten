@@ -332,30 +332,86 @@ function cssEscape(value) {
 document.getElementById('add-program').addEventListener('click', openAddModal);
 
 async function kirimNotifikasiProgram(judulProgram, isBaru) {
-    const NOTIF_API_URL = 'https://script.google.com/macros/s/AKfycbzINzFJt38mQyqrgvzrTDechPja8b7tyO5MMZkDmDSfw-Ftjp_y2POSAfYuP0fqi5WKw/exec';
-    const notifTitle = isBaru ? 'Program Outlet Baru! 🏪' : 'Update Program Outlet 🏪';
-    const notifMessage = isBaru ? `Ada program baru nih: "${judulProgram}". Yuk cek detailnya sekarang!` : `Informasi pada program "${judulProgram}" baru saja diperbarui oleh Admin.`;
 
-    const payloadNotif = {
-        action: 'create_notification',
-        data: {
-            title: notifTitle,
-            message: notifMessage,
-            type: 'info',
-            url: 'program-outlet.html',
-            createdAt: new Date().toISOString()
-        }
-    };
+    const NOTIF_API_URL =
+        'https://mc-sagaranten-backend.vercel.app/api/notifications';
+
+    const notifTitle =
+        isBaru
+            ? 'Program Outlet Baru! 🏪'
+            : 'Update Program Outlet 🏪';
+
+    const notifMessage =
+        isBaru
+            ? `Ada program baru nih: "${judulProgram}". Yuk cek detailnya sekarang!`
+            : `Informasi pada program "${judulProgram}" baru saja diperbarui oleh Admin.`;
 
     try {
-        await fetch(NOTIF_API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(payloadNotif)
-        });
-        console.log('NOTIFIKASI PROGRAM TERKIRIM');
+
+        const token = await getToken();
+
+        if (!token) {
+            throw new Error(
+                'Token Firebase tidak tersedia'
+            );
+        }
+
+        const payloadNotif = {
+
+            title: notifTitle,
+
+            message: notifMessage,
+
+            type: 'program',
+
+            targetType: 'all',
+
+            data: {
+                url: 'program-outlet.html'
+            }
+
+        };
+
+        const response = await fetch(
+            NOTIF_API_URL,
+            {
+                method: 'POST',
+
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+
+                body: JSON.stringify(
+                    payloadNotif
+                )
+            }
+        );
+
+        const result =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                result.message ||
+                `HTTP ${response.status}`
+            );
+
+        }
+
+        console.log(
+            '✅ NOTIFIKASI PROGRAM TERKIRIM:',
+            result
+        );
+
     } catch (error) {
-        console.error('GAGAL KIRIM NOTIFIKASI PROGRAM:', error);
+
+        console.error(
+            '❌ GAGAL KIRIM NOTIFIKASI PROGRAM:',
+            error
+        );
+
     }
 }
 
