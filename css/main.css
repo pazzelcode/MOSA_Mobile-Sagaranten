@@ -1770,9 +1770,50 @@ body:has(.logo-preview-modal.show){
 
 @media screen and (min-width:1200px){
 
+     .app-navigation{
+
+        padding-left:60px !important;
+        padding-right:60px !important;
+    }
+
+
     .app-navigation .nav-wrapper{
-        grid-template-columns:repeat(8,minmax(0,1fr)) !important;
+
+        grid-template-columns:
+            repeat(8,minmax(0,1fr)) !important;
+
         gap:28px 16px !important;
+    }
+
+
+    .app-navigation .nav-icon{
+
+        width:62px !important;
+        height:58px !important;
+
+        min-width:62px !important;
+
+        font-size:25px !important;
+    }
+
+
+    .app-navigation .nav-icon i{
+
+        font-size:25px !important;
+    }
+
+}
+
+@media screen and (min-width:768px){
+
+    .app-navigation{
+        margin-top:-80px !important;
+        padding-top:60px !important;
+    }
+
+    .app-navigation .section-title{
+        position:relative;
+        z-index:10;
     }
 
 }
