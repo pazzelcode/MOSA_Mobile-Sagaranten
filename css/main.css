@@ -1732,3 +1732,47 @@ body:has(.logo-preview-modal.show) .logo-preview-modal{
 body:has(.logo-preview-modal.show){
     overflow:hidden !important;
 }
+
+/* =========================================================
+   NAV MENU DESKTOP
+   8 MENU SEJAJAR DALAM 1 BARIS
+========================================================= */
+
+@media screen and (min-width:768px){
+
+    .app-navigation .nav-wrapper{
+        width:100% !important;
+        max-width:none !important;
+
+        display:grid !important;
+
+        grid-template-columns:repeat(8,minmax(0,1fr)) !important;
+
+        gap:24px 12px !important;
+
+        margin:0 auto !important;
+    }
+
+    .app-navigation .nav-wrapper > .nav-item,
+    .app-navigation .nav-wrapper > .submenu-item{
+        width:100% !important;
+        min-width:0 !important;
+        max-width:none !important;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP BESAR
+   1200px+
+========================================================= */
+
+@media screen and (min-width:1200px){
+
+    .app-navigation .nav-wrapper{
+        grid-template-columns:repeat(8,minmax(0,1fr)) !important;
+        gap:28px 16px !important;
+    }
+
+}
