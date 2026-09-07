@@ -1976,3 +1976,84 @@ body:has(.logo-preview-modal.show){
     }
 
 }
+/* =========================================================
+   SUPER FORCE — APP NAVIGATION FULL VIEWPORT
+========================================================= */
+
+@media screen and (min-width:768px){
+
+    html,
+    body{
+        width:100% !important;
+        max-width:none !important;
+        overflow-x:hidden !important;
+    }
+
+    .app-navigation{
+        position:relative !important;
+
+        display:block !important;
+
+        width:100vw !important;
+        min-width:100vw !important;
+        max-width:none !important;
+
+        margin-top:-75px !important;
+
+        margin-left:calc(50% - 50vw) !important;
+        margin-right:calc(50% - 50vw) !important;
+
+        padding-left:40px !important;
+        padding-right:40px !important;
+
+        box-sizing:border-box !important;
+    }
+
+    .app-navigation .nav-wrapper{
+        display:grid !important;
+
+        width:100% !important;
+        min-width:0 !important;
+        max-width:none !important;
+
+        margin:0 !important;
+        padding:0 !important;
+
+        grid-template-columns:
+            repeat(8,minmax(0,1fr)) !important;
+
+        column-gap:20px !important;
+        row-gap:24px !important;
+
+        box-sizing:border-box !important;
+    }
+
+    .app-navigation .nav-wrapper > *{
+        min-width:0 !important;
+        width:100% !important;
+        max-width:none !important;
+    }
+
+}
+
+
+@media screen and (min-width:1200px){
+
+    .app-navigation{
+        width:100vw !important;
+        min-width:100vw !important;
+
+        padding-left:60px !important;
+        padding-right:60px !important;
+    }
+
+    .app-navigation .nav-wrapper{
+        width:100% !important;
+
+        grid-template-columns:
+            repeat(8,minmax(0,1fr)) !important;
+
+        column-gap:20px !important;
+    }
+
+}
