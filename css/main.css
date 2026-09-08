@@ -1262,6 +1262,39 @@ body{
     border-radius:10px;
 }
 
+@media(min-width:768px){
+
+    .banner-header,
+    .banner-carousel{
+        width:90%;
+        max-width:900px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .banner-header{
+        margin-top:30px;
+        margin-bottom:12px;
+    }
+
+    .banner-carousel{
+        margin-top:0;
+        margin-bottom:20px;
+        border-radius:18px;
+        box-shadow:0 8px 24px rgba(15,23,42,.12);
+    }
+
+}
+
+@media(min-width:1200px){
+
+    .banner-header,
+    .banner-carousel{
+        width:80%;
+        max-width:900px;
+    }
+
+}
 
 /* =========================================================
    ACTIVITY DAILY
