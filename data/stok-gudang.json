@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "stok-gudang",
-  "updated_at": "2026-09-08T00:41:05.919Z",
+  "updated_at": "2026-09-08T09:44:58.922Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260908-004105",
+  "version": "20260908-094458",
   "total_data": 15,
   "data": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "nama barang": "SP 3GB injek",
-      "segel": 2598,
+      "segel": 2478,
       "sellin": 0,
-      "total stok": 2598
+      "total stok": 2478
     },
     {
       "nama barang": "SP 3GB ori",
@@ -70,9 +70,9 @@
     },
     {
       "nama barang": "7GB 7HR",
-      "segel": 366,
+      "segel": 351,
       "sellin": 15,
-      "total stok": 381
+      "total stok": 366
     },
     {
       "nama barang": "Fi 1.5GB/1D",
