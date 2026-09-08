@@ -1,14 +1,14 @@
 /*! MC-SAGARANTEN - STOK AKHIR DSE - GITHUB JSON */
 (function () {
-    const GITHUB_JSON_BASE = 'https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/data/';
-    const STOCK_JSON_URL = GITHUB_JSON_BASE + 'stok-barang-dse.json';
-    const PRICE_JSON_URL = GITHUB_JSON_BASE + 'harga.json';
-    const TAMBAHAN_JSON_URL = GITHUB_JSON_BASE + 'tambahan.json';
+    const BASE_URL = 'https://pazzelcode.github.io/MOSA_Mobile-Sagaranten/data/';
+    const STOCK_URL = BASE_URL + 'stok-barang-dse.json';
+    const PRICE_URL = BASE_URL + 'harga.json';
+    const TAMBAHAN_URL = BASE_URL + 'tambahan.json';
 
-    let globalRawData = [], globalHargaData = [], globalTambahanData = [], currentTab = 'pcs';
-    let isStockLoading = false, isHargaLoading = false, isTambahanLoading = false;
+    let rawData = [], hargaData = [], tambahanData = [], currentTab = 'pcs';
+    let isLoadingStock = false, isLoadingHarga = false, isLoadingTambahan = false;
 
-    const escapeHTML = v => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    const escHTML = v => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
     
     const parseNum = v => {
         if (v === undefined || v === null || v === '' || v === '-') return null;
@@ -18,7 +18,7 @@
         clean = clean.replace(/Rp/gi, '').replace(/IDR/gi, '').trim();
         if (clean.includes(',')) clean = clean.split(',')[0];
         clean = clean.replace(/\./g, '').replace(/[^0-9-]/g, '');
-        if (clean === '' || clean === '-') return null;
+        if (!clean || clean === '-') return null;
         const res = parseInt(clean, 10);
         return Number.isFinite(res) ? res : null;
     };
@@ -30,7 +30,7 @@
         return isRupiah ? `Rp ${fmt}` : fmt;
     };
 
-    const getObjectValue = (row, names) => {
+    const getObjVal = (row, names) => {
         if (!row || typeof row !== 'object') return '';
         const keys = Object.keys(row);
         for (const t of names) {
@@ -47,15 +47,14 @@
         return '';
     };
 
-    const getNamaBarang = r => String(getObjectValue(r, ['JENIS BARANG', 'Jenis Barang', 'jenis barang', 'Nama Barang', 'nama barang', 'Barang', 'barang', 'Produk', 'produk', 'Item', 'item']) || '').trim();
-    const getHarga = r => parseNum(getObjectValue(r, ['HARGA', 'Harga', 'harga', 'PRICE', 'Price', 'price']));
+    const getNama = r => String(getObjVal(r, ['JENIS BARANG', 'jenis barang', 'Nama Barang', 'nama barang', 'Barang', 'barang', 'Produk', 'produk', 'Item', 'item']) || '').trim();
+    const getHarga = r => parseNum(getObjVal(r, ['HARGA', 'harga', 'PRICE', 'price']));
+    const getAdiguna = r => parseNum(getObjVal(r, ['ADIGUNA', 'adiguna']));
+    const getFarhan = r => parseNum(getObjVal(r, ['FARHAN', 'farhan', 'PARHAN', 'parhan']));
+    const getEnden = r => parseNum(getObjVal(r, ['ENDEN', 'enden']));
+    const getPebrian = r => parseNum(getObjVal(r, ['PEBRIAN', 'pebrian']));
 
-    const getAndi = r => parseNum(getObjectValue(r, ['ADIGUNA', 'Adiguna', 'adiguna', 'ANDI', 'Andi', 'andi']));
-    const getFarhan = r => parseNum(getObjectValue(r, ['FARHAN', 'Farhan', 'farhan']));
-    const getEnden = r => parseNum(getObjectValue(r, ['ENDEN', 'Enden', 'enden']));
-    const getPebrian = r => parseNum(getObjectValue(r, ['PEBRIAN', 'Pebrian', 'pebrian']));
-
-    const normalisasiData = raw => {
+    const normalizeData = raw => {
         if (!raw) return [];
         if (!Array.isArray(raw) && typeof raw === 'object') {
             if (Array.isArray(raw.data)) raw = raw.data;
@@ -76,133 +75,117 @@
         return [];
     };
 
-    const normalisasiDSERows = data => {
+    const normalizeDSE = data => {
         if (!Array.isArray(data)) return [];
         return data.map(r => {
-            const nama = getNamaBarang(r);
-            const andi = getAndi(r), farhan = getFarhan(r), enden = getEnden(r), pebrian = getPebrian(r);
-            const total = (andi || 0) + (farhan || 0) + (enden || 0) + (pebrian || 0);
-            return { nama, andi, farhan, enden, pebrian, total };
+            const nama = getNama(r), adiguna = getAdiguna(r), farhan = getFarhan(r), enden = getEnden(r), pebrian = getPebrian(r);
+            const total = (adiguna || 0) + (farhan || 0) + (enden || 0) + (pebrian || 0);
+            return { nama, adiguna, farhan, enden, pebrian, total };
         }).filter(r => r.nama !== '' && r.nama.toLowerCase() !== 'total');
     };
 
-    const normalisasiTambahanRows = data => {
+    const normalizeTambahan = data => {
         if (!Array.isArray(data)) return [];
         return data.map(r => {
-            const nama = getNamaBarang(r);
-            const andi = parseNum(getObjectValue(r, ['ADIGUNA', 'Adiguna', 'adiguna', 'ANDI', 'Andi', 'andi']));
-            const farhan = parseNum(getObjectValue(r, ['FARHAN', 'Farhan', 'farhan', 'PARHAN', 'Parhan', 'parhan']));
-            const enden = parseNum(getObjectValue(r, ['ENDEN', 'Enden', 'enden']));
-            const pebrian = parseNum(getObjectValue(r, ['PEBRIAN', 'Pebrian', 'pebrian']));
-            const total = (andi || 0) + (farhan || 0) + (enden || 0) + (pebrian || 0);
-            return { nama, andi, farhan, enden, pebrian, total };
+            const nama = getNama(r), adiguna = getAdiguna(r), farhan = getFarhan(r), enden = getEnden(r), pebrian = getPebrian(r);
+            const total = (adiguna || 0) + (farhan || 0) + (enden || 0) + (pebrian || 0);
+            return { nama, adiguna, farhan, enden, pebrian, total };
         }).filter(r => r.nama !== '' && r.nama.toLowerCase() !== 'total');
     };
 
-    const loadFromCache = () => {
+    const loadCache = () => {
         try {
             const cs = localStorage.getItem('dse_raw_data');
-            if (cs) {
-                const p = JSON.parse(cs);
-                if (Array.isArray(p)) { globalRawData = p; processAndRender(globalRawData); }
-            }
+            if (cs) { const p = JSON.parse(cs); if (Array.isArray(p)) { rawData = p; processAndRender(rawData); } }
             const ch = localStorage.getItem('dse_harga_data');
-            if (ch) { const p = JSON.parse(ch); if (Array.isArray(p)) globalHargaData = p; }
+            if (ch) { const p = JSON.parse(ch); if (Array.isArray(p)) hargaData = p; }
             const ct = localStorage.getItem('tambahan_raw_data');
-            if (ct) {
-                const p = JSON.parse(ct);
-                if (Array.isArray(p)) { globalTambahanData = p; renderTambahanTable(normalisasiTambahanRows(globalTambahanData)); }
-            }
+            if (ct) { const p = JSON.parse(ct); if (Array.isArray(p)) { tambahanData = p; renderTambahanTable(normalizeTambahan(tambahanData)); } }
         } catch (e) {}
     };
 
-    const fetchHargaData = async () => {
-        if (isHargaLoading) return globalHargaData;
-        isHargaLoading = true;
+    const fetchHarga = async () => {
+        if (isLoadingHarga) return hargaData;
+        isLoadingHarga = true;
         try {
-            const res = await fetch(PRICE_JSON_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' });
+            const res = await fetch(PRICE_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const json = await res.json();
             if (!json || json.success !== true || !Array.isArray(json.data)) throw new Error('Format salah');
-            globalHargaData = json.data;
-            localStorage.setItem('dse_harga_data', JSON.stringify(globalHargaData));
-            return globalHargaData;
+            hargaData = json.data;
+            localStorage.setItem('dse_harga_data', JSON.stringify(hargaData));
+            return hargaData;
         } catch (e) {
-            return globalHargaData;
+            return hargaData;
         } finally {
-            isHargaLoading = false;
+            isLoadingHarga = false;
         }
     };
 
-    const mergeStokDenganHarga = (stokData, hargaData) => {
-        const pMap = new Map();
-        if (Array.isArray(hargaData)) {
-            hargaData.forEach(i => {
-                const n = getNamaBarang(i).toLowerCase().trim();
-                if (n) pMap.set(n, getHarga(i) ?? 0);
+    const mergeHarga = (stok, harga) => {
+        const map = new Map();
+        if (Array.isArray(harga)) {
+            harga.forEach(i => {
+                const n = getNama(i).toLowerCase().trim();
+                if (n) map.set(n, getHarga(i) ?? 0);
             });
         }
-        return stokData.map(item => {
-            const n = String(item.nama || '').trim().toLowerCase();
-            const harga = pMap.has(n) ? pMap.get(n) : 0;
-            return { ...item, harga };
-        });
+        return stok.map(item => ({
+            ...item,
+            harga: map.get(String(item.nama || '').trim().toLowerCase()) || 0
+        }));
     };
 
-    const fetchMasterData = async () => {
-        if (isStockLoading) return;
-        isStockLoading = true;
+    const fetchMaster = async () => {
+        if (isLoadingStock) return;
+        isLoadingStock = true;
         const ut = document.getElementById('updateTime');
         if (ut) ut.textContent = 'Update Data: Memuat...';
         try {
             const [sRes, hData] = await Promise.all([
-                fetch(STOCK_JSON_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' }),
-                fetchHargaData()
+                fetch(STOCK_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' }),
+                fetchHarga()
             ]);
             if (!sRes.ok) throw new Error('HTTP ' + sRes.status);
             const json = await sRes.json();
             if (!json || json.success !== true || !Array.isArray(json.data)) throw new Error('Format salah');
-            
-            const objData = normalisasiData(json.data);
-            const dseRows = normalisasiDSERows(objData);
-            globalRawData = mergeStokDenganHarga(dseRows, hData);
-            localStorage.setItem('dse_raw_data', JSON.stringify(globalRawData));
-            processAndRender(globalRawData);
-
+            rawData = mergeHarga(normalizeDSE(normalizeData(json.data)), hData);
+            localStorage.setItem('dse_raw_data', JSON.stringify(rawData));
+            processAndRender(rawData);
             if (ut) {
                 let waktu = new Date();
                 if (json.updated_at) {
-                    const parsed = new Date(json.updated_at);
-                    if (!isNaN(parsed.getTime())) waktu = parsed;
+                    const p = new Date(json.updated_at);
+                    if (!isNaN(p.getTime())) waktu = p;
                 }
                 ut.textContent = 'Update Data: ' + waktu.toLocaleDateString('id-ID', { day: '2-digit', month: 'long', year: 'numeric' });
             }
         } catch (e) {
-            if (!globalRawData.length) {
+            if (!rawData.length) {
                 const tb = document.getElementById('cso-stock-table');
-                if (tb) tb.innerHTML = `<tr><td colspan="6" class="loading-text">⚠️ Gagal memuat data DSE<br><small>${escapeHTML(e.message)}</small></td></tr>`;
+                if (tb) tb.innerHTML = `<tr><td colspan="6" class="loading-text">⚠️ Gagal memuat data DSE<br><small>${escHTML(e.message)}</small></td></tr>`;
             }
             if (ut) ut.textContent = 'Update Data: Gagal memuat';
         } finally {
-            isStockLoading = false;
+            isLoadingStock = false;
         }
     };
 
-    const fetchTambahanData = async () => {
-        if (isTambahanLoading) return;
-        isTambahanLoading = true;
+    const fetchTambahan = async () => {
+        if (isLoadingTambahan) return;
+        isLoadingTambahan = true;
         try {
-            const res = await fetch(TAMBAHAN_JSON_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' });
+            const res = await fetch(TAMBAHAN_URL + '?t=' + Date.now(), { method: 'GET', cache: 'no-store' });
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const json = await res.json();
             if (!json || json.success !== true || !Array.isArray(json.data)) throw new Error('Format salah');
-            globalTambahanData = json.data;
-            localStorage.setItem('tambahan_raw_data', JSON.stringify(globalTambahanData));
-            renderTambahanTable(normalisasiTambahanRows(globalTambahanData));
+            tambahanData = json.data;
+            localStorage.setItem('tambahan_raw_data', JSON.stringify(tambahanData));
+            renderTambahanTable(normalizeTambahan(tambahanData));
         } catch (e) {
-            if (globalTambahanData.length) renderTambahanTable(normalisasiTambahanRows(globalTambahanData));
+            if (tambahanData.length) renderTambahanTable(normalizeTambahan(tambahanData));
         } finally {
-            isTambahanLoading = false;
+            isLoadingTambahan = false;
         }
     };
 
@@ -215,22 +198,20 @@
         }
         let html = '', gA = 0, gF = 0, gE = 0, gP = 0, gT = 0;
         rows.forEach(i => {
-            const a = Number(i.andi || 0), f = Number(i.farhan || 0), e = Number(i.enden || 0), p = Number(i.pebrian || 0), t = Number(i.total || 0);
+            const a = Number(i.adiguna || 0), f = Number(i.farhan || 0), e = Number(i.enden || 0), p = Number(i.pebrian || 0), t = Number(i.total || 0);
             gA += a; gF += f; gE += e; gP += p; gT += t;
-            html += `<tr class="data-row"><td class="item-name-col">${escapeHTML(i.nama)}</td><td>${formatDisplay(a)}</td><td>${formatDisplay(f)}</td><td>${formatDisplay(e)}</td><td>${formatDisplay(p)}</td><td class="total-col">${formatDisplay(t)}</td></tr>`;
+            html += `<tr class="data-row"><td class="item-name-col">${escHTML(i.nama)}</td><td>${formatDisplay(a)}</td><td>${formatDisplay(f)}</td><td>${formatDisplay(e)}</td><td>${formatDisplay(p)}</td><td class="total-col">${formatDisplay(t)}</td></tr>`;
         });
         html += `<tr class="total-row"><td class="item-name-col">TOTAL</td><td>${formatDisplay(gA)}</td><td>${formatDisplay(gF)}</td><td>${formatDisplay(gE)}</td><td>${formatDisplay(gP)}</td><td class="total-col">${formatDisplay(gT)}</td></tr>`;
         tb.innerHTML = html;
-
+        
         const lbl = document.getElementById('dse-total-label');
         if (lbl) lbl.textContent = 'Total Tambahan';
-
-        const sMap = { andi: gA, farhan: gF, enden: gE, pebrian: gP };
-        Object.entries(sMap).forEach(([name, val]) => {
+        
+        Object.entries({ adiguna: gA, farhan: gF, enden: gE, pebrian: gP }).forEach(([name, val]) => {
             const el = document.getElementById('summary-' + name);
             if (el) el.textContent = formatDisplay(val).replace(/<[^>]*>/g, '');
         });
-
         const ge = document.getElementById('dse-grand-total');
         if (ge) ge.textContent = formatDisplay(gT).replace(/<[^>]*>/g, '');
     };
@@ -246,21 +227,24 @@
             const n = String(i.nama || '').trim();
             if (!n) return;
             if (n.toUpperCase() === 'VDK') isVdk = true;
-            if (n.toUpperCase() !== 'VDK') {
+            if (!isVdk) {
                 const m = isRupiah ? Number(i.harga || 0) : 1;
-                gA += (i.andi || 0) * m; gF += (i.farhan || 0) * m; gE += (i.enden || 0) * m; gP += (i.pebrian || 0) * m;
+                gA += (i.adiguna || 0) * m;
+                gF += (i.farhan || 0) * m;
+                gE += (i.enden || 0) * m;
+                gP += (i.pebrian || 0) * m;
             }
-            if (isVdk) dataVdk.push(i); else dataSp.push(i);
+            (isVdk ? dataVdk : dataSp).push(i);
         });
 
         const makeRow = i => {
             const m = isRupiah ? Number(i.harga || 0) : 1;
-            const a = i.andi != null ? i.andi * m : null;
+            const a = i.adiguna != null ? i.adiguna * m : null;
             const f = i.farhan != null ? i.farhan * m : null;
             const e = i.enden != null ? i.enden * m : null;
             const p = i.pebrian != null ? i.pebrian * m : null;
             const t = i.total != null ? i.total * m : null;
-            return `<tr class="data-row"><td class="item-name-col">${escapeHTML(i.nama)}</td><td>${formatDisplay(a, isRupiah)}</td><td>${formatDisplay(f, isRupiah)}</td><td>${formatDisplay(e, isRupiah)}</td><td>${formatDisplay(p, isRupiah)}</td><td class="total-col">${formatDisplay(t, isRupiah)}</td></tr>`;
+            return `<tr class="data-row"><td class="item-name-col">${escHTML(i.nama)}</td><td>${formatDisplay(a, isRupiah)}</td><td>${formatDisplay(f, isRupiah)}</td><td>${formatDisplay(e, isRupiah)}</td><td>${formatDisplay(p, isRupiah)}</td><td class="total-col">${formatDisplay(t, isRupiah)}</td></tr>`;
         };
 
         dataSp.forEach(i => { html += makeRow(i); });
@@ -273,17 +257,16 @@
         const lbl = document.getElementById('dse-total-label');
         if (lbl) lbl.textContent = isRupiah ? 'Total Rupiah' : 'Total Stok';
 
-        const sVals = [gA, gF, gE, gP];
-        ['andi', 'farhan', 'enden', 'pebrian'].forEach((p, idx) => {
-            const el = document.getElementById('summary-' + p);
-            if (el) el.textContent = formatDisplay(sVals[idx], isRupiah).replace(/<[^>]*>/g, '');
+        [gA, gF, gE, gP].forEach((val, idx) => {
+            const el = document.getElementById('summary-' + ['adiguna', 'farhan', 'enden', 'pebrian'][idx]);
+            if (el) el.textContent = formatDisplay(val, isRupiah).replace(/<[^>]*>/g, '');
         });
 
         const gtEl = document.getElementById('dse-grand-total');
         if (gtEl) gtEl.textContent = formatDisplay(gTot, isRupiah).replace(/<[^>]*>/g, '');
 
         html += `<tr class="total-row"><td class="item-name-col">TOTAL</td><td>${formatDisplay(gA, isRupiah)}</td><td>${formatDisplay(gF, isRupiah)}</td><td>${formatDisplay(gE, isRupiah)}</td><td>${formatDisplay(gP, isRupiah)}</td><td class="total-col">${formatDisplay(gTot, isRupiah)}</td></tr>`;
-        
+
         const tb = document.getElementById('cso-stock-table');
         if (tb) tb.innerHTML = rows.length ? html : `<tr><td colspan="6" class="loading-text">Tidak ada data stok DSE.</td></tr>`;
     };
@@ -293,16 +276,17 @@
         document.querySelectorAll('.dse-tab-btn').forEach(btn => {
             btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === tab);
         });
-        const mt = document.getElementById('pcs-rupiah-table'), tt = document.getElementById('tambahan-dse-table');
+        const mt = document.getElementById('pcs-rupiah-table');
+        const tt = document.getElementById('tambahan-dse-table');
         if (tab === 'tambahan') {
             if (mt) mt.style.display = 'none';
             if (tt) tt.style.display = 'table';
-            if (globalTambahanData.length) renderTambahanTable(normalisasiTambahanRows(globalTambahanData));
+            if (tambahanData.length) renderTambahanTable(normalizeTambahan(tambahanData));
             return;
         }
         if (mt) mt.style.display = 'table';
         if (tt) tt.style.display = 'none';
-        if (globalRawData.length) processAndRender(globalRawData);
+        if (rawData.length) processAndRender(rawData);
     };
 
     window.openDownloadModal = () => { const m = document.getElementById('downloadModal'); if (m) m.style.display = 'flex'; };
@@ -311,16 +295,11 @@
     window.executeDownload = async type => {
         window.closeDownloadModal();
         const prev = currentTab;
-        if (type === 'pcs' || type === 'rupiah') {
-            currentTab = type;
-            if (globalRawData.length) processAndRender(globalRawData);
-        } else if (type === 'tambahan') {
-            if (globalTambahanData.length) renderTambahanTable(normalisasiTambahanRows(globalTambahanData));
-        }
+        if (type === 'pcs' || type === 'rupiah') { currentTab = type; if (rawData.length) processAndRender(rawData); }
+        else if (type === 'tambahan' && tambahanData.length) renderTambahanTable(normalizeTambahan(tambahanData));
 
         const table = type === 'tambahan' ? document.getElementById('tambahan-dse-table') : document.getElementById('pcs-rupiah-table');
         if (!table) { currentTab = prev; return; }
-
         let container = null;
         try {
             const clone = table.cloneNode(true);
@@ -333,9 +312,7 @@
             document.body.appendChild(container);
             await new Promise(r => setTimeout(r, 150));
             container.style.width = (clone.scrollWidth + 40) + 'px';
-
             if (typeof html2canvas !== 'function') throw new Error('html2canvas tidak tersedia.');
-
             const canvas = await html2canvas(container, { backgroundColor: '#fff', scale: 2, useCORS: true, logging: false });
             const link = document.createElement('a');
             link.download = `stok-akhir-dse-${type}-${new Date().toISOString().slice(0, 10)}.png`;
@@ -350,28 +327,21 @@
         }
     };
 
-    window.goBack = () => {
-        if (window.history.length > 1) window.history.back();
-        else window.location.href = 'dashboard.html';
-    };
+    window.goBack = () => { if (window.history.length > 1) window.history.back(); else window.location.href = 'dashboard.html'; };
 
     window.refreshDSE = async () => {
-        await Promise.allSettled([fetchMasterData(), fetchHargaData(), fetchTambahanData()]);
-        if (globalRawData.length) {
-            globalRawData = mergeStokDenganHarga(normalisasiDSERows(globalRawData), globalHargaData);
-            processAndRender(globalRawData);
+        await Promise.allSettled([fetchMaster(), fetchHarga(), fetchTambahan()]);
+        if (rawData.length) {
+            rawData = mergeHarga(normalizeDSE(rawData), hargaData);
+            processAndRender(rawData);
         }
-        if (currentTab === 'tambahan' && globalTambahanData.length) {
-            renderTambahanTable(normalisasiTambahanRows(globalTambahanData));
-        }
+        if (currentTab === 'tambahan' && tambahanData.length) renderTambahanTable(normalizeTambahan(tambahanData));
     };
     window.refreshStokDSE = window.refreshDSE;
 
     document.addEventListener('DOMContentLoaded', async () => {
-        loadFromCache();
-        await Promise.allSettled([fetchMasterData(), fetchTambahanData()]);
-        if (currentTab === 'tambahan' && globalTambahanData.length) {
-            renderTambahanTable(normalisasiTambahanRows(globalTambahanData));
-        }
+        loadCache();
+        await Promise.allSettled([fetchMaster(), fetchTambahan()]);
+        if (currentTab === 'tambahan' && tambahanData.length) renderTambahanTable(normalizeTambahan(tambahanData));
     });
 })();
