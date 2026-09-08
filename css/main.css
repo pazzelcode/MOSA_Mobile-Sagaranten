@@ -1263,13 +1263,13 @@ body{
 }
 
 /* =========================================================
-   DYNAMIC BANNER DESKTOP
-   Semua banner tampil | Tanpa slide | Ukuran otomatis
+   DESKTOP DYNAMIC BANNER
 ========================================================= */
 
 @media (min-width:768px){
 
     .banner-carousel{
+
         width:100%;
         max-width:1200px;
 
@@ -1279,33 +1279,47 @@ body{
         margin:12px auto 25px;
 
         background:transparent;
+
         border-radius:0;
+
         box-shadow:none;
 
         overflow:visible;
     }
 
+
     .banner-track{
+
         width:100%;
         height:auto;
 
         display:grid;
 
         grid-template-columns:
-            repeat(var(--banner-columns, 2), minmax(0,1fr));
+            repeat(
+                var(--banner-columns, 2),
+                minmax(0, 1fr)
+            );
 
-        gap:var(--banner-gap, 16px);
+        gap:14px;
 
         transform:none !important;
+
         transition:none !important;
+
         animation:none !important;
     }
 
-    .banner-slide,
+
     .dashboard-banner-slide{
+
         width:100%;
+
         min-width:0;
+
         height:auto;
+
+        min-height:0;
 
         display:block;
 
@@ -1323,143 +1337,37 @@ body{
             box-shadow .2s ease;
     }
 
-    .banner-slide img,
+
     .dashboard-banner-slide img{
 
         display:block;
 
         width:100%;
+
         height:auto;
 
-        aspect-ratio:var(--banner-ratio, 3 / 2);
+        aspect-ratio:
+            var(--banner-ratio, 16 / 8);
 
-        object-fit:cover;
+        object-fit:contain;
+
+        background:#f1f5f9;
     }
 
-    /* Hilangkan dots */
+
     .banner-dots{
+
         display:none !important;
     }
 
-    /* Hover */
-    .banner-slide:hover,
+
     .dashboard-banner-slide:hover{
+
         transform:translateY(-3px);
 
         box-shadow:
             0 10px 25px rgba(15,23,42,.15);
     }
-}
-
-
-/* =========================================================
-   1 BANNER
-========================================================= */
-
-@media (min-width:768px){
-
-    .banner-track{
-        --banner-columns:1;
-        --banner-ratio:16 / 7;
-        --banner-gap:16px;
-    }
-
-}
-
-
-/* =========================================================
-   2 BANNER
-========================================================= */
-
-@media (min-width:768px){
-
-    .banner-track.banner-count-2{
-        --banner-columns:2;
-        --banner-ratio:16 / 8;
-        --banner-gap:16px;
-    }
-
-}
-
-
-/* =========================================================
-   3-4 BANNER
-========================================================= */
-
-@media (min-width:768px){
-
-    .banner-track.banner-count-3,
-    .banner-track.banner-count-4{
-        --banner-columns:2;
-        --banner-ratio:16 / 8;
-        --banner-gap:16px;
-    }
-
-}
-
-
-/* =========================================================
-   5-6 BANNER
-========================================================= */
-
-@media (min-width:768px){
-
-    .banner-track.banner-count-5,
-    .banner-track.banner-count-6{
-        --banner-columns:3;
-        --banner-ratio:16 / 8;
-        --banner-gap:14px;
-    }
-
-}
-
-
-/* =========================================================
-   7-9 BANNER
-========================================================= */
-
-@media (min-width:768px){
-
-    .banner-track.banner-count-7,
-    .banner-track.banner-count-8,
-    .banner-track.banner-count-9{
-        --banner-columns:3;
-        --banner-ratio:16 / 7;
-        --banner-gap:12px;
-    }
-
-}
-
-
-/* =========================================================
-   10-12 BANNER
-========================================================= */
-
-@media (min-width:768px){
-
-    .banner-track.banner-count-10,
-    .banner-track.banner-count-11,
-    .banner-track.banner-count-12{
-        --banner-columns:4;
-        --banner-ratio:16 / 7;
-        --banner-gap:12px;
-    }
-
-}
-
-
-/* =========================================================
-   13+ BANNER
-========================================================= */
-
-@media (min-width:768px){
-
-    .banner-track.banner-count-many{
-        --banner-columns:4;
-        --banner-ratio:16 / 6;
-        --banner-gap:10px;
-    }
-
 }
 
 
@@ -1470,30 +1378,18 @@ body{
 @media (min-width:1200px){
 
     .banner-carousel{
+
         max-width:1200px;
+
     }
 
     .banner-track{
-        --banner-gap:18px;
-    }
 
-    .banner-track.banner-count-5,
-    .banner-track.banner-count-6{
-        --banner-gap:16px;
-    }
+        gap:16px;
 
-    .banner-track.banner-count-7,
-    .banner-track.banner-count-8,
-    .banner-track.banner-count-9{
-        --banner-gap:14px;
-    }
-
-    .banner-track.banner-count-10,
-    .banner-track.banner-count-11,
-    .banner-track.banner-count-12{
-        --banner-gap:12px;
     }
 }
+
 /* =========================================================
    ACTIVITY DAILY
 ========================================================= */
