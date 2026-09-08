@@ -139,61 +139,6 @@
 
 </div>
 
-        <!-- TABLE HEADER -->
-        <div class="dse-table-header">
-            <div class="dse-tabs">
-                <button type="button" class="dse-tab-btn active" onclick="switchTab('pcs')">PCS</button>
-                <button type="button" class="dse-tab-btn" onclick="switchTab('rupiah')">Rupiah</button>
-                <button type="button" class="dse-tab-btn" onclick="switchTab('tambahan')">Tambahan</button>
-            </div>
-            <div>
-                <!-- Diubah memicu modal pop-up -->
-                <button type="button" class="download-table-btn" onclick="openDownloadModal()">
-                    Download Gambar
-                </button>
-            </div>
-        </div>
-
-        <!-- TABLE -->
-        <div class="dse-table-wrapper">
-            <!-- TABEL PCS / RUPIAH -->
-            <table class="dse-table main-dse-table" id="pcs-rupiah-table">
-                <thead>
-                    <tr>
-                        <th class="item-name-col">Jenis Barang</th>
-                        <th>Andi</th>
-                        <th>Farhan</th>
-                        <th>Enden</th>
-                        <th>Pebrian</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody id="cso-stock-table">
-                    <tr>
-                        <td colspan="6" class="loading-text">🔄 Mengambil data terbaru...</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <!-- TABEL TAMBAHAN -->
-            <table class="dse-table tambahan-table" id="tambahan-dse-table" style="display:none;">
-                <thead>
-                    <tr>
-                        <th class="item-name-col">Nama Barang</th>
-                        <th>Andi</th>
-                        <th>Farhan</th>
-                        <th>Enden</th>
-                        <th>Pebrian</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody id="tambahan-table">
-                    <tr>
-                        <td colspan="6" class="loading-text">🔄 Memuat data tambahan...</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
     </section>
 </div>
 
