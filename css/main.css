@@ -1068,8 +1068,9 @@ body{
 }
 
 .kpi-link .nav-icon i,
-.md-link .nav-icon i{
-    color:var(--accent-kpi);
+.md-link .nav-icon i,
+.banner-link .nav-icon i{
+    color:var(--accent-kpi) !important;
     -webkit-text-stroke:1.35px var(--accent-kpi);
 }
 
@@ -1262,6 +1263,37 @@ body{
     border-radius:10px;
 }
 
+/* =========================================================
+   SEMUA BANNER
+   MOBILE  : sembunyikan karena sudah ada "Lihat Semua"
+   DESKTOP : tampilkan sebagai menu
+========================================================= */
+
+@media (max-width: 767px) {
+    .banner-link {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .banner-link {
+        display: flex !important;
+    }
+
+     .menu-banner-divider:first-of-type{
+        display:none !important;
+    }
+
+    /* Divider tepat sebelum Activity Daily → tetap tampil */
+    .menu-banner-divider:last-of-type{
+        display:block !important;
+        width:100vw !important;
+        height:6px !important;
+        margin:30px 0 !important;
+        background:#64748b !important;
+    }
+
+    }
 
 /* =========================================================
    ACTIVITY DAILY
@@ -1838,6 +1870,10 @@ body{
         text-align:center !important;
         white-space:normal !important;
         overflow-wrap:anywhere;
+    }
+
+  .activity-daily-section{
+        margin-top:40px !important;
     }
 }
 
