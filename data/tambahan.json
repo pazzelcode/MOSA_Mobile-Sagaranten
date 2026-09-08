@@ -1,21 +1,21 @@
 {
   "success": true,
   "sheet": "Tambahan",
-  "updated_at": "2026-09-05T16:05:04.535Z",
+  "updated_at": "2026-09-08T00:41:05.919Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260905-160504",
-  "total_data": 21,
+  "version": "20260908-004105",
+  "total_data": 27,
   "data": [
     {
       "JENIS BARANG": "SP ZERO",
       "ADIGUNA": 0,
       "FARHAN": 0,
-      "ENDEN": 0,
+      "ENDEN": 60,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 0
+      "TOTAL": 60
     },
     {
       "JENIS BARANG": "SP 3GB INJEK",
@@ -74,11 +74,11 @@
     {
       "JENIS BARANG": "Voucher 2,5GB",
       "ADIGUNA": 0,
-      "FARHAN": "",
+      "FARHAN": 90,
       "ENDEN": 0,
       "PEBRIAN": "",
       "SPV": "",
-      "TOTAL": 0
+      "TOTAL": 90
     },
     {
       "JENIS BARANG": "Freedom Internet  3 GB",
@@ -92,11 +92,11 @@
     {
       "JENIS BARANG": "Voucher 3.5GB 5HR",
       "ADIGUNA": "",
-      "FARHAN": "",
-      "ENDEN": 0,
-      "PEBRIAN": "",
+      "FARHAN": 30,
+      "ENDEN": 30,
+      "PEBRIAN": 15,
       "SPV": "",
-      "TOTAL": 0
+      "TOTAL": 75
     },
     {
       "JENIS BARANG": "Voucher 5GB 5HR",
@@ -110,11 +110,11 @@
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
       "ADIGUNA": "",
-      "FARHAN": "",
+      "FARHAN": 15,
       "ENDEN": "",
       "PEBRIAN": "",
       "SPV": "",
-      "TOTAL": 0
+      "TOTAL": 15
     },
     {
       "JENIS BARANG": "Fi 6GB",
@@ -155,11 +155,11 @@
     {
       "JENIS BARANG": "Fi 5GB/2D",
       "ADIGUNA": 0,
-      "FARHAN": "",
+      "FARHAN": 30,
       "ENDEN": 0,
-      "PEBRIAN": "",
+      "PEBRIAN": 30,
       "SPV": "",
-      "TOTAL": 0
+      "TOTAL": 60
     },
     {
       "JENIS BARANG": "Fi 5GB/3D",
@@ -191,11 +191,65 @@
     {
       "JENIS BARANG": "TOTAL",
       "ADIGUNA": 0,
-      "FARHAN": 0,
-      "ENDEN": 0,
-      "PEBRIAN": 0,
+      "FARHAN": 165,
+      "ENDEN": 90,
+      "PEBRIAN": 45,
       "SPV": 0,
-      "TOTAL": 0
+      "TOTAL": 300
+    },
+    {
+      "JENIS BARANG": "",
+      "ADIGUNA": "",
+      "FARHAN": "parhan",
+      "ENDEN": "enden",
+      "PEBRIAN": "pebrian",
+      "SPV": "",
+      "TOTAL": ""
+    },
+    {
+      "JENIS BARANG": "",
+      "ADIGUNA": "sp 3gb injek",
+      "FARHAN": "",
+      "ENDEN": 60,
+      "PEBRIAN": "",
+      "SPV": "",
+      "TOTAL": ""
+    },
+    {
+      "JENIS BARANG": "",
+      "ADIGUNA": "2,5gb",
+      "FARHAN": 90,
+      "ENDEN": "",
+      "PEBRIAN": "",
+      "SPV": "",
+      "TOTAL": ""
+    },
+    {
+      "JENIS BARANG": "",
+      "ADIGUNA": "3,5gb",
+      "FARHAN": 30,
+      "ENDEN": 30,
+      "PEBRIAN": 15,
+      "SPV": "",
+      "TOTAL": ""
+    },
+    {
+      "JENIS BARANG": "",
+      "ADIGUNA": "5gb2hr",
+      "FARHAN": 30,
+      "ENDEN": "",
+      "PEBRIAN": 30,
+      "SPV": "",
+      "TOTAL": ""
+    },
+    {
+      "JENIS BARANG": "",
+      "ADIGUNA": "7gb7hr",
+      "FARHAN": 15,
+      "ENDEN": "",
+      "PEBRIAN": "",
+      "SPV": "",
+      "TOTAL": ""
     }
   ]
 }
