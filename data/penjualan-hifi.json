@@ -1,15 +1,14 @@
 {
   "success": true,
   "sheet": "penjualan-hifi",
-  "updated_at": "2026-09-08T00:41:05.919Z",
+  "updated_at": "2026-09-08T09:44:58.922Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260908-004105",
+  "version": "20260908-094458",
   "total_data": 24,
   "data": [
     {
-      "400": 50,
       "No": 1,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -21,11 +20,9 @@
       "Tgl Ambil": "2026-08-24T00:00:00.000Z",
       "Tgl Bayar": "2026-09-08T00:00:00.000Z",
       "Keterangan": "LUNAS",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": 118,
       "No": 2,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -37,11 +34,9 @@
       "Tgl Ambil": "2026-08-29T00:00:00.000Z",
       "Tgl Bayar": "2026-09-08T00:00:00.000Z",
       "Keterangan": "LUNAS",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": 150,
       "No": 3,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -51,13 +46,11 @@
       "Nama": "ENDEN",
       "Harga": 270000,
       "Tgl Ambil": "2026-08-29T00:00:00.000Z",
-      "Tgl Bayar": "",
-      "Keterangan": "ON HAND DSE",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Bayar": "2026-09-08T00:00:00.000Z",
+      "Keterangan": "LUNAS",
+      "Tgl Repot": ""
     },
     {
-      "400": 82,
       "No": 4,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -67,13 +60,11 @@
       "Nama": "PEBRIAN",
       "Harga": 270000,
       "Tgl Ambil": "2026-08-29T00:00:00.000Z",
-      "Tgl Bayar": "",
-      "Keterangan": "ON HAND DSE",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Bayar": "2026-09-08T00:00:00.000Z",
+      "Keterangan": "LUNAS",
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 5,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -85,11 +76,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 6,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -101,11 +90,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 7,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -117,11 +104,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 8,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -133,11 +118,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 9,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -149,11 +132,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 10,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -165,11 +146,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 11,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -181,11 +160,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 12,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -197,11 +174,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 13,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -213,11 +188,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 14,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -229,11 +202,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 15,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -245,11 +216,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 16,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -261,11 +230,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 17,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -277,11 +244,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 18,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -293,11 +258,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 19,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -309,11 +272,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 20,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -325,11 +286,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 21,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -341,11 +300,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 22,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -357,11 +314,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 23,
       "Barang": "HIFI IM3",
       "Jumlah": 1,
@@ -373,11 +328,9 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "STOK GUDANG",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     },
     {
-      "400": "",
       "No": 24,
       "Barang": "",
       "Jumlah": "",
@@ -389,8 +342,7 @@
       "Tgl Ambil": "",
       "Tgl Bayar": "",
       "Keterangan": "",
-      "Tgl Repot": "",
-      "__EMPTY": ""
+      "Tgl Repot": ""
     }
   ]
 }
