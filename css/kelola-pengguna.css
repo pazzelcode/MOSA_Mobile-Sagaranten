@@ -903,7 +903,10 @@ body{
 
     justify-content:center;
 
-    padding:14px;
+    padding:
+        14px
+        14px
+        90px;
 
     box-sizing:border-box;
 
@@ -933,7 +936,7 @@ body{
     max-width:480px;
 
     max-height:
-        calc(100vh - 28px);
+        calc(100vh - 104px);
 
     overflow-y:auto;
 
