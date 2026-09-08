@@ -412,7 +412,47 @@
             padding-left:10px;
         }
 
+        /* =========================================
+   TOTAL SP ROW
+========================================= */
 
+.dse-table .total-sp-row td{
+    padding:11px 8px;
+
+    background:#fefce8 !important;
+    color:#713f12 !important;
+
+    border-top:2px solid #fde68a;
+    border-bottom:1px solid #fde68a;
+
+    font-size:11px;
+    font-weight:800;
+
+    text-align:right;
+}
+
+.dse-table .total-sp-row td:first-child{
+    text-align:left;
+    padding-left:10px;
+}
+
+.dse-table .total-sp-row td.total-col{
+    background:#fefce8 !important;
+    color:#713f12 !important;
+}
+
+
+/* =========================================
+   FREEZE KOLOM TOTAL SP
+========================================= */
+
+.dse-table .total-sp-row td:first-child{
+    position:sticky;
+    left:0;
+    z-index:3;
+    background:#fefce8 !important;
+}
+        
         /* =========================================
            EMPTY
         ========================================= */
