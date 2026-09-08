@@ -163,8 +163,6 @@
         });
     };
 
-   window.registerGlobalRefresh('Penjualan Salmo', updateDataFromJSON);
-
 window.goBack = () => {
     if (window.history.length > 1) {
         window.history.back();
@@ -175,4 +173,3 @@ window.goBack = () => {
 
 document.addEventListener('DOMContentLoaded', () => updateDataFromJSON(), { once: true });
 })();
-
