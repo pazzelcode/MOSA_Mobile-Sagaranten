@@ -1,32 +1,32 @@
 {
   "success": true,
   "sheet": "penjualan-salmo",
-  "updated_at": "2026-09-08T00:41:05.919Z",
+  "updated_at": "2026-09-08T09:44:58.922Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260908-004105",
+  "version": "20260908-094458",
   "total_data": 5,
   "data": [
     {
       "Nama cso": "Muhammad Parhan",
-      "Amount": 16331000
+      "Amount": 19164000
     },
     {
       "Nama cso": "ADIGUNA",
-      "Amount": 24135000
+      "Amount": 27585000
     },
     {
       "Nama cso": "M. Enden Abdul Latif",
-      "Amount": 21634000
+      "Amount": 25140000
     },
     {
       "Nama cso": "Pebrian Sahri Ramdani",
-      "Amount": 26162000
+      "Amount": 30579000
     },
     {
       "Nama cso": "Grand Total",
-      "Amount": 88262000
+      "Amount": 102468000
     }
   ]
 }
