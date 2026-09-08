@@ -190,31 +190,258 @@
     };
 
     const renderTambahanTable = rows => {
-        const tb = document.getElementById('tambahan-table');
-        if (!tb) return;
-        if (!rows.length) {
-            tb.innerHTML = `<tr><td colspan="6" class="loading-text">Tidak ada data tambahan.</td></tr>`;
+    const tb = document.getElementById('tambahan-table');
+    if (!tb) return;
+
+    if (!rows.length) {
+        tb.innerHTML = `
+            <tr>
+                <td colspan="6" class="loading-text">
+                    Tidak ada data tambahan.
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    let html = '';
+
+    /* =========================================
+       TOTAL KESELURUHAN
+    ========================================= */
+
+    let gA = 0;
+    let gF = 0;
+    let gE = 0;
+    let gP = 0;
+
+    /* =========================================
+       PEMISAH SP / VDK
+    ========================================= */
+
+    const dataSp = [];
+    const dataVdk = [];
+
+    let isVdk = false;
+
+    rows.forEach(i => {
+
+        const nama = String(i.nama || '').trim();
+
+        if (!nama) return;
+
+        if (nama.toUpperCase() === 'VDK') {
+            isVdk = true;
             return;
         }
-        let html = '', gA = 0, gF = 0, gE = 0, gP = 0, gT = 0;
-        rows.forEach(i => {
-            const a = Number(i.adiguna || 0), f = Number(i.farhan || 0), e = Number(i.enden || 0), p = Number(i.pebrian || 0), t = Number(i.total || 0);
-            gA += a; gF += f; gE += e; gP += p; gT += t;
-            html += `<tr class="data-row"><td class="item-name-col">${escHTML(i.nama)}</td><td>${formatDisplay(a)}</td><td>${formatDisplay(f)}</td><td>${formatDisplay(e)}</td><td>${formatDisplay(p)}</td><td class="total-col">${formatDisplay(t)}</td></tr>`;
-        });
-        html += `<tr class="total-row"><td class="item-name-col">TOTAL</td><td>${formatDisplay(gA)}</td><td>${formatDisplay(gF)}</td><td>${formatDisplay(gE)}</td><td>${formatDisplay(gP)}</td><td class="total-col">${formatDisplay(gT)}</td></tr>`;
-        tb.innerHTML = html;
-        
-        const lbl = document.getElementById('dse-total-label');
-        if (lbl) lbl.textContent = 'Total Tambahan';
-        
-        Object.entries({ adiguna: gA, farhan: gF, enden: gE, pebrian: gP }).forEach(([name, val]) => {
-            const el = document.getElementById('summary-' + name);
-            if (el) el.textContent = formatDisplay(val).replace(/<[^>]*>/g, '');
-        });
-        const ge = document.getElementById('dse-grand-total');
-        if (ge) ge.textContent = formatDisplay(gT).replace(/<[^>]*>/g, '');
+
+        const a = Number(i.adiguna || 0);
+        const f = Number(i.farhan || 0);
+        const e = Number(i.enden || 0);
+        const p = Number(i.pebrian || 0);
+
+        gA += a;
+        gF += f;
+        gE += e;
+        gP += p;
+
+        if (isVdk) {
+            dataVdk.push(i);
+        } else {
+            dataSp.push(i);
+        }
+    });
+
+    /* =========================================
+       FUNGSI BARIS
+    ========================================= */
+
+    const makeRow = i => {
+
+        const a = Number(i.adiguna || 0);
+        const f = Number(i.farhan || 0);
+        const e = Number(i.enden || 0);
+        const p = Number(i.pebrian || 0);
+
+        const t = a + f + e + p;
+
+        return `
+            <tr class="data-row">
+
+                <td class="item-name-col">
+                    ${escHTML(i.nama)}
+                </td>
+
+                <td>
+                    ${formatDisplay(a)}
+                </td>
+
+                <td>
+                    ${formatDisplay(f)}
+                </td>
+
+                <td>
+                    ${formatDisplay(e)}
+                </td>
+
+                <td>
+                    ${formatDisplay(p)}
+                </td>
+
+                <td class="total-col">
+                    ${formatDisplay(t)}
+                </td>
+
+            </tr>
+        `;
     };
+
+    /* =========================================
+       DATA SP
+    ========================================= */
+
+    dataSp.forEach(i => {
+        html += makeRow(i);
+    });
+
+    /* =========================================
+       TOTAL SP
+    ========================================= */
+
+    let spA = 0;
+    let spF = 0;
+    let spE = 0;
+    let spP = 0;
+
+    dataSp.forEach(i => {
+
+        spA += Number(i.adiguna || 0);
+        spF += Number(i.farhan || 0);
+        spE += Number(i.enden || 0);
+        spP += Number(i.pebrian || 0);
+
+    });
+
+    const spTotal = spA + spF + spE + spP;
+
+    html += `
+        <tr class="total-sp-row">
+
+            <td class="item-name-col">
+                TOTAL SP
+            </td>
+
+            <td>
+                ${formatDisplay(spA)}
+            </td>
+
+            <td>
+                ${formatDisplay(spF)}
+            </td>
+
+            <td>
+                ${formatDisplay(spE)}
+            </td>
+
+            <td>
+                ${formatDisplay(spP)}
+            </td>
+
+            <td class="total-col">
+                ${formatDisplay(spTotal)}
+            </td>
+
+        </tr>
+    `;
+
+    /* =========================================
+       PEMISAH SP → VDK
+    ========================================= */
+
+    if (dataVdk.length) {
+
+        html += `
+            <tr class="dse-divider">
+                <td colspan="6"></td>
+            </tr>
+        `;
+
+        dataVdk.forEach(i => {
+            html += makeRow(i);
+        });
+    }
+
+    /* =========================================
+       TOTAL KESELURUHAN
+    ========================================= */
+
+    const gT = gA + gF + gE + gP;
+
+    html += `
+        <tr class="total-row">
+
+            <td class="item-name-col">
+                TOTAL
+            </td>
+
+            <td>
+                ${formatDisplay(gA)}
+            </td>
+
+            <td>
+                ${formatDisplay(gF)}
+            </td>
+
+            <td>
+                ${formatDisplay(gE)}
+            </td>
+
+            <td>
+                ${formatDisplay(gP)}
+            </td>
+
+            <td class="total-col">
+                ${formatDisplay(gT)}
+            </td>
+
+        </tr>
+    `;
+
+    tb.innerHTML = html;
+
+    /* =========================================
+       UPDATE SUMMARY
+    ========================================= */
+
+    const lbl = document.getElementById('dse-total-label');
+
+    if (lbl) {
+        lbl.textContent = 'Total Tambahan';
+    }
+
+    Object.entries({
+        adiguna: gA,
+        farhan: gF,
+        enden: gE,
+        pebrian: gP
+    }).forEach(([name, val]) => {
+
+        const el = document.getElementById('summary-' + name);
+
+        if (el) {
+            el.textContent =
+                formatDisplay(val).replace(/<[^>]*>/g, '');
+        }
+
+    });
+
+    const ge = document.getElementById('dse-grand-total');
+
+    if (ge) {
+        ge.textContent =
+            formatDisplay(gT).replace(/<[^>]*>/g, '');
+    }
+};
 
     const processAndRender = rows => {
         if (!Array.isArray(rows)) rows = [];
@@ -247,11 +474,56 @@
             return `<tr class="data-row"><td class="item-name-col">${escHTML(i.nama)}</td><td>${formatDisplay(a, isRupiah)}</td><td>${formatDisplay(f, isRupiah)}</td><td>${formatDisplay(e, isRupiah)}</td><td>${formatDisplay(p, isRupiah)}</td><td class="total-col">${formatDisplay(t, isRupiah)}</td></tr>`;
         };
 
-        dataSp.forEach(i => { html += makeRow(i); });
-        if (dataVdk.length) {
-            html += `<tr class="dse-divider"><td colspan="6"></td></tr>`;
-            dataVdk.forEach(i => { html += makeRow(i); });
-        }
+        /* =========================================
+   TABEL SP
+========================================= */
+
+dataSp.forEach(i => {
+    html += makeRow(i);
+});
+
+/* =========================================
+   TOTAL SP
+========================================= */
+
+let spA = 0;
+let spF = 0;
+let spE = 0;
+let spP = 0;
+
+dataSp.forEach(i => {
+    const m = isRupiah ? Number(i.harga || 0) : 1;
+
+    spA += (Number(i.adiguna) || 0) * m;
+    spF += (Number(i.farhan) || 0) * m;
+    spE += (Number(i.enden) || 0) * m;
+    spP += (Number(i.pebrian) || 0) * m;
+});
+
+const spTotal = spA + spF + spE + spP;
+
+/* Baris TOTAL SP */
+html += `
+<tr class="total-sp-row">
+    <td class="item-name-col">TOTAL SP</td>
+    <td>${formatDisplay(spA, isRupiah)}</td>
+    <td>${formatDisplay(spF, isRupiah)}</td>
+    <td>${formatDisplay(spE, isRupiah)}</td>
+    <td>${formatDisplay(spP, isRupiah)}</td>
+    <td class="total-col">${formatDisplay(spTotal, isRupiah)}</td>
+</tr>
+`;
+
+/* =========================================
+   PEMISAH SP → VDK
+========================================= */
+
+if (dataVdk.length) {
+    html += `<tr class="dse-divider"><td colspan="6"></td></tr>`;
+    dataVdk.forEach(i => {
+        html += makeRow(i);
+    });
+}
 
         const gTot = gA + gF + gE + gP;
         const lbl = document.getElementById('dse-total-label');
