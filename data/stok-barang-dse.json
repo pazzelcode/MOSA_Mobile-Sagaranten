@@ -1,27 +1,27 @@
 {
   "success": true,
   "sheet": "stok-barang-dse",
-  "updated_at": "2026-09-05T16:05:04.535Z",
+  "updated_at": "2026-09-08T00:41:05.919Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260905-160504",
+  "version": "20260908-004105",
   "total_data": 17,
   "data": [
     {
       "JENIS BARANG": "SP ZERO",
       "ADIGUNA": 56,
       "FARHAN": "-",
-      "ENDEN": 70,
+      "ENDEN": 65,
       "PEBRIAN": 92,
       "SPV": "",
-      "TOTAL": 218
+      "TOTAL": 213
     },
     {
       "JENIS BARANG": "SP 3GB INJEK",
       "ADIGUNA": 122,
-      "FARHAN": 30,
-      "ENDEN": 30,
+      "FARHAN": 20,
+      "ENDEN": 40,
       "PEBRIAN": 25,
       "SPV": "",
       "TOTAL": 207
@@ -65,38 +65,38 @@
     {
       "JENIS BARANG": "Voucher 2,5GB",
       "ADIGUNA": 66,
-      "FARHAN": 32,
+      "FARHAN": 82,
       "ENDEN": 85,
       "PEBRIAN": 131,
       "SPV": "",
-      "TOTAL": 314
+      "TOTAL": 364
     },
     {
       "JENIS BARANG": "Voucher 3.5GB 5HR",
       "ADIGUNA": "-",
-      "FARHAN": "-",
+      "FARHAN": 15,
       "ENDEN": 45,
       "PEBRIAN": 30,
       "SPV": "",
-      "TOTAL": 75
+      "TOTAL": 90
     },
     {
       "JENIS BARANG": "Voucher 5GB 5HR",
       "ADIGUNA": 56,
       "FARHAN": "-",
       "ENDEN": 2,
-      "PEBRIAN": 49,
+      "PEBRIAN": 39,
       "SPV": "",
-      "TOTAL": 107
+      "TOTAL": 97
     },
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
       "ADIGUNA": 0,
       "FARHAN": 19,
-      "ENDEN": 15,
+      "ENDEN": 9,
       "PEBRIAN": 66,
       "SPV": "",
-      "TOTAL": 100
+      "TOTAL": 94
     },
     {
       "JENIS BARANG": "Fi 1.5GB/1D",
@@ -155,11 +155,11 @@
     {
       "JENIS BARANG": "TOTAL",
       "ADIGUNA": 571,
-      "FARHAN": 324,
-      "ENDEN": 432,
-      "PEBRIAN": 805,
+      "FARHAN": 379,
+      "ENDEN": 431,
+      "PEBRIAN": 795,
       "SPV": 0,
-      "TOTAL": 2132
+      "TOTAL": 2176
     }
   ]
 }
