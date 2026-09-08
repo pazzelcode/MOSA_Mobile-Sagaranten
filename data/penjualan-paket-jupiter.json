@@ -1,61 +1,61 @@
 {
   "success": true,
   "sheet": "penjualan-paket-jupiter",
-  "updated_at": "2026-09-05T16:05:04.535Z",
+  "updated_at": "2026-09-08T00:41:05.919Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260905-160504",
+  "version": "20260908-004105",
   "total_data": 5,
   "data": [
     {
       "No.": 1,
-      "Tanggal": "2026-09-05T00:00:00.000Z",
+      "Tanggal": "2026-09-08T00:00:00.000Z",
       "Nama DSE": "Adiguna",
-      "Outlet": 2,
-      "Paket": 11,
-      "Tagihan": 297500,
-      "Pembayaran": 297500,
-      "Selisih": "lunas"
+      "Outlet": "",
+      "Paket": "",
+      "Tagihan": "",
+      "Pembayaran": "",
+      "Selisih": ""
     },
     {
       "No.": 2,
-      "Tanggal": "2026-09-05T00:00:00.000Z",
+      "Tanggal": "2026-09-08T00:00:00.000Z",
       "Nama DSE": "Parhan",
-      "Outlet": 29,
-      "Paket": 47,
-      "Tagihan": 3852000,
-      "Pembayaran": 3852000,
-      "Selisih": "lunas"
+      "Outlet": "",
+      "Paket": "",
+      "Tagihan": "",
+      "Pembayaran": "",
+      "Selisih": ""
     },
     {
       "No.": 3,
-      "Tanggal": "2026-09-05T00:00:00.000Z",
+      "Tanggal": "2026-09-08T00:00:00.000Z",
       "Nama DSE": "Enden",
-      "Outlet": 20,
-      "Paket": 39,
-      "Tagihan": 3842000,
-      "Pembayaran": 3842000,
-      "Selisih": "lunas"
+      "Outlet": "",
+      "Paket": "",
+      "Tagihan": "",
+      "Pembayaran": "",
+      "Selisih": ""
     },
     {
       "No.": 4,
-      "Tanggal": "2026-09-05T00:00:00.000Z",
+      "Tanggal": "2026-09-08T00:00:00.000Z",
       "Nama DSE": "Pebrian",
-      "Outlet": 29,
-      "Paket": 48,
-      "Tagihan": 6572000,
-      "Pembayaran": 6572000,
-      "Selisih": "lunas"
+      "Outlet": "",
+      "Paket": "",
+      "Tagihan": "",
+      "Pembayaran": "",
+      "Selisih": ""
     },
     {
       "No.": "Total",
       "Tanggal": "",
       "Nama DSE": "",
-      "Outlet": 80,
-      "Paket": 145,
-      "Tagihan": 14563500,
-      "Pembayaran": 14563500,
+      "Outlet": 0,
+      "Paket": 0,
+      "Tagihan": 0,
+      "Pembayaran": 0,
       "Selisih": "lunas"
     }
   ]
