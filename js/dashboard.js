@@ -349,4 +349,121 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         loadDashboardBanners();
     }
+    /* =========================================================
+   DYNAMIC BANNER GRID
+   Desktop:
+   - Semua banner tampil
+   - Tidak ada slide
+   - Kolom otomatis
+   - Tinggi otomatis
+========================================================= */
+
+function updateDynamicBannerGrid(){
+
+    const bannerTrack =
+        document.querySelector('.banner-track');
+
+    if(!bannerTrack){
+        return;
+    }
+
+    const banners =
+        bannerTrack.querySelectorAll(
+            '.banner-slide, .dashboard-banner-slide'
+        );
+
+    const totalBanner = banners.length;
+
+    /* Hapus class jumlah banner sebelumnya */
+    bannerTrack.classList.remove(
+        'banner-count-1',
+        'banner-count-2',
+        'banner-count-3',
+        'banner-count-4',
+        'banner-count-5',
+        'banner-count-6',
+        'banner-count-7',
+        'banner-count-8',
+        'banner-count-9',
+        'banner-count-10',
+        'banner-count-11',
+        'banner-count-12',
+        'banner-count-many'
+    );
+
+    if(totalBanner === 0){
+        return;
+    }
+
+    /* =====================================================
+       TENTUKAN JUMLAH KOLOM
+    ===================================================== */
+
+    let columns;
+
+    if(totalBanner === 1){
+
+        columns = 1;
+
+    }else if(totalBanner <= 4){
+
+        columns = 2;
+
+    }else if(totalBanner <= 9){
+
+        columns = 3;
+
+    }else{
+
+        columns = 4;
+
+    }
+
+    /* =====================================================
+       CLASS BERDASARKAN JUMLAH BANNER
+    ===================================================== */
+
+    if(totalBanner <= 12){
+
+        bannerTrack.classList.add(
+            `banner-count-${totalBanner}`
+        );
+
+    }else{
+
+        bannerTrack.classList.add(
+            'banner-count-many'
+        );
+
+    }
+
+    /* =====================================================
+       FALLBACK KOLOM DARI JAVASCRIPT
+    ===================================================== */
+
+    bannerTrack.style.setProperty(
+        '--banner-columns',
+        columns
+    );
+}
+
+
+/* =========================================================
+   LOAD
+========================================================= */
+
+document.addEventListener(
+    'DOMContentLoaded',
+    updateDynamicBannerGrid
+);
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener(
+    'resize',
+    updateDynamicBannerGrid
+);
 })();
