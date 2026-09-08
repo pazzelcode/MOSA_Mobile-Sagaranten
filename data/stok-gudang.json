@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "stok-gudang",
-  "updated_at": "2026-09-05T16:05:04.535Z",
+  "updated_at": "2026-09-08T00:41:05.919Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260905-160504",
+  "version": "20260908-004105",
   "total_data": 15,
   "data": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "nama barang": "SP 3GB injek",
-      "segel": 2658,
+      "segel": 2598,
       "sellin": 0,
-      "total stok": 2658
+      "total stok": 2598
     },
     {
       "nama barang": "SP 3GB ori",
@@ -52,15 +52,15 @@
     },
     {
       "nama barang": "2,5GB",
-      "segel": 120,
+      "segel": 0,
       "sellin": 809,
-      "total stok": 929
+      "total stok": 809
     },
     {
       "nama barang": "3.5GB 5HR",
-      "segel": 60,
-      "sellin": 221,
-      "total stok": 281
+      "segel": 0,
+      "sellin": 206,
+      "total stok": 206
     },
     {
       "nama barang": "5GB 5HR",
@@ -70,9 +70,9 @@
     },
     {
       "nama barang": "7GB 7HR",
-      "segel": 381,
+      "segel": 366,
       "sellin": 15,
-      "total stok": 396
+      "total stok": 381
     },
     {
       "nama barang": "Fi 1.5GB/1D",
@@ -82,9 +82,9 @@
     },
     {
       "nama barang": "Fi 5GB/2D",
-      "segel": 30,
-      "sellin": 859,
-      "total stok": 889
+      "segel": 0,
+      "sellin": 829,
+      "total stok": 829
     },
     {
       "nama barang": "Fi 5GB/3D",
