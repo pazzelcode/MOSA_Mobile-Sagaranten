@@ -295,219 +295,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    /* =========================================================
-   RENDER BANNER
-   MOBILE  = CAROUSEL
-   DESKTOP = DYNAMIC GRID
-========================================================= */
-
-const renderDashboardBanners = () => {
-
-    if (!bannerTrack) return;
-
-    if (!dashboardBanners.length) {
-
-        bannerTrack.innerHTML =
-            '<div class="banner-loading">Belum ada informasi terbaru.</div>';
+    const renderDashboardBanners = () => {
+        if (!bannerTrack) return;
+        if (!dashboardBanners.length) {
+            bannerTrack.innerHTML = '<div class="banner-loading">Belum ada informasi terbaru.</div>';
+            if (bannerDots) bannerDots.innerHTML = '';
+            return;
+        }
+        bannerCurrentIndex = 0;
+        bannerTrack.innerHTML = dashboardBanners.map((b, i) => {
+            const img = escapeBannerHtml(b.imageUrl);
+            const title = escapeBannerHtml(b.judul);
+            const link = b.link && b.link !== '#' ? escapeBannerHtml(b.link) : null;
+            return link 
+                ? `<a href="${link}" class="dashboard-banner-slide"><img src="${img}" alt="${title}" loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" onerror="this.style.display='none'"></a>`
+                : `<div class="dashboard-banner-slide"><img src="${img}" alt="${title}" loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" onerror="this.style.display='none'"></div>`;
+        }).join('');
 
         if (bannerDots) {
-            bannerDots.innerHTML = '';
-        }
-
-        return;
-    }
-
-    bannerCurrentIndex = 0;
-
-    /* =====================================================
-       RENDER SEMUA BANNER
-    ===================================================== */
-
-    bannerTrack.innerHTML = dashboardBanners.map((b, i) => {
-
-        const img = escapeBannerHtml(b.imageUrl);
-        const title = escapeBannerHtml(b.judul);
-
-        const link =
-            b.link && b.link !== '#'
-                ? escapeBannerHtml(b.link)
-                : null;
-
-        const content = `
-            <img
-                src="${img}"
-                alt="${title}"
-                loading="${i === 0 ? 'eager' : 'lazy'}"
-                decoding="async"
-                onerror="this.style.display='none'"
-            >
-        `;
-
-        return link
-            ? `
-                <a
-                    href="${link}"
-                    class="dashboard-banner-slide"
-                >
-                    ${content}
-                </a>
-            `
-            : `
-                <div class="dashboard-banner-slide">
-                    ${content}
-                </div>
-            `;
-
-    }).join('');
-
-    /* =====================================================
-       DESKTOP
-       SEMUA BANNER LANGSUNG TAMPIL
-    ===================================================== */
-
-    if (window.innerWidth >= 768) {
-
-        bannerTrack
-            .querySelectorAll('.dashboard-banner-slide')
-            .forEach(slide => {
-
-                slide.style.display = 'block';
-
+            bannerDots.innerHTML = dashboardBanners.map((_, i) => `<button type="button" class="banner-dot ${i === 0 ? 'active' : ''}" data-banner-index="${i}" aria-label="Banner ${i + 1}"></button>`).join('');
+            bannerDots.querySelectorAll('.banner-dot').forEach(dot => {
+                dot.addEventListener('click', () => showDashboardBanner(Number(dot.dataset.bannerIndex)));
             });
-
-        if (bannerDots) {
-            bannerDots.innerHTML = '';
-            bannerDots.style.display = 'none';
         }
+        showDashboardBanner(0);
+        startBannerAutoPlay();
+    };
 
+    const showDashboardBanner = idx => {
+        if (!dashboardBanners.length) return;
+        bannerCurrentIndex = idx;
+        bannerTrack.querySelectorAll('.dashboard-banner-slide').forEach((s, i) => { s.style.display = i === idx ? 'block' : 'none'; });
+        if (bannerDots) {
+            bannerDots.querySelectorAll('.banner-dot').forEach((d, i) => { d.classList.toggle('active', i === idx); });
+        }
+    };
+
+    const startBannerAutoPlay = () => {
         clearInterval(bannerAutoPlay);
-
-        updateDynamicBannerGrid();
-
-        return;
-    }
-
-    /* =====================================================
-       MOBILE
-       CAROUSEL NORMAL
-    ===================================================== */
-
-    if (bannerDots) {
-
-        bannerDots.innerHTML =
-            dashboardBanners.map((_, i) => `
-                <button
-                    type="button"
-                    class="banner-dot ${i === 0 ? 'active' : ''}"
-                    data-banner-index="${i}"
-                    aria-label="Banner ${i + 1}"
-                ></button>
-            `).join('');
-
-        bannerDots
-            .querySelectorAll('.banner-dot')
-            .forEach(dot => {
-
-                dot.addEventListener('click', () => {
-
-                    showDashboardBanner(
-                        Number(dot.dataset.bannerIndex)
-                    );
-
-                });
-
-            });
-    }
-
-    showDashboardBanner(0);
-    startBannerAutoPlay();
-};
-
-
-/* =========================================================
-   SHOW BANNER
-   HANYA BERLAKU MOBILE
-========================================================= */
-
-const showDashboardBanner = idx => {
-
-    if (!dashboardBanners.length) return;
-
-    /* Desktop tidak menggunakan fungsi carousel */
-    if (window.innerWidth >= 768) {
-
-        bannerTrack
-            .querySelectorAll('.dashboard-banner-slide')
-            .forEach(slide => {
-
-                slide.style.display = 'block';
-
-            });
-
-        return;
-    }
-
-    bannerCurrentIndex = idx;
-
-    bannerTrack
-        .querySelectorAll('.dashboard-banner-slide')
-        .forEach((slide, i) => {
-
-            slide.style.display =
-                i === idx ? 'block' : 'none';
-
-        });
-
-    if (bannerDots) {
-
-        bannerDots
-            .querySelectorAll('.banner-dot')
-            .forEach((dot, i) => {
-
-                dot.classList.toggle(
-                    'active',
-                    i === idx
-                );
-
-            });
-
-    }
-};
-
-
-/* =========================================================
-   AUTOPLAY
-   HANYA MOBILE
-========================================================= */
-
-const startBannerAutoPlay = () => {
-
-    clearInterval(bannerAutoPlay);
-
-    /* Desktop tidak autoplay */
-    if (window.innerWidth >= 768) {
-        return;
-    }
-
-    if (dashboardBanners.length <= 1) {
-        return;
-    }
-
-    bannerAutoPlay = setInterval(() => {
-
-        let next =
-            bannerCurrentIndex + 1;
-
-        if (
-            next >= dashboardBanners.length
-        ) {
-            next = 0;
-        }
-
-        showDashboardBanner(next);
-
-    }, 5000);
-};
+        if (dashboardBanners.length <= 1) return;
+        bannerAutoPlay = setInterval(() => {
+            let next = bannerCurrentIndex + 1;
+            if (next >= dashboardBanners.length) next = 0;
+            showDashboardBanner(next);
+        }, 5000);
+    };
 
     window.loadBanners = loadDashboardBanners;
     window.refreshBanner = loadDashboardBanners;
@@ -517,167 +349,5 @@ const startBannerAutoPlay = () => {
     } else {
         loadDashboardBanners();
     }
-
-  /* =========================================================
-   DYNAMIC BANNER GRID
-   Desktop:
-   - Semua banner tampil
-   - Tidak ada slide
-   - Kolom otomatis
-   - Tinggi otomatis
-========================================================= */
-
-/* =========================================================
-   DYNAMIC BANNER GRID
-   DESKTOP ONLY
-========================================================= */
-
-function updateDynamicBannerGrid(){
-
-    const bannerTrack =
-        document.querySelector('.banner-track');
-
-    if (!bannerTrack) {
-        return;
-    }
-
-    const banners =
-        bannerTrack.querySelectorAll(
-            '.dashboard-banner-slide'
-        );
-
-    const totalBanner =
-        banners.length;
-
-    if (!totalBanner) {
-        return;
-    }
-
-    /* =====================================================
-       DESKTOP
-    ===================================================== */
-
-    if (window.innerWidth >= 768) {
-
-        let columns;
-        let ratio;
-
-        /*
-           1 banner
-        */
-        if (totalBanner === 1) {
-
-            columns = 1;
-            ratio = '16 / 7';
-
-        /*
-           2-4 banner
-        */
-        } else if (totalBanner <= 4) {
-
-            columns = 2;
-            ratio = '16 / 8';
-
-        /*
-           5-6 banner
-        */
-        } else if (totalBanner <= 6) {
-
-            columns = 3;
-            ratio = '16 / 7';
-
-        /*
-           7-9 banner
-        */
-        } else if (totalBanner <= 9) {
-
-            columns = 3;
-            ratio = '16 / 6';
-
-        /*
-           10-12 banner
-        */
-        } else if (totalBanner <= 12) {
-
-            columns = 4;
-            ratio = '16 / 6';
-
-        /*
-           13+ banner
-        */
-        } else {
-
-            columns = 4;
-            ratio = '16 / 5';
-
-        }
-
-        /* Terapkan jumlah kolom */
-        bannerTrack.style.setProperty(
-            '--banner-columns',
-            columns
-        );
-
-        /* Terapkan rasio */
-        bannerTrack.style.setProperty(
-            '--banner-ratio',
-            ratio
-        );
-
-        /* Pastikan SEMUA banner terlihat */
-        banners.forEach(slide => {
-
-            slide.style.display = 'block';
-
-        });
-
-        /* Matikan autoplay */
-        clearInterval(bannerAutoPlay);
-
-        /* Hilangkan dots */
-        const dots =
-            document.querySelector('.banner-dots');
-
-        if (dots) {
-
-            dots.innerHTML = '';
-            dots.style.display = 'none';
-
-        }
-
-        return;
-    }
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    bannerTrack.style.removeProperty(
-        '--banner-columns'
-    );
-
-    bannerTrack.style.removeProperty(
-        '--banner-ratio'
-    );
-
-    if (bannerDots) {
-        bannerDots.style.display = '';
-    }
-
-    showDashboardBanner(
-        bannerCurrentIndex
-    );
-
-    startBannerAutoPlay();
-}
-
-
-/* =========================================================
-   RESPONSIVE BANNER
-========================================================= */
-
-window.addEventListener(
-    'resize',
-    updateDynamicBannerGrid
-);
+  
 })();
