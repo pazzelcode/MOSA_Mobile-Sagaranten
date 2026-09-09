@@ -414,3 +414,16 @@ setInterval(async () => {
     const files = await getFilesList();
     updateDatesUI(files);
 }, 30000);
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href = "dashboard.html";
+
+    }
+
+}
