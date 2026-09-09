@@ -233,3 +233,16 @@ async function fetchMasterData() {
 
 document.getElementById('dseFilter')?.addEventListener('change', function() { renderTable(this.value); });
 document.addEventListener('DOMContentLoaded', fetchMasterData);
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href = "dashboard.html";
+
+    }
+
+}
