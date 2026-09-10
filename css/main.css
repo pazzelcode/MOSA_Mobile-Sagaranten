@@ -1178,7 +1178,7 @@ body{
     height:auto !important;
     margin:5px 0 8px;
     background:#e2e8f0;
-    border-radius:16px;
+    border-radius:12px;
     box-shadow:0 7px 18px rgba(15,23,42,.12);
     overflow:hidden;
 }
