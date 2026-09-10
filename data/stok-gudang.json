@@ -1,30 +1,48 @@
 {
   "success": true,
   "sheet": "stok-gudang",
-  "updated_at": "2026-09-09T12:28:17.429Z",
+  "updated_at": "2026-09-10T07:59:17.158Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260909-122817",
-  "total_data": 15,
+  "version": "20260910-075917",
+  "total_data": 16,
   "data": [
     {
       "nama barang": "SP ZERO",
-      "segel": 1100,
+      "segel": 1080,
       "sellin": 0,
-      "total stok": 1100,
+      "total stok": 1080,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "SP 3GB injek",
-      "segel": 2478,
+      "segel": 2428,
       "sellin": 0,
-      "total stok": 2478,
+      "total stok": 2428,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "SP 3GB ori",
@@ -33,7 +51,16 @@
       "total stok": 78,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "SP 10GB",
@@ -42,7 +69,16 @@
       "total stok": 711,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "",
@@ -51,7 +87,16 @@
       "total stok": 0,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "VDK",
@@ -60,7 +105,16 @@
       "total stok": 6299,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "3GB/14HR",
@@ -69,7 +123,16 @@
       "total stok": 97,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "2,5GB",
@@ -78,7 +141,16 @@
       "total stok": 809,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "3.5GB 5HR",
@@ -87,7 +159,16 @@
       "total stok": 62,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "5GB 5HR",
@@ -96,7 +177,16 @@
       "total stok": 609,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "7GB 7HR",
@@ -105,7 +195,16 @@
       "total stok": 351,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "Fi 1.5GB/1D",
@@ -114,7 +213,16 @@
       "total stok": 21,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "Fi 5GB/2D",
@@ -123,7 +231,16 @@
       "total stok": 829,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "Fi 5GB/3D",
@@ -132,7 +249,16 @@
       "total stok": 65,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     },
     {
       "nama barang": "Fi 7GB/28D",
@@ -141,7 +267,34 @@
       "total stok": 300,
       "__EMPTY": "",
       "__EMPTY_1": "",
-      "__EMPTY_2": ""
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
+    },
+    {
+      "nama barang": "",
+      "segel": "",
+      "sellin": "",
+      "total stok": "",
+      "__EMPTY": "",
+      "__EMPTY_1": "",
+      "__EMPTY_2": "",
+      "__EMPTY_3": "",
+      "__EMPTY_4": "",
+      "__EMPTY_5": "",
+      "__EMPTY_6": "",
+      "__EMPTY_7": "",
+      "__EMPTY_8": "",
+      "__EMPTY_9": "",
+      "__EMPTY_10": "",
+      "__EMPTY_11": ""
     }
   ]
 }
