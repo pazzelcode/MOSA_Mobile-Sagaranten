@@ -680,3 +680,39 @@ textarea{
         max-width:1000px;
     }
 }
+
+/* =========================================================
+   PRODUCT NAME + STOCK
+========================================================= */
+
+.product-name-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    min-width:0;
+}
+
+.product-stock{
+    display:none;
+    align-items:center;
+    white-space:nowrap;
+
+    padding:3px 7px;
+
+    border-radius:6px;
+
+    background:#eff6ff;
+    border:1px solid #bfdbfe;
+
+    color:#2563eb;
+
+    font-size:10px;
+    font-weight:700;
+
+    line-height:1.2;
+}
+
+/* stok tampil setelah DSE dipilih */
+.product-stock.show{
+    display:inline-flex;
+}
