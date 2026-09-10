@@ -1,0 +1,1407 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:
+        'Segoe UI',
+        -apple-system,
+        BlinkMacSystemFont,
+        Roboto,
+        sans-serif;
+
+    color:#334155;
+    background:#f1f5f9;
+
+    padding-bottom:90px;
+
+    overflow-x:hidden;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.summary-page{
+    width:100%;
+    max-width:1100px;
+
+    margin:0 auto;
+
+    padding:12px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.summary-hero{
+    position:relative;
+
+    width:100%;
+
+    overflow:hidden;
+
+    padding:22px 20px;
+
+    border-radius:22px;
+
+    color:#ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e3a8a,
+            #2563eb
+        );
+
+    box-shadow:
+        0 15px 30px
+        rgba(37,99,235,.20);
+}
+
+
+/* =========================================================
+   HERO DECORATIVE
+========================================================= */
+
+.summary-hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    right:-55px;
+    top:-65px;
+
+    background:
+        rgba(255,255,255,.10);
+}
+
+.summary-hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    right:50px;
+    bottom:-70px;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.summary-label{
+    position:relative;
+
+    z-index:1;
+
+    display:block;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    letter-spacing:.8px;
+
+    opacity:.85;
+
+    text-transform:uppercase;
+
+    margin-bottom:6px;
+}
+
+.summary-total{
+    position:relative;
+
+    z-index:1;
+
+    display:block;
+
+    font-size:30px;
+
+    line-height:1.15;
+
+    font-weight:800;
+
+    letter-spacing:-.5px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.summary-update{
+    position:relative;
+
+    z-index:1;
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    opacity:.80;
+}
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+/*
+   MOBILE STRUCTURE
+
+   Row 1 :
+   DSE Aktif | DSE Teratas
+
+   Row 2 :
+   Top DSE full width
+
+   Row 3 :
+   Ranking DSE full width
+
+   Row 4 :
+   Chart full width
+*/
+
+.desktop-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:12px;
+
+    width:100%;
+
+    margin-top:12px;
+
+    align-items:start;
+}
+
+
+/* =========================================================
+   STAT CARD
+========================================================= */
+
+.stat-card{
+    display:flex;
+
+    flex-direction:column;
+
+    width:100%;
+    min-width:0;
+
+    margin:0;
+
+    padding:15px;
+
+    background:#ffffff;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:17px;
+
+    box-shadow:
+        0 6px 16px
+        rgba(15,23,42,.06);
+}
+
+
+/* =========================================================
+   STAT ICON
+========================================================= */
+
+.stat-icon{
+    width:34px;
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+
+    font-size:18px;
+
+    margin-bottom:9px;
+}
+
+
+/* =========================================================
+   STAT TITLE
+========================================================= */
+
+.stat-title{
+    display:block;
+
+    font-size:10px;
+
+    color:#64748b;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:.4px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* =========================================================
+   STAT VALUE
+========================================================= */
+
+.stat-value{
+    display:block;
+
+    margin-top:3px;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    line-height:1.25;
+}
+
+
+/* =========================================================
+   SECTION CARD
+========================================================= */
+
+.section-card{
+    width:100%;
+
+    min-width:0;
+
+    margin:0;
+
+    padding:16px;
+
+    background:#ffffff;
+
+    border:
+        1px solid
+        #e2e8f0;
+
+    border-radius:19px;
+
+    box-shadow:
+        0 6px 16px
+        rgba(15,23,42,.05);
+}
+
+
+/* =========================================================
+   MOBILE SECTION POSITION
+========================================================= */
+
+/*
+   Top DSE
+   Full width
+*/
+
+.desktop-grid > .section-card:nth-child(3){
+    grid-column:1 / -1;
+}
+
+
+/*
+   Ranking DSE
+   Full width
+*/
+
+.desktop-grid > .section-card:nth-child(4){
+    grid-column:1 / -1;
+}
+
+
+/*
+   Chart
+   Full width
+*/
+
+.desktop-grid > .section-card:nth-child(5){
+    grid-column:1 / -1;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:14px;
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title{
+    min-width:0;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    line-height:1.25;
+}
+
+
+/* =========================================================
+   SECTION SUBTITLE
+========================================================= */
+
+.section-subtitle{
+    font-size:10px;
+
+    color:#64748b;
+
+    margin-top:2px;
+
+    line-height:1.4;
+}
+
+
+/* =========================================================
+   SECTION COUNT
+========================================================= */
+
+.section-count{
+    flex-shrink:0;
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    font-size:10px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   PODIUM
+========================================================= */
+
+.podium{
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1.15fr
+        1fr;
+
+    align-items:end;
+
+    gap:8px;
+
+    width:100%;
+}
+
+
+.podium-item{
+    min-width:0;
+
+    text-align:center;
+
+    padding:10px 5px;
+
+    border-radius:15px;
+
+    background:#f8fafc;
+}
+
+
+.podium-item.first{
+    padding-top:18px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffbeb,
+            #fef3c7
+        );
+}
+
+
+.podium-medal{
+    font-size:24px;
+
+    margin-bottom:5px;
+}
+
+
+.podium-name{
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+    font-size:10px;
+
+    line-height:1.3;
+
+    font-weight:700;
+
+    color:#334155;
+}
+
+
+.podium-amount{
+    margin-top:5px;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+/* =========================================================
+   RANKING
+========================================================= */
+
+.ranking-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:9px;
+
+    width:100%;
+}
+
+
+.ranking-item{
+    width:100%;
+
+    min-width:0;
+
+    padding:12px;
+
+    border-radius:15px;
+
+    background:#f8fafc;
+
+    border:
+        1px solid
+        #e2e8f0;
+}
+
+
+.ranking-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0;
+}
+
+
+.rank-number{
+    flex:0 0 30px;
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#e2e8f0;
+
+    color:#475569;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+
+.rank-number.r1{
+    background:#fbbf24;
+
+    color:#111827;
+}
+
+
+.rank-number.r2{
+    background:#94a3b8;
+
+    color:#ffffff;
+}
+
+
+.rank-number.r3{
+    background:#d97706;
+
+    color:#ffffff;
+}
+
+
+.rank-info{
+    min-width:0;
+
+    flex:1;
+}
+
+
+.rank-name{
+    font-size:13px;
+
+    font-weight:750;
+
+    color:#0f172a;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.rank-amount{
+    margin-top:2px;
+
+    font-size:11px;
+
+    color:#64748b;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+
+.rank-percent{
+    flex-shrink:0;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    color:#2563eb;
+
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress{
+    width:100%;
+
+    height:6px;
+
+    margin-top:9px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#e2e8f0;
+}
+
+
+.progress-bar{
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #60a5fa
+        );
+
+    transition:
+        width .6s ease;
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.chart-wrapper{
+    position:relative;
+
+    width:100%;
+
+    height:360px;
+
+    min-width:0;
+}
+
+
+.chart-wrapper canvas{
+    display:block;
+
+    width:100% !important;
+
+    height:100% !important;
+}
+
+
+/* =========================================================
+   EMPTY / ERROR
+========================================================= */
+
+.loading{
+    width:100%;
+
+    padding:25px;
+
+    text-align:center;
+
+    color:#64748b;
+
+    font-size:12px;
+}
+
+
+.error-box{
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    background:#fef2f2;
+
+    color:#b91c1c;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width:768px){
+
+    body{
+        padding-bottom:90px;
+    }
+
+
+    /* =====================================================
+       PAGE CONTAINER
+    ===================================================== */
+
+    .summary-page{
+        width:100%;
+
+        max-width:1200px;
+
+        margin:0 auto;
+
+        padding:
+            24px
+            24px
+            30px;
+    }
+
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .summary-hero{
+        width:100%;
+
+        padding:28px 30px;
+
+        border-radius:22px;
+    }
+
+
+    .summary-label{
+        font-size:12px;
+    }
+
+
+    .summary-total{
+        font-size:40px;
+
+        letter-spacing:-.8px;
+    }
+
+
+    .summary-update{
+        font-size:12px;
+    }
+
+
+    /* =====================================================
+       DESKTOP GRID
+    ===================================================== */
+
+    .desktop-grid{
+        display:grid;
+
+        grid-template-columns:
+            minmax(0, .85fr)
+            minmax(0, 1.15fr);
+
+        gap:16px;
+
+        width:100%;
+
+        margin-top:16px;
+
+        align-items:start;
+    }
+
+
+    /* =====================================================
+       DESKTOP STAT CARD
+    ===================================================== */
+
+    /*
+       DSE AKTIF
+       Mengisi kolom kiri yang sama
+       dengan Top DSE.
+    */
+
+    .desktop-grid > .stat-card:nth-child(1){
+        grid-column:1;
+
+        grid-row:1;
+    }
+
+
+    /*
+       DSE TERATAS
+       Mengisi kolom kanan yang sama
+       dengan Ranking DSE.
+    */
+
+    .desktop-grid > .stat-card:nth-child(2){
+        grid-column:2;
+
+        grid-row:1;
+    }
+
+
+    .desktop-grid > .stat-card{
+        width:100%;
+
+        min-width:0;
+
+        min-height:115px;
+
+        margin:0;
+
+        padding:17px 18px;
+
+        border-radius:18px;
+    }
+
+
+    /* =====================================================
+       DESKTOP STAT ICON
+    ===================================================== */
+
+    .desktop-grid > .stat-card .stat-icon{
+        width:38px;
+        height:38px;
+
+        font-size:19px;
+
+        margin-bottom:10px;
+    }
+
+
+    .desktop-grid > .stat-card .stat-title{
+        font-size:11px;
+    }
+
+
+    .desktop-grid > .stat-card .stat-value{
+        font-size:20px;
+    }
+
+
+    /* =====================================================
+       DESKTOP TOP DSE
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3){
+        grid-column:1;
+
+        grid-row:2;
+
+        width:100%;
+
+        margin:0;
+
+        padding:20px;
+
+        border-radius:20px;
+    }
+
+
+    /* =====================================================
+       DESKTOP RANKING DSE
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(4){
+        grid-column:2;
+
+        grid-row:2;
+
+        width:100%;
+
+        margin:0;
+
+        padding:20px;
+
+        border-radius:20px;
+    }
+
+
+    /* =====================================================
+       DESKTOP CHART
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(5){
+        grid-column:1 / -1;
+
+        grid-row:3;
+
+        width:100%;
+
+        margin:0;
+
+        padding:20px;
+
+        border-radius:20px;
+    }
+
+
+    /* =====================================================
+       SECTION HEADER
+    ===================================================== */
+
+    .section-header{
+        margin-bottom:16px;
+    }
+
+
+    .section-title{
+        font-size:17px;
+    }
+
+
+    .section-subtitle{
+        font-size:11px;
+    }
+
+
+    .section-count{
+        font-size:11px;
+
+        padding:6px 10px;
+    }
+
+
+    /* =====================================================
+       PODIUM
+    ===================================================== */
+
+    .podium{
+        min-height:210px;
+
+        gap:12px;
+
+        padding:
+            10px
+            5px
+            5px;
+    }
+
+
+    .podium-item{
+        min-width:0;
+
+        padding:15px 8px;
+
+        border-radius:17px;
+    }
+
+
+    .podium-item.first{
+        padding-top:25px;
+    }
+
+
+    .podium-medal{
+        font-size:28px;
+
+        margin-bottom:7px;
+    }
+
+
+    .podium-name{
+        font-size:11px;
+    }
+
+
+    .podium-amount{
+        margin-top:7px;
+
+        font-size:12px;
+    }
+
+
+    /* =====================================================
+       RANKING
+    ===================================================== */
+
+    .ranking-list{
+        max-height:360px;
+
+        overflow-y:auto;
+
+        padding-right:3px;
+    }
+
+
+    .ranking-item{
+        padding:13px 14px;
+
+        border-radius:15px;
+    }
+
+
+    .rank-number{
+        flex-basis:32px;
+
+        width:32px;
+
+        height:32px;
+    }
+
+
+    .rank-name{
+        font-size:13px;
+    }
+
+
+    .rank-amount{
+        font-size:11px;
+    }
+
+
+    .rank-percent{
+        font-size:12px;
+    }
+
+
+    .progress{
+        height:7px;
+
+        margin-top:10px;
+    }
+
+
+    /* =====================================================
+       CHART
+    ===================================================== */
+
+    .chart-wrapper{
+        height:400px;
+
+        padding:
+            5px
+            5px
+            0;
+    }
+
+
+    /* =====================================================
+       BOTTOM NAV DESKTOP
+    ===================================================== */
+
+    .bottom-nav{
+        left:50%;
+
+        right:auto;
+
+        width:100%;
+
+        max-width:700px;
+
+        transform:translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width:380px){
+
+    .summary-page{
+        padding:10px;
+    }
+
+
+    .summary-hero{
+        padding:19px 16px;
+
+        border-radius:19px;
+    }
+
+
+    .summary-total{
+        font-size:26px;
+    }
+
+
+    .summary-update{
+        font-size:10px;
+    }
+
+
+    .desktop-grid{
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap:9px;
+
+        margin-top:10px;
+    }
+
+
+    .desktop-grid > .stat-card{
+        padding:13px;
+
+        border-radius:15px;
+    }
+
+
+    .stat-icon{
+        width:32px;
+        height:32px;
+
+        font-size:17px;
+
+        margin-bottom:8px;
+    }
+
+
+    .stat-title{
+        font-size:9px;
+    }
+
+
+    .stat-value{
+        font-size:16px;
+    }
+
+
+    .desktop-grid > .section-card{
+        padding:14px;
+
+        border-radius:17px;
+    }
+
+
+    .section-title{
+        font-size:15px;
+    }
+
+
+    .section-subtitle{
+        font-size:9px;
+    }
+
+
+    .section-count{
+        padding:4px 7px;
+
+        font-size:9px;
+    }
+
+
+    .podium{
+        gap:6px;
+    }
+
+
+    .podium-name{
+        font-size:9px;
+    }
+
+
+    .podium-amount{
+        font-size:10px;
+    }
+
+
+    .chart-wrapper{
+        height:300px;
+    }
+
+}
+
+/* =========================================================
+   DESKTOP — SAMAKAN TINGGI TOP DSE & RANKING DSE
+========================================================= */
+
+@media (min-width:768px){
+
+    /* =====================================================
+       TOP DSE + RANKING DSE
+       Tinggi dibuat sama
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3),
+    .desktop-grid > .section-card:nth-child(4){
+
+        height:400px;
+
+        display:flex;
+        flex-direction:column;
+
+    }
+
+
+    /* =====================================================
+       TOP DSE
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3) .section-header{
+        flex-shrink:0;
+    }
+
+
+    .desktop-grid > .section-card:nth-child(3) .podium{
+
+        flex:1;
+
+        min-height:0;
+
+        height:auto;
+
+        display:grid;
+
+        grid-template-columns:
+            1fr
+            1.15fr
+            1fr;
+
+        align-items:stretch;
+
+        gap:12px;
+
+        padding:
+            10px
+            5px
+            5px;
+
+    }
+
+
+    /* =====================================================
+       ELEMENT PODIUM MEMANJANG
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3) .podium-item{
+
+        height:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        align-items:center;
+
+        padding:15px 8px;
+
+        border-radius:17px;
+
+    }
+
+
+    /* =====================================================
+       JUARA 1
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3) .podium-item.first{
+
+        padding-top:25px;
+        padding-bottom:25px;
+
+    }
+
+
+    /* =====================================================
+       MEDAL
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3) .podium-medal{
+
+        font-size:28px;
+
+        margin-bottom:10px;
+
+        flex-shrink:0;
+
+    }
+
+
+    /* =====================================================
+       NAMA DSE
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3) .podium-name{
+
+        font-size:11px;
+
+        line-height:1.4;
+
+        max-width:100%;
+
+    }
+
+
+    /* =====================================================
+       SALDO
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(3) .podium-amount{
+
+        margin-top:8px;
+
+        font-size:12px;
+
+        max-width:100%;
+
+    }
+
+
+    /* =====================================================
+       RANKING DSE
+    ===================================================== */
+
+    .desktop-grid > .section-card:nth-child(4){
+
+        height:400px;
+
+    }
+
+
+    .desktop-grid > .section-card:nth-child(4) .ranking-list{
+
+        flex:1;
+
+        min-height:0;
+
+        max-height:none;
+
+        overflow-y:auto;
+
+    }
+
+}
