@@ -43,78 +43,83 @@
         </span>
     </section>
 
-    <section class="summary-stats">
+    <div class="desktop-grid">
 
-        <div class="stat-card">
-            <div class="stat-icon">👥</div>
-            <span class="stat-title">DSE Aktif</span>
-            <strong class="stat-value" id="totalDse">0</strong>
+    <!-- DSE AKTIF -->
+    <div class="stat-card desktop-stat-active">
+        <div class="stat-icon">👥</div>
+        <span class="stat-title">DSE Aktif</span>
+        <strong class="stat-value" id="totalDse">0</strong>
+    </div>
+
+
+    <!-- DSE TERATAS -->
+    <div class="stat-card desktop-stat-top">
+        <div class="stat-icon">🏆</div>
+        <span class="stat-title">DSE Teratas</span>
+        <strong class="stat-value" id="topDse">-</strong>
+    </div>
+
+
+    <!-- TOP DSE -->
+    <section class="section-card">
+        <div class="section-header">
+            <div>
+                <div class="section-title">🏆 Top DSE</div>
+                <div class="section-subtitle">
+                    DSE dengan saldo tertinggi
+                </div>
+            </div>
         </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">🏆</div>
-            <span class="stat-title">DSE Teratas</span>
-            <strong class="stat-value" id="topDse">-</strong>
+        <div class="podium" id="podium">
+            <div class="loading">Memuat data...</div>
+        </div>
+    </section>
+
+
+    <!-- RANKING DSE -->
+    <section class="section-card">
+
+        <div class="section-header">
+            <div>
+                <div class="section-title">Ranking DSE</div>
+                <div class="section-subtitle">
+                    Perbandingan saldo setiap DSE
+                </div>
+            </div>
+
+            <span class="section-count" id="rankingCount">
+                0 DSE
+            </span>
+        </div>
+
+        <div class="ranking-list" id="rankingList">
+            <div class="loading">Memuat data...</div>
         </div>
 
     </section>
 
-    <div class="desktop-grid">
 
-        <section class="section-card">
-            <div class="section-header">
-                <div>
-                    <div class="section-title">🏆 Top DSE</div>
-                    <div class="section-subtitle">
-                        DSE dengan saldo tertinggi
-                    </div>
+    <!-- CHART -->
+    <section class="section-card">
+
+        <div class="section-header">
+            <div>
+                <div class="section-title">📊 Perbandingan Saldo</div>
+                <div class="section-subtitle">
+                    Grafik saldo berdasarkan ranking
                 </div>
             </div>
+        </div>
 
-            <div class="podium" id="podium">
-                <div class="loading">Memuat data...</div>
-            </div>
-        </section>
+        <div class="chart-wrapper">
+            <canvas id="salmoChart"></canvas>
+        </div>
 
-        <section class="section-card">
+    </section>
 
-            <div class="section-header">
-                <div>
-                    <div class="section-title">Ranking DSE</div>
-                    <div class="section-subtitle">
-                        Perbandingan saldo setiap DSE
-                    </div>
-                </div>
-
-                <span class="section-count" id="rankingCount">
-                    0 DSE
-                </span>
-            </div>
-
-            <div class="ranking-list" id="rankingList">
-                <div class="loading">Memuat data...</div>
-            </div>
-
-        </section>
-
-        <section class="section-card">
-
-            <div class="section-header">
-                <div>
-                    <div class="section-title">📊 Perbandingan Saldo</div>
-                    <div class="section-subtitle">
-                        Grafik saldo berdasarkan ranking
-                    </div>
-                </div>
-            </div>
-
-            <div class="chart-wrapper">
-                <canvas id="salmoChart"></canvas>
-            </div>
-
-        </section>
-
-    </div>
+</div>
 
 </main>
 
