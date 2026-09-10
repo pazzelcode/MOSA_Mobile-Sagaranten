@@ -1081,7 +1081,7 @@ body{
 
 
 /* =========================================================
-   BANNER
+   BANNER CAROUSEL - CENTER + PEEK LEFT RIGHT
 ========================================================= */
 
 .menu-banner-divider{
@@ -1149,117 +1149,221 @@ body{
     line-height:1.3;
     text-decoration:none;
     white-space:nowrap;
-    transition:
-        background .2s ease,
-        transform .2s ease,
-        box-shadow .2s ease;
 }
 
-.banner-see-all span{
-    margin-top:-1px;
-    font-size:14px;
-    line-height:10px;
-}
-
-.banner-see-all:hover{
-    background:#dbeafe;
-    box-shadow:0 3px 8px rgba(15,23,42,.12);
-    transform:translateX(1px);
-}
-
-.banner-see-all:active{
-    transform:scale(.95);
-}
+/* =========================================================
+   CAROUSEL
+========================================================= */
 
 .banner-carousel{
     position:relative;
     width:100%;
-    aspect-ratio:3/2 !important;
-    height:auto !important;
+
+    aspect-ratio:16 / 9;
+
+    height:auto;
+
     margin:5px 0 8px;
-    background:#e2e8f0;
-    border-radius:12px;
-    box-shadow:0 7px 18px rgba(15,23,42,.12);
+
+    background:transparent;
     overflow:hidden;
+    padding:0;
+    touch-action:pan-y;
 }
+
+
+/* =========================================================
+   TRACK
+========================================================= */
 
 .banner-track{
     width:100%;
     height:100%;
+
     display:flex;
-    transition:transform .45s ease;
+    align-items:center;
+
+    gap:12px;
+
+    /*
+       Transform dari JS akan mengatur posisi.
+       Jangan gunakan justify-content:center
+       karena posisi dikontrol JS.
+    */
+
+    transition:
+        transform .45s cubic-bezier(.4,0,.2,1);
+
+    will-change:transform;
 }
+
+
+/* =========================================================
+   SETIAP SLIDE
+========================================================= */
 
 .banner-slide,
 .dashboard-banner-slide{
-    display:block;
-    width:100%;
-    min-width:100%;
+
+    /*
+       84% = banner utama tetap besar
+       dan memberi ruang peek kiri kanan.
+    */
+    width:84%;
+    min-width:84%;
+
     height:100%;
+
     flex-shrink:0;
-    text-decoration:none;
+
+    display:block;
+
+    position:relative;
+
     overflow:hidden;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    background:#e2e8f0;
+
+    border:1px solid #cbd5e1;
+
+box-shadow:
+    0 2px 6px rgba(15,23,42,.10),
+    0 7px 18px rgba(15,23,42,.08);
+
+    /*
+       Pastikan slide selalu berada
+       di tengah secara vertikal.
+    */
+    align-self:center;
 }
 
-.dashboard-banner-slide{
-    min-width:0;
-}
+
+/* =========================================================
+   GAMBAR
+========================================================= */
 
 .banner-slide img,
 .dashboard-banner-slide img{
+
     display:block;
+
     width:100%;
     height:100%;
+
+    /*
+       Rasio gambar tetap.
+       Tidak gepeng / tidak melar.
+    */
     object-fit:cover;
+
+    object-position:center;
+
     background:#dce6f7;
 }
 
+
+/* =========================================================
+   LOADING
+========================================================= */
+
 .banner-loading{
-    width:100%;
-    min-height:150px;
+    width:84%;
+    min-width:84%;
+    height:100%;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
+    margin:0 auto;
+
     background:#f1f5f9;
+
     color:#94a3b8;
+
     font-size:11px;
+
+    border-radius:12px;
 }
 
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
 .banner-empty{
-    width:100%;
-    min-height:120px;
+    width:84%;
+    min-width:84%;
+    height:100%;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
+    margin:0 auto;
+
     background:#f8fafc;
+
     color:#94a3b8;
+
     font-size:11px;
+
+    border-radius:12px;
 }
+
+
+/* =========================================================
+   DOTS
+========================================================= */
 
 .banner-dots{
     position:absolute;
+
     left:0;
     right:0;
     bottom:8px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     gap:5px;
+
     z-index:5;
+
+    pointer-events:auto;
 }
 
 .banner-dot{
     width:6px;
     height:6px;
+
+    padding:0;
+
+    border:0;
+
     background:rgba(255,255,255,.55);
+
     border-radius:50%;
-    box-shadow:0 1px 3px rgba(15,23,42,.25);
-    transition:all .25s ease;
+
+    box-shadow:
+        0 1px 3px rgba(15,23,42,.25);
+
+    transition:
+        all .25s ease;
+
+    cursor:pointer;
 }
 
 .banner-dot.active{
     width:16px;
+
     background:#fff;
+
     border-radius:10px;
 }
 
