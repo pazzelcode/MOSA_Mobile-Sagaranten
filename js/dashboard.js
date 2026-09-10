@@ -1533,238 +1533,346 @@
 
 
     /* =========================================================
-       RENDER BANNERS
-    ========================================================= */
+   RENDER BANNERS - LOOPING + PEEK
+========================================================= */
 
-    const renderDashboardBanners =
-        () => {
+const renderDashboardBanners =
+    () => {
 
-            if (!bannerTrack) {
-                return;
-            }
+        if (!bannerTrack) {
+            return;
+        }
 
+        /* =====================================================
+           DESKTOP = JANGAN RENDER
+        ===================================================== */
 
-            /* DESKTOP = JANGAN RENDER */
-            if (isDesktop()) {
+        if (isDesktop()) {
+            hideBannerDesktop();
+            return;
+        }
 
-                hideBannerDesktop();
+        /* =====================================================
+           JIKA BELUM ADA BANNER
+        ===================================================== */
 
-                return;
-
-            }
-
-
-            if (!dashboardBanners.length) {
-
-                bannerTrack.innerHTML =
-                    '<div class="banner-loading">' +
-                    'Belum ada informasi terbaru.' +
-                    '</div>';
-
-
-                if (bannerDots) {
-
-                    bannerDots.innerHTML =
-                        '';
-
-                }
-
-                return;
-
-            }
-
-
-            bannerCurrentIndex =
-                0;
-
+        if (!dashboardBanners.length) {
 
             bannerTrack.innerHTML =
+                '<div class="banner-loading">' +
+                'Belum ada informasi terbaru.' +
+                '</div>';
+
+            if (bannerDots) {
+                bannerDots.innerHTML = '';
+            }
+
+            return;
+        }
+
+        /* =====================================================
+           RESET INDEX
+        ===================================================== */
+
+        bannerCurrentIndex = 0;
+
+        const total =
+            dashboardBanners.length;
+
+        /* =====================================================
+           CLONE UNTUK EFEK INFINITE CAROUSEL
+
+           [ LAST ] [ 1 ] [ 2 ] [ 3 ] [ FIRST ]
+        ===================================================== */
+
+        const slidesData = [
+            dashboardBanners[total - 1],
+            ...dashboardBanners,
+            dashboardBanners[0]
+        ];
+
+        /* =====================================================
+           RENDER SEMUA SLIDE
+
+           SEMUA SLIDE -> klik -> semua-banner.html
+        ===================================================== */
+
+        bannerTrack.innerHTML =
+            slidesData
+                .map(
+                    (b, i) => {
+
+                        const img =
+                            escapeBannerHtml(
+                                b.imageUrl
+                            );
+
+                        const title =
+                            escapeBannerHtml(
+                                b.judul ||
+                                'Banner'
+                            );
+
+                        /* Banner asli pertama
+                           index 1 karena index 0 = clone */
+                        const isFirstReal =
+                            i === 1;
+
+                        /* Clone:
+                           index 0 = clone terakhir
+                           index terakhir = clone pertama */
+                        const isClone =
+                            i === 0 ||
+                            i ===
+                                slidesData.length - 1;
+
+                        return `
+                            <a
+                                href="./semua-banner.html"
+                                class="dashboard-banner-slide ${
+                                    isClone
+                                        ? 'banner-clone'
+                                        : ''
+                                }"
+                                aria-label="${title}"
+                            >
+
+                                <img
+                                    src="${img}"
+                                    alt="${title}"
+                                    loading="${
+                                        isFirstReal
+                                            ? 'eager'
+                                            : 'lazy'
+                                    }"
+                                    decoding="async"
+                                    onerror="
+                                        this.style.display='none'
+                                    "
+                                >
+
+                            </a>
+                        `;
+                    }
+                )
+                .join('');
+
+        /* =====================================================
+           DOTS
+
+           HANYA BANNER ASLI
+           Clone tidak dibuatkan dot
+        ===================================================== */
+
+        if (bannerDots) {
+
+            bannerDots.innerHTML =
                 dashboardBanners
                     .map(
-                        (b, i) => {
-
-                            const img =
-                                escapeBannerHtml(
-                                    b.imageUrl
-                                );
-
-
-                            const title =
-                                escapeBannerHtml(
-                                    b.judul
-                                );
-
-
-                            const link =
-                                b.link &&
-                                b.link !== '#'
-                                    ? escapeBannerHtml(
-                                        b.link
-                                    )
-                                    : null;
-
-
-                            if (link) {
-
-                                return `
-                                    <a
-                                        href="${link}"
-                                        class="dashboard-banner-slide"
-                                    >
-                                        <img
-                                            src="${img}"
-                                            alt="${title}"
-                                            loading="${i === 0 ? 'eager' : 'lazy'}"
-                                            decoding="async"
-                                            onerror="this.style.display='none'"
-                                        >
-                                    </a>
-                                `;
-
-                            }
-
-
-                            return `
-                                <div
-                                    class="dashboard-banner-slide"
-                                >
-                                    <img
-                                        src="${img}"
-                                        alt="${title}"
-                                        loading="${i === 0 ? 'eager' : 'lazy'}"
-                                        decoding="async"
-                                        onerror="this.style.display='none'"
-                                    >
-                                </div>
-                            `;
-
-                        }
+                        (_, i) => `
+                            <button
+                                type="button"
+                                class="banner-dot ${
+                                    i === 0
+                                        ? 'active'
+                                        : ''
+                                }"
+                                data-banner-index="${i}"
+                                aria-label="Banner ${i + 1}"
+                            ></button>
+                        `
                     )
                     .join('');
 
+            /* =================================================
+               EVENT DOT
+            ================================================= */
 
-            /* DOTS */
-
-            if (bannerDots) {
-
-                bannerDots.innerHTML =
-                    dashboardBanners
-                        .map(
-                            (_, i) => `
-                                <button
-                                    type="button"
-                                    class="banner-dot ${
-                                        i === 0
-                                            ? 'active'
-                                            : ''
-                                    }"
-                                    data-banner-index="${i}"
-                                    aria-label="Banner ${i + 1}"
-                                ></button>
-                            `
-                        )
-                        .join('');
-
-
-                bannerDots
-                    .querySelectorAll(
-                        '.banner-dot'
-                    )
-                    .forEach(dot => {
+            bannerDots
+                .querySelectorAll(
+                    '.banner-dot'
+                )
+                .forEach(
+                    dot => {
 
                         dot.addEventListener(
                             'click',
                             () => {
 
-                                showDashboardBanner(
+                                const index =
                                     Number(
                                         dot.dataset
                                             .bannerIndex
-                                    )
+                                    );
+
+                                showDashboardBanner(
+                                    index
                                 );
 
                             }
                         );
 
-                    });
+                    }
+                );
+        }
 
-            }
+        /* =====================================================
+           TAMPILKAN BANNER PERTAMA
+           
+           showDashboardBanner(0)
+           akan mengarahkan ke slide asli index 1
+        ===================================================== */
 
+        showDashboardBanner(0);
 
-            showDashboardBanner(0);
+        /* =====================================================
+           AUTOPLAY
+        ===================================================== */
 
-            startBannerAutoPlay();
-
-        };
-
+        startBannerAutoPlay();
+    };
 
     /* =========================================================
-       SHOW SINGLE BANNER
-    ========================================================= */
+   SHOW SINGLE BANNER - CENTER + PEEK + LOOP
+========================================================= */
 
-    const showDashboardBanner =
-        idx => {
+const showDashboardBanner =
+    idx => {
 
-            if (
-                !dashboardBanners.length
-            ) {
-                return;
-            }
+        if (!dashboardBanners.length) {
+            return;
+        }
 
+        if (isDesktop()) {
 
-            if (isDesktop()) {
+            hideBannerDesktop();
 
-                hideBannerDesktop();
+            return;
 
-                return;
-
-            }
+        }
 
 
-            bannerCurrentIndex =
-                idx;
+        /* =========================================
+           NORMALISASI INDEX ASLI
+        ========================================= */
+
+        if (idx < 0) {
+
+            idx =
+                dashboardBanners.length - 1;
+
+        }
 
 
-            if (bannerTrack) {
+        if (
+            idx >=
+            dashboardBanners.length
+        ) {
 
-                bannerTrack
-                    .querySelectorAll(
-                        '.dashboard-banner-slide'
-                    )
-                    .forEach(
-                        (slide, i) => {
+            idx = 0;
 
-                            slide.style.display =
-                                i === idx
-                                    ? 'block'
-                                    : 'none';
+        }
 
-                        }
+
+        bannerCurrentIndex =
+            idx;
+
+
+        /* =========================================
+           INDEX TRACK
+           
+           Track:
+           0 = clone terakhir
+           1 = banner 1
+           2 = banner 2
+           3 = banner 3
+           ...
+        ========================================= */
+
+        const trackIndex =
+            idx + 1;
+
+
+        /* =========================================
+           POSISI SLIDE
+        ========================================= */
+
+        if (bannerTrack) {
+
+            const slides =
+                bannerTrack.querySelectorAll(
+                    '.dashboard-banner-slide'
+                );
+
+
+            if (slides.length) {
+
+                const slide =
+                    slides[trackIndex];
+
+
+                const containerWidth =
+                    bannerTrack.parentElement
+                        .clientWidth;
+
+
+                const slideWidth =
+                    slide.offsetWidth;
+
+
+                const gap = 12;
+
+
+                const centerOffset =
+                    (
+                        containerWidth -
+                        slideWidth
+                    ) / 2;
+
+
+                const translateX =
+                    centerOffset -
+                    (
+                        trackIndex *
+                        (
+                            slideWidth +
+                            gap
+                        )
                     );
 
-            }
 
-
-            if (bannerDots) {
-
-                bannerDots
-                    .querySelectorAll(
-                        '.banner-dot'
-                    )
-                    .forEach(
-                        (dot, i) => {
-
-                            dot.classList.toggle(
-                                'active',
-                                i === idx
-                            );
-
-                        }
-                    );
+                bannerTrack.style.transform =
+                    `translateX(${translateX}px)`;
 
             }
 
-        };
+        }
+
+
+        /* =========================================
+           UPDATE DOT
+        ========================================= */
+
+        if (bannerDots) {
+
+            bannerDots
+                .querySelectorAll(
+                    '.banner-dot'
+                )
+                .forEach(
+                    (dot, i) => {
+
+                        dot.classList.toggle(
+                            'active',
+                            i === idx
+                        );
+
+                    }
+                );
+
+        }
+
+    };
 
 
     /* =========================================================
