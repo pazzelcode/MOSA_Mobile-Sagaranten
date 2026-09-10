@@ -22,22 +22,121 @@ const STOCK_DSE_MAPPING = {
 
 let stockData = [];
 
+/* =========================================================
+   PRODUCT CONFIG
+   label      = nama yang tampil di FORM / WHATSAPP
+   stockLabel = nama JENIS BARANG pada JSON STOK
+========================================================= */
+
 const PRODUCT_CONFIG = {
-    sp_zero: { label: "SP ZERO", category: "Starter Pack" },
-    sp_3gb_injek: { label: "SP 3GB INJEK", category: "Starter Pack" },
-    sp_3gb_ori: { label: "SP 3GB ORI", category: "Starter Pack" },
-    sp_10gb: { label: "SP 10GB", category: "Starter Pack" },
-    vdk: { label: "VDK", category: "Voucher" },
-    v_3gb_14hr: { label: "3GB 14HR", category: "Voucher" },
-    v_2_5gb_5hr: { label: "2,5GB 5HR", category: "Voucher" },
-    v_3_5gb_5hr: { label: "3.5GB 5HR", category: "Voucher" },
-    v_5gb_5hr: { label: "5GB 5HR", category: "Voucher" },
-    v_7gb_7hr: { label: "7GB 7HR", category: "Voucher" },
-    v_fi_6gb_3hr: { label: "Fi 6GB 3HR", category: "Voucher" },
-    v_fi_1_5gb_1hr: { label: "Fi 1.5GB 1HR", category: "Voucher" },
-    v_fi_5gb_2hr: { label: "Fi 5GB 2HR", category: "Voucher" },
-    v_fi_5gb_3hr: { label: "Fi 5GB 3HR", category: "Voucher" },
-    v_fi_7gb_28hr: { label: "Fi 7GB 28HR", category: "Voucher" }
+
+    /* =========================
+       STARTER PACK
+    ========================= */
+
+    sp_zero: {
+        label: "SP ZERO",
+        stockLabel: "SP ZERO",
+        category: "Starter Pack"
+    },
+
+    sp_3gb_injek: {
+        label: "SP 3GB INJEK",
+        stockLabel: "SP 3GB INJEK",
+        category: "Starter Pack"
+    },
+
+    sp_3gb_ori: {
+        label: "SP 3GB ORI",
+        stockLabel: "SP 3GB ORI",
+        category: "Starter Pack"
+    },
+
+    sp_10gb: {
+        label: "SP 10GB",
+        stockLabel: "SP 10GB",
+        category: "Starter Pack"
+    },
+
+
+    /* =========================
+       VOUCHER
+    ========================= */
+
+    vdk: {
+        label: "VDK",
+        stockLabel: "VDK",
+        category: "Voucher"
+    },
+
+    v_3gb_14hr: {
+        label: "3GB 14HR",
+        stockLabel: "Voucher 3GB 14HR",
+        category: "Voucher"
+    },
+
+    v_2_5gb_5hr: {
+        label: "2,5GB 5HR",
+        stockLabel: "Voucher 2,5GB",
+        category: "Voucher"
+    },
+
+    v_3_5gb_5hr: {
+        label: "3.5GB 5HR",
+        stockLabel: "Voucher 3.5GB 5HR",
+        category: "Voucher"
+    },
+
+    v_5gb_5hr: {
+        label: "5GB 5HR",
+        stockLabel: "Voucher 5GB 5HR",
+        category: "Voucher"
+    },
+
+    v_7gb_7hr: {
+        label: "7GB 7HR",
+        stockLabel: "Voucher 7GB 7HR",
+        category: "Voucher"
+    },
+
+    /*
+     * PERHATIAN:
+     * Nama produk di FORM tetap "Fi 6GB 3HR",
+     * tetapi JSON saat ini memiliki:
+     * "Fi 3GB/3D"
+     *
+     * Jika memang produk ini adalah stok yang sama,
+     * gunakan mapping berikut.
+     */
+    v_fi_3gb_3hr: {
+        label: "Fi 3GB 3HR",
+        stockLabel: "Fi 3GB/3D",
+        category: "Voucher"
+    },
+
+    v_fi_1_5gb_1hr: {
+        label: "Fi 1.5GB 1HR",
+        stockLabel: "Fi 1.5GB/1D",
+        category: "Voucher"
+    },
+
+    v_fi_5gb_2hr: {
+        label: "Fi 5GB 2HR",
+        stockLabel: "Fi 5GB/2D",
+        category: "Voucher"
+    },
+
+    v_fi_5gb_3hr: {
+        label: "Fi 5GB 3HR",
+        stockLabel: "Fi 5GB/3D",
+        category: "Voucher"
+    },
+
+    v_fi_7gb_28hr: {
+        label: "Fi 7GB 28HR",
+        stockLabel: "Fi 7GB/28D",
+        category: "Voucher"
+    }
 };
 
 const holdState = new WeakMap();
@@ -177,13 +276,42 @@ function updateStockDisplay(selectedDseId = null) {
         const stockElement = document.getElementById(`stock_${productId}`);
         if (!stockElement) return;
 
-        const config = PRODUCT_CONFIG[productId];
-        const productLabel = String(config.label || "").trim().toUpperCase();
+        const config =
+    PRODUCT_CONFIG[productId];
 
-        const row = stockData.find(item => {
-            const jenisBarang = String(item["JENIS BARANG"] ?? "").trim().toUpperCase();
-            return jenisBarang === productLabel;
-        });
+/*
+ * Gunakan stockLabel untuk mencari
+ * nama produk pada JSON.
+ *
+ * label tetap digunakan untuk
+ * nama yang tampil di form.
+ */
+const productStockLabel =
+    String(
+        config.stockLabel ||
+        config.label ||
+        ""
+    )
+    .trim()
+    .toUpperCase();
+
+const row =
+    stockData.find(
+        item => {
+
+            const jenisBarang =
+                String(
+                    item["JENIS BARANG"] ?? ""
+                )
+                .trim()
+                .toUpperCase();
+
+            return (
+                jenisBarang ===
+                productStockLabel
+            );
+        }
+    );
 
         if (!row) {
             stockElement.textContent = "Stok: 0 PCS";
