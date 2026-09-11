@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "stok-gudang",
-  "updated_at": "2026-09-10T07:59:17.158Z",
+  "updated_at": "2026-09-11T09:58:33.560Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260910-075917",
+  "version": "20260911-095833",
   "total_data": 16,
   "data": [
     {
@@ -137,8 +137,8 @@
     {
       "nama barang": "2,5GB",
       "segel": 0,
-      "sellin": 809,
-      "total stok": 809,
+      "sellin": 779,
+      "total stok": 779,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
@@ -172,9 +172,9 @@
     },
     {
       "nama barang": "5GB 5HR",
-      "segel": 609,
+      "segel": 579,
       "sellin": 0,
-      "total stok": 609,
+      "total stok": 579,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
@@ -190,9 +190,9 @@
     },
     {
       "nama barang": "7GB 7HR",
-      "segel": 336,
+      "segel": 321,
       "sellin": 15,
-      "total stok": 351,
+      "total stok": 336,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
