@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "penjualan-hifi",
-  "updated_at": "2026-09-11T09:58:33.560Z",
+  "updated_at": "2026-09-12T04:17:51.923Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260911-095833",
+  "version": "20260912-041751",
   "total_data": 19,
   "data": [
     {
@@ -71,7 +71,7 @@
       "Nomor Hifi": "085871048626",
       "ICCID": "89620100002051931032",
       "IMEI Devices": "352467730556565",
-      "Nama": "BACIL",
+      "Nama": "PEBRIAN",
       "Harga": 0,
       "Tgl Ambil": "2026-09-11T00:00:00.000Z",
       "Tgl Bayar": 0,
@@ -85,11 +85,11 @@
       "Nomor Hifi": "085871048630",
       "ICCID": "89620100002051931073",
       "IMEI Devices": "352467730562886",
-      "Nama": 0,
+      "Nama": "ADIGUNA",
       "Harga": 0,
-      "Tgl Ambil": "1899-12-30T00:00:00.000Z",
+      "Tgl Ambil": "2026-09-12T00:00:00.000Z",
       "Tgl Bayar": 0,
-      "Keterangan": "STOK GUDANG",
+      "Keterangan": "ON HAND DSE",
       "Tgl Repot": ""
     },
     {
