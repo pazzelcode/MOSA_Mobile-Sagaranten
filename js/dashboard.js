@@ -1736,143 +1736,55 @@ const renderDashboardBanners =
    SHOW SINGLE BANNER - CENTER + PEEK + LOOP
 ========================================================= */
 
-const showDashboardBanner =
-    idx => {
+const showDashboardBanner = idx => {
+    if (!dashboardBanners.length) return;
+    if (isDesktop()) return hideBannerDesktop();
 
-        if (!dashboardBanners.length) {
-            return;
-        }
+    const total = dashboardBanners.length;
+    idx = idx < 0 ? total - 1 : idx >= total ? 0 : idx;
 
-        if (isDesktop()) {
+    const slides = bannerTrack ? bannerTrack.querySelectorAll('.dashboard-banner-slide') : [];
+    if (!slides.length) return;
 
-            hideBannerDesktop();
+    const slideWidth = slides[0].offsetWidth;
+    const gap = 12;
+    const containerWidth = bannerTrack.parentElement.clientWidth;
+    const centerOffset = (containerWidth - slideWidth) / 2;
 
-            return;
+    let trackIndex = idx + 1;
+    const isForwardLoop = bannerCurrentIndex === total - 1 && idx === 0;
+    const isBackwardLoop = bannerCurrentIndex === 0 && idx === total - 1;
 
-        }
+    if (isForwardLoop) trackIndex = total + 1;
+    if (isBackwardLoop) trackIndex = 0;
 
+    const translateX = centerOffset - (trackIndex * (slideWidth + gap));
+    bannerCurrentIndex = idx;
 
-        /* =========================================
-           NORMALISASI INDEX ASLI
-        ========================================= */
+    if (bannerDots) {
+        bannerDots.querySelectorAll('.banner-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === idx);
+        });
+    }
 
-        if (idx < 0) {
+    bannerTrack.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
+    bannerTrack.style.transform = `translateX(${translateX}px)`;
 
-            idx =
-                dashboardBanners.length - 1;
+    if (isForwardLoop || isBackwardLoop) {
+        const handleLoopReset = event => {
+            if (event.propertyName !== 'transform') return;
+            bannerTrack.removeEventListener('transitionend', handleLoopReset);
 
-        }
-
-
-        if (
-            idx >=
-            dashboardBanners.length
-        ) {
-
-            idx = 0;
-
-        }
-
-
-        bannerCurrentIndex =
-            idx;
-
-
-        /* =========================================
-           INDEX TRACK
-           
-           Track:
-           0 = clone terakhir
-           1 = banner 1
-           2 = banner 2
-           3 = banner 3
-           ...
-        ========================================= */
-
-        const trackIndex =
-            idx + 1;
-
-
-        /* =========================================
-           POSISI SLIDE
-        ========================================= */
-
-        if (bannerTrack) {
-
-            const slides =
-                bannerTrack.querySelectorAll(
-                    '.dashboard-banner-slide'
-                );
-
-
-            if (slides.length) {
-
-                const slide =
-                    slides[trackIndex];
-
-
-                const containerWidth =
-                    bannerTrack.parentElement
-                        .clientWidth;
-
-
-                const slideWidth =
-                    slide.offsetWidth;
-
-
-                const gap = 12;
-
-
-                const centerOffset =
-                    (
-                        containerWidth -
-                        slideWidth
-                    ) / 2;
-
-
-                const translateX =
-                    centerOffset -
-                    (
-                        trackIndex *
-                        (
-                            slideWidth +
-                            gap
-                        )
-                    );
-
-
-                bannerTrack.style.transform =
-                    `translateX(${translateX}px)`;
-
-            }
-
-        }
-
-
-        /* =========================================
-           UPDATE DOT
-        ========================================= */
-
-        if (bannerDots) {
-
-            bannerDots
-                .querySelectorAll(
-                    '.banner-dot'
-                )
-                .forEach(
-                    (dot, i) => {
-
-                        dot.classList.toggle(
-                            'active',
-                            i === idx
-                        );
-
-                    }
-                );
-
-        }
-
-    };
+            bannerTrack.style.transition = 'none';
+            const realTranslateX = centerOffset - ((idx + 1) * (slideWidth + gap));
+            bannerTrack.style.transform = `translateX(${realTranslateX}px)`;
+            
+            void bannerTrack.offsetWidth; // Force reflow
+            bannerTrack.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
+        };
+        bannerTrack.addEventListener('transitionend', handleLoopReset);
+    }
+};
 
 
     /* =========================================================
