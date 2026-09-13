@@ -163,16 +163,27 @@ phoneInput.addEventListener('keydown', e => { if (e.key === 'Enter') passwordInp
 passwordInput.addEventListener('keydown', e => { if (e.key === 'Enter') prosesLogin(); });
 
 onAuthStateChanged(auth, async user => {
+    const authSplash = document.getElementById("authSplash");
+    const loginPage = document.querySelector(".login-page");
+
+    const tampilkanLoginPage = () => {
+        if (authSplash) authSplash.style.display = "none";
+        if (loginPage) loginPage.style.visibility = "visible";
+    };
+
     if (!user) {
+        tampilkanLoginPage();
         hapusDataUser();
         return;
     }
 
     try {
         const snapshot = await getDoc(doc(db, 'users', user.uid));
+
         if (!snapshot.exists()) {
             await signOut(auth);
             hapusDataUser();
+            tampilkanLoginPage();
             return;
         }
 
@@ -182,15 +193,18 @@ onAuthStateChanged(auth, async user => {
         if (status !== 'active') {
             await signOut(auth);
             hapusDataUser();
+            tampilkanLoginPage();
             tampilkanError('Akun Anda sedang dinonaktifkan.');
             return;
         }
 
         simpanDataUser(user, data);
         window.location.replace('dashboard.html');
+
     } catch (error) {
         console.error('AUTH CHECK ERROR:', error);
         await signOut(auth);
         hapusDataUser();
+        tampilkanLoginPage();
     }
 });
