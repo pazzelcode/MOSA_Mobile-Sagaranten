@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "Tambahan",
-  "updated_at": "2026-09-12T04:17:51.923Z",
+  "updated_at": "2026-09-14T08:13:35.943Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260912-041751",
+  "version": "20260914-081335",
   "total_data": 21,
   "data": [
     {
@@ -21,10 +21,10 @@
       "JENIS BARANG": "SP 3GB INJEK",
       "ADIGUNA": 30,
       "FARHAN": 80,
-      "ENDEN": 90,
+      "ENDEN": 130,
       "PEBRIAN": 30,
       "SPV": "",
-      "TOTAL": 230
+      "TOTAL": 270
     },
     {
       "JENIS BARANG": "SP 3GB ORI",
@@ -45,13 +45,31 @@
       "TOTAL": 0
     },
     {
+      "JENIS BARANG": "SP 5GB",
+      "ADIGUNA": 5,
+      "FARHAN": 5,
+      "ENDEN": 5,
+      "PEBRIAN": 5,
+      "SPV": "",
+      "TOTAL": 20
+    },
+    {
+      "JENIS BARANG": "SP 50GB",
+      "ADIGUNA": 3,
+      "FARHAN": 3,
+      "ENDEN": 3,
+      "PEBRIAN": 3,
+      "SPV": "",
+      "TOTAL": 12
+    },
+    {
       "JENIS BARANG": "",
       "ADIGUNA": 0,
       "FARHAN": 0,
       "ENDEN": 0,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 0
+      "TOTAL": ""
     },
     {
       "JENIS BARANG": "VDK",
@@ -94,18 +112,18 @@
       "ADIGUNA": 0,
       "FARHAN": 45,
       "ENDEN": 30,
-      "PEBRIAN": 15,
+      "PEBRIAN": 30,
       "SPV": "",
-      "TOTAL": 90
+      "TOTAL": 105
     },
     {
       "JENIS BARANG": "Voucher 5GB 5HR",
       "ADIGUNA": 30,
-      "FARHAN": 90,
+      "FARHAN": 105,
       "ENDEN": 51,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 171
+      "TOTAL": 186
     },
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
@@ -171,31 +189,13 @@
       "TOTAL": 0
     },
     {
-      "JENIS BARANG": "",
+      "JENIS BARANG": "7GB/28D",
       "ADIGUNA": 0,
       "FARHAN": 0,
       "ENDEN": 0,
       "PEBRIAN": 0,
-      "SPV": "-",
+      "SPV": "",
       "TOTAL": 0
-    },
-    {
-      "JENIS BARANG": "",
-      "ADIGUNA": "-",
-      "FARHAN": "-",
-      "ENDEN": "-",
-      "PEBRIAN": "-",
-      "SPV": "-",
-      "TOTAL": 0
-    },
-    {
-      "JENIS BARANG": "TOTAL",
-      "ADIGUNA": 75,
-      "FARHAN": 430,
-      "ENDEN": 201,
-      "PEBRIAN": 75,
-      "SPV": 0,
-      "TOTAL": 781
     }
   ]
 }
