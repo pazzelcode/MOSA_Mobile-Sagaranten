@@ -1,16 +1,16 @@
 {
   "success": true,
   "sheet": "penjualan-paket-jupiter",
-  "updated_at": "2026-09-12T04:17:51.923Z",
+  "updated_at": "2026-09-14T08:13:35.943Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260912-041751",
+  "version": "20260914-081335",
   "total_data": 5,
   "data": [
     {
       "No.": 1,
-      "Tanggal": "2026-09-12T00:00:00.000Z",
+      "Tanggal": "2026-09-14T00:00:00.000Z",
       "Nama DSE": "Adiguna",
       "Outlet": 0,
       "Paket": 0,
@@ -20,7 +20,7 @@
     },
     {
       "No.": 2,
-      "Tanggal": "2026-09-12T00:00:00.000Z",
+      "Tanggal": "2026-09-14T00:00:00.000Z",
       "Nama DSE": "Parhan",
       "Outlet": 0,
       "Paket": 0,
@@ -30,7 +30,7 @@
     },
     {
       "No.": 3,
-      "Tanggal": "2026-09-12T00:00:00.000Z",
+      "Tanggal": "2026-09-14T00:00:00.000Z",
       "Nama DSE": "Enden",
       "Outlet": 0,
       "Paket": 0,
@@ -40,7 +40,7 @@
     },
     {
       "No.": 4,
-      "Tanggal": "2026-09-12T00:00:00.000Z",
+      "Tanggal": "2026-09-14T00:00:00.000Z",
       "Nama DSE": "Pebrian",
       "Outlet": 0,
       "Paket": 0,
