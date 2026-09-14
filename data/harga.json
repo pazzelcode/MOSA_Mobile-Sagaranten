@@ -1,12 +1,12 @@
 {
   "success": true,
   "sheet": "harga",
-  "updated_at": "2026-09-12T04:17:51.923Z",
+  "updated_at": "2026-09-14T08:13:35.943Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260912-041751",
-  "total_data": 18,
+  "version": "20260914-081335",
+  "total_data": 21,
   "data": [
     {
       "JENIS BARANG": "SP ZERO",
@@ -23,6 +23,18 @@
     {
       "JENIS BARANG": "SP 10GB",
       "HARGA": 30000
+    },
+    {
+      "JENIS BARANG": "SP 5GB",
+      "HARGA": 25000
+    },
+    {
+      "JENIS BARANG": "SP 50GB",
+      "HARGA": 95000
+    },
+    {
+      "JENIS BARANG": 0,
+      "HARGA": 0
     },
     {
       "JENIS BARANG": "VDK",
