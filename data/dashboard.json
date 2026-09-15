@@ -1,16 +1,16 @@
 {
   "success": true,
   "sheet": "Dashboard",
-  "updated_at": "2026-09-14T08:13:35.943Z",
+  "updated_at": "2026-09-15T08:56:23.876Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260914-081335",
+  "version": "20260915-085623",
   "total_data": 1,
   "data": [
     {
-      "TOTAL PENJUALAN SALMO": 175408000,
-      "SP DAN VOUCHER": 17432400,
+      "TOTAL PENJUALAN SALMO": 194034000,
+      "SP DAN VOUCHER": 18784900,
       "ALL PAKET": 0,
       "HIFI": 0
     }
