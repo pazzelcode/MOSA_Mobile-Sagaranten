@@ -1,61 +1,61 @@
 {
   "success": true,
   "sheet": "penjualan-paket-jupiter",
-  "updated_at": "2026-09-15T08:56:23.876Z",
+  "updated_at": "2026-09-16T08:14:11.115Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260915-085623",
+  "version": "20260916-081411",
   "total_data": 5,
   "data": [
     {
       "No.": 1,
-      "Tanggal": "2026-09-15T00:00:00.000Z",
+      "Tanggal": "2026-09-16T00:00:00.000Z",
       "Nama DSE": "Adiguna",
       "Outlet": 0,
       "Paket": 0,
       "Tagihan": 0,
       "Pembayaran": 0,
-      "Selisih": 0
+      "Selisih": "lunas"
     },
     {
       "No.": 2,
-      "Tanggal": "2026-09-15T00:00:00.000Z",
+      "Tanggal": "2026-09-16T00:00:00.000Z",
       "Nama DSE": "Parhan",
-      "Outlet": 0,
-      "Paket": 0,
-      "Tagihan": 0,
-      "Pembayaran": 0,
-      "Selisih": 0
+      "Outlet": 5,
+      "Paket": 5,
+      "Tagihan": 202500,
+      "Pembayaran": 202500,
+      "Selisih": "lunas"
     },
     {
       "No.": 3,
-      "Tanggal": "2026-09-15T00:00:00.000Z",
+      "Tanggal": "2026-09-16T00:00:00.000Z",
       "Nama DSE": "Enden",
-      "Outlet": 0,
-      "Paket": 0,
-      "Tagihan": 0,
-      "Pembayaran": 0,
-      "Selisih": 0
+      "Outlet": 2,
+      "Paket": 2,
+      "Tagihan": 164400,
+      "Pembayaran": 164400,
+      "Selisih": "lunas"
     },
     {
       "No.": 4,
-      "Tanggal": "2026-09-15T00:00:00.000Z",
+      "Tanggal": "2026-09-16T00:00:00.000Z",
       "Nama DSE": "Pebrian",
-      "Outlet": 0,
-      "Paket": 0,
-      "Tagihan": 0,
-      "Pembayaran": 0,
-      "Selisih": 0
+      "Outlet": 5,
+      "Paket": 5,
+      "Tagihan": 411000,
+      "Pembayaran": 411000,
+      "Selisih": "lunas"
     },
     {
       "No.": "Total",
       "Tanggal": "",
       "Nama DSE": "",
-      "Outlet": 0,
-      "Paket": 0,
-      "Tagihan": 0,
-      "Pembayaran": 0,
+      "Outlet": 12,
+      "Paket": 12,
+      "Tagihan": 777900,
+      "Pembayaran": 777900,
       "Selisih": "lunas"
     }
   ]
