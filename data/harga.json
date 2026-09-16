@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "harga",
-  "updated_at": "2026-09-15T08:56:23.876Z",
+  "updated_at": "2026-09-16T08:14:11.115Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260915-085623",
+  "version": "20260916-081411",
   "total_data": 21,
   "data": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "JENIS BARANG": "SP 10GB",
-      "HARGA": 30000
+      "HARGA": 25000
     },
     {
       "JENIS BARANG": "SP 5GB",
@@ -90,7 +90,7 @@
     },
     {
       "JENIS BARANG": "Fi 7GB/28D",
-      "HARGA": 33500
+      "HARGA": 0
     }
   ]
 }
