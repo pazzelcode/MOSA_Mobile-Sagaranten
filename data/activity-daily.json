@@ -1,56 +1,56 @@
 {
   "success": true,
   "sheet": "Activity Daily",
-  "updated_at": "2026-09-15T08:56:23.876Z",
+  "updated_at": "2026-09-16T08:14:11.115Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260915-085623",
+  "version": "20260916-081411",
   "total_data": 4,
   "data": [
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Adiguna",
-      "SALDO MOBO": 5650000,
-      "SP": 0,
-      "VOUCHER": 0,
-      "TOTAL SP VOUCHER": 0,
-      "NAMA PAKET": "Paket 1",
+      "SALDO MOBO": 2596000,
+      "SP": 15,
+      "VOUCHER": 24,
+      "TOTAL SP VOUCHER": 851700,
+      "NAMA PAKET": 0,
       "JUMLAH PAKET": 0,
       "PAKET RUPIAH": 0
     },
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Parhan",
-      "SALDO MOBO": 3901000,
-      "SP": 0,
-      "VOUCHER": 50,
-      "TOTAL SP VOUCHER": 805000,
-      "NAMA PAKET": "Paket 1",
-      "JUMLAH PAKET": 0,
-      "PAKET RUPIAH": 0
+      "SALDO MOBO": 2350000,
+      "SP": 5,
+      "VOUCHER": 20,
+      "TOTAL SP VOUCHER": 538000,
+      "NAMA PAKET": "PAKET4",
+      "JUMLAH PAKET": 5,
+      "PAKET RUPIAH": 202500
     },
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Enden",
-      "SALDO MOBO": 3925000,
-      "SP": 0,
-      "VOUCHER": 9,
-      "TOTAL SP VOUCHER": 157500,
-      "NAMA PAKET": "Paket 1",
-      "JUMLAH PAKET": 0,
-      "PAKET RUPIAH": 0
+      "SALDO MOBO": 3000000,
+      "SP": 14,
+      "VOUCHER": 0,
+      "TOTAL SP VOUCHER": 210000,
+      "NAMA PAKET": "PAKET2",
+      "JUMLAH PAKET": 2,
+      "PAKET RUPIAH": 164400
     },
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Pebrian",
-      "SALDO MOBO": 5150000,
-      "SP": 10,
-      "VOUCHER": 10,
-      "TOTAL SP VOUCHER": 390000,
-      "NAMA PAKET": "Paket 1",
-      "JUMLAH PAKET": 0,
-      "PAKET RUPIAH": 0
+      "SALDO MOBO": 4607500,
+      "SP": 0,
+      "VOUCHER": 0,
+      "TOTAL SP VOUCHER": 0,
+      "NAMA PAKET": "PAKET2",
+      "JUMLAH PAKET": 5,
+      "PAKET RUPIAH": 411000
     }
   ]
 }
