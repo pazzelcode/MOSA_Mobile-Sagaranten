@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "Tambahan",
-  "updated_at": "2026-09-23T03:25:02.750Z",
+  "updated_at": "2026-09-24T04:07:23.933Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260923-032502",
+  "version": "20260924-040723",
   "total_data": 21,
   "data": [
     {
@@ -92,11 +92,11 @@
     {
       "JENIS BARANG": "Voucher 2,5GB",
       "ADIGUNA": 0,
-      "FARHAN": 180,
+      "FARHAN": 210,
       "ENDEN": 30,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 210
+      "TOTAL": 240
     },
     {
       "JENIS BARANG": "Freedom Internet  3 GB",
@@ -119,20 +119,20 @@
     {
       "JENIS BARANG": "Voucher 5GB 5HR",
       "ADIGUNA": 60,
-      "FARHAN": 180,
+      "FARHAN": 240,
       "ENDEN": 111,
       "PEBRIAN": 30,
       "SPV": "",
-      "TOTAL": 381
+      "TOTAL": 441
     },
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
       "ADIGUNA": 15,
-      "FARHAN": 75,
+      "FARHAN": 90,
       "ENDEN": 0,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 90
+      "TOTAL": 105
     },
     {
       "JENIS BARANG": "Fi 6GB",
@@ -173,11 +173,11 @@
     {
       "JENIS BARANG": "Fi 5GB/2D",
       "ADIGUNA": 30,
-      "FARHAN": 105,
+      "FARHAN": 120,
       "ENDEN": 0,
       "PEBRIAN": 60,
       "SPV": "",
-      "TOTAL": 195
+      "TOTAL": 210
     },
     {
       "JENIS BARANG": "Fi 5GB/3D",
