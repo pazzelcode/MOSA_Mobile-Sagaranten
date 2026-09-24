@@ -1,16 +1,16 @@
 {
   "success": true,
   "sheet": "penjualan-paket-jupiter",
-  "updated_at": "2026-09-23T03:25:02.750Z",
+  "updated_at": "2026-09-24T04:07:23.933Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260923-032502",
+  "version": "20260924-040723",
   "total_data": 5,
   "data": [
     {
       "No.": 1,
-      "Tanggal": "2026-09-23T00:00:00.000Z",
+      "Tanggal": "2026-09-24T00:00:00.000Z",
       "Nama DSE": "Adiguna",
       "Outlet": 2,
       "Paket": 2,
@@ -20,7 +20,7 @@
     },
     {
       "No.": 2,
-      "Tanggal": "2026-09-23T00:00:00.000Z",
+      "Tanggal": "2026-09-24T00:00:00.000Z",
       "Nama DSE": "Parhan",
       "Outlet": 21,
       "Paket": 21,
@@ -30,33 +30,33 @@
     },
     {
       "No.": 3,
-      "Tanggal": "2026-09-23T00:00:00.000Z",
+      "Tanggal": "2026-09-24T00:00:00.000Z",
       "Nama DSE": "Enden",
       "Outlet": 5,
       "Paket": 5,
       "Tagihan": 411000,
-      "Pembayaran": 410400,
-      "Selisih": -600
+      "Pembayaran": 411000,
+      "Selisih": "lunas"
     },
     {
       "No.": 4,
-      "Tanggal": "2026-09-23T00:00:00.000Z",
+      "Tanggal": "2026-09-24T00:00:00.000Z",
       "Nama DSE": "Pebrian",
-      "Outlet": 10,
-      "Paket": 10,
-      "Tagihan": 822000,
-      "Pembayaran": 821000,
-      "Selisih": -1000
+      "Outlet": 12,
+      "Paket": 12,
+      "Tagihan": 986400,
+      "Pembayaran": 986400,
+      "Selisih": "lunas"
     },
     {
       "No.": "Total",
       "Tanggal": "",
       "Nama DSE": "",
-      "Outlet": 38,
-      "Paket": 38,
-      "Tagihan": 2164500,
-      "Pembayaran": 2162900,
-      "Selisih": -1600
+      "Outlet": 40,
+      "Paket": 40,
+      "Tagihan": 2328900,
+      "Pembayaran": 2328900,
+      "Selisih": "lunas"
     }
   ]
 }
