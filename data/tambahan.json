@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "Tambahan",
-  "updated_at": "2026-09-24T04:07:23.933Z",
+  "updated_at": "2026-09-25T03:37:40.531Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260924-040723",
+  "version": "20260925-033740",
   "total_data": 21,
   "data": [
     {
@@ -127,12 +127,12 @@
     },
     {
       "JENIS BARANG": "Voucher 7GB 7HR",
-      "ADIGUNA": 15,
+      "ADIGUNA": 33,
       "FARHAN": 90,
-      "ENDEN": 0,
+      "ENDEN": 15,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 105
+      "TOTAL": 138
     },
     {
       "JENIS BARANG": "Fi 6GB",
