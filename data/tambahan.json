@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "Tambahan",
-  "updated_at": "2026-09-25T03:37:40.531Z",
+  "updated_at": "2026-09-26T03:12:49.879Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260925-033740",
+  "version": "20260926-031249",
   "total_data": 21,
   "data": [
     {
@@ -173,11 +173,11 @@
     {
       "JENIS BARANG": "Fi 5GB/2D",
       "ADIGUNA": 30,
-      "FARHAN": 120,
+      "FARHAN": 135,
       "ENDEN": 0,
       "PEBRIAN": 60,
       "SPV": "",
-      "TOTAL": 210
+      "TOTAL": 225
     },
     {
       "JENIS BARANG": "Fi 5GB/3D",
