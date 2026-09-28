@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "Tambahan",
-  "updated_at": "2026-09-26T03:12:49.879Z",
+  "updated_at": "2026-09-28T03:45:00.151Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260926-031249",
+  "version": "20260928-034500",
   "total_data": 21,
   "data": [
     {
@@ -19,12 +19,12 @@
     },
     {
       "JENIS BARANG": "SP 3GB INJEK",
-      "ADIGUNA": 30,
-      "FARHAN": 130,
-      "ENDEN": 130,
-      "PEBRIAN": 30,
+      "ADIGUNA": 180,
+      "FARHAN": 259,
+      "ENDEN": 274,
+      "PEBRIAN": 166,
       "SPV": "",
-      "TOTAL": 320
+      "TOTAL": 879
     },
     {
       "JENIS BARANG": "SP 3GB ORI",
@@ -92,11 +92,11 @@
     {
       "JENIS BARANG": "Voucher 2,5GB",
       "ADIGUNA": 0,
-      "FARHAN": 210,
+      "FARHAN": 240,
       "ENDEN": 30,
       "PEBRIAN": 0,
       "SPV": "",
-      "TOTAL": 240
+      "TOTAL": 270
     },
     {
       "JENIS BARANG": "Freedom Internet  3 GB",
@@ -173,11 +173,11 @@
     {
       "JENIS BARANG": "Fi 5GB/2D",
       "ADIGUNA": 30,
-      "FARHAN": 135,
+      "FARHAN": 165,
       "ENDEN": 0,
       "PEBRIAN": 60,
       "SPV": "",
-      "TOTAL": 225
+      "TOTAL": 255
     },
     {
       "JENIS BARANG": "Fi 5GB/3D",
