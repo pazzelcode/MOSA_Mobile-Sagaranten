@@ -1,17 +1,17 @@
 {
   "success": true,
   "sheet": "Activity Daily",
-  "updated_at": "2026-09-28T03:45:00.151Z",
+  "updated_at": "2026-09-29T05:02:29.554Z",
   "uploaded_by": "Admin1",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260928-034500",
+  "version": "20260929-050229",
   "total_data": 4,
   "data": [
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Adiguna",
-      "SALDO MOBO": 3915000,
+      "SALDO MOBO": 5350000,
       "SP": 0,
       "VOUCHER": 0,
       "TOTAL SP VOUCHER": 0,
@@ -22,10 +22,10 @@
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Parhan",
-      "SALDO MOBO": 2450000,
+      "SALDO MOBO": 2200000,
       "SP": 0,
-      "VOUCHER": 51,
-      "TOTAL SP VOUCHER": 765300,
+      "VOUCHER": 20,
+      "TOTAL SP VOUCHER": 315000,
       "NAMA PAKET": 0,
       "JUMLAH PAKET": 0,
       "PAKET RUPIAH": 0
@@ -33,10 +33,10 @@
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Enden",
-      "SALDO MOBO": 3450000,
-      "SP": 0,
+      "SALDO MOBO": 3675000,
+      "SP": 10,
       "VOUCHER": 15,
-      "TOTAL SP VOUCHER": 262500,
+      "TOTAL SP VOUCHER": 390000,
       "NAMA PAKET": 0,
       "JUMLAH PAKET": 0,
       "PAKET RUPIAH": 0
@@ -44,10 +44,10 @@
     {
       "TANGGAL": "2026-08-23T00:00:00.000Z",
       "DSE": "Pebrian",
-      "SALDO MOBO": 7100000,
-      "SP": 10,
-      "VOUCHER": 10,
-      "TOTAL SP VOUCHER": 375000,
+      "SALDO MOBO": 3280000,
+      "SP": 0,
+      "VOUCHER": 15,
+      "TOTAL SP VOUCHER": 210000,
       "NAMA PAKET": 0,
       "JUMLAH PAKET": 0,
       "PAKET RUPIAH": 0
