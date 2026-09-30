@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "Tambahan",
-  "updated_at": "2026-09-29T05:02:29.554Z",
-  "uploaded_by": "Admin1",
+  "updated_at": "2026-09-30T02:53:40.191Z",
+  "uploaded_by": "Andi Ramdani",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260929-050229",
+  "version": "20260930-025340",
   "total_data": 21,
   "data": [
     {
@@ -19,12 +19,12 @@
     },
     {
       "JENIS BARANG": "SP 3GB INJEK",
-      "ADIGUNA": 180,
+      "ADIGUNA": 181,
       "FARHAN": 259,
       "ENDEN": 274,
       "PEBRIAN": 166,
       "SPV": "",
-      "TOTAL": 879
+      "TOTAL": 880
     },
     {
       "JENIS BARANG": "SP 3GB ORI",
