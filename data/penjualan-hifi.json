@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "penjualan-hifi",
-  "updated_at": "2026-09-29T05:02:29.554Z",
-  "uploaded_by": "Admin1",
+  "updated_at": "2026-09-30T02:53:40.191Z",
+  "uploaded_by": "Andi Ramdani",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20260929-050229",
+  "version": "20260930-025340",
   "total_data": 19,
   "data": [
     {
@@ -141,11 +141,11 @@
       "Nomor Hifi": "085871048942",
       "ICCID": "89620100002051933467",
       "IMEI Devices": "352467730540916",
-      "Nama": "",
+      "Nama": "PARHAN",
       "Harga": "",
-      "Tgl Ambil": "",
+      "Tgl Ambil": "2026-09-30T00:00:00.000Z",
       "Tgl Bayar": "",
-      "Keterangan": "STOK GUDANG",
+      "Keterangan": "ON HAND DSE",
       "Tgl Repot": ""
     },
     {
@@ -155,11 +155,11 @@
       "Nomor Hifi": "085871048945",
       "ICCID": "89620100002051933491",
       "IMEI Devices": "352467730541088",
-      "Nama": "",
+      "Nama": "ENDEN",
       "Harga": "",
-      "Tgl Ambil": "",
+      "Tgl Ambil": "2026-09-30T00:00:00.000Z",
       "Tgl Bayar": "",
-      "Keterangan": "STOK GUDANG",
+      "Keterangan": "ON HAND DSE",
       "Tgl Repot": ""
     },
     {
@@ -169,11 +169,11 @@
       "Nomor Hifi": "085871048946",
       "ICCID": "89620100002051933509",
       "IMEI Devices": "352467730541062",
-      "Nama": "",
+      "Nama": "PEBRIAN",
       "Harga": "",
-      "Tgl Ambil": "",
+      "Tgl Ambil": "2026-09-30T00:00:00.000Z",
       "Tgl Bayar": "",
-      "Keterangan": "STOK GUDANG",
+      "Keterangan": "ON HAND DSE",
       "Tgl Repot": ""
     },
     {
