@@ -1,11 +1,11 @@
 {
   "success": true,
   "sheet": "stok-gudang",
-  "updated_at": "2026-10-01T03:44:45.952Z",
+  "updated_at": "2026-10-03T06:51:52.266Z",
   "uploaded_by": "Andi Ramdani",
   "uploaded_by_uid": "ulVLHWA0BqfUc5jQ3YUawrnPNzq2",
   "uploaded_by_email": "085759695969@mc-sagaranten.local",
-  "version": "20261001-034445",
+  "version": "20261003-065152",
   "total_data": 17,
   "data": [
     {
@@ -155,8 +155,8 @@
     {
       "nama barang": "2,5GB",
       "segel": 0,
-      "sellin": 659,
-      "total stok": 659,
+      "sellin": 629,
+      "total stok": 629,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
@@ -173,8 +173,8 @@
     {
       "nama barang": "3.5GB 5HR",
       "segel": 0,
-      "sellin": 266,
-      "total stok": 266,
+      "sellin": 236,
+      "total stok": 236,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
@@ -190,9 +190,9 @@
     },
     {
       "nama barang": "5GB 5HR",
-      "segel": 309,
+      "segel": 258,
       "sellin": 0,
-      "total stok": 309,
+      "total stok": 258,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
@@ -227,8 +227,8 @@
     {
       "nama barang": "Fi 1.5GB/1D",
       "segel": 0,
-      "sellin": 246,
-      "total stok": 246,
+      "sellin": 237,
+      "total stok": 237,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
@@ -245,8 +245,8 @@
     {
       "nama barang": "Fi 5GB/2D",
       "segel": 0,
-      "sellin": 634,
-      "total stok": 634,
+      "sellin": 574,
+      "total stok": 574,
       "__EMPTY": "",
       "__EMPTY_1": "",
       "__EMPTY_2": "",
